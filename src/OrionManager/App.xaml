@@ -1,10 +1,13 @@
-﻿<Application x:Class="OrionManager.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="Views/MainWindow.xaml"
-             x:ClassModifier="internal">
+﻿<base:ApplicationBase x:TypeArguments="orionManager:AppSettings, orionManager:AppCommands"
+                      x:Class="OrionManager.App"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:base="clr-namespace:Senticode.Tools.WPF.Core.Base;assembly=Senticode.Tools.WPF.Core"
+                      xmlns:orionManager="clr-namespace:OrionManager"
+                      StartupUri="Views/MainWindow.xaml"
+                      x:ClassModifier="internal">
 
     <Application.Resources>
 
     </Application.Resources>
-</Application>
+</base:ApplicationBase>

@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.30011.19
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionManager", "..\src\OrionManager\OrionManager.csproj", "{F168A599-54EE-4933-A2F3-0641B95157C9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artifacts", "Artifacts", "{5C1A5ADE-19BA-4AF3-A06F-57D8477D2D6C}"
+	ProjectSection(SolutionItems) = preProject
+		..\artifacts\Senticode.Tools.Abstractions.dll = ..\artifacts\Senticode.Tools.Abstractions.dll
+		..\artifacts\Senticode.Tools.Tests.dll = ..\artifacts\Senticode.Tools.Tests.dll
+		..\artifacts\Senticode.Tools.WPF.Core.dll = ..\artifacts\Senticode.Tools.WPF.Core.dll
+		..\artifacts\Senticode.Tools.WPF.MVVM.dll = ..\artifacts\Senticode.Tools.WPF.MVVM.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
