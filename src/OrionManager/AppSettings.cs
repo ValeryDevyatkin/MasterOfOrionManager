@@ -9,6 +9,16 @@ namespace OrionManager
         {
         }
 
+        public void SaveSettings()
+        {
+            //todo
+        }
+
+        public void LoadSettings()
+        {
+            IsGameContinuationAvailable = false;
+        }
+
         #region IsGameContinuationAvailable: bool
 
         public bool IsGameContinuationAvailable

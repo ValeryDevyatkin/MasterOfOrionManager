@@ -5,13 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:OrionManager.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow"
-        x:ClassModifier="internal">
+        Title="MoO - The Board Game"
+        x:ClassModifier="internal"
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
 
     <d:Window.DataContext>
         <viewModels:MainViewModel />
     </d:Window.DataContext>
 
-    <ContentControl Content="{Binding CurrentRegion}" />
+    <ContentControl Content="{Binding CurrentRegion, Mode=OneWay}" />
 
 </Window>

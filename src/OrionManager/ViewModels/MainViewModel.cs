@@ -13,8 +13,12 @@ namespace OrionManager.ViewModels
 
         public MainViewModel(IUnityContainer container) : base(container)
         {
-            container.RegisterInstance(this);
-            CurrentRegion = container.Resolve<StartRegion>();
+            Container.RegisterInstance(this);
+        }
+
+        public void Initialize()
+        {
+            CurrentRegion = Container.Resolve<StartRegion>();
         }
 
         #region CurrentRegion: UserControl
