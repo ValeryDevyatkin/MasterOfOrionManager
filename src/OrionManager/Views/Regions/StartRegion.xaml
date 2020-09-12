@@ -5,12 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:OrionManager.ViewModels"
              mc:Ignorable="d"
-             x:ClassModifier="internal">
-
-    <UserControl.Background>
-        <ImageBrush
-            ImageSource="pack://application:,,,/OrionManager;component/Views/Resources/Images/OrionShipsBack.jpg" />
-    </UserControl.Background>
+             x:ClassModifier="internal"
+             Background="Transparent">
 
     <d:UserControl.DataContext>
         <viewModels:MainViewModel />
@@ -48,7 +44,7 @@
                            FontSize="70"
                            FontWeight="Bold" />
                 <TextBlock Grid.Row="2"
-                           Text="The Board Game"
+                           Text="The Board Game App"
                            FontSize="40"
                            TextAlignment="Center" />
             </Grid>
@@ -74,7 +70,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
-                    Content="Exit" />
+                    Content="Exit"
+                    Command="{Binding AppCommands.ExitAppCommand, Mode=OneWay}" />
         </Grid>
     </Grid>
 

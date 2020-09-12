@@ -85,6 +85,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AppLifecycleManager.cs" />
+    <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Views\Regions\Playing\CounselorSelectionRegion.xaml.cs">
       <DependentUpon>CounselorSelectionRegion.xaml</DependentUpon>
     </Compile>

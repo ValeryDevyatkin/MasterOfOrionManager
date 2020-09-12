@@ -1,4 +1,5 @@
-﻿using Senticode.Tools.WPF.Core.Base;
+﻿using OrionManager.Commands;
+using Senticode.Tools.WPF.Core.Base;
 using Unity;
 
 namespace OrionManager
@@ -8,5 +9,7 @@ namespace OrionManager
         public AppCommands(IUnityContainer container) : base(container)
         {
         }
+
+        public ExitAppCommand ExitAppCommand => Container.Resolve<ExitAppCommand>();
     }
 }

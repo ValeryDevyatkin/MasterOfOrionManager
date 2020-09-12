@@ -5,12 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:OrionManager.ViewModels"
         mc:Ignorable="d"
-        Title="MoO - The Board Game"
+        Title="MoOr - The Board Game App"
         x:ClassModifier="internal"
         ResizeMode="NoResize"
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
+
+    <Window.Background>
+        <ImageBrush
+            ImageSource="pack://application:,,,/OrionManager;component/Views/Resources/Images/OrionShipsBack.jpg" />
+    </Window.Background>
 
     <d:Window.DataContext>
         <viewModels:MainViewModel />

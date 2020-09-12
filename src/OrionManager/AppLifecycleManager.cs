@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Threading;
+using OrionManager.Commands;
 using OrionManager.ViewModels;
 using OrionManager.Views;
 using OrionManager.Views.Regions;
@@ -12,45 +13,88 @@ namespace OrionManager
 {
     internal static class AppLifecycleManager
     {
-        public static void OnStart(App app)
+        private static App _app;
+
+        public static void Init(App app)
         {
             try
             {
-                var container = app.Container;
-                app.DispatcherUnhandledException += OnDispatcherUnhandledException;
+                _app = app;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
+
+        public static void OnAppStart()
+        {
+            try
+            {
+                var container = _app.Container;
+                _app.DispatcherUnhandledException += OnDispatcherUnhandledException;
                 container.Resolve<AppSettings>().LoadSettings();
-                app.SetMainWindow<MainWindow, MainViewModel>();
+                _app.SetMainWindow<MainWindow, MainViewModel>();
                 container.Resolve<MainWindow>().Show();
                 container.Resolve<MainViewModel>().Initialize();
             }
-            catch (Exception exception)
+            catch (Exception e)
             {
-                Debug.WriteLine(exception);
+                Debug.WriteLine(e);
             }
         }
 
         private static void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            Debug.WriteLine($"DISPATCHER UNHANDLED EXCEPTION: {e.Exception}");
+            Debug.WriteLine(e.Exception);
         }
 
-        public static void RegisterTypes(App app)
+        public static void RegisterTypes()
         {
-            app.Container
-                // MainWindow
-                .RegisterType<MainViewModel>()
-                .RegisterSingleton<MainWindow>()
+            try
+            {
+                _app.Container
+                    // MainWindow
+                    .RegisterType<MainViewModel>()
+                    .RegisterSingleton<MainWindow>()
 
-                // Regions
-                .RegisterSingleton<StartRegion>()
-                .RegisterSingleton<SettingsRegion>()
-                .RegisterSingleton<PlayingRegion>()
-                ;
+                    // Regions
+                    .RegisterSingleton<StartRegion>()
+                    .RegisterSingleton<SettingsRegion>()
+                    .RegisterSingleton<PlayingRegion>()
+
+                    // Commands
+                    .RegisterType<ExitAppCommand>()
+                    ;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
         }
 
-        public static void OnExit(App app)
+        public static void OnAppExit()
         {
-            //todo
+            try
+            {
+                //todo
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
+        }
+
+        public static void ExitApp()
+        {
+            try
+            {
+                _app.Shutdown();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
+            }
         }
     }
 }
