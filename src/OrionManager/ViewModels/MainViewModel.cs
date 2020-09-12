@@ -1,4 +1,6 @@
-﻿using Senticode.Tools.WPF.MVVM.Base;
+﻿using System.Windows.Controls;
+using OrionManager.Views.Regions;
+using Senticode.Tools.WPF.MVVM.Base;
 using Unity;
 
 namespace OrionManager.ViewModels
@@ -12,6 +14,19 @@ namespace OrionManager.ViewModels
         public MainViewModel(IUnityContainer container) : base(container)
         {
             container.RegisterInstance(this);
+            CurrentRegion = container.Resolve<StartRegion>();
         }
+
+        #region CurrentRegion: UserControl
+
+        public UserControl CurrentRegion
+        {
+            get => _currentRegion;
+            private set => SetProperty(ref _currentRegion, value);
+        }
+
+        private UserControl _currentRegion;
+
+        #endregion
     }
 }

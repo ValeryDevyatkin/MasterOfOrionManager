@@ -84,6 +84,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Regions\Playing\CounselorSelectionRegion.xaml.cs">
+      <DependentUpon>CounselorSelectionRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\Playing\PlayerDiagramListRregion.xaml.cs">
+      <DependentUpon>PlayerDiagramListRregion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\Playing\PlayerListRegion.xaml.cs">
+      <DependentUpon>PlayerListRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\Playing\PlayingCommandRegion.xaml.cs">
+      <DependentUpon>PlayingCommandRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\Playing\PlayingRegion.xaml.cs">
+      <DependentUpon>PlayingRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\Playing\RoundCounterRegion.xaml.cs">
+      <DependentUpon>RoundCounterRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\SettingsRegion.xaml.cs">
+      <DependentUpon>SettingsRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\StartRegion.xaml.cs">
+      <DependentUpon>StartRegion.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,6 +123,38 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Regions\Playing\CounselorSelectionRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\Playing\PlayerDiagramListRregion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\Playing\PlayerListRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\Playing\PlayingCommandRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\Playing\PlayingRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\Playing\RoundCounterRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\SettingsRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\StartRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
