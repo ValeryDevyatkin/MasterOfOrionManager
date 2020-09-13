@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Senticode.Tools.Abstractions">
@@ -86,6 +88,15 @@
     </ApplicationDefinition>
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
+    <Compile Include="Enums\NavigationRegion.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.Commands.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.Navigation.cs" />
+    <Compile Include="Views\Backgrounds\PreStartBackground.xaml.cs">
+      <DependentUpon>PreStartBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Backgrounds\StartBackground.xaml.cs">
+      <DependentUpon>StartBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Regions\Playing\CounselorSelectionRegion.xaml.cs">
       <DependentUpon>CounselorSelectionRegion.xaml</DependentUpon>
     </Compile>
@@ -107,9 +118,20 @@
     <Compile Include="Views\Regions\SettingsRegion.xaml.cs">
       <DependentUpon>SettingsRegion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Regions\PreStartRegion.xaml.cs">
+      <DependentUpon>PreStartRegion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Regions\StartRegion.xaml.cs">
       <DependentUpon>StartRegion.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Backgrounds\PreStartBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Backgrounds\StartBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -120,7 +142,7 @@
     </Compile>
     <Compile Include="AppCommands.cs" />
     <Compile Include="AppSettings.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -152,6 +174,10 @@
     <Page Include="Views\Regions\SettingsRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Regions\PreStartRegion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Regions\StartRegion.xaml">
       <SubType>Designer</SubType>

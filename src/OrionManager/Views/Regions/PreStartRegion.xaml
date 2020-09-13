@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="OrionManager.Views.Regions.StartRegion"
+﻿<UserControl x:Class="OrionManager.Views.Regions.PreStartRegion"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -27,30 +27,26 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
-                           Text="Welcome to..."
-                           FontSize="40" />
-                <TextBlock Grid.Row="1"
-                           Text="Master Of Orion"
-                           FontSize="70"
-                           FontWeight="Bold" />
-                <TextBlock Grid.Row="2"
-                           Text="The Board Game App"
-                           FontSize="40"
-                           TextAlignment="Center" />
-            </Grid>
-        </Grid>
+        <Border Grid.Row="0"
+                HorizontalAlignment="Center"
+                Padding="{StaticResource InnerSpacingThickness}">
+            <TextBlock FontSize="45"
+                       TextAlignment="Center">
+                <Run>Configure your game before starting:</Run>
+                <LineBreak />
+                <Run>Add players,</Run>
+                <LineBreak />
+                <Run>Set available races and counselors,</Run>
+                <LineBreak />
+                <Run>Customize win conditions,</Run>
+                <LineBreak />
+                <Run>Or start with last configuration.</Run>
+                <LineBreak />
+                <Run>So what are you waiting for?</Run>
+                <LineBreak />
+                <Run>Galaxy is waiting for your command...</Run>
+            </TextBlock>
+        </Border>
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -60,12 +56,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
-                    Content="Continue"
-                    IsEnabled="{Binding AppSettings.IsGameContinuationAvailable, Mode=OneWay}" />
+                    Content="Configure" />
             <Button Grid.Column="3"
-                    Content="New Game"
-                    Command="{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter="{x:Static enums:NavigationRegion.PreStart}" />
+                    Content="Start" />
         </Grid>
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
@@ -74,8 +67,9 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
-                    Content="Exit"
-                    Command="{Binding AppCommands.ExitAppCommand, Mode=OneTime}" />
+                    Content="Back"
+                    Command="{Binding NavigateToRegionCommand, Mode=OneTime}"
+                    CommandParameter="{x:Static enums:NavigationRegion.Start}" />
         </Grid>
     </Grid>
 

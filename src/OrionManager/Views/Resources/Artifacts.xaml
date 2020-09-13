@@ -5,6 +5,7 @@
     <!--SIZES-->
     <system:Double x:Key="DefaultControlHeight">60</system:Double>
     <system:Double x:Key="StartMenuButtonWidth">190</system:Double>
+    <Thickness x:Key="InnerSpacingThickness">15</Thickness>
     <Thickness x:Key="OuterSpacingThickness">30</Thickness>
     <GridLength x:Key="OuterSpacing">30</GridLength>
 

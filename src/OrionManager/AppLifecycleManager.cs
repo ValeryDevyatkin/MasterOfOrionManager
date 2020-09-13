@@ -2,8 +2,9 @@
 using System.Diagnostics;
 using System.Windows.Threading;
 using OrionManager.Commands;
-using OrionManager.ViewModels;
+using OrionManager.ViewModels.Main;
 using OrionManager.Views;
+using OrionManager.Views.Backgrounds;
 using OrionManager.Views.Regions;
 using OrionManager.Views.Regions.Playing;
 using Senticode.Tools.WPF.MVVM.Extensions;
@@ -62,6 +63,11 @@ namespace OrionManager
                     .RegisterSingleton<StartRegion>()
                     .RegisterSingleton<SettingsRegion>()
                     .RegisterSingleton<PlayingRegion>()
+                    .RegisterSingleton<PreStartRegion>()
+
+                    // Backgrounds
+                    .RegisterSingleton<StartBackground>()
+                    .RegisterSingleton<PreStartBackground>()
 
                     // Commands
                     .RegisterType<ExitAppCommand>()

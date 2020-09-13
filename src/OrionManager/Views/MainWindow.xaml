@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModels="clr-namespace:OrionManager.ViewModels"
+        xmlns:main="clr-namespace:OrionManager.ViewModels.Main"
         mc:Ignorable="d"
         Title="MoOr - The Board Game App"
         x:ClassModifier="internal"
@@ -12,15 +12,16 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None">
 
-    <Window.Background>
-        <ImageBrush
-            ImageSource="pack://application:,,,/OrionManager;component/Views/Resources/Images/OrionShipsBack.jpg" />
-    </Window.Background>
-
     <d:Window.DataContext>
-        <viewModels:MainViewModel />
+        <main:MainViewModel />
     </d:Window.DataContext>
 
-    <ContentControl Content="{Binding CurrentRegion, Mode=OneWay}" />
+    <Grid>
+        <ContentControl
+            Content="{Binding CurrentRegionBackground, Mode=OneWay}" />
+        <ContentControl
+            Margin="{StaticResource OuterSpacingThickness}"
+            Content="{Binding CurrentRegion, Mode=OneWay}" />
+    </Grid>
 
 </Window>
