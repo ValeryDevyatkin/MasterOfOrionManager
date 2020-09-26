@@ -8,6 +8,10 @@
 
 
     <!--IMPLICIT-->
+    <Style TargetType="UserControl">
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
     <Style TargetType="Path">
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Stretch" Value="Fill" />

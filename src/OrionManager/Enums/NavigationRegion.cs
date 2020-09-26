@@ -4,7 +4,8 @@
     {
         Start,
         PreStart,
-        Settings,
+        ConfigurationList,
+        Configuration,
         Playing
     }
 }

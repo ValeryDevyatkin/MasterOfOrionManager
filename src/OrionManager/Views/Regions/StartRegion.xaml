@@ -6,8 +6,7 @@
              xmlns:main="clr-namespace:OrionManager.ViewModels.Main"
              xmlns:enums="clr-namespace:OrionManager.Enums"
              mc:Ignorable="d"
-             x:ClassModifier="internal"
-             Background="Transparent">
+             x:ClassModifier="internal">
 
     <d:UserControl.DataContext>
         <main:MainViewModel />
@@ -61,7 +60,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column="1"
                     Content="Continue"
-                    IsEnabled="{Binding AppSettings.IsGameContinuationAvailable, Mode=OneWay}" />
+                    IsEnabled="{Binding AppData.IsGameStarted, Mode=OneWay}" />
             <Button Grid.Column="3"
                     Content="New Game"
                     Command="{Binding NavigateToRegionCommand, Mode=OneTime}"

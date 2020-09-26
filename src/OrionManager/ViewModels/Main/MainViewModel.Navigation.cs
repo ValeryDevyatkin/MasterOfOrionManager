@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using OrionManager.Enums;
 using OrionManager.Views.Backgrounds;
 using OrionManager.Views.Regions;
+using OrionManager.Views.Regions.Configuration;
 using OrionManager.Views.Regions.Playing;
 using Senticode.Tools.Abstractions.Base;
 using Unity;
@@ -34,17 +35,24 @@ namespace OrionManager.ViewModels.Main
                     }
                 },
                 {
-                    NavigationRegion.Settings, () =>
+                    NavigationRegion.ConfigurationList, () =>
                     {
-                        CurrentRegion = Container.Resolve<SettingsRegion>();
-                        //todo
+                        CurrentRegion = Container.Resolve<ConfigurationListRegion>();
+                        CurrentRegionBackground = Container.Resolve<ConfigurationBackground>();
+                    }
+                },
+                {
+                    NavigationRegion.Configuration, () =>
+                    {
+                        CurrentRegion = Container.Resolve<ConfigurationRegion>();
+                        CurrentRegionBackground = Container.Resolve<ConfigurationBackground>();
                     }
                 },
                 {
                     NavigationRegion.Playing, () =>
                     {
                         CurrentRegion = Container.Resolve<PlayingRegion>();
-                        //todo
+                        CurrentRegionBackground = Container.Resolve<PlayingBackground>();
                     }
                 },
             };

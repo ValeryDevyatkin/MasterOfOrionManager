@@ -86,16 +86,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Abstract\DataStateHubBase.cs" />
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
+    <Compile Include="DataModels\AppDataModel.cs" />
+    <Compile Include="DataModels\GameDataModel.cs" />
     <Compile Include="Enums\NavigationRegion.cs" />
-    <Compile Include="ViewModels\Main\MainViewModel.Commands.cs" />
+    <Compile Include="Interfaces\ICopyFrom.cs" />
+    <Compile Include="Interfaces\IDataStateHub.cs" />
+    <Compile Include="Interfaces\IInit.cs" />
+    <Compile Include="Interfaces\ISaveLoadService.cs" />
+    <Compile Include="Services\AppDataSaveLoadService.cs" />
+    <Compile Include="Services\AppDataStateHub.cs" />
+    <Compile Include="Services\GameDataSaveLoadService.cs" />
+    <Compile Include="Services\GameDataStateHub.cs" />
+    <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\GameDataViewModel.cs" />
+    <Compile Include="ViewModels\AppDataViewModel.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Navigation.cs" />
+    <Compile Include="Views\Backgrounds\PlayingBackground.xaml.cs">
+      <DependentUpon>PlayingBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Backgrounds\PreStartBackground.xaml.cs">
       <DependentUpon>PreStartBackground.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Backgrounds\ConfigurationBackground.xaml.cs">
+      <DependentUpon>ConfigurationBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Backgrounds\StartBackground.xaml.cs">
       <DependentUpon>StartBackground.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\Configuration\ConfigurationListRegion.xaml.cs">
+      <DependentUpon>ConfigurationListRegion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Regions\Playing\CounselorSelectionRegion.xaml.cs">
       <DependentUpon>CounselorSelectionRegion.xaml</DependentUpon>
@@ -115,8 +137,8 @@
     <Compile Include="Views\Regions\Playing\RoundCounterRegion.xaml.cs">
       <DependentUpon>RoundCounterRegion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Regions\SettingsRegion.xaml.cs">
-      <DependentUpon>SettingsRegion.xaml</DependentUpon>
+    <Compile Include="Views\Regions\Configuration\ConfigurationRegion.xaml.cs">
+      <DependentUpon>ConfigurationRegion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Regions\PreStartRegion.xaml.cs">
       <DependentUpon>PreStartRegion.xaml</DependentUpon>
@@ -124,9 +146,17 @@
     <Compile Include="Views\Regions\StartRegion.xaml.cs">
       <DependentUpon>StartRegion.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Backgrounds\PlayingBackground.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Backgrounds\PreStartBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Backgrounds\ConfigurationBackground.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Backgrounds\StartBackground.xaml">
       <SubType>Designer</SubType>
@@ -147,6 +177,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Regions\Configuration\ConfigurationListRegion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Regions\Playing\CounselorSelectionRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,7 +205,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Regions\SettingsRegion.xaml">
+    <Page Include="Views\Regions\Configuration\ConfigurationRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
