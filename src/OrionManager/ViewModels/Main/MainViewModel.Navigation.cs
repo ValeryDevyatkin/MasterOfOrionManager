@@ -54,7 +54,7 @@ namespace OrionManager.ViewModels.Main
                         CurrentRegion = Container.Resolve<PlayingRegion>();
                         CurrentRegionBackground = Container.Resolve<PlayingBackground>();
                     }
-                },
+                }
             };
 
             NavigateToRegionCommand.Execute(NavigationRegion.Start);
@@ -63,7 +63,8 @@ namespace OrionManager.ViewModels.Main
         #region NavigateToRegion command
 
         public Command<NavigationRegion> NavigateToRegionCommand => _navigateToRegionCommand ??=
-            new Command<NavigationRegion>(ExecuteNavigateToRegion, param => true);
+                                                                        new Command<NavigationRegion>(
+                                                                            ExecuteNavigateToRegion, param => true);
 
         private Command<NavigationRegion> _navigateToRegionCommand;
 

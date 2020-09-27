@@ -95,35 +95,35 @@ namespace OrionManager
             {
                 Container
                     // MainWindow
-                    .RegisterType<MainViewModel>()
-                    .RegisterSingleton<MainWindow>()
+                   .RegisterType<MainViewModel>()
+                   .RegisterSingleton<MainWindow>()
 
                     // View Models
-                    .RegisterType<GameConfigurationViewModel>()
-                    .RegisterType<GameDataViewModel>()
-                    .RegisterType<AppDataViewModel>()
+                   .RegisterType<GameConfigurationViewModel>()
+                   .RegisterType<GameDataViewModel>()
+                   .RegisterType<AppDataViewModel>()
 
                     // Regions
-                    .RegisterSingleton<StartRegion>()
-                    .RegisterSingleton<ConfigurationRegion>()
-                    .RegisterSingleton<PlayingRegion>()
-                    .RegisterSingleton<PreStartRegion>()
-                    .RegisterSingleton<ConfigurationListRegion>()
+                   .RegisterSingleton<StartRegion>()
+                   .RegisterSingleton<ConfigurationRegion>()
+                   .RegisterSingleton<PlayingRegion>()
+                   .RegisterSingleton<PreStartRegion>()
+                   .RegisterSingleton<ConfigurationListRegion>()
 
                     // Backgrounds
-                    .RegisterSingleton<StartBackground>()
-                    .RegisterSingleton<PreStartBackground>()
-                    .RegisterSingleton<ConfigurationBackground>()
-                    .RegisterSingleton<PlayingBackground>()
+                   .RegisterSingleton<StartBackground>()
+                   .RegisterSingleton<PreStartBackground>()
+                   .RegisterSingleton<ConfigurationBackground>()
+                   .RegisterSingleton<PlayingBackground>()
 
                     // Commands
-                    .RegisterType<ExitAppCommand>()
+                   .RegisterType<ExitAppCommand>()
 
                     // Services
-                    .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadService>()
-                    .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadService>()
-                    .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
-                    .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
+                   .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadService>()
+                   .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadService>()
+                   .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
+                   .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
                     ;
             }
             catch (Exception e)
