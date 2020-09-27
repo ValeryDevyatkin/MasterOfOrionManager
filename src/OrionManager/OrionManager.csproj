@@ -91,15 +91,18 @@
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
-    <Compile Include="Enums\NavigationRegion.cs" />
     <Compile Include="Interfaces\ICopyFrom.cs" />
     <Compile Include="Interfaces\IDataStateHub.cs" />
     <Compile Include="Interfaces\IInit.cs" />
+    <Compile Include="Interfaces\IRegionNavigationService.cs" />
     <Compile Include="Interfaces\ISaveLoadService.cs" />
+    <Compile Include="Items\RegionNavigationInfoItem.cs" />
+    <Compile Include="Items\RegionNavigationItem.cs" />
     <Compile Include="Services\AppDataSaveLoadService.cs" />
     <Compile Include="Services\AppDataStateHub.cs" />
     <Compile Include="Services\GameDataSaveLoadService.cs" />
     <Compile Include="Services\GameDataStateHub.cs" />
+    <Compile Include="Services\RegionNavigationService.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />
     <Compile Include="ViewModels\AppDataViewModel.cs" />
@@ -239,6 +242,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Enums\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

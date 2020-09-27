@@ -1,4 +1,5 @@
 ﻿using OrionManager.Interfaces;
+using OrionManager.Views.Regions;
 using Senticode.Tools.WPF.Core.Collections;
 using Senticode.Tools.WPF.MVVM.Base;
 using Unity;
@@ -24,7 +25,7 @@ namespace OrionManager.ViewModels.Main
 
         public void Init()
         {
-            InitNavigation();
+            NavigateToRegionCommand.Execute(typeof(StartRegion));
         }
 
         #region SelectedConfiguration: GameConfigurationViewModel

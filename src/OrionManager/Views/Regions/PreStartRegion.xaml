@@ -4,7 +4,8 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
-             xmlns:enums = "clr-namespace:OrionManager.Enums"
+             xmlns:configuration = "clr-namespace:OrionManager.Views.Regions.Configuration"
+             xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -58,7 +59,7 @@
             <Button Grid.Column = "1"
                     Content = "Configure"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Static enums:NavigationRegion.ConfigurationList}" />
+                    CommandParameter = "{x:Type configuration:ConfigurationListRegion}" />
             <!--todo display selected configuration Name or Id-->
             <Button Grid.Column = "3"
                     Content = "Start" />
@@ -72,7 +73,7 @@
             <Button Grid.Column = "1"
                     Content = "Back"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Static enums:NavigationRegion.Start}" />
+                    CommandParameter = "{x:Type regions:StartRegion}" />
         </Grid>
     </Grid>
 

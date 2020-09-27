@@ -4,7 +4,7 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
-             xmlns:enums = "clr-namespace:OrionManager.Enums"
+             xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -65,7 +65,7 @@
             <Button Grid.Column = "3"
                     Content = "New Game"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Static enums:NavigationRegion.PreStart}" />
+                    CommandParameter = "{x:Type regions:PreStartRegion}" />
         </Grid>
         <Grid Grid.Row = "5">
             <Grid.ColumnDefinitions>

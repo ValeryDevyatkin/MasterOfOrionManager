@@ -4,6 +4,7 @@ using System.Windows.Threading;
 using OrionManager.Commands;
 using OrionManager.DataModels;
 using OrionManager.Interfaces;
+using OrionManager.Items;
 using OrionManager.Services;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
@@ -40,14 +41,29 @@ namespace OrionManager
             {
                 _app.DispatcherUnhandledException += OnDispatcherUnhandledException;
                 _app.SetMainWindow<MainWindow, MainViewModel>();
+
+                InitRegionNavigation();
+
                 Container.Resolve<MainWindow>().Show();
                 Container.Resolve<MainViewModel>().Init();
+
                 LoadData();
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e);
             }
+        }
+
+        private static void InitRegionNavigation()
+        {
+            Container.Resolve<IRegionNavigationService>().Init(
+                new RegionNavigationInfoItem(typeof(StartRegion), typeof(StartBackground)),
+                new RegionNavigationInfoItem(typeof(PreStartRegion), typeof(PreStartBackground)),
+                new RegionNavigationInfoItem(typeof(ConfigurationListRegion),
+                                             typeof(ConfigurationBackground)),
+                new RegionNavigationInfoItem(typeof(ConfigurationRegion), typeof(ConfigurationBackground)),
+                new RegionNavigationInfoItem(typeof(PlayingRegion), typeof(PlayingBackground)));
         }
 
         private static void LoadData()
@@ -124,6 +140,7 @@ namespace OrionManager
                    .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadService>()
                    .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
                    .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
+                   .RegisterType<IRegionNavigationService, RegionNavigationService>()
                     ;
             }
             catch (Exception e)
