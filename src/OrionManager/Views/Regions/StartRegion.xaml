@@ -5,6 +5,7 @@
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
+             xmlns:constants = "clr-namespace:OrionManager.Constants"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -20,10 +21,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height = "6*" />
-            <RowDefinition Height = "{StaticResource OuterSpacing}" />
+            <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <RowDefinition Height = "*" />
             <RowDefinition Height = "Auto" />
-            <RowDefinition Height = "{StaticResource OuterSpacing}" />
+            <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <RowDefinition Height = "Auto" />
             <RowDefinition Height = "*" />
         </Grid.RowDefinitions>

@@ -3,7 +3,73 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
+             xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
+             xmlns:constants = "clr-namespace:OrionManager.Constants"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
-    <Grid />
+
+    <d:UserControl.DataContext>
+        <main:MainViewModel />
+    </d:UserControl.DataContext>
+
+    <UserControl.Resources>
+        <Style TargetType = "Button"
+               BasedOn = "{StaticResource StartMenuButtonStyle}" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "Auto" />
+            <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+            <ColumnDefinition Width = "*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column = "0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row = "0"
+                    Content = "Add" />
+            <Border Grid.Row = "2"
+                    Style = "{StaticResource DividerBorderStyle}" />
+            <Button Grid.Row = "4"
+                    Content = "Edit" />
+            <Button Grid.Row = "6"
+                    Content = "Copy" />
+            <Button Grid.Row = "8"
+                    Content = "Select" />
+            <Border Grid.Row = "10"
+                    Style = "{StaticResource DividerBorderStyle}" />
+            <Button Grid.Row = "12"
+                    Content = "Delete" />
+            <Border Grid.Row = "14"
+                    Style = "{StaticResource DividerBorderStyle}" />
+            <Button Grid.Row = "16"
+                    Content = "Back"
+                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
+                    CommandParameter = "{x:Type regions:PreStartRegion}" />
+        </Grid>
+        <Border Grid.Column = "2">
+            <ListBox SelectionMode = "Single"
+                     ItemsSource = "{Binding GameConfigurations, Mode=OneTime}"
+                     SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}" />
+        </Border>
+    </Grid>
+
 </UserControl>

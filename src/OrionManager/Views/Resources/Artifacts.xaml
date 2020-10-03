@@ -3,14 +3,11 @@
                     xmlns:system = "clr-namespace:System;assembly=mscorlib">
 
     <!--SIZES-->
+    <system:Double x:Key = "DefaultFontSize">25</system:Double>
     <system:Double x:Key = "DefaultControlHeight">60</system:Double>
     <system:Double x:Key = "StartMenuButtonWidth">190</system:Double>
-    <Thickness x:Key = "InnerSpacingThickness">15</Thickness>
-    <Thickness x:Key = "OuterSpacingThickness">30</Thickness>
-    <GridLength x:Key = "OuterSpacing">30</GridLength>
 
     <!--STRINGS-->
-    <system:Double x:Key = "DefaultFontSize">25</system:Double>
 
     <!--COLORS-->
     <Brush x:Key = "BlackBrush">#FF000000</Brush>

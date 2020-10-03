@@ -89,6 +89,7 @@
     <Compile Include="Abstract\DataStateHubBase.cs" />
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
+    <Compile Include="Constants\UiConstants.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
     <Compile Include="Interfaces\ICopyFrom.cs" />
