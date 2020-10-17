@@ -6,25 +6,25 @@ namespace OrionManager
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            AppLifecycleManager.Init(this);
+            AppLifecycleManager.Instance.Init(this);
 
             base.OnStartup(e);
 
-            AppLifecycleManager.OnAppStart();
+            AppLifecycleManager.Instance.OnAppStart();
         }
 
         protected override void RegisterTypes()
         {
             base.RegisterTypes();
 
-            AppLifecycleManager.RegisterTypes();
+            AppLifecycleManager.Instance.RegisterTypes();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             base.OnExit(e);
 
-            AppLifecycleManager.OnAppExit();
+            AppLifecycleManager.Instance.OnAppExit();
         }
     }
 }

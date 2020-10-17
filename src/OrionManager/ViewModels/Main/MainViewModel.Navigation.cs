@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Diagnostics;
+using System.Windows.Input;
 using OrionManager.Interfaces;
 using Senticode.Tools.Abstractions.Base;
 using Unity;
@@ -10,31 +10,22 @@ namespace OrionManager.ViewModels.Main
     {
         #region NavigateToRegion command
 
-        public Command<Type> NavigateToRegionCommand => _navigateToRegionCommand ??=
-                                                            new Command<Type>(
-                                                                ExecuteNavigateToRegion, param => true);
+        public ICommand NavigateToRegionCommand => _navigateToRegionCommand ??=
+                                                       new Command(ExecuteNavigateToRegion);
 
-        private Command<Type> _navigateToRegionCommand;
+        private Command _navigateToRegionCommand;
 
-        private void ExecuteNavigateToRegion(Type param)
+        private void ExecuteNavigateToRegion(object parameter)
         {
-            NavigateToRegionCommand.Disable();
+            if (!(parameter is Type type))
+            {
+                return;
+            }
 
-            try
-            {
-                var navigationItem = Container.Resolve<IRegionNavigationService>().NavigateToRegion(param);
+            var navigationItem = Container.Resolve<IRegionNavigationService>().NavigateToRegion(type);
 
-                CurrentRegion = navigationItem.Region;
-                CurrentRegionBackground = navigationItem.RegionBackground;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-            finally
-            {
-                NavigateToRegionCommand.Enable();
-            }
+            CurrentRegion = navigationItem.Region;
+            CurrentRegionBackground = navigationItem.RegionBackground;
         }
 
         #endregion

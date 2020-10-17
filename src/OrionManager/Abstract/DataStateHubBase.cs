@@ -4,14 +4,14 @@ namespace OrionManager.Abstract
 {
     internal abstract class DataStateHubBase<T> : IDataStateHub<T>
     {
-        private T _savedState;
+        private T _committedState;
 
-        public void SaveState(T item)
+        public void CommitState(T item)
         {
-            _savedState = item;
+            _committedState = item;
         }
 
-        public bool DetectChanges(T item) => DetectChanges(_savedState, item);
+        public bool DetectChanges(T item) => DetectChanges(_committedState, item);
 
         protected abstract bool DetectChanges(T item1, T item2);
     }

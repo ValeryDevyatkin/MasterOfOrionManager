@@ -58,7 +58,7 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Column = "1"
-                    Content = "Configure"
+                    Content = "Configuration"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
                     CommandParameter = "{x:Type configuration:ConfigurationListRegion}" />
             <!--todo display selected configuration Name or Id-->

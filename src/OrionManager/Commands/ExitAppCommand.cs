@@ -1,6 +1,4 @@
-﻿using System;
-using System.Diagnostics;
-using Senticode.Tools.Abstractions.Base;
+﻿using Senticode.Tools.Abstractions.Base;
 using Unity;
 
 namespace OrionManager.Commands
@@ -12,22 +10,9 @@ namespace OrionManager.Commands
             container.RegisterInstance(this);
         }
 
-        public override void Execute(object parameter)
+        protected override void ExecuteExternal(object parameter)
         {
-            Disable();
-
-            try
-            {
-                AppLifecycleManager.ExitApp();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-            finally
-            {
-                Enable();
-            }
+            AppLifecycleManager.Instance.ExitApp();
         }
     }
 }

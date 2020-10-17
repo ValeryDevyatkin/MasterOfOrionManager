@@ -2,7 +2,7 @@
 {
     internal interface IDataStateHub<T>
     {
-        void SaveState(T item);
+        void CommitState(T item);
         bool DetectChanges(T item);
     }
 }

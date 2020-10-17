@@ -51,9 +51,9 @@
             <Button Grid.Row = "4"
                     Content = "Edit" />
             <Button Grid.Row = "6"
-                    Content = "Copy" />
+                    Content = "Clone" />
             <Button Grid.Row = "8"
-                    Content = "Select" />
+                    Content = "Chose" />
             <Border Grid.Row = "10"
                     Style = "{StaticResource DividerBorderStyle}" />
             <Button Grid.Row = "12"

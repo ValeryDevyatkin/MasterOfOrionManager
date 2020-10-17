@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Threading;
 using OrionManager.Commands;
 using OrionManager.DataModels;
@@ -14,28 +13,30 @@ using OrionManager.Views.Regions;
 using OrionManager.Views.Regions.Configuration;
 using OrionManager.Views.Regions.Playing;
 using Senticode.Tools.WPF.MVVM.Extensions;
+using Tools.Helpers;
 using Unity;
 
 namespace OrionManager
 {
-    internal static class AppLifecycleManager
+    internal class AppLifecycleManager
     {
-        private static App _app;
-        private static IUnityContainer Container => _app.Container;
+        private App _app;
+        private IUnityContainer _container;
 
-        public static void Init(App app)
+        public void Init(App app)
         {
             try
             {
                 _app = app;
+                _container = app.Container;
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                this.LogCriticalException(e);
             }
         }
 
-        public static void OnAppStart()
+        public void OnAppStart()
         {
             try
             {
@@ -44,72 +45,22 @@ namespace OrionManager
 
                 InitRegionNavigation();
 
-                Container.Resolve<MainWindow>().Show();
-                Container.Resolve<MainViewModel>().Init();
+                _container.Resolve<MainWindow>().Show();
+                _container.Resolve<MainViewModel>().Init();
 
                 LoadData();
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                this.LogCriticalException(e);
             }
         }
 
-        private static void InitRegionNavigation()
-        {
-            Container.Resolve<IRegionNavigationService>().Init(
-                new RegionNavigationInfoItem(typeof(StartRegion), typeof(StartBackground)),
-                new RegionNavigationInfoItem(typeof(PreStartRegion), typeof(PreStartBackground)),
-                new RegionNavigationInfoItem(typeof(ConfigurationListRegion),
-                                             typeof(ConfigurationBackground)),
-                new RegionNavigationInfoItem(typeof(ConfigurationRegion), typeof(ConfigurationBackground)),
-                new RegionNavigationInfoItem(typeof(PlayingRegion), typeof(PlayingBackground)));
-        }
-
-        private static void LoadData()
-        {
-            var appData = Container.Resolve<ISaveLoadService<AppDataModel>>().Load();
-            Container.Resolve<IDataStateHub<AppDataModel>>().SaveState(appData);
-            Container.Resolve<AppDataViewModel>().CopyFrom(appData);
-
-            if (appData.IsGameStarted)
-            {
-                var gameData = Container.Resolve<ISaveLoadService<GameDataModel>>().Load();
-                Container.Resolve<IDataStateHub<GameDataModel>>().SaveState(gameData);
-                Container.Resolve<GameDataViewModel>().CopyFrom(gameData);
-            }
-        }
-
-        private static void SaveData()
-        {
-            var appData = new AppDataModel(Container.Resolve<AppDataViewModel>());
-
-            if (Container.Resolve<IDataStateHub<AppDataModel>>().DetectChanges(appData))
-            {
-                Container.Resolve<ISaveLoadService<AppDataModel>>().Save(appData);
-            }
-
-            if (appData.IsGameStarted)
-            {
-                var gameData = new GameDataModel(Container.Resolve<GameDataViewModel>());
-
-                if (Container.Resolve<IDataStateHub<GameDataModel>>().DetectChanges(gameData))
-                {
-                    Container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
-                }
-            }
-        }
-
-        private static void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            Debug.WriteLine(e.Exception);
-        }
-
-        public static void RegisterTypes()
+        public void RegisterTypes()
         {
             try
             {
-                Container
+                _container
                     // MainWindow
                    .RegisterType<MainViewModel>()
                    .RegisterSingleton<MainWindow>()
@@ -145,11 +96,11 @@ namespace OrionManager
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                this.LogCriticalException(e);
             }
         }
 
-        public static void OnAppExit()
+        public void OnAppExit()
         {
             try
             {
@@ -157,11 +108,11 @@ namespace OrionManager
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                this.LogCriticalException(e);
             }
         }
 
-        public static void ExitApp()
+        public void ExitApp()
         {
             try
             {
@@ -169,8 +120,70 @@ namespace OrionManager
             }
             catch (Exception e)
             {
-                Debug.WriteLine(e);
+                this.LogCriticalException(e);
             }
         }
+
+        private void InitRegionNavigation()
+        {
+            _container.Resolve<IRegionNavigationService>().Init(
+                new RegionNavigationInfoItem(typeof(StartRegion), typeof(StartBackground)),
+                new RegionNavigationInfoItem(typeof(PreStartRegion), typeof(PreStartBackground)),
+                new RegionNavigationInfoItem(typeof(ConfigurationListRegion),
+                                             typeof(ConfigurationBackground)),
+                new RegionNavigationInfoItem(typeof(ConfigurationRegion), typeof(ConfigurationBackground)),
+                new RegionNavigationInfoItem(typeof(PlayingRegion), typeof(PlayingBackground)));
+        }
+
+        private void LoadData()
+        {
+            var appData = _container.Resolve<ISaveLoadService<AppDataModel>>().Load();
+
+            _container.Resolve<IDataStateHub<AppDataModel>>().CommitState(appData);
+            _container.Resolve<AppDataViewModel>().CopyFrom(appData);
+
+            if (appData.IsGameStarted)
+            {
+                var gameData = _container.Resolve<ISaveLoadService<GameDataModel>>().Load();
+
+                _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameData);
+                _container.Resolve<GameDataViewModel>().CopyFrom(gameData);
+            }
+        }
+
+        private void SaveData()
+        {
+            var appData = new AppDataModel(_container.Resolve<AppDataViewModel>());
+
+            if (_container.Resolve<IDataStateHub<AppDataModel>>().DetectChanges(appData))
+            {
+                _container.Resolve<ISaveLoadService<AppDataModel>>().Save(appData);
+            }
+
+            if (appData.IsGameStarted)
+            {
+                var gameData = new GameDataModel(_container.Resolve<GameDataViewModel>());
+
+                if (_container.Resolve<IDataStateHub<GameDataModel>>().DetectChanges(gameData))
+                {
+                    _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
+                }
+            }
+        }
+
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            this.LogCriticalException(e.Exception);
+        }
+
+        #region singleton
+
+        private AppLifecycleManager()
+        {
+        }
+
+        public static AppLifecycleManager Instance { get; } = new AppLifecycleManager();
+
+        #endregion
     }
 }
