@@ -62,7 +62,7 @@
             </Grid.ColumnDefinitions>
             <Button Grid.Column = "1"
                     Content = "Continue"
-                    IsEnabled = "{Binding AppData.IsGameStarted, Mode=OneWay}" />
+                    IsEnabled = "{Binding IsGameStarted, Mode=OneWay}" />
             <Button Grid.Column = "3"
                     Content = "New Game"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"

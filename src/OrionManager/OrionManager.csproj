@@ -90,11 +90,17 @@
     <Compile Include="Abstract\DataStateHubBase.cs" />
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
+    <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="Constants\UiConstants.cs" />
+    <Compile Include="Converters\GameConfigurationToDisplayTextConverter.cs" />
+    <Compile Include="Converters\SelectedConfigurationToBoolConverter.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
+    <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
+    <Compile Include="ExtensionMethods\ToDataModelConverter.cs" />
     <Compile Include="Interfaces\ICopyFrom.cs" />
     <Compile Include="Interfaces\IDataStateHub.cs" />
+    <Compile Include="Interfaces\IGameConfigurationService.cs" />
     <Compile Include="Interfaces\IInit.cs" />
     <Compile Include="Interfaces\IRegionNavigationService.cs" />
     <Compile Include="Interfaces\ISaveLoadService.cs" />
@@ -102,12 +108,12 @@
     <Compile Include="Items\RegionNavigationItem.cs" />
     <Compile Include="Services\AppDataSaveLoadService.cs" />
     <Compile Include="Services\AppDataStateHub.cs" />
+    <Compile Include="Services\GameConfigurationService.cs" />
     <Compile Include="Services\GameDataSaveLoadService.cs" />
     <Compile Include="Services\GameDataStateHub.cs" />
     <Compile Include="Services\RegionNavigationService.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />
-    <Compile Include="ViewModels\AppDataViewModel.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Navigation.cs" />
     <Compile Include="Views\Backgrounds\PlayingBackground.xaml.cs">
       <DependentUpon>PlayingBackground.xaml</DependentUpon>

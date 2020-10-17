@@ -7,6 +7,7 @@
              xmlns:configuration = "clr-namespace:OrionManager.Views.Regions.Configuration"
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
+             xmlns:converters = "clr-namespace:OrionManager.Converters"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -31,23 +32,20 @@
         </Grid.RowDefinitions>
         <Border Grid.Row = "0"
                 HorizontalAlignment = "Center"
+                VerticalAlignment = "Bottom"
                 Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
-            <TextBlock FontSize = "45"
-                       TextAlignment = "Center">
-                <Run>Configure your game before starting:</Run>
-                <LineBreak />
-                <Run>Add players,</Run>
-                <LineBreak />
-                <Run>Set available races and counselors,</Run>
-                <LineBreak />
-                <Run>Customize win conditions,</Run>
-                <LineBreak />
-                <Run>Or start with last configuration.</Run>
-                <LineBreak />
-                <Run>So what are you waiting for?</Run>
-                <LineBreak />
-                <Run>Galaxy is waiting for your command...</Run>
-            </TextBlock>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row = "0"
+                           Text = "Current configuration:" />
+                <TextBlock Grid.Row = "1"
+                           FontSize = "45"
+                           TextAlignment = "Center"
+                           Text = "{Binding CurrentConfiguration, Mode=OneWay, Converter={converters:GameConfigurationToDisplayTextConverter}}" />
+            </Grid>
         </Border>
         <Grid Grid.Row = "3">
             <Grid.ColumnDefinitions>
@@ -58,10 +56,9 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button Grid.Column = "1"
-                    Content = "Configuration"
+                    Content = "Configure"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
                     CommandParameter = "{x:Type configuration:ConfigurationListRegion}" />
-            <!--todo display selected configuration Name or Id-->
             <Button Grid.Column = "3"
                     Content = "Start" />
         </Grid>

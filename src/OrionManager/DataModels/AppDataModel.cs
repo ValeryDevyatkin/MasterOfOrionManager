@@ -1,19 +1,10 @@
-﻿using OrionManager.ViewModels;
+﻿using System;
 
 namespace OrionManager.DataModels
 {
     internal class AppDataModel
     {
-        public AppDataModel(bool isGameStarted)
-        {
-            IsGameStarted = isGameStarted;
-        }
-
-        public AppDataModel(AppDataViewModel viewModel)
-        {
-            IsGameStarted = viewModel.IsGameStarted;
-        }
-
-        public bool IsGameStarted { get; }
+        public bool IsGameStarted { get; set; }
+        public Guid CurrentConfigurationId { get; set; }
     }
 }

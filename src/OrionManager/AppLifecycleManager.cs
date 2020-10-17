@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Threading;
 using OrionManager.Commands;
 using OrionManager.DataModels;
+using OrionManager.ExtensionMethods;
 using OrionManager.Interfaces;
 using OrionManager.Items;
 using OrionManager.Services;
@@ -44,11 +46,10 @@ namespace OrionManager
                 _app.SetMainWindow<MainWindow, MainViewModel>();
 
                 InitRegionNavigation();
-
-                _container.Resolve<MainWindow>().Show();
-                _container.Resolve<MainViewModel>().Init();
-
                 LoadData();
+
+                _container.Resolve<MainViewModel>().Init();
+                _container.Resolve<MainWindow>().Show();
             }
             catch (Exception e)
             {
@@ -68,7 +69,6 @@ namespace OrionManager
                     // View Models
                    .RegisterType<GameConfigurationViewModel>()
                    .RegisterType<GameDataViewModel>()
-                   .RegisterType<AppDataViewModel>()
 
                     // Regions
                    .RegisterSingleton<StartRegion>()
@@ -92,6 +92,7 @@ namespace OrionManager
                    .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
                    .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
                    .RegisterType<IRegionNavigationService, RegionNavigationService>()
+                   .RegisterType<IGameConfigurationService, GameConfigurationService>()
                     ;
             }
             catch (Exception e)
@@ -105,6 +106,7 @@ namespace OrionManager
             try
             {
                 SaveData();
+                SaveConfigurations();
             }
             catch (Exception e)
             {
@@ -140,7 +142,7 @@ namespace OrionManager
             var appData = _container.Resolve<ISaveLoadService<AppDataModel>>().Load();
 
             _container.Resolve<IDataStateHub<AppDataModel>>().CommitState(appData);
-            _container.Resolve<AppDataViewModel>().CopyFrom(appData);
+            _container.Resolve<MainViewModel>().CopyFrom(appData);
 
             if (appData.IsGameStarted)
             {
@@ -149,11 +151,40 @@ namespace OrionManager
                 _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameData);
                 _container.Resolve<GameDataViewModel>().CopyFrom(gameData);
             }
+
+            // Load configurations.
+
+            var configurationDataModels = _container.Resolve<IGameConfigurationService>().Load();
+            var configurationViewModels = new List<GameConfigurationViewModel>();
+            var defaultConfigurationDataModel = _container.Resolve<IGameConfigurationService>().GetDefault();
+            var defaultConfigurationViewModel = _container.Resolve<GameConfigurationViewModel>();
+
+            defaultConfigurationViewModel.CopyFrom(defaultConfigurationDataModel);
+            configurationViewModels.Add(defaultConfigurationViewModel);
+
+            var currentConfiguration = defaultConfigurationViewModel;
+
+            foreach (var dataModel in configurationDataModels)
+            {
+                var viewModel = _container.Resolve<GameConfigurationViewModel>();
+
+                viewModel.CopyFrom(dataModel);
+                configurationViewModels.Add(viewModel);
+
+                if (appData.CurrentConfigurationId == dataModel.Id)
+                {
+                    currentConfiguration = viewModel;
+                }
+            }
+
+            _container.Resolve<MainViewModel>().GameConfigurations.ReplaceAll(configurationViewModels);
+            _container.Resolve<MainViewModel>().CurrentConfiguration = currentConfiguration;
+            _container.Resolve<MainViewModel>().SelectedConfiguration = currentConfiguration;
         }
 
         private void SaveData()
         {
-            var appData = new AppDataModel(_container.Resolve<AppDataViewModel>());
+            var appData = _container.Resolve<MainViewModel>().ToDataModel();
 
             if (_container.Resolve<IDataStateHub<AppDataModel>>().DetectChanges(appData))
             {
@@ -162,12 +193,20 @@ namespace OrionManager
 
             if (appData.IsGameStarted)
             {
-                var gameData = new GameDataModel(_container.Resolve<GameDataViewModel>());
+                var gameData = _container.Resolve<GameDataViewModel>().ToDataModel();
 
                 if (_container.Resolve<IDataStateHub<GameDataModel>>().DetectChanges(gameData))
                 {
                     _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
                 }
+            }
+        }
+
+        private void SaveConfigurations()
+        {
+            foreach (var viewModel in _container.Resolve<MainViewModel>().GameConfigurations)
+            {
+                _container.Resolve<IGameConfigurationService>().Save(viewModel.ToDataModel());
             }
         }
 

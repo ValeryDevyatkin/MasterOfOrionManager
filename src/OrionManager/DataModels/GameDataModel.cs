@@ -1,11 +1,6 @@
-﻿using OrionManager.ViewModels;
-
-namespace OrionManager.DataModels
+﻿namespace OrionManager.DataModels
 {
     internal class GameDataModel
     {
-        public GameDataModel(GameDataViewModel viewModel)
-        {
-        }
     }
 }

@@ -6,6 +6,8 @@
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
+             xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
+             xmlns:converters = "clr-namespace:OrionManager.Converters"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -49,15 +51,19 @@
             <Border Grid.Row = "2"
                     Style = "{StaticResource DividerBorderStyle}" />
             <Button Grid.Row = "4"
-                    Content = "Edit" />
+                    Content = "Chose"
+                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter IsDefaultConfigurationCheckRequired=False}, Mode=OneWay}" />
             <Button Grid.Row = "6"
-                    Content = "Clone" />
+                    Content = "Clone"
+                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter IsDefaultConfigurationCheckRequired=False}, Mode=OneWay}" />
             <Button Grid.Row = "8"
-                    Content = "Chose" />
+                    Content = "Edit"
+                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter}, Mode=OneWay}" />
             <Border Grid.Row = "10"
                     Style = "{StaticResource DividerBorderStyle}" />
             <Button Grid.Row = "12"
-                    Content = "Delete" />
+                    Content = "Delete"
+                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter}, Mode=OneWay}" />
             <Border Grid.Row = "14"
                     Style = "{StaticResource DividerBorderStyle}" />
             <Button Grid.Row = "16"
@@ -68,7 +74,14 @@
         <Border Grid.Column = "2">
             <ListBox SelectionMode = "Single"
                      ItemsSource = "{Binding GameConfigurations, Mode=OneTime}"
-                     SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}" />
+                     SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType = "viewModels:GameConfigurationViewModel">
+                        <TextBlock
+                            Text = "{Binding Mode=OneWay, Converter={converters:GameConfigurationToDisplayTextConverter}}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Border>
     </Grid>
 

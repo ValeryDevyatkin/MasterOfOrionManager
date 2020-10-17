@@ -13,7 +13,7 @@ namespace OrionManager.Services
 
         public AppDataModel Load() =>
             //todo: actual implement
-            new AppDataModel(false);
+            new AppDataModel {IsGameStarted = false};
 
         public void Save(AppDataModel dataModel)
         {

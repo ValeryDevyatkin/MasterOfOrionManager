@@ -3,7 +3,14 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              mc:Ignorable = "d"
-             x:ClassModifier = "internal">
-    <Grid />
+             x:ClassModifier = "internal"
+             x:Name = "Root">
+
+    <d:UserControl.DataContext>
+        <main:MainViewModel />
+    </d:UserControl.DataContext>
+
+    <Border DataContext = "{Binding ElementName=Root, Path=DataContext.SelectedConfiguration, Mode=OneWay}" />
 </UserControl>
