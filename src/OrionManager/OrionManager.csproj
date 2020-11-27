@@ -68,9 +68,6 @@
     <Reference Include="Unity.Container, Version=5.11.10.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\..\sln\packages\Unity.5.11.9\lib\net48\Unity.Container.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.ServiceLocator, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\sln\packages\Unity.ServiceLocator.2.0.0\lib\net45\Unity.ServiceLocator.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
