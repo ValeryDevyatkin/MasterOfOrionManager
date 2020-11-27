@@ -1,7 +1,7 @@
 ﻿using System;
 using OrionManager.DataModels;
 using OrionManager.Interfaces;
-using Senticode.Tools.WPF.MVVM.Base;
+using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModels

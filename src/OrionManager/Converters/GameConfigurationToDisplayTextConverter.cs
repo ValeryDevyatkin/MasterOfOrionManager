@@ -24,8 +24,9 @@ namespace OrionManager.Converters
             }
             else
             {
-                var displayedName =
-                    string.IsNullOrWhiteSpace(viewModel.Name) ? viewModel.Id.ToString() : viewModel.Name;
+                var displayedName = string.IsNullOrWhiteSpace(viewModel.Name) ?
+                                        viewModel.Id.ToString() :
+                                        viewModel.Name;
 
                 displayedText = $"{displayedName} ({viewModel.SaveTime})";
             }

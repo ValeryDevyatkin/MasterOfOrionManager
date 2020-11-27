@@ -1,4 +1,4 @@
-﻿using Senticode.Tools.Abstractions.Base;
+﻿using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.Commands

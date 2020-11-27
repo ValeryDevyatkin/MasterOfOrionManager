@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Threading;
+using BAJIEPA.Tools.Helpers;
 using OrionManager.Commands;
 using OrionManager.DataModels;
 using OrionManager.ExtensionMethods;
@@ -14,8 +15,7 @@ using OrionManager.Views.Backgrounds;
 using OrionManager.Views.Regions;
 using OrionManager.Views.Regions.Configuration;
 using OrionManager.Views.Regions.Playing;
-using Senticode.Tools.WPF.MVVM.Extensions;
-using Tools.Helpers;
+using Senticode.Wpf.Extensions;
 using Unity;
 
 namespace OrionManager
@@ -62,31 +62,31 @@ namespace OrionManager
             try
             {
                 _container
-                    // MainWindow
+                    // MainWindow.
                    .RegisterType<MainViewModel>()
                    .RegisterSingleton<MainWindow>()
 
-                    // View Models
+                    // View Models.
                    .RegisterType<GameConfigurationViewModel>()
                    .RegisterType<GameDataViewModel>()
 
-                    // Regions
+                    // Regions.
                    .RegisterSingleton<StartRegion>()
                    .RegisterSingleton<ConfigurationRegion>()
                    .RegisterSingleton<PlayingRegion>()
                    .RegisterSingleton<PreStartRegion>()
                    .RegisterSingleton<ConfigurationListRegion>()
 
-                    // Backgrounds
+                    // Backgrounds.
                    .RegisterSingleton<StartBackground>()
                    .RegisterSingleton<PreStartBackground>()
                    .RegisterSingleton<ConfigurationBackground>()
                    .RegisterSingleton<PlayingBackground>()
 
-                    // Commands
+                    // Commands.
                    .RegisterType<ExitAppCommand>()
 
-                    // Services
+                    // Services.
                    .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadService>()
                    .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadService>()
                    .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()

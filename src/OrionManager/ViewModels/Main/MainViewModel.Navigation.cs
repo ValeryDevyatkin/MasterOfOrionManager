@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using OrionManager.Interfaces;
-using Senticode.Tools.Abstractions.Base;
+using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModels.Main

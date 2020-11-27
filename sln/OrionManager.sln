@@ -7,10 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrionManager", "..\src\Orio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Artifacts", "Artifacts", "{5C1A5ADE-19BA-4AF3-A06F-57D8477D2D6C}"
 	ProjectSection(SolutionItems) = preProject
-		..\artifacts\Senticode.Tools.Abstractions.dll = ..\artifacts\Senticode.Tools.Abstractions.dll
-		..\artifacts\Senticode.Tools.WPF.Core.dll = ..\artifacts\Senticode.Tools.WPF.Core.dll
-		..\artifacts\Senticode.Tools.WPF.MVVM.dll = ..\artifacts\Senticode.Tools.WPF.MVVM.dll
-		..\artifacts\Tools.Helpers.dll = ..\artifacts\Tools.Helpers.dll
+		..\artifacts\BAJIEPA.Tools.Helpers.dll = ..\artifacts\BAJIEPA.Tools.Helpers.dll
+		..\artifacts\Senticode.Wpf.dll = ..\artifacts\Senticode.Wpf.dll
 	EndProjectSection
 EndProject
 Global

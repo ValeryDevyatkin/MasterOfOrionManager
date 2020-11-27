@@ -1,8 +1,8 @@
 ﻿using OrionManager.DataModels;
 using OrionManager.Interfaces;
 using OrionManager.Views.Regions;
-using Senticode.Tools.WPF.Core.Collections;
-using Senticode.Tools.WPF.MVVM.Base;
+using Senticode.Wpf.Base;
+using Senticode.Wpf.Collections;
 using Unity;
 
 namespace OrionManager.ViewModels.Main

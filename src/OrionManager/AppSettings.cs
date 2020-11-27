@@ -1,4 +1,4 @@
-﻿using Senticode.Tools.WPF.Core.Base;
+﻿using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager
