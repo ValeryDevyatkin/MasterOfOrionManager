@@ -81,6 +81,7 @@
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Constants\GlobalConstants.cs" />
+    <Compile Include="Constants\StringConstants.cs" />
     <Compile Include="Constants\UiConstants.cs" />
     <Compile Include="Converters\GameConfigurationToDisplayTextConverter.cs" />
     <Compile Include="Converters\SelectedConfigurationToBoolConverter.cs" />
@@ -96,11 +97,11 @@
     <Compile Include="Interfaces\ISaveLoadService.cs" />
     <Compile Include="DataItems\RegionNavigationInfoItem.cs" />
     <Compile Include="DataItems\RegionNavigationItem.cs" />
-    <Compile Include="Services\AppDataSaveLoadService.cs" />
-    <Compile Include="Services\AppDataStateHub.cs" />
-    <Compile Include="Services\GameConfigurationService.cs" />
-    <Compile Include="Services\GameDataSaveLoadService.cs" />
-    <Compile Include="Services\GameDataStateHub.cs" />
+    <Compile Include="Services\SaveLoad\AppDataSaveLoadService.cs" />
+    <Compile Include="Services\StateHub\AppDataStateHub.cs" />
+    <Compile Include="Services\SaveLoad\GameConfigurationService.cs" />
+    <Compile Include="Services\SaveLoad\GameDataSaveLoadService.cs" />
+    <Compile Include="Services\StateHub\GameDataStateHub.cs" />
     <Compile Include="Services\RegionNavigationService.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />

@@ -3,7 +3,7 @@ using OrionManager.DataModels;
 using OrionManager.Interfaces;
 using Unity;
 
-namespace OrionManager.Services
+namespace OrionManager.Services.SaveLoad
 {
     internal class GameDataSaveLoadService : ISaveLoadService<GameDataModel>
     {

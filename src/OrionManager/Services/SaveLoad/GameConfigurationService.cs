@@ -4,7 +4,7 @@ using OrionManager.DataModels;
 using OrionManager.Interfaces;
 using Unity;
 
-namespace OrionManager.Services
+namespace OrionManager.Services.SaveLoad
 {
     internal class GameConfigurationService : IGameConfigurationService
     {
@@ -16,7 +16,7 @@ namespace OrionManager.Services
         public GameConfigurationDataModel GetDefault() => new GameConfigurationDataModel
         {
             Id = GlobalConstants.DefaultGameConfigurationId,
-            Name = "Default"
+            Name = StringConstants.DefaultConfigurationName
         };
 
         public GameConfigurationDataModel[] Load() => new GameConfigurationDataModel[]
