@@ -4,7 +4,7 @@ using OrionManager.ViewModels.Main;
 
 namespace OrionManager.ExtensionMethods
 {
-    internal static class ToDataModelConverter
+    internal static class DataModelConvertEx
     {
         public static AppDataModel ToDataModel(this MainViewModel viewModel) =>
             new AppDataModel

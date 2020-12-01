@@ -1,21 +1,13 @@
-﻿using System;
-using OrionManager.DataModels;
-using OrionManager.Interfaces;
-using Senticode.Wpf.Base;
+﻿using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModels
 {
-    internal class GameDataViewModel : ViewModelBase, ICopyFrom<GameDataModel>
+    internal class GameDataViewModel : ViewModelBase
     {
         public GameDataViewModel(IUnityContainer container) : base(container)
         {
             container.RegisterInstance(this);
-        }
-
-        public void CopyFrom(GameDataModel dataModel)
-        {
-            throw new NotImplementedException();
         }
     }
 }

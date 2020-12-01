@@ -1,5 +1,5 @@
 ﻿using System;
-using OrionManager.Items;
+using OrionManager.DataItems;
 
 namespace OrionManager.Interfaces
 {

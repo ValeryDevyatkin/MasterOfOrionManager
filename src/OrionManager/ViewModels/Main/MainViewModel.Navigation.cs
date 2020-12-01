@@ -35,7 +35,7 @@ namespace OrionManager.ViewModels.Main
         public object CurrentRegionBackground
         {
             get => _currentRegionBackground;
-            private set => SetProperty(ref _currentRegionBackground, value);
+            set => SetProperty(ref _currentRegionBackground, value);
         }
 
         private object _currentRegionBackground;
@@ -47,7 +47,7 @@ namespace OrionManager.ViewModels.Main
         public object CurrentRegion
         {
             get => _currentRegion;
-            private set => SetProperty(ref _currentRegion, value);
+            set => SetProperty(ref _currentRegion, value);
         }
 
         private object _currentRegion;

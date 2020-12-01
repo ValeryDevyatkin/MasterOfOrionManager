@@ -1,4 +1,4 @@
-﻿namespace OrionManager.Items
+﻿namespace OrionManager.DataItems
 {
     internal class RegionNavigationItem
     {

@@ -6,7 +6,6 @@
         <ResourceDictionary Source = "pack://application:,,,/OrionManager;component/Views/Resources/Artifacts.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-
     <!--IMPLICIT-->
     <Style TargetType = "UserControl">
         <Setter Property = "Background"
@@ -125,7 +124,6 @@
         <Setter Property = "FontSize"
                 Value = "{StaticResource DefaultFontSize}" />
     </Style>
-
 
     <Style TargetType = "Border"
            BasedOn = "{StaticResource {x:Type Border}}"

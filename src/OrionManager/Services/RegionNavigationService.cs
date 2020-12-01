@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using OrionManager.DataItems;
 using OrionManager.Interfaces;
-using OrionManager.Items;
 using Unity;
 
 namespace OrionManager.Services

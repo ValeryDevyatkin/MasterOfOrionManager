@@ -13,4 +13,5 @@
     </d:UserControl.DataContext>
 
     <Border DataContext = "{Binding ElementName=Root, Path=DataContext.SelectedConfiguration, Mode=OneWay}" />
+
 </UserControl>

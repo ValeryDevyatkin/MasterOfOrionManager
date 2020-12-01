@@ -1,25 +1,16 @@
 ﻿using System;
-using OrionManager.DataModels;
-using OrionManager.Interfaces;
 using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModels
 {
-    internal class GameConfigurationViewModel : ViewModelBase, ICopyFrom<GameConfigurationDataModel>
+    internal class GameConfigurationViewModel : ViewModelBase
     {
         public GameConfigurationViewModel(IUnityContainer container) : base(container)
         {
         }
 
-        public Guid Id { get; private set; }
-
-        public void CopyFrom(GameConfigurationDataModel dataModel)
-        {
-            Id = dataModel.Id;
-            Name = dataModel.Name;
-            SaveTime = dataModel.SaveTime;
-        }
+        public Guid Id { get; set; }
 
         #region SaveTime: DateTime
 
