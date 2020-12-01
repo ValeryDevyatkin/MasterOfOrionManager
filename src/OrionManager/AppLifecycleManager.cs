@@ -89,12 +89,13 @@ namespace OrionManager
                    .RegisterType<ExitAppCommand>()
 
                     // Services.
-                   .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadService>()
-                   .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadService>()
+                   .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadJsonService>()
+                   .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadJsonService>()
                    .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
                    .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
                    .RegisterType<IRegionNavigationService, RegionNavigationService>()
-                   .RegisterType<IGameConfigurationService, GameConfigurationService>()
+                   .RegisterType<IGameConfigurationService, GameConfigurationJsonService>()
+                   .RegisterType<IPathProvider, PathProvider>()
                     ;
             }
             catch (Exception e)
@@ -108,7 +109,6 @@ namespace OrionManager
             try
             {
                 SaveData();
-                SaveConfigurations();
             }
             catch (Exception e)
             {
@@ -141,14 +141,14 @@ namespace OrionManager
 
         private void LoadData()
         {
-            var appData = _container.Resolve<ISaveLoadService<AppDataModel>>().Load();
+            var appData = _container.Resolve<ISaveLoadService<AppDataModel>>().Load() ?? new AppDataModel();
 
             _container.Resolve<IDataStateHub<AppDataModel>>().CommitState(appData);
             _container.Resolve<MainViewModel>().CopyFrom(appData);
 
             if (appData.IsGameStarted)
             {
-                var gameData = _container.Resolve<ISaveLoadService<GameDataModel>>().Load();
+                var gameData = _container.Resolve<ISaveLoadService<GameDataModel>>().Load() ?? new GameDataModel();
 
                 _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameData);
                 _container.Resolve<GameDataViewModel>().CopyFrom(gameData);
@@ -201,14 +201,6 @@ namespace OrionManager
                 {
                     _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
                 }
-            }
-        }
-
-        private void SaveConfigurations()
-        {
-            foreach (var viewModel in _container.Resolve<MainViewModel>().GameConfigurations)
-            {
-                _container.Resolve<IGameConfigurationService>().Save(viewModel.ToDataModel());
             }
         }
 

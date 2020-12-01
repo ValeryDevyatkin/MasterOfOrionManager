@@ -43,6 +43,9 @@
     <Reference Include="BAJIEPA.Tools.Helpers">
       <HintPath>..\..\artifacts\BAJIEPA.Tools.Helpers.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\sln\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Senticode.Wpf">
       <HintPath>..\..\artifacts\Senticode.Wpf.dll</HintPath>
     </Reference>
@@ -81,7 +84,6 @@
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Constants\GlobalConstants.cs" />
-    <Compile Include="Constants\StringConstants.cs" />
     <Compile Include="Constants\UiConstants.cs" />
     <Compile Include="Converters\GameConfigurationToDisplayTextConverter.cs" />
     <Compile Include="Converters\SelectedConfigurationToBoolConverter.cs" />
@@ -93,14 +95,17 @@
     <Compile Include="Interfaces\IDataStateHub.cs" />
     <Compile Include="Interfaces\IGameConfigurationService.cs" />
     <Compile Include="Interfaces\IInit.cs" />
+    <Compile Include="Interfaces\IPathProvider.cs" />
     <Compile Include="Interfaces\IRegionNavigationService.cs" />
     <Compile Include="Interfaces\ISaveLoadService.cs" />
     <Compile Include="DataItems\RegionNavigationInfoItem.cs" />
     <Compile Include="DataItems\RegionNavigationItem.cs" />
-    <Compile Include="Services\SaveLoad\AppDataSaveLoadService.cs" />
+    <Compile Include="Services\SaveLoad\AppDataSaveLoadJsonService.cs" />
+    <Compile Include="Services\SaveLoad\JsonSaveLoadServiceBase.cs" />
+    <Compile Include="Services\SaveLoad\PathProvider.cs" />
     <Compile Include="Services\StateHub\AppDataStateHub.cs" />
-    <Compile Include="Services\SaveLoad\GameConfigurationService.cs" />
-    <Compile Include="Services\SaveLoad\GameDataSaveLoadService.cs" />
+    <Compile Include="Services\SaveLoad\GameConfigurationJsonService.cs" />
+    <Compile Include="Services\SaveLoad\GameDataSaveLoadJsonService.cs" />
     <Compile Include="Services\StateHub\GameDataStateHub.cs" />
     <Compile Include="Services\RegionNavigationService.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
@@ -244,6 +249,7 @@
     <Resource Include="Views\Resources\Images\OrionStarsBack.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
