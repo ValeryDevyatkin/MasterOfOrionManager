@@ -5,21 +5,20 @@ using System.Windows.Markup;
 using OrionManager.Constants;
 using OrionManager.ViewModels;
 
-namespace OrionManager.Converters
+namespace OrionManager.Wpf.Converters
 {
-    internal class SelectedConfigurationToBoolConverter : MarkupExtension, IValueConverter
+    internal class GameConfigurationDisplayTextConverter : MarkupExtension, IValueConverter
     {
-        public bool IsDefaultConfigurationCheckRequired { get; set; } = true;
-
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is GameConfigurationViewModel viewModel))
+            if (!(value is GameConfigurationViewModel configuration))
             {
-                return false;
+                throw new NotSupportedException();
             }
 
-            return !(IsDefaultConfigurationCheckRequired &&
-                     viewModel.Id == GlobalConstants.DefaultGameConfigurationId);
+            return configuration.Id == GlobalConstants.DefaultGameConfigurationId ?
+                       configuration.Name :
+                       $"{configuration.Name} ({configuration.SaveTime})";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>

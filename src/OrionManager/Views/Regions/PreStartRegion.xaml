@@ -7,7 +7,7 @@
              xmlns:configuration = "clr-namespace:OrionManager.Views.Regions.Configuration"
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
-             xmlns:converters = "clr-namespace:OrionManager.Converters"
+             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -44,7 +44,7 @@
                 <TextBlock Grid.Row = "1"
                            FontSize = "45"
                            TextAlignment = "Center"
-                           Text = "{Binding CurrentConfiguration, Mode=OneWay, Converter={converters:GameConfigurationToDisplayTextConverter}}" />
+                           Text = "{Binding CurrentConfiguration, Mode=OneWay, Converter={converters:GameConfigurationDisplayTextConverter}}" />
             </Grid>
         </Border>
         <Grid Grid.Row = "3">

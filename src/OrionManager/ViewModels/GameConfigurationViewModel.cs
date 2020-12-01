@@ -47,5 +47,17 @@ namespace OrionManager.ViewModels
         private bool _isSaved;
 
         #endregion
+
+        #region IsChosen: bool
+
+        public bool IsChosen
+        {
+            get => _isChosen;
+            set => SetProperty(ref _isChosen, value);
+        }
+
+        private bool _isChosen;
+
+        #endregion
     }
 }

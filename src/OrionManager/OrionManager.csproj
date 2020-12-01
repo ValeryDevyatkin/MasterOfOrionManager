@@ -85,13 +85,12 @@
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="Constants\UiConstants.cs" />
-    <Compile Include="Converters\GameConfigurationToDisplayTextConverter.cs" />
-    <Compile Include="Converters\SelectedConfigurationToBoolConverter.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
     <Compile Include="ExtensionMethods\DataModelCopyEx.cs" />
     <Compile Include="ExtensionMethods\DataModelConvertEx.cs" />
+    <Compile Include="ExtensionMethods\GuidExx.cs" />
     <Compile Include="Interfaces\IDataStateHub.cs" />
     <Compile Include="Interfaces\IGameConfigurationService.cs" />
     <Compile Include="Interfaces\IInit.cs" />
@@ -110,6 +109,7 @@
     <Compile Include="Services\RegionNavigationService.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.Configuration.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Navigation.cs" />
     <Compile Include="Views\Backgrounds\PlayingBackground.xaml.cs">
       <DependentUpon>PlayingBackground.xaml</DependentUpon>
@@ -153,6 +153,7 @@
     <Compile Include="Views\Regions\StartRegion.xaml.cs">
       <DependentUpon>StartRegion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wpf\Converters\GameConfigurationDisplayTextConverter.cs" />
     <Page Include="Views\Backgrounds\PlayingBackground.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -243,6 +244,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
+    <Folder Include="Wpf\Behaviors\" />
+    <Folder Include="Wpf\TemplateSelectors\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Views\Resources\Images\OrionShipsBack.jpg" />

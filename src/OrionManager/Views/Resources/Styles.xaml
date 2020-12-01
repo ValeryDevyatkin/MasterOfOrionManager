@@ -12,13 +12,6 @@
                 Value = "Transparent" />
     </Style>
 
-    <Style TargetType = "Path">
-        <Setter Property = "SnapsToDevicePixels"
-                Value = "True" />
-        <Setter Property = "Stretch"
-                Value = "Fill" />
-    </Style>
-
     <Style TargetType = "TextBlock">
         <Setter Property = "SnapsToDevicePixels"
                 Value = "True" />
@@ -130,6 +123,10 @@
            x:Key = "DividerBorderStyle">
         <Setter Property = "Margin"
                 Value = "{x:Static constants:UiSizes.OuterSpacingLeftRightThickness}" />
+        <Setter Property = "HorizontalAlignment"
+                Value = "Stretch" />
+        <Setter Property = "VerticalAlignment"
+                Value = "Center" />
     </Style>
 
 </ResourceDictionary>

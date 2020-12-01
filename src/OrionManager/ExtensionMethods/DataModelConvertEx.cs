@@ -1,27 +1,40 @@
 ﻿using OrionManager.DataModels;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
+using Senticode.Wpf;
+using Unity;
 
 namespace OrionManager.ExtensionMethods
 {
     internal static class DataModelConvertEx
     {
-        public static AppDataModel ToDataModel(this MainViewModel viewModel) =>
+        public static AppDataModel ToDataModel(this MainViewModel item) =>
             new AppDataModel
             {
-                IsGameStarted = viewModel.IsGameStarted,
-                CurrentConfigurationId = viewModel.CurrentConfiguration.Id
+                IsGameStarted = item.IsGameStarted,
+                CurrentConfigurationId = item.CurrentConfiguration.Id
             };
 
-        public static GameDataModel ToDataModel(this GameDataViewModel viewModel) =>
+        public static GameDataModel ToDataModel(this GameDataViewModel item) =>
             new GameDataModel();
 
-        public static GameConfigurationDataModel ToDataModel(this GameConfigurationViewModel viewModel) =>
+        public static GameConfigurationDataModel ToDataModel(this GameConfigurationViewModel item) =>
             new GameConfigurationDataModel
             {
-                Id = viewModel.Id,
-                Name = viewModel.Name,
-                SaveTime = viewModel.SaveTime
+                Id = item.Id,
+                Name = item.Name,
+                SaveTime = item.SaveTime
             };
+
+        public static GameConfigurationViewModel ToViewModel(this GameConfigurationDataModel item)
+        {
+            var viewModel = ServiceLocator.Container.Resolve<GameConfigurationViewModel>();
+
+            viewModel.Id = item.Id;
+            viewModel.Name = item.Name;
+            viewModel.SaveTime = item.SaveTime;
+
+            return viewModel;
+        }
     }
 }

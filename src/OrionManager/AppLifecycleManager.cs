@@ -159,18 +159,15 @@ namespace OrionManager
             var configurationDataModels = _container.Resolve<IGameConfigurationService>().Load();
             var configurationViewModels = new List<GameConfigurationViewModel>();
             var defaultConfigurationDataModel = _container.Resolve<IGameConfigurationService>().GetDefault();
-            var defaultConfigurationViewModel = _container.Resolve<GameConfigurationViewModel>();
-
-            defaultConfigurationViewModel.CopyFrom(defaultConfigurationDataModel);
-            configurationViewModels.Add(defaultConfigurationViewModel);
-
+            var defaultConfigurationViewModel = defaultConfigurationDataModel.ToViewModel();
             var currentConfiguration = defaultConfigurationViewModel;
+
+            configurationViewModels.Add(defaultConfigurationViewModel);
 
             foreach (var dataModel in configurationDataModels)
             {
-                var viewModel = _container.Resolve<GameConfigurationViewModel>();
+                var viewModel = dataModel.ToViewModel();
 
-                viewModel.CopyFrom(dataModel);
                 configurationViewModels.Add(viewModel);
 
                 if (appData.CurrentConfigurationId == dataModel.Id)

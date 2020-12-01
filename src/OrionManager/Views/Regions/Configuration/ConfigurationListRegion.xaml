@@ -7,7 +7,6 @@
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
-             xmlns:converters = "clr-namespace:OrionManager.Converters"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -15,17 +14,14 @@
         <main:MainViewModel />
     </d:UserControl.DataContext>
 
-    <UserControl.Resources>
-        <Style TargetType = "Button"
-               BasedOn = "{StaticResource StartMenuButtonStyle}" />
-    </UserControl.Resources>
-
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = "Auto" />
             <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <ColumnDefinition Width = "*" />
         </Grid.ColumnDefinitions>
+
         <Grid Grid.Column = "0">
             <Grid.RowDefinitions>
                 <RowDefinition Height = "Auto" />
@@ -46,43 +42,176 @@
                 <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
                 <RowDefinition Height = "Auto" />
             </Grid.RowDefinitions>
+
             <Button Grid.Row = "0"
-                    Content = "Add" />
+                    Content = "Add"
+                    Style = "{StaticResource StartMenuButtonStyle}"
+                    Command = "{Binding AddNewConfigurationCommand, Mode=OneTime}" />
+
             <Border Grid.Row = "2"
                     Style = "{StaticResource DividerBorderStyle}" />
+
             <Button Grid.Row = "4"
                     Content = "Chose"
-                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter IsDefaultConfigurationCheckRequired=False}, Mode=OneWay}" />
+                    Command = "{Binding ChoseConfigurationCommand, Mode=OneTime}">
+                <Button.Style>
+                    <Style TargetType = "Button"
+                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                        <Style.Triggers>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration}"
+                                         Value = "{x:Null}">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsChosen}"
+                                         Value = "True">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <Button Grid.Row = "6"
                     Content = "Clone"
-                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter IsDefaultConfigurationCheckRequired=False}, Mode=OneWay}" />
+                    Command = "{Binding CloneConfigurationCommand, Mode=OneTime}">
+                <Button.Style>
+                    <Style TargetType = "Button"
+                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                        <Style.Triggers>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration}"
+                                         Value = "{x:Null}">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <Button Grid.Row = "8"
-                    Content = "Edit"
-                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter}, Mode=OneWay}" />
+                    Content = "Edit">
+                <Button.Style>
+                    <Style TargetType = "Button"
+                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                        <Style.Triggers>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration}"
+                                         Value = "{x:Null}">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.Id}"
+                                         Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <Border Grid.Row = "10"
                     Style = "{StaticResource DividerBorderStyle}" />
+
             <Button Grid.Row = "12"
-                    Content = "Delete"
-                    IsEnabled = "{Binding SelectedConfiguration, Converter={converters:SelectedConfigurationToBoolConverter}, Mode=OneWay}" />
+                    Content = "Delete">
+                <Button.Style>
+                    <Style TargetType = "Button"
+                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                        <Style.Triggers>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration}"
+                                         Value = "{x:Null}">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsChosen}"
+                                         Value = "True">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.Id}"
+                                         Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
             <Border Grid.Row = "14"
                     Style = "{StaticResource DividerBorderStyle}" />
+
             <Button Grid.Row = "16"
                     Content = "Back"
                     Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Type regions:PreStartRegion}" />
+                    CommandParameter = "{x:Type regions:PreStartRegion}"
+                    Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
+
         <Border Grid.Column = "2">
             <ListBox SelectionMode = "Single"
                      ItemsSource = "{Binding GameConfigurations, Mode=OneTime}"
                      SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType = "ListBoxItem">
+                        <Setter Property = "HorizontalContentAlignment"
+                                Value = "Stretch" />
+                        <Setter Property = "Padding"
+                                Value = "0" />
+                        <Style.Triggers>
+                            <DataTrigger Binding = "{Binding IsChosen}"
+                                         Value = "True">
+                                <Setter Property = "BorderBrush"
+                                        Value = "{StaticResource BlackBrush}" />
+                                <Setter Property = "Background"
+                                        Value = "{StaticResource DefaultForeground}" />
+                                <Setter Property = "FontWeight"
+                                        Value = "Bold" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType = "viewModels:GameConfigurationViewModel">
-                        <TextBlock
-                            Text = "{Binding Mode=OneWay, Converter={converters:GameConfigurationToDisplayTextConverter}}" />
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                <ColumnDefinition Width = "Auto" />
+                                <ColumnDefinition Width = "*" />
+                                <ColumnDefinition Width = "Auto" />
+                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name = "NameBlock"
+                                       Grid.Column = "1"
+                                       Text = "{Binding Name, Mode=OneWay}" />
+                            <TextBlock x:Name = "SaveTimeBlock"
+                                       Grid.Column = "3"
+                                       Text = "{Binding SaveTime, Mode=OneWay}" />
+                        </Grid>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding = "{Binding Id}"
+                                         Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                                <Setter TargetName = "SaveTimeBlock"
+                                        Property = "Visibility"
+                                        Value = "Collapsed" />
+                            </DataTrigger>
+                            <DataTrigger Binding = "{Binding IsChosen}"
+                                         Value = "True">
+                                <Setter TargetName = "NameBlock"
+                                        Property = "Foreground"
+                                        Value = "{StaticResource BlackBrush}" />
+                                <Setter TargetName = "SaveTimeBlock"
+                                        Property = "Foreground"
+                                        Value = "{StaticResource BlackBrush}" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </Border>
+
     </Grid>
 
 </UserControl>
