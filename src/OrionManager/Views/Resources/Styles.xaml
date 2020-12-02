@@ -13,6 +13,8 @@
     </Style>
 
     <Style TargetType = "TextBlock">
+        <Setter Property = "VerticalAlignment"
+                Value = "Center" />
         <Setter Property = "SnapsToDevicePixels"
                 Value = "True" />
         <Setter Property = "FontSize"
@@ -27,7 +29,7 @@
         <Setter Property = "CornerRadius"
                 Value = "5" />
         <Setter Property = "BorderThickness"
-                Value = "2" />
+                Value = "{x:Static constants:UiSizes.BorderThickness}" />
         <Setter Property = "BorderBrush"
                 Value = "{StaticResource DefaultForeground}" />
         <Setter Property = "Background"
@@ -38,20 +40,30 @@
         <Setter Property = "SnapsToDevicePixels"
                 Value = "True" />
         <Setter Property = "BorderThickness"
-                Value = "2" />
+                Value = "{x:Static constants:UiSizes.BorderThickness}" />
+        <Setter Property = "HorizontalContentAlignment"
+                Value = "Center" />
         <Setter Property = "Background"
                 Value = "{StaticResource DefaultBackground}" />
         <Setter Property = "BorderBrush"
                 Value = "{StaticResource DefaultForeground}" />
+        <Setter Property = "Padding">
+            <Setter.Value>
+                <Thickness Top = "0"
+                           Bottom = "0"
+                           Left = "{x:Static constants:UiSizes.InnerSpacing}"
+                           Right = "{x:Static constants:UiSizes.InnerSpacing}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property = "Template">
             <Setter.Value>
                 <ControlTemplate TargetType = "Button">
                     <Grid>
                         <Border BorderThickness = "{TemplateBinding BorderThickness}"
                                 Background = "{TemplateBinding Background}"
-                                BorderBrush = "{TemplateBinding BorderBrush}">
-                            <TextBlock FontWeight = "{TemplateBinding FontWeight}"
-                                       VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
+                                BorderBrush = "{TemplateBinding BorderBrush}"
+                                Padding = "{TemplateBinding Padding}">
+                            <TextBlock VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
                                        HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}"
                                        Text = "{TemplateBinding Content}" />
                         </Border>
@@ -65,7 +77,7 @@
                         <Trigger Property = "IsPressed"
                                  Value = "True">
                             <Setter Property = "BorderThickness"
-                                    Value = "3" />
+                                    Value = "{x:Static constants:UiSizes.HighlightedBorderThickness}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -80,7 +92,8 @@
                             <Grid>
                                 <Border BorderThickness = "{TemplateBinding BorderThickness}"
                                         Background = "{TemplateBinding Background}"
-                                        BorderBrush = "{TemplateBinding BorderBrush}">
+                                        BorderBrush = "{TemplateBinding BorderBrush}"
+                                        Padding = "{TemplateBinding Padding}">
                                     <TextBlock VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
                                                HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}"
                                                Text = "{TemplateBinding Content}" />
@@ -114,15 +127,19 @@
                 Value = "{StaticResource DefaultControlHeight}" />
         <Setter Property = "Width"
                 Value = "{StaticResource StartMenuButtonWidth}" />
-        <Setter Property = "FontSize"
-                Value = "{StaticResource DefaultFontSize}" />
     </Style>
 
     <Style TargetType = "Border"
            BasedOn = "{StaticResource {x:Type Border}}"
            x:Key = "DividerBorderStyle">
-        <Setter Property = "Margin"
-                Value = "{x:Static constants:UiSizes.OuterSpacingLeftRightThickness}" />
+        <Setter Property = "Margin">
+            <Setter.Value>
+                <Thickness Top = "0"
+                           Bottom = "0"
+                           Left = "{x:Static constants:UiSizes.OuterSpacing}"
+                           Right = "{x:Static constants:UiSizes.OuterSpacing}" />
+            </Setter.Value>
+        </Setter>
         <Setter Property = "HorizontalAlignment"
                 Value = "Stretch" />
         <Setter Property = "VerticalAlignment"

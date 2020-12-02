@@ -8,6 +8,9 @@
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
              xmlns:configuration = "clr-namespace:OrionManager.Views.Regions.Configuration"
+             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
+             xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:triggerActions = "clr-namespace:OrionManager.Wpf.TriggerActions"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -154,67 +157,106 @@
                     Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
 
-        <Border Grid.Column = "2">
-            <ListBox SelectionMode = "Single"
-                     ItemsSource = "{Binding GameConfigurations, Mode=OneTime}"
-                     SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType = "ListBoxItem">
-                        <Setter Property = "HorizontalContentAlignment"
-                                Value = "Stretch" />
-                        <Setter Property = "Padding"
-                                Value = "0" />
-                        <Style.Triggers>
-                            <DataTrigger Binding = "{Binding IsChosen}"
-                                         Value = "True">
-                                <Setter Property = "BorderBrush"
-                                        Value = "{StaticResource BlackBrush}" />
-                                <Setter Property = "Background"
-                                        Value = "{StaticResource DefaultForeground}" />
-                                <Setter Property = "FontWeight"
-                                        Value = "Bold" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.ItemContainerStyle>
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType = "viewModels:GameConfigurationViewModel">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                                <ColumnDefinition Width = "Auto" />
-                                <ColumnDefinition Width = "*" />
-                                <ColumnDefinition Width = "Auto" />
-                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock x:Name = "NameBlock"
-                                       Grid.Column = "1"
-                                       Text = "{Binding Name, Mode=OneWay}" />
-                            <TextBlock x:Name = "SaveTimeBlock"
-                                       Grid.Column = "3"
-                                       Text = "{Binding SaveTime, Mode=OneWay}" />
-                        </Grid>
-                        <DataTemplate.Triggers>
-                            <DataTrigger Binding = "{Binding Id}"
-                                         Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
-                                <Setter TargetName = "SaveTimeBlock"
-                                        Property = "Visibility"
-                                        Value = "Collapsed" />
-                            </DataTrigger>
-                            <DataTrigger Binding = "{Binding IsChosen}"
-                                         Value = "True">
-                                <Setter TargetName = "NameBlock"
-                                        Property = "Foreground"
-                                        Value = "{StaticResource BlackBrush}" />
-                                <Setter TargetName = "SaveTimeBlock"
-                                        Property = "Foreground"
-                                        Value = "{StaticResource BlackBrush}" />
-                            </DataTrigger>
-                        </DataTemplate.Triggers>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Border>
+        <Grid Grid.Column = "2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "*" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row = "0">
+                <ListBox x:Name = "ListBox"
+                         SelectionMode = "Single"
+                         ItemsSource = "{Binding GameConfigurations, Mode=OneTime}"
+                         SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType = "ListBoxItem">
+                            <Setter Property = "HorizontalContentAlignment"
+                                    Value = "Stretch" />
+                            <Setter Property = "Padding"
+                                    Value = "0" />
+                            <Style.Triggers>
+                                <DataTrigger Binding = "{Binding IsChosen}"
+                                             Value = "True">
+                                    <Setter Property = "BorderBrush"
+                                            Value = "{StaticResource BlackBrush}" />
+                                    <Setter Property = "Background"
+                                            Value = "{StaticResource DefaultForeground}" />
+                                    <Setter Property = "FontWeight"
+                                            Value = "Bold" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType = "viewModels:GameConfigurationViewModel">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                    <ColumnDefinition Width = "Auto" />
+                                    <ColumnDefinition Width = "*" />
+                                    <ColumnDefinition Width = "Auto" />
+                                    <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock x:Name = "NameBlock"
+                                           Grid.Column = "1"
+                                           Text = "{Binding Name, Mode=OneWay}" />
+                                <TextBlock x:Name = "SaveTimeBlock"
+                                           Grid.Column = "3"
+                                           Text = "{Binding SaveTime, Mode=OneWay}" />
+                            </Grid>
+                            <DataTemplate.Triggers>
+                                <DataTrigger Binding = "{Binding Id}"
+                                             Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                                    <Setter TargetName = "SaveTimeBlock"
+                                            Property = "Visibility"
+                                            Value = "Collapsed" />
+                                </DataTrigger>
+                                <DataTrigger Binding = "{Binding IsChosen}"
+                                             Value = "True">
+                                    <Setter TargetName = "NameBlock"
+                                            Property = "Foreground"
+                                            Value = "{StaticResource BlackBrush}" />
+                                    <Setter TargetName = "SaveTimeBlock"
+                                            Property = "Foreground"
+                                            Value = "{StaticResource BlackBrush}" />
+                                </DataTrigger>
+                            </DataTemplate.Triggers>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+
+            <Grid Grid.Row = "2"
+                  Height = "{StaticResource DefaultControlHeight}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto" />
+                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                    <ColumnDefinition Width = "*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column = "0">
+                    <Border.Padding>
+                        <Thickness Top = "0"
+                                   Bottom = "0"
+                                   Left = "{x:Static constants:UiSizes.InnerSpacing}"
+                                   Right = "{x:Static constants:UiSizes.InnerSpacing}" />
+                    </Border.Padding>
+                    <TextBlock Text = "Current configuration:" />
+                </Border>
+                <Button Grid.Column = "2"
+                        HorizontalContentAlignment = "Left"
+                        Content = "{Binding CurrentConfiguration, Mode=OneWay,
+                        Converter={converters:GameConfigurationDisplayTextConverter}}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName = "Click">
+                            <triggerActions:ListBoxNavigationTriggerAction
+                                ItemToNavigate = "{Binding CurrentConfiguration, Mode=OneWay}"
+                                ListBox = "{Binding ElementName=ListBox, Mode=OneTime}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Button>
+            </Grid>
+        </Grid>
 
     </Grid>
 
