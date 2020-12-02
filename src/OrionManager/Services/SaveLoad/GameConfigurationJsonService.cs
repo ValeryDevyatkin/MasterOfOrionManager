@@ -14,13 +14,11 @@ namespace OrionManager.Services.SaveLoad
     {
         private const string DefaultConfigurationName = "Default";
         private const string DirectoryName = "GameConfigurations";
-        private readonly string _directoryPath;
+        private readonly IUnityContainer _container;
 
-        public GameConfigurationJsonService(IUnityContainer container, IPathProvider pathProvider)
+        public GameConfigurationJsonService(IUnityContainer container)
         {
-            container.RegisterInstance(this);
-
-            _directoryPath = Path.Combine(pathProvider.GetAppDataDirectoryPath(), DirectoryName);
+            _container = container.RegisterInstance(this);
         }
 
         public GameConfigurationDataModel GetDefault() => new GameConfigurationDataModel
@@ -31,12 +29,7 @@ namespace OrionManager.Services.SaveLoad
 
         public IEnumerable<GameConfigurationDataModel> Load()
         {
-            if (!Directory.Exists(_directoryPath))
-            {
-                yield break;
-            }
-
-            var files = Directory.GetFiles(_directoryPath);
+            var files = Directory.GetFiles(GetConfigurationDirectoryPath());
 
             foreach (var file in files)
             {
@@ -80,6 +73,9 @@ namespace OrionManager.Services.SaveLoad
             File.WriteAllText(filePath, json);
         }
 
-        private string GetFileName(Guid id) => Path.Combine(_directoryPath, id.ToString());
+        private string GetConfigurationDirectoryPath() =>
+            _container.Resolve<IPathProvider>().GetAppDataDirectoryPath(DirectoryName);
+
+        private string GetFileName(Guid id) => Path.Combine(GetConfigurationDirectoryPath(), id.ToString());
     }
 }

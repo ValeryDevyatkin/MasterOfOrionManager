@@ -17,6 +17,11 @@ namespace OrionManager.Services.SaveLoad
             container.RegisterInstance(this);
         }
 
-        public string GetAppDataDirectoryPath() => _appDataDirectoryPath;
+        public string GetAppDataDirectoryPath(string relativeDirectoryPath)
+        {
+            Directory.CreateDirectory(Path.Combine(_appDataDirectoryPath, relativeDirectoryPath));
+
+            return _appDataDirectoryPath;
+        }
     }
 }

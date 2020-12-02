@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using OrionManager.ExtensionMethods;
+using OrionManager.Interfaces;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
 using Unity;
@@ -87,14 +88,15 @@ namespace OrionManager.ViewModels.Main
                 return;
             }
 
-            var configuration = Container.Resolve<GameConfigurationViewModel>();
+            var newConfiguration = Container.Resolve<GameConfigurationViewModel>();
 
-            configuration.Id = Guid.NewGuid();
-            configuration.SaveTime = DateTime.Now;
-            configuration.Name = $"{SelectedConfiguration.Name} - {configuration.Id.GetHead()}";
+            newConfiguration.Id = Guid.NewGuid();
+            newConfiguration.SaveTime = DateTime.Now;
+            newConfiguration.Name = $"{SelectedConfiguration.Name} - {newConfiguration.Id.GetHead()}";
 
-            GameConfigurations.Add(configuration);
-            SelectedConfiguration = configuration;
+            Container.Resolve<IGameConfigurationService>().Save(newConfiguration.ToDataModel());
+            GameConfigurations.Add(newConfiguration);
+            SelectedConfiguration = newConfiguration;
         }
 
         #endregion
@@ -108,19 +110,35 @@ namespace OrionManager.ViewModels.Main
 
         private void ExecuteAddNewConfiguration(object parameter)
         {
+            var newConfiguration = Container.Resolve<GameConfigurationViewModel>();
+
+            newConfiguration.Id = Guid.NewGuid();
+            newConfiguration.SaveTime = DateTime.Now;
+            newConfiguration.Name = newConfiguration.Id.GetHead();
+
+            Container.Resolve<IGameConfigurationService>().Save(newConfiguration.ToDataModel());
+            GameConfigurations.Add(newConfiguration);
+            SelectedConfiguration = newConfiguration;
+        }
+
+        #endregion
+
+        #region DeleteConfiguration command
+
+        public ICommand DeleteConfigurationCommand => _deleteConfigurationCommand ??=
+                                                          new Command(ExecuteDeleteConfiguration);
+
+        private Command _deleteConfigurationCommand;
+
+        private void ExecuteDeleteConfiguration(object parameter)
+        {
             if (SelectedConfiguration == null)
             {
                 return;
             }
 
-            var configuration = Container.Resolve<GameConfigurationViewModel>();
-
-            configuration.Id = Guid.NewGuid();
-            configuration.SaveTime = DateTime.Now;
-            configuration.Name = configuration.Id.GetHead();
-
-            GameConfigurations.Add(configuration);
-            SelectedConfiguration = configuration;
+            Container.Resolve<IGameConfigurationService>().Delete(SelectedConfiguration.Id);
+            GameConfigurations.Remove(SelectedConfiguration);
         }
 
         #endregion

@@ -2,6 +2,6 @@
 {
     internal interface IPathProvider
     {
-        string GetAppDataDirectoryPath();
+        string GetAppDataDirectoryPath(string relativeDirectoryPath = "");
     }
 }

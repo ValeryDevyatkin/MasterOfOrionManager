@@ -7,6 +7,7 @@
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
+             xmlns:configuration = "clr-namespace:OrionManager.Views.Regions.Configuration"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -91,7 +92,9 @@
             </Button>
 
             <Button Grid.Row = "8"
-                    Content = "Edit">
+                    Content = "Edit"
+                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
+                    CommandParameter = "{x:Type configuration:ConfigurationRegion}">
                 <Button.Style>
                     <Style TargetType = "Button"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">
@@ -115,7 +118,8 @@
                     Style = "{StaticResource DividerBorderStyle}" />
 
             <Button Grid.Row = "12"
-                    Content = "Delete">
+                    Content = "Delete"
+                    Command = "{Binding DeleteConfigurationCommand, Mode=OneTime}">
                 <Button.Style>
                     <Style TargetType = "Button"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">

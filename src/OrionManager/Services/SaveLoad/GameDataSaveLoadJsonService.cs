@@ -1,19 +1,15 @@
-﻿using System.IO;
-using OrionManager.DataModels;
-using OrionManager.Interfaces;
+﻿using OrionManager.DataModels;
 using Unity;
 
 namespace OrionManager.Services.SaveLoad
 {
     internal class GameDataSaveLoadJsonService : JsonSaveLoadServiceBase<GameDataModel>
     {
-        private const string FileName = "GameData";
-
-        public GameDataSaveLoadJsonService(IUnityContainer container, IPathProvider pathProvider)
+        public GameDataSaveLoadJsonService(IUnityContainer container) : base(container)
         {
             container.RegisterInstance(this);
-
-            FilePath = Path.Combine(pathProvider.GetAppDataDirectoryPath(), FileName);
         }
+
+        protected override string FileName => "GameData";
     }
 }

@@ -1,21 +1,31 @@
 ﻿using System.IO;
 using Newtonsoft.Json;
 using OrionManager.Interfaces;
+using Unity;
 
 namespace OrionManager.Services.SaveLoad
 {
     internal abstract class JsonSaveLoadServiceBase<T> : ISaveLoadService<T>
     {
-        protected string FilePath { get; set; }
+        private readonly IUnityContainer _container;
+
+        protected JsonSaveLoadServiceBase(IUnityContainer container)
+        {
+            _container = container;
+        }
+
+        protected abstract string FileName { get; }
 
         public T Load()
         {
-            if (!File.Exists(FilePath))
+            var filePath = GetFilePath();
+
+            if (!File.Exists(filePath))
             {
                 return default;
             }
 
-            var json = File.ReadAllText(FilePath);
+            var json = File.ReadAllText(filePath);
             var dataModel = JsonConvert.DeserializeObject<T>(json);
 
             return dataModel;
@@ -25,7 +35,10 @@ namespace OrionManager.Services.SaveLoad
         {
             var json = JsonConvert.SerializeObject(dataModel);
 
-            File.WriteAllText(FilePath, json);
+            File.WriteAllText(GetFilePath(), json);
         }
+
+        protected string GetFilePath() =>
+            Path.Combine(_container.Resolve<IPathProvider>().GetAppDataDirectoryPath(), FileName);
     }
 }
