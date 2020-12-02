@@ -21,8 +21,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\out\main\bin\Debug</OutputPath>
-    <BaseIntermediateOutputPath>..\..\out\main\obj</BaseIntermediateOutputPath>
+    <OutputPath>..\..\out\bin\Debug</OutputPath>
+    <BaseIntermediateOutputPath>..\..\out\obj</BaseIntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,8 +32,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\out\main\bin\Release</OutputPath>
-    <BaseIntermediateOutputPath>..\..\out\main\obj</BaseIntermediateOutputPath>
+    <OutputPath>..\..\out\bin\Release</OutputPath>
+    <BaseIntermediateOutputPath>..\..\out\obj</BaseIntermediateOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
