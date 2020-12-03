@@ -10,6 +10,7 @@
              xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:triggerActions = "clr-namespace:OrionManager.Wpf.TriggerActions"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+             xmlns:behaviors = "clr-namespace:OrionManager.Wpf.Behaviors"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -222,6 +223,9 @@
                             </DataTemplate.Triggers>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
+                    <i:Interaction.Behaviors>
+                        <behaviors:ListBoxAutoScrollBehavior />
+                    </i:Interaction.Behaviors>
                 </ListBox>
             </Border>
 

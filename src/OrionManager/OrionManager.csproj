@@ -164,6 +164,7 @@
     <Compile Include="Views\Regions\StartRegion.xaml.cs">
       <DependentUpon>StartRegion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
     <Compile Include="Wpf\Converters\GameConfigurationDisplayTextConverter.cs" />
     <Compile Include="Wpf\TriggerActions\ListBoxNavigationTriggerAction.cs" />
     <Page Include="Views\Backgrounds\PlayingBackground.xaml">
@@ -260,7 +261,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Enums\" />
-    <Folder Include="Wpf\Behaviors\" />
     <Folder Include="Wpf\TemplateSelectors\" />
   </ItemGroup>
   <ItemGroup>
