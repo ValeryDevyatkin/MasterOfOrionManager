@@ -12,6 +12,30 @@ namespace OrionManager.ViewModels
 
         public Guid Id { get; set; }
 
+        #region IsChosen: bool
+
+        public bool IsChosen
+        {
+            get => _isChosen;
+            set => SetProperty(ref _isChosen, value);
+        }
+
+        private bool _isChosen;
+
+        #endregion
+
+        #region IsDefault: bool
+
+        public bool IsDefault
+        {
+            get => _isDefault;
+            set => SetProperty(ref _isDefault, value);
+        }
+
+        private bool _isDefault;
+
+        #endregion
+
         #region SaveTime: DateTime
 
         public DateTime SaveTime
@@ -36,27 +60,51 @@ namespace OrionManager.ViewModels
 
         #endregion
 
-        #region IsChosen: bool
+        #region NumberOfRounds: int
 
-        public bool IsChosen
+        public int NumberOfRounds
         {
-            get => _isChosen;
-            set => SetProperty(ref _isChosen, value);
+            get => _numberOfRounds;
+            set => SetProperty(ref _numberOfRounds, value);
         }
 
-        private bool _isChosen;
+        private int _numberOfRounds;
 
         #endregion
 
-        #region IsDefault: bool
+        #region NumberOfCounselors: int
 
-        public bool IsDefault
+        public int NumberOfCounselors
         {
-            get => _isDefault;
-            set => SetProperty(ref _isDefault, value);
+            get => _numberOfCounselors;
+            set => SetProperty(ref _numberOfCounselors, value);
         }
 
-        private bool _isDefault;
+        private int _numberOfCounselors;
+
+        #endregion
+
+        #region WinPointTrackerSize: int
+
+        public int WinPointTrackerSize
+        {
+            get => _winPointTrackerSize;
+            set => SetProperty(ref _winPointTrackerSize, value);
+        }
+
+        private int _winPointTrackerSize;
+
+        #endregion
+
+        #region LoyaltyTrackerSize: int
+
+        public int LoyaltyTrackerSize
+        {
+            get => _loyaltyTrackerSize;
+            set => SetProperty(ref _loyaltyTrackerSize, value);
+        }
+
+        private int _loyaltyTrackerSize;
 
         #endregion
     }

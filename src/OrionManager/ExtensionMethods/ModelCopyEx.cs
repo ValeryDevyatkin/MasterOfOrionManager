@@ -20,7 +20,6 @@ namespace OrionManager.ExtensionMethods
             }
 
             // TODO: Copy fields here.
-
             target.IsGameStarted = source.IsGameStarted;
         }
 

@@ -46,8 +46,12 @@ namespace OrionManager.ExtensionMethods
             return new GameConfigurationDataModel
             {
                 Id = item.Id,
+                SaveTime = item.SaveTime,
                 Name = item.Name,
-                SaveTime = item.SaveTime
+                NumberOfRounds = item.NumberOfRounds,
+                NumberOfCounselors = item.NumberOfCounselors,
+                WinPointTrackerSize = item.WinPointTrackerSize,
+                LoyaltyTrackerSize = item.LoyaltyTrackerSize
             };
         }
 
@@ -61,10 +65,13 @@ namespace OrionManager.ExtensionMethods
             var viewModel = ServiceLocator.Container.Resolve<GameConfigurationViewModel>();
 
             // TODO: Copy fields here.
-
             viewModel.Id = item.Id;
-            viewModel.Name = item.Name;
             viewModel.SaveTime = item.SaveTime;
+            viewModel.Name = item.Name;
+            viewModel.NumberOfRounds = item.NumberOfRounds;
+            viewModel.NumberOfCounselors = item.NumberOfCounselors;
+            viewModel.WinPointTrackerSize = item.WinPointTrackerSize;
+            viewModel.LoyaltyTrackerSize = item.LoyaltyTrackerSize;
 
             return viewModel;
         }

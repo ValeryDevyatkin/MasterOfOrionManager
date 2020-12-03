@@ -17,13 +17,12 @@
                     <ColumnDefinition Width = "*" />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column = "0"
-                        Background = "{StaticResource DefaultForeground}">
+                <Border Grid.Column = "0">
                     <Border.Padding>
-                        <Thickness Top = "0"
-                                   Bottom = "0"
-                                   Left = "{x:Static constants:UiSizes.TextSpacing}"
-                                   Right = "{x:Static constants:UiSizes.TextSpacing}" />
+                        <Thickness Right = "{x:Static constants:UiSizes.InnerSpacing}"
+                                   Left = "{x:Static constants:UiSizes.InnerSpacing}"
+                                   Top = "{x:Static constants:UiSizes.TextSpacing}"
+                                   Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
                     </Border.Padding>
                     <Border.BorderThickness>
                         <Thickness Right = "0"
@@ -37,30 +36,27 @@
                                       TopLeft = "{x:Static constants:UiSizes.BorderRadiusSize}"
                                       BottomLeft = "{x:Static constants:UiSizes.BorderRadiusSize}" />
                     </Border.CornerRadius>
-                    <TextBlock FontWeight = "Bold"
-                               Text = "{TemplateBinding Label}"
-                               Foreground = "{StaticResource BlackBrush}" />
+                    <TextBlock Text = "{TemplateBinding Label}"
+                               Foreground = "{StaticResource DefaultForeground}" />
                 </Border>
 
                 <TextBox Grid.Column = "1"
                          TextAlignment = "Left"
                          VerticalContentAlignment = "Center"
                          IsReadOnly = "{TemplateBinding IsReadOnly}"
-                         Text = "{TemplateBinding Text}"
+                         Text = "{Binding RelativeSource={RelativeSource TemplatedParent},
+                    Path=Text,
+                    UpdateSourceTrigger=PropertyChanged,
+                    Mode=TwoWay}"
                          FontSize = "{StaticResource DefaultFontSize}"
+                         Padding = "{x:Static constants:UiSizes.TextSpacingThickness}"
                          BorderThickness = "{x:Static constants:UiSizes.BorderThickness}"
                          BorderBrush = "{StaticResource DefaultForeground}"
                          Foreground = "{StaticResource DefaultForeground}"
                          Background = "{StaticResource DefaultBackground}">
-                    <TextBox.Padding>
-                        <Thickness Top = "0"
-                                   Bottom = "0"
-                                   Left = "{x:Static constants:UiSizes.TextSpacing}"
-                                   Right = "{x:Static constants:UiSizes.TextSpacing}" />
-                    </TextBox.Padding>
                     <TextBox.Template>
                         <ControlTemplate TargetType = "TextBox">
-                            <Border>
+                            <Border Background = "{StaticResource BlackBrush}">
                                 <Border.CornerRadius>
                                     <CornerRadius TopLeft = "0"
                                                   BottomLeft = "0"

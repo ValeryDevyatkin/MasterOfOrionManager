@@ -22,34 +22,51 @@
             <RowDefinition Height = "Auto" />
         </Grid.RowDefinitions>
 
-        <Border Grid.Row = "0"
-                DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}"
-                Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width = "Auto" />
-                    <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                    <ColumnDefinition Width = "*" />
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column = "2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height = "Auto" />
-                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                        <RowDefinition Height = "Auto" />
-                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                        <RowDefinition Height = "Auto" />
-                        <RowDefinition Height = "*" />
-                    </Grid.RowDefinitions>
-                    <controls:CustomTextBox Grid.Row = "0"
-                                            Label = "Save Time"
-                                            IsReadOnly = "True"
-                                            Text = "{Binding SaveTime, Mode=OneWay}" />
-                    <controls:CustomTextBox Grid.Row = "2"
-                                            Label = "Name"
-                                            Text = "{Binding Name, Mode=OneWay}" />
-                </Grid>
+        <Grid Grid.Row = "0"
+              DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "Auto" />
+                <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                <ColumnDefinition Width = "*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column = "2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "*" />
+                </Grid.RowDefinitions>
+                <controls:CustomTextBox Grid.Row = "0"
+                                        Label = "Save time:"
+                                        IsReadOnly = "True"
+                                        Text = "{Binding SaveTime, Mode=OneWay}" />
+                <controls:CustomTextBox Grid.Row = "2"
+                                        Label = "Name:"
+                                        Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <controls:CustomTextBox Grid.Row = "4"
+                                        Label = "Number of rounds:"
+                                        Text = "{Binding NumberOfRounds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <controls:CustomTextBox Grid.Row = "6"
+                                        Label = "Number of counselors:"
+                                        Text = "{Binding NumberOfCounselors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <controls:CustomTextBox Grid.Row = "8"
+                                        Label = "Win point tracker size:"
+                                        Text = "{Binding WinPointTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <controls:CustomTextBox Grid.Row = "10"
+                                        Label = "Loyalty tracker size:"
+                                        Text = "{Binding LoyaltyTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
-        </Border>
+        </Grid>
 
         <Grid Grid.Row = "2">
             <Grid.ColumnDefinitions>

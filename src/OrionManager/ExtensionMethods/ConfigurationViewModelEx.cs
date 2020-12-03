@@ -25,9 +25,12 @@ namespace OrionManager.ExtensionMethods
             }
 
             // TODO: Copy fields here.
-
-            target.Name = source.Name;
             target.SaveTime = source.SaveTime;
+            target.Name = source.Name;
+            target.NumberOfRounds = source.NumberOfRounds;
+            target.NumberOfCounselors = source.NumberOfCounselors;
+            target.WinPointTrackerSize = source.WinPointTrackerSize;
+            target.LoyaltyTrackerSize = source.LoyaltyTrackerSize;
         }
 
         public static GameConfigurationViewModel Clone(this GameConfigurationViewModel item)
@@ -62,8 +65,11 @@ namespace OrionManager.ExtensionMethods
             }
 
             // TODO: Compare fields here.
-
-            if (item1.Name != item2.Name)
+            if (item1.Name != item2.Name ||
+                item1.NumberOfRounds != item2.NumberOfRounds ||
+                item1.NumberOfCounselors != item2.NumberOfCounselors ||
+                item1.WinPointTrackerSize != item2.WinPointTrackerSize ||
+                item1.LoyaltyTrackerSize != item2.LoyaltyTrackerSize)
             {
                 return true;
             }
