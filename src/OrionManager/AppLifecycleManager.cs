@@ -185,7 +185,7 @@ namespace OrionManager
         {
             var appData = _container.Resolve<MainViewModel>().ToDataModel();
 
-            if (_container.Resolve<IDataStateHub<AppDataModel>>().DetectChanges(appData))
+            if (_container.Resolve<IDataStateHub<AppDataModel>>().HasChanges(appData))
             {
                 _container.Resolve<ISaveLoadService<AppDataModel>>().Save(appData);
             }
@@ -194,7 +194,7 @@ namespace OrionManager
             {
                 var gameData = _container.Resolve<GameDataViewModel>().ToDataModel();
 
-                if (_container.Resolve<IDataStateHub<GameDataModel>>().DetectChanges(gameData))
+                if (_container.Resolve<IDataStateHub<GameDataModel>>().HasChanges(gameData))
                 {
                     _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
                 }

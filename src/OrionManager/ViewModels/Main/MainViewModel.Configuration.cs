@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using OrionManager.ExtensionMethods;
 using OrionManager.Interfaces;
+using OrionManager.Views.Regions.Configuration;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
 using Unity;
@@ -139,6 +140,21 @@ namespace OrionManager.ViewModels.Main
 
             Container.Resolve<IGameConfigurationService>().Delete(SelectedConfiguration.Id);
             GameConfigurations.Remove(SelectedConfiguration);
+        }
+
+        #endregion
+
+        #region EditConfiguration command
+
+        public ICommand EditConfigurationCommand => _editConfigurationCommand ??=
+                                                        new Command(ExecuteEditConfiguration);
+
+        private Command _editConfigurationCommand;
+
+        private void ExecuteEditConfiguration(object parameter)
+        {
+            ConfigurationEditCopy = SelectedConfiguration.Clone();
+            NavigateToRegionCommand.Execute(typeof(ConfigurationRegion));
         }
 
         #endregion

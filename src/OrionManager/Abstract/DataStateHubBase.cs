@@ -11,8 +11,8 @@ namespace OrionManager.Abstract
             _committedState = item;
         }
 
-        public bool DetectChanges(T item) => DetectChanges(_committedState, item);
+        public bool HasChanges(T item) => HasDifference(_committedState, item);
 
-        protected abstract bool DetectChanges(T item1, T item2);
+        protected abstract bool HasDifference(T item1, T item2);
     }
 }

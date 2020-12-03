@@ -12,38 +12,36 @@ namespace OrionManager.Services.StateHub
             container.RegisterInstance(this);
         }
 
-        protected override bool DetectChanges(AppDataModel item1, AppDataModel item2)
+        protected override bool HasDifference(AppDataModel item1, AppDataModel item2)
         {
+            if (item1 == null)
             {
-                if (item1 == null)
-                {
-                    throw new ArgumentNullException(nameof(item1));
-                }
-
-                if (item2 == null)
-                {
-                    throw new ArgumentNullException(nameof(item2));
-                }
-
-                if (ReferenceEquals(item1, item2))
-                {
-                    throw new ArgumentException(nameof(item2));
-                }
-
-                // TODO: Compare fields here.
-
-                if (item1.IsGameStarted != item2.IsGameStarted)
-                {
-                    return true;
-                }
-
-                if (item1.CurrentConfigurationId != item2.CurrentConfigurationId)
-                {
-                    return true;
-                }
-
-                return false;
+                throw new ArgumentNullException(nameof(item1));
             }
+
+            if (item2 == null)
+            {
+                throw new ArgumentNullException(nameof(item2));
+            }
+
+            if (ReferenceEquals(item1, item2))
+            {
+                throw new ArgumentException(nameof(item2));
+            }
+
+            // TODO: Compare fields here.
+
+            if (item1.IsGameStarted != item2.IsGameStarted)
+            {
+                return true;
+            }
+
+            if (item1.CurrentConfigurationId != item2.CurrentConfigurationId)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

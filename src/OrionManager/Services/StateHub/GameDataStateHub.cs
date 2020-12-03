@@ -12,7 +12,7 @@ namespace OrionManager.Services.StateHub
             container.RegisterInstance(this);
         }
 
-        protected override bool DetectChanges(GameDataModel item1, GameDataModel item2)
+        protected override bool HasDifference(GameDataModel item1, GameDataModel item2)
         {
             if (item1 == null)
             {

@@ -4,6 +4,7 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
+             xmlns:constants = "clr-namespace:OrionManager.Constants"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -12,6 +13,40 @@
         <main:MainViewModel />
     </d:UserControl.DataContext>
 
-    <Border DataContext = "{Binding ElementName=Root, Path=DataContext.SelectedConfiguration, Mode=OneWay}" />
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "*" />
+            <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+            <RowDefinition Height = "Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row = "0"
+                DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}" />
+
+        <Grid Grid.Row = "2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width = "*" />
+                <ColumnDefinition Width = "Auto" />
+                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <ColumnDefinition Width = "Auto" />
+                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <ColumnDefinition Width = "Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column = "1"
+                    Content = "Apply"
+                    Style = "{StaticResource StartMenuButtonStyle}"
+                    Command = "{Binding ApplyEditConfigurationCommand, Mode=OneTime}" />
+            <Button Grid.Column = "3"
+                    Content = "Ok"
+                    Style = "{StaticResource StartMenuButtonStyle}"
+                    Command = "{Binding OkEditConfigurationCommand, Mode=OneTime}" />
+            <Button Grid.Column = "5"
+                    Content = "Cancel"
+                    Style = "{StaticResource StartMenuButtonStyle}"
+                    Command = "{Binding CancelEditConfigurationCommand, Mode=OneTime}" />
+        </Grid>
+
+    </Grid>
 
 </UserControl>

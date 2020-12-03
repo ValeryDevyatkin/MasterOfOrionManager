@@ -7,7 +7,6 @@
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
-             xmlns:configuration = "clr-namespace:OrionManager.Views.Regions.Configuration"
              xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:triggerActions = "clr-namespace:OrionManager.Wpf.TriggerActions"
@@ -96,8 +95,7 @@
 
             <Button Grid.Row = "8"
                     Content = "Edit"
-                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Type configuration:ConfigurationRegion}">
+                    Command = "{Binding EditConfigurationCommand, Mode=OneTime}">
                 <Button.Style>
                     <Style TargetType = "Button"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">

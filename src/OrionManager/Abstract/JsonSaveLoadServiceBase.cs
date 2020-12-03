@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 using OrionManager.Interfaces;
 using Unity;
 
-namespace OrionManager.Services.SaveLoad
+namespace OrionManager.Abstract
 {
     internal abstract class JsonSaveLoadServiceBase<T> : ISaveLoadService<T>
     {
