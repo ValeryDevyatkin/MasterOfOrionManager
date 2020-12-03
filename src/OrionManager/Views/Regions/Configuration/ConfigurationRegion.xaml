@@ -5,6 +5,7 @@
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
+             xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -22,7 +23,26 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row = "0"
-                DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}" />
+                DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}"
+                Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "Auto" />
+                    <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                    <ColumnDefinition Width = "*" />
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column = "1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <RowDefinition />
+                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <RowDefinition />
+                        <RowDefinition Height = "Auto" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Grid>
+        </Border>
 
         <Grid Grid.Row = "2">
             <Grid.ColumnDefinitions>
@@ -33,18 +53,18 @@
                 <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
                 <ColumnDefinition Width = "Auto" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column = "1"
-                    Content = "Apply"
-                    Style = "{StaticResource StartMenuButtonStyle}"
-                    Command = "{Binding ApplyEditConfigurationCommand, Mode=OneTime}" />
-            <Button Grid.Column = "3"
-                    Content = "Ok"
-                    Style = "{StaticResource StartMenuButtonStyle}"
-                    Command = "{Binding OkEditConfigurationCommand, Mode=OneTime}" />
-            <Button Grid.Column = "5"
-                    Content = "Cancel"
-                    Style = "{StaticResource StartMenuButtonStyle}"
-                    Command = "{Binding CancelEditConfigurationCommand, Mode=OneTime}" />
+            <controls:CustomButton Grid.Column = "1"
+                                   Content = "Apply"
+                                   Style = "{StaticResource StartMenuButtonStyle}"
+                                   Command = "{Binding ApplyEditConfigurationCommand, Mode=OneTime}" />
+            <controls:CustomButton Grid.Column = "3"
+                                   Content = "Ok"
+                                   Style = "{StaticResource StartMenuButtonStyle}"
+                                   Command = "{Binding OkEditConfigurationCommand, Mode=OneTime}" />
+            <controls:CustomButton Grid.Column = "5"
+                                   Content = "Cancel"
+                                   Style = "{StaticResource StartMenuButtonStyle}"
+                                   Command = "{Binding CancelEditConfigurationCommand, Mode=OneTime}" />
         </Grid>
 
     </Grid>

@@ -7,9 +7,9 @@
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
-             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:triggerActions = "clr-namespace:OrionManager.Wpf.TriggerActions"
+             xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -46,19 +46,19 @@
                 <RowDefinition Height = "Auto" />
             </Grid.RowDefinitions>
 
-            <Button Grid.Row = "0"
-                    Content = "Add"
-                    Style = "{StaticResource StartMenuButtonStyle}"
-                    Command = "{Binding AddNewConfigurationCommand, Mode=OneTime}" />
+            <controls:CustomButton Grid.Row = "0"
+                                   Content = "Add"
+                                   Style = "{StaticResource StartMenuButtonStyle}"
+                                   Command = "{Binding AddNewConfigurationCommand, Mode=OneTime}" />
 
             <Border Grid.Row = "2"
                     Style = "{StaticResource DividerBorderStyle}" />
 
-            <Button Grid.Row = "4"
-                    Content = "Chose"
-                    Command = "{Binding ChoseConfigurationCommand, Mode=OneTime}">
-                <Button.Style>
-                    <Style TargetType = "Button"
+            <controls:CustomButton Grid.Row = "4"
+                                   Content = "Chose"
+                                   Command = "{Binding ChoseConfigurationCommand, Mode=OneTime}">
+                <controls:CustomButton.Style>
+                    <Style TargetType = "controls:CustomButton"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
@@ -73,14 +73,14 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Button.Style>
-            </Button>
+                </controls:CustomButton.Style>
+            </controls:CustomButton>
 
-            <Button Grid.Row = "6"
-                    Content = "Clone"
-                    Command = "{Binding CloneConfigurationCommand, Mode=OneTime}">
-                <Button.Style>
-                    <Style TargetType = "Button"
+            <controls:CustomButton Grid.Row = "6"
+                                   Content = "Clone"
+                                   Command = "{Binding CloneConfigurationCommand, Mode=OneTime}">
+                <controls:CustomButton.Style>
+                    <Style TargetType = "controls:CustomButton"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
@@ -90,14 +90,14 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Button.Style>
-            </Button>
+                </controls:CustomButton.Style>
+            </controls:CustomButton>
 
-            <Button Grid.Row = "8"
-                    Content = "Edit"
-                    Command = "{Binding EditConfigurationCommand, Mode=OneTime}">
-                <Button.Style>
-                    <Style TargetType = "Button"
+            <controls:CustomButton Grid.Row = "8"
+                                   Content = "Edit"
+                                   Command = "{Binding EditConfigurationCommand, Mode=OneTime}">
+                <controls:CustomButton.Style>
+                    <Style TargetType = "controls:CustomButton"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
@@ -105,24 +105,24 @@
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                             </DataTrigger>
-                            <DataTrigger Binding = "{Binding SelectedConfiguration.Id}"
-                                         Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsDefault}"
+                                         Value = "True">
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Button.Style>
-            </Button>
+                </controls:CustomButton.Style>
+            </controls:CustomButton>
 
             <Border Grid.Row = "10"
                     Style = "{StaticResource DividerBorderStyle}" />
 
-            <Button Grid.Row = "12"
-                    Content = "Delete"
-                    Command = "{Binding DeleteConfigurationCommand, Mode=OneTime}">
-                <Button.Style>
-                    <Style TargetType = "Button"
+            <controls:CustomButton Grid.Row = "12"
+                                   Content = "Delete"
+                                   Command = "{Binding DeleteConfigurationCommand, Mode=OneTime}">
+                <controls:CustomButton.Style>
+                    <Style TargetType = "controls:CustomButton"
                            BasedOn = "{StaticResource StartMenuButtonStyle}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
@@ -135,24 +135,24 @@
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                             </DataTrigger>
-                            <DataTrigger Binding = "{Binding SelectedConfiguration.Id}"
-                                         Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsDefault}"
+                                         Value = "True">
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Button.Style>
-            </Button>
+                </controls:CustomButton.Style>
+            </controls:CustomButton>
 
             <Border Grid.Row = "14"
                     Style = "{StaticResource DividerBorderStyle}" />
 
-            <Button Grid.Row = "16"
-                    Content = "Back"
-                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Type regions:PreStartRegion}"
-                    Style = "{StaticResource StartMenuButtonStyle}" />
+            <controls:CustomButton Grid.Row = "16"
+                                   Content = "Back"
+                                   Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
+                                   CommandParameter = "{x:Type regions:PreStartRegion}"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
 
         <Grid Grid.Column = "2">
@@ -204,8 +204,8 @@
                                            Text = "{Binding SaveTime, Mode=OneWay}" />
                             </Grid>
                             <DataTemplate.Triggers>
-                                <DataTrigger Binding = "{Binding Id}"
-                                             Value = "{x:Static constants:GlobalConstants.DefaultGameConfigurationId}">
+                                <DataTrigger Binding = "{Binding IsDefault}"
+                                             Value = "True">
                                     <Setter TargetName = "SaveTimeBlock"
                                             Property = "Visibility"
                                             Value = "Collapsed" />
@@ -229,7 +229,6 @@
                   Height = "{StaticResource DefaultControlHeight}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width = "Auto" />
-                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
                     <ColumnDefinition Width = "*" />
                 </Grid.ColumnDefinitions>
                 <Border Grid.Column = "0">
@@ -239,12 +238,54 @@
                                    Left = "{x:Static constants:UiSizes.InnerSpacing}"
                                    Right = "{x:Static constants:UiSizes.InnerSpacing}" />
                     </Border.Padding>
+                    <Border.BorderThickness>
+                        <Thickness Right = "0"
+                                   Top = "{x:Static constants:UiSizes.BorderThicknessSize}"
+                                   Bottom = "{x:Static constants:UiSizes.BorderThicknessSize}"
+                                   Left = "{x:Static constants:UiSizes.BorderThicknessSize}" />
+                    </Border.BorderThickness>
+                    <Border.CornerRadius>
+                        <CornerRadius TopRight = "0"
+                                      BottomRight = "0"
+                                      TopLeft = "{x:Static constants:UiSizes.BorderRadiusSize}"
+                                      BottomLeft = "{x:Static constants:UiSizes.BorderRadiusSize}" />
+                    </Border.CornerRadius>
                     <TextBlock Text = "Current configuration:" />
                 </Border>
-                <Button Grid.Column = "2"
-                        HorizontalContentAlignment = "Left"
-                        Content = "{Binding CurrentConfiguration, Mode=OneWay,
-                        Converter={converters:GameConfigurationDisplayTextConverter}}">
+                <controls:CustomButton Grid.Column = "1"
+                                       HorizontalContentAlignment = "Stretch">
+                    <controls:CustomButton.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width = "Auto" />
+                                <ColumnDefinition Width = "*" />
+                                <ColumnDefinition Width = "Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column = "0"
+                                       Text = "{Binding CurrentConfiguration.Name, Mode=OneWay}" />
+                            <TextBlock Grid.Column = "2"
+                                       Text = "{Binding CurrentConfiguration.SaveTime, Mode=OneWay}">
+                                <TextBlock.Style>
+                                    <Style TargetType = "TextBlock"
+                                           BasedOn = "{StaticResource {x:Type TextBlock}}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsDefault}"
+                                                         Value = "True">
+                                                <Setter Property = "Visibility"
+                                                        Value = "Collapsed" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Grid>
+                    </controls:CustomButton.Content>
+                    <controls:CustomButton.BorderRadius>
+                        <CornerRadius TopLeft = "0"
+                                      BottomLeft = "0"
+                                      TopRight = "{x:Static constants:UiSizes.BorderRadiusSize}"
+                                      BottomRight = "{x:Static constants:UiSizes.BorderRadiusSize}" />
+                    </controls:CustomButton.BorderRadius>
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName = "Click">
                             <triggerActions:ListBoxNavigationTriggerAction
@@ -252,7 +293,7 @@
                                 ListBox = "{Binding ElementName=ListBox, Mode=OneTime}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
-                </Button>
+                </controls:CustomButton>
             </Grid>
         </Grid>
 

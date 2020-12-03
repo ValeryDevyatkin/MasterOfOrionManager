@@ -8,17 +8,13 @@
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
+             xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
     <d:UserControl.DataContext>
         <main:MainViewModel />
     </d:UserControl.DataContext>
-
-    <UserControl.Resources>
-        <Style TargetType = "Button"
-               BasedOn = "{StaticResource StartMenuButtonStyle}" />
-    </UserControl.Resources>
 
     <Grid>
 
@@ -58,12 +54,14 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column = "1"
-                    Content = "Configure"
-                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Type configuration:ConfigurationListRegion}" />
-            <Button Grid.Column = "3"
-                    Content = "Start" />
+            <controls:CustomButton Grid.Column = "1"
+                                   Content = "Configure"
+                                   Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
+                                   CommandParameter = "{x:Type configuration:ConfigurationListRegion}"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
+            <controls:CustomButton Grid.Column = "3"
+                                   Content = "Start"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
 
         <Grid Grid.Row = "5">
@@ -72,10 +70,11 @@
                 <ColumnDefinition Width = "Auto" />
                 <ColumnDefinition Width = "*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column = "1"
-                    Content = "Back"
-                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Type regions:StartRegion}" />
+            <controls:CustomButton Grid.Column = "1"
+                                   Content = "Back"
+                                   Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
+                                   CommandParameter = "{x:Type regions:StartRegion}"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
 
     </Grid>

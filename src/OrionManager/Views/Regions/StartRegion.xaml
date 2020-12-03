@@ -6,6 +6,7 @@
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
+             xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -13,12 +14,8 @@
         <main:MainViewModel />
     </d:UserControl.DataContext>
 
-    <UserControl.Resources>
-        <Style TargetType = "Button"
-               BasedOn = "{StaticResource StartMenuButtonStyle}" />
-    </UserControl.Resources>
-
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height = "6*" />
             <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
@@ -28,6 +25,7 @@
             <RowDefinition Height = "Auto" />
             <RowDefinition Height = "*" />
         </Grid.RowDefinitions>
+
         <Grid Grid.Row = "0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "Auto" />
@@ -52,6 +50,7 @@
                            TextAlignment = "Center" />
             </Grid>
         </Grid>
+
         <Grid Grid.Row = "3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -60,24 +59,29 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column = "1"
-                    Content = "Continue"
-                    IsEnabled = "{Binding IsGameStarted, Mode=OneWay}" />
-            <Button Grid.Column = "3"
-                    Content = "New Game"
-                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                    CommandParameter = "{x:Type regions:PreStartRegion}" />
+            <controls:CustomButton Grid.Column = "1"
+                                   Content = "Continue"
+                                   IsEnabled = "{Binding IsGameStarted, Mode=OneWay}"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
+            <controls:CustomButton Grid.Column = "3"
+                                   Content = "New Game"
+                                   Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
+                                   CommandParameter = "{x:Type regions:PreStartRegion}"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
+
         <Grid Grid.Row = "5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "*" />
                 <ColumnDefinition Width = "Auto" />
                 <ColumnDefinition Width = "*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column = "1"
-                    Content = "Exit"
-                    Command = "{Binding AppCommands.ExitAppCommand, Mode=OneTime}" />
+            <controls:CustomButton Grid.Column = "1"
+                                   Content = "Exit"
+                                   Command = "{Binding AppCommands.ExitAppCommand, Mode=OneTime}"
+                                   Style = "{StaticResource StartMenuButtonStyle}" />
         </Grid>
+
     </Grid>
 
 </UserControl>

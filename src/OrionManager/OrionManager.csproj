@@ -131,6 +131,9 @@
     <Compile Include="Views\Backgrounds\StartBackground.xaml.cs">
       <DependentUpon>StartBackground.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Controls\CustomButton.xaml.cs">
+      <DependentUpon>CustomButton.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Regions\Configuration\ConfigurationListRegion.xaml.cs">
       <DependentUpon>ConfigurationListRegion.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Backgrounds\StartBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Controls\CustomButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

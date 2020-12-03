@@ -4,15 +4,17 @@ namespace OrionManager.Constants
 {
     internal static class UiSizes
     {
-        public const double BorderSize = 2d;
-        public const double HighlightedBorderSize = 3d;
+        public const double BorderRadiusSize = 5d;
+        public const double BorderThicknessSize = 2d;
+        public const double HighlightedBorderThicknessSize = 3d;
 
         public const double TextSpacing = 5d;
         public const double InnerSpacing = 15d;
         public const double OuterSpacing = 30d;
 
-        public static readonly Thickness BorderThickness = new Thickness(BorderSize);
-        public static readonly Thickness HighlightedBorderThickness = new Thickness(HighlightedBorderSize);
+        public static readonly CornerRadius BorderRadius = new CornerRadius(BorderRadiusSize);
+        public static readonly Thickness BorderThickness = new Thickness(BorderThicknessSize);
+        public static readonly Thickness HighlightedBorderThickness = new Thickness(HighlightedBorderThicknessSize);
 
         public static readonly GridLength TextSpacingGridLength = new GridLength(TextSpacing);
         public static readonly GridLength InnerSpacingGridLength = new GridLength(InnerSpacing);
