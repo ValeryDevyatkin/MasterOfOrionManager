@@ -31,15 +31,22 @@
                     <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
                     <ColumnDefinition Width = "*" />
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column = "1">
+                <Grid Grid.Column = "2">
                     <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                        <RowDefinition />
-                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                        <RowDefinition />
                         <RowDefinition Height = "Auto" />
+                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <RowDefinition Height = "Auto" />
+                        <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <RowDefinition Height = "Auto" />
+                        <RowDefinition Height = "*" />
                     </Grid.RowDefinitions>
+                    <controls:CustomTextBox Grid.Row = "0"
+                                            Label = "Save Time"
+                                            IsReadOnly = "True"
+                                            Text = "{Binding SaveTime, Mode=OneWay}" />
+                    <controls:CustomTextBox Grid.Row = "2"
+                                            Label = "Name"
+                                            Text = "{Binding Name, Mode=OneWay}" />
                 </Grid>
             </Grid>
         </Border>
