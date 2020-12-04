@@ -91,7 +91,6 @@
                                                                 Label = "Name"
                                                                 Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         <ComboBox Grid.Row = "2"
-                                                  SelectedIndex = "0"
                                                   ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource.Values, Mode=OneTime}"
                                                   SelectedItem = "{Binding Race, Mode=TwoWay}">
                                             <ComboBox.ItemContainerStyle>
@@ -102,7 +101,7 @@
                                             </ComboBox.ItemContainerStyle>
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate>
-                                                    <ContentControl Content = "{Binding Item}" />
+                                                    <ContentControl Content = "{Binding Value}" />
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>

@@ -35,7 +35,8 @@ namespace OrionManager.ViewModels
 
         private void OnRaceChanged()
         {
-            if (Race != null && Race.Item != Enums.Race.Random)
+            if (Race != null &&
+                Race.Value != Enums.Race.Random)
             {
                 Race.IsEnabled = false;
             }

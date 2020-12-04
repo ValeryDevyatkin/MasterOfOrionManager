@@ -156,7 +156,8 @@ namespace OrionManager.ViewModels
             {
                 var player = new PlayerPresetViewModel
                 {
-                    Name = GlobalConstants.DefaultPlayerString
+                    Name = GlobalConstants.DefaultPlayerString,
+                    Race = RaceSource[Race.Random]
                 };
 
                 PlayerPresets.Add(player);

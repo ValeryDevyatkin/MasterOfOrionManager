@@ -94,6 +94,7 @@
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
+    <Compile Include="DataModels\PlayerPresetDataModel.cs" />
     <Compile Include="Enums\PlayerColor.cs" />
     <Compile Include="Enums\Race.cs" />
     <Compile Include="ExtensionMethods\ModelCopyEx.cs" />

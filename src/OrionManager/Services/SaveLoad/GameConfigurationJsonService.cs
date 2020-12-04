@@ -23,7 +23,8 @@ namespace OrionManager.Services.SaveLoad
         public GameConfigurationDataModel GetDefault() => new GameConfigurationDataModel
         {
             Id = GlobalConstants.DefaultGameConfigurationId,
-            Name = GlobalConstants.DefaultConfigurationName
+            Name = GlobalConstants.DefaultConfigurationName,
+            PlayerPresets = new PlayerPresetDataModel[] { }
         };
 
         public IEnumerable<GameConfigurationDataModel> Load()

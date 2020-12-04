@@ -11,5 +11,6 @@ namespace OrionManager.DataModels
         public int NumberOfCounselors { get; set; }
         public int WinPointTrackerSize { get; set; }
         public int LoyaltyTrackerSize { get; set; }
+        public PlayerPresetDataModel[] PlayerPresets { get; set; }
     }
 }

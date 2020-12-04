@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using OrionManager.Constants;
 using OrionManager.Enums;
 using OrionManager.ViewModels;
@@ -33,6 +34,15 @@ namespace OrionManager.ExtensionMethods
             target.NumberOfCounselors = source.NumberOfCounselors;
             target.WinPointTrackerSize = source.WinPointTrackerSize;
             target.LoyaltyTrackerSize = source.LoyaltyTrackerSize;
+            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
+            {
+                // TODO: Copy fields here.
+                Race = target.RaceSource[x.Race.Value],
+                Name = x.Name
+            }));
+
+            target.UpdateIsPlayerCanBeAdded();
+            target.UpdatePlayerColors();
         }
 
         public static GameConfigurationViewModel Clone(this GameConfigurationViewModel item)
@@ -71,9 +81,23 @@ namespace OrionManager.ExtensionMethods
                 item1.NumberOfRounds != item2.NumberOfRounds ||
                 item1.NumberOfCounselors != item2.NumberOfCounselors ||
                 item1.WinPointTrackerSize != item2.WinPointTrackerSize ||
-                item1.LoyaltyTrackerSize != item2.LoyaltyTrackerSize)
+                item1.LoyaltyTrackerSize != item2.LoyaltyTrackerSize ||
+                item1.PlayerPresets.Count != item2.PlayerPresets.Count)
             {
                 return true;
+            }
+
+            for (var i = 0; i < item1.PlayerPresets.Count; i++)
+            {
+                var playerPreset1 = item1.PlayerPresets[i];
+                var playerPreset2 = item2.PlayerPresets[i];
+
+                // TODO: Compare fields here.
+                if (playerPreset1.Race.Value != playerPreset2.Race.Value ||
+                    playerPreset1.Name != playerPreset2.Name)
+                {
+                    return true;
+                }
             }
 
             return false;

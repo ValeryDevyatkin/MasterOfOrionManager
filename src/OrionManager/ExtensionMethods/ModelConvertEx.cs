@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using OrionManager.DataModels;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
@@ -16,9 +17,9 @@ namespace OrionManager.ExtensionMethods
                 throw new ArgumentNullException(nameof(item));
             }
 
-            // TODO: Copy fields here.
             return new AppDataModel
             {
+                // TODO: Copy fields here.
                 IsGameStarted = item.IsGameStarted,
                 CurrentConfigurationId = item.CurrentConfiguration.Id
             };
@@ -42,16 +43,23 @@ namespace OrionManager.ExtensionMethods
                 throw new ArgumentNullException(nameof(item));
             }
 
-            // TODO: Copy fields here.
             return new GameConfigurationDataModel
             {
+                // TODO: Copy fields here.
                 Id = item.Id,
                 SaveTime = item.SaveTime,
                 Name = item.Name,
                 NumberOfRounds = item.NumberOfRounds,
                 NumberOfCounselors = item.NumberOfCounselors,
                 WinPointTrackerSize = item.WinPointTrackerSize,
-                LoyaltyTrackerSize = item.LoyaltyTrackerSize
+                LoyaltyTrackerSize = item.LoyaltyTrackerSize,
+
+                PlayerPresets = item.PlayerPresets.Select(x => new PlayerPresetDataModel
+                {
+                    // TODO: Copy fields here.
+                    Race = x.Race.Value,
+                    Name = x.Name
+                }).ToArray()
             };
         }
 
@@ -72,6 +80,16 @@ namespace OrionManager.ExtensionMethods
             viewModel.NumberOfCounselors = item.NumberOfCounselors;
             viewModel.WinPointTrackerSize = item.WinPointTrackerSize;
             viewModel.LoyaltyTrackerSize = item.LoyaltyTrackerSize;
+
+            viewModel.PlayerPresets.AddRange(item.PlayerPresets.Select(x => new PlayerPresetViewModel
+            {
+                // TODO: Copy fields here.
+                Name = x.Name,
+                Race = viewModel.RaceSource[x.Race]
+            }));
+
+            viewModel.UpdateIsPlayerCanBeAdded();
+            viewModel.UpdatePlayerColors();
 
             return viewModel;
         }

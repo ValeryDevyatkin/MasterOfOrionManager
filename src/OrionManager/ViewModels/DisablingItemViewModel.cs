@@ -7,11 +7,11 @@ namespace OrionManager.ViewModels
     {
         public DisablingItemViewModel(T item)
         {
-            Item = item;
+            Value = item;
             IsEnabled = true;
         }
 
-        public T Item { get; }
+        public T Value { get; }
 
         #region IsEnabled: bool
 
