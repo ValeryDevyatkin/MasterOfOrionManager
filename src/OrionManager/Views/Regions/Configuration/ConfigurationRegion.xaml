@@ -26,9 +26,63 @@
               DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "Auto" />
-                <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
                 <ColumnDefinition Width = "*" />
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column = "0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height = "Auto" />
+                    <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                    <RowDefinition Height = "*" />
+                </Grid.RowDefinitions>
+                <controls:CustomButton Grid.Row = "0"
+                                       Content = "Add Player"
+                                       IsEnabled = "{Binding IsPlayerCanBeAdded, Mode=OneWay}"
+                                       Command = "{Binding AddPlayerCommand, Mode=OneTime}" />
+                <ItemsControl Grid.Row = "2"
+                              ItemsSource = "{Binding PlayerPresets, Mode=OneWay}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height = "Auto" />
+                                    <RowDefinition Height = "Auto" />
+                                    <RowDefinition Height = "Auto" />
+                                </Grid.RowDefinitions>
+                                <controls:CustomTextBox Grid.Row = "0"
+                                                        Label = "Name"
+                                                        Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox Grid.Row = "1"
+                                          SelectedIndex = "0"
+                                          ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource, Mode=OneTime}"
+                                          SelectedItem = "{Binding Race, Mode=TwoWay}">
+                                    <ComboBox.ItemContainerStyle>
+                                        <Style TargetType = "ComboBoxItem">
+                                            <Setter Property = "IsEnabled"
+                                                    Value = "{Binding IsEnabled}" />
+                                        </Style>
+                                    </ComboBox.ItemContainerStyle>
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <ContentControl Content = "{Binding Item}" />
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <controls:CustomButton Grid.Row = "2"
+                                                       Content = "Delete"
+                                                       Command = "{Binding ElementName=Root,
+                                    Path=DataContext.ConfigurationEditCopy.DeletePlayerCommand, Mode=OneTime}"
+                                                       CommandParameter = "{Binding}" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
             <Grid Grid.Column = "2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "Auto" />

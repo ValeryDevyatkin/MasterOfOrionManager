@@ -12,7 +12,6 @@ namespace OrionManager.Services.SaveLoad
 {
     internal class GameConfigurationJsonService : IGameConfigurationService
     {
-        private const string DefaultConfigurationName = "Default";
         private const string DirectoryName = "GameConfigurations";
         private readonly IUnityContainer _container;
 
@@ -24,7 +23,7 @@ namespace OrionManager.Services.SaveLoad
         public GameConfigurationDataModel GetDefault() => new GameConfigurationDataModel
         {
             Id = GlobalConstants.DefaultGameConfigurationId,
-            Name = DefaultConfigurationName
+            Name = GlobalConstants.DefaultConfigurationName
         };
 
         public IEnumerable<GameConfigurationDataModel> Load()

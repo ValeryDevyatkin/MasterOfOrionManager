@@ -1,4 +1,5 @@
 ﻿using System;
+using OrionManager.Constants;
 using OrionManager.ViewModels;
 using Senticode.Wpf;
 using Unity;
@@ -75,6 +76,11 @@ namespace OrionManager.ExtensionMethods
             }
 
             return false;
+        }
+
+        public static void UpdateIsPlayerCanBeAdded(this GameConfigurationViewModel item)
+        {
+            item.IsPlayerCanBeAdded = item.PlayerPresets.Count < GlobalConstants.MaxPlayerCount;
         }
     }
 }

@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Windows.Input;
+using OrionManager.Constants;
+using OrionManager.Enums;
+using OrionManager.ExtensionMethods;
 using Senticode.Wpf.Base;
+using Senticode.Wpf.Collections;
 using Unity;
 
 namespace OrionManager.ViewModels
@@ -8,7 +13,23 @@ namespace OrionManager.ViewModels
     {
         public GameConfigurationViewModel(IUnityContainer container) : base(container)
         {
+            this.UpdateIsPlayerCanBeAdded();
         }
+
+        public DisablingItemViewModel<Race>[] RaceSource { get; } =
+        {
+            new DisablingItemViewModel<Race>(Race.Random),
+            new DisablingItemViewModel<Race>(Race.Human),
+            new DisablingItemViewModel<Race>(Race.Alkari),
+            new DisablingItemViewModel<Race>(Race.Bulrathi),
+            new DisablingItemViewModel<Race>(Race.Darlok),
+            new DisablingItemViewModel<Race>(Race.Meklar),
+            new DisablingItemViewModel<Race>(Race.Mrrshan),
+            new DisablingItemViewModel<Race>(Race.Psilon)
+        };
+
+        public ObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
+            new ObservableRangeCollection<PlayerPresetViewModel>();
 
         public Guid Id { get; set; }
 
@@ -105,6 +126,59 @@ namespace OrionManager.ViewModels
         }
 
         private int _loyaltyTrackerSize;
+
+        #endregion
+
+        #region IsPlayerCanBeAdded: bool
+
+        public bool IsPlayerCanBeAdded
+        {
+            get => _isPlayerCanBeAdded;
+            set => SetProperty(ref _isPlayerCanBeAdded, value);
+        }
+
+        private bool _isPlayerCanBeAdded;
+
+        #endregion
+
+        #region AddPlayer command
+
+        public ICommand AddPlayerCommand => _addPlayerCommand ??=
+                                                new Command(ExecuteAddPlayer);
+
+        private Command _addPlayerCommand;
+
+        private void ExecuteAddPlayer(object parameter)
+        {
+            if (IsPlayerCanBeAdded)
+            {
+                var player = new PlayerPresetViewModel
+                {
+                    Name = $"{GlobalConstants.DefaultPlayerString} {PlayerPresets.Count + 1}"
+                };
+
+                PlayerPresets.Add(player);
+                this.UpdateIsPlayerCanBeAdded();
+            }
+        }
+
+        #endregion
+
+        #region DeletePlayer command
+
+        public ICommand DeletePlayerCommand => _deletePlayerCommand ??=
+                                                   new Command(ExecuteDeletePlayer);
+
+        private Command _deletePlayerCommand;
+
+        private void ExecuteDeletePlayer(object parameter)
+        {
+            if (parameter is PlayerPresetViewModel item)
+            {
+                PlayerPresets.Remove(item);
+                this.UpdateIsPlayerCanBeAdded();
+            }
+        }
 
         #endregion
     }
