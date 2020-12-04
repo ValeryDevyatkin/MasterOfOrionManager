@@ -44,5 +44,17 @@ namespace OrionManager.ViewModels
         private DisablingItemViewModel<Race> _race;
 
         #endregion
+
+        #region Color: PlayerColor
+
+        public PlayerColor Color
+        {
+            get => _color;
+            set => SetProperty(ref _color, value);
+        }
+
+        private PlayerColor _color;
+
+        #endregion
     }
 }

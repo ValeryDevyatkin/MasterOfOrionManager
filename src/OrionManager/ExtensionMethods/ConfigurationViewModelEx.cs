@@ -1,5 +1,6 @@
 ﻿using System;
 using OrionManager.Constants;
+using OrionManager.Enums;
 using OrionManager.ViewModels;
 using Senticode.Wpf;
 using Unity;
@@ -81,6 +82,14 @@ namespace OrionManager.ExtensionMethods
         public static void UpdateIsPlayerCanBeAdded(this GameConfigurationViewModel item)
         {
             item.IsPlayerCanBeAdded = item.PlayerPresets.Count < GlobalConstants.MaxPlayerCount;
+        }
+
+        public static void UpdatePlayerColors(this GameConfigurationViewModel item)
+        {
+            for (var i = 0; i < item.PlayerPresets.Count; i++)
+            {
+                item.PlayerPresets[i].Color = (PlayerColor) i;
+            }
         }
     }
 }

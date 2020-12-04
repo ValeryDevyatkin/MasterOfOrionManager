@@ -49,7 +49,7 @@
 
             <controls:CustomButton Grid.Row = "0"
                                    Content = "Add"
-                                   Style = "{StaticResource StartMenuButtonStyle}"
+                                   Width = "{StaticResource StartMenuButtonWidth}"
                                    Command = "{Binding AddNewConfigurationCommand, Mode=OneTime}" />
 
             <Border Grid.Row = "2"
@@ -57,10 +57,11 @@
 
             <controls:CustomButton Grid.Row = "4"
                                    Content = "Chose"
+                                   Width = "{StaticResource StartMenuButtonWidth}"
                                    Command = "{Binding ChoseConfigurationCommand, Mode=OneTime}">
                 <controls:CustomButton.Style>
                     <Style TargetType = "controls:CustomButton"
-                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                           BasedOn = "{StaticResource {x:Type controls:CustomButton}}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
                                          Value = "{x:Null}">
@@ -79,10 +80,11 @@
 
             <controls:CustomButton Grid.Row = "6"
                                    Content = "Clone"
+                                   Width = "{StaticResource StartMenuButtonWidth}"
                                    Command = "{Binding CloneConfigurationCommand, Mode=OneTime}">
                 <controls:CustomButton.Style>
                     <Style TargetType = "controls:CustomButton"
-                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                           BasedOn = "{StaticResource {x:Type controls:CustomButton}}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
                                          Value = "{x:Null}">
@@ -96,10 +98,11 @@
 
             <controls:CustomButton Grid.Row = "8"
                                    Content = "Edit"
+                                   Width = "{StaticResource StartMenuButtonWidth}"
                                    Command = "{Binding EditConfigurationCommand, Mode=OneTime}">
                 <controls:CustomButton.Style>
                     <Style TargetType = "controls:CustomButton"
-                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                           BasedOn = "{StaticResource {x:Type controls:CustomButton}}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
                                          Value = "{x:Null}">
@@ -121,10 +124,11 @@
 
             <controls:CustomButton Grid.Row = "12"
                                    Content = "Delete"
+                                   Width = "{StaticResource StartMenuButtonWidth}"
                                    Command = "{Binding DeleteConfigurationCommand, Mode=OneTime}">
                 <controls:CustomButton.Style>
                     <Style TargetType = "controls:CustomButton"
-                           BasedOn = "{StaticResource StartMenuButtonStyle}">
+                           BasedOn = "{StaticResource {x:Type controls:CustomButton}}">
                         <Style.Triggers>
                             <DataTrigger Binding = "{Binding SelectedConfiguration}"
                                          Value = "{x:Null}">
@@ -153,7 +157,7 @@
                                    Content = "Back"
                                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
                                    CommandParameter = "{x:Type regions:PreStartRegion}"
-                                   Style = "{StaticResource StartMenuButtonStyle}" />
+                                   Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 
         <Grid Grid.Column = "2">
@@ -166,6 +170,8 @@
             <Border Grid.Row = "0">
                 <ListBox x:Name = "ListBox"
                          SelectionMode = "Single"
+                         ScrollViewer.VerticalScrollBarVisibility = "Hidden"
+                         ScrollViewer.HorizontalScrollBarVisibility = "Disabled"
                          ItemsSource = "{Binding GameConfigurations, Mode=OneTime}"
                          SelectedItem = "{Binding SelectedConfiguration, Mode=TwoWay}">
                     <ListBox.ItemContainerStyle>
@@ -227,8 +233,7 @@
                 </ListBox>
             </Border>
 
-            <Grid Grid.Row = "2"
-                  Height = "{StaticResource DefaultControlHeight}">
+            <Grid Grid.Row = "2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width = "Auto" />
                     <ColumnDefinition Width = "*" />

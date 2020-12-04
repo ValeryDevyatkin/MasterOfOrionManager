@@ -94,11 +94,13 @@
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
+    <Compile Include="Enums\PlayerColor.cs" />
     <Compile Include="Enums\Race.cs" />
     <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
     <Compile Include="ExtensionMethods\ModelConvertEx.cs" />
     <Compile Include="ExtensionMethods\GuidEx.cs" />
     <Compile Include="ExtensionMethods\ConfigurationViewModelEx.cs" />
+    <Compile Include="ExtensionMethods\PlayerColorEx.cs" />
     <Compile Include="Interfaces\IDataStateHub.cs" />
     <Compile Include="Interfaces\IGameConfigurationService.cs" />
     <Compile Include="Interfaces\IInit.cs" />
@@ -172,6 +174,7 @@
     </Compile>
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
     <Compile Include="Wpf\Converters\GameConfigurationDisplayTextConverter.cs" />
+    <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
     <Compile Include="Wpf\TriggerActions\ListBoxNavigationTriggerAction.cs" />
     <Page Include="Views\Backgrounds\PlayingBackground.xaml">
       <Generator>MSBuild:Compile</Generator>

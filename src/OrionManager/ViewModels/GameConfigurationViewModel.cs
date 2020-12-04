@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using OrionManager.Constants;
 using OrionManager.Enums;
@@ -16,17 +17,18 @@ namespace OrionManager.ViewModels
             this.UpdateIsPlayerCanBeAdded();
         }
 
-        public DisablingItemViewModel<Race>[] RaceSource { get; } =
-        {
-            new DisablingItemViewModel<Race>(Race.Random),
-            new DisablingItemViewModel<Race>(Race.Human),
-            new DisablingItemViewModel<Race>(Race.Alkari),
-            new DisablingItemViewModel<Race>(Race.Bulrathi),
-            new DisablingItemViewModel<Race>(Race.Darlok),
-            new DisablingItemViewModel<Race>(Race.Meklar),
-            new DisablingItemViewModel<Race>(Race.Mrrshan),
-            new DisablingItemViewModel<Race>(Race.Psilon)
-        };
+        public IReadOnlyDictionary<Race, DisablingItemViewModel<Race>> RaceSource { get; } =
+            new Dictionary<Race, DisablingItemViewModel<Race>>
+            {
+                {Race.Random, new DisablingItemViewModel<Race>(Race.Random)},
+                {Race.Human, new DisablingItemViewModel<Race>(Race.Human)},
+                {Race.Alkari, new DisablingItemViewModel<Race>(Race.Alkari)},
+                {Race.Bulrathi, new DisablingItemViewModel<Race>(Race.Bulrathi)},
+                {Race.Darlok, new DisablingItemViewModel<Race>(Race.Darlok)},
+                {Race.Meklar, new DisablingItemViewModel<Race>(Race.Meklar)},
+                {Race.Mrrshan, new DisablingItemViewModel<Race>(Race.Mrrshan)},
+                {Race.Psilon, new DisablingItemViewModel<Race>(Race.Psilon)}
+            };
 
         public ObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
             new ObservableRangeCollection<PlayerPresetViewModel>();
@@ -154,11 +156,12 @@ namespace OrionManager.ViewModels
             {
                 var player = new PlayerPresetViewModel
                 {
-                    Name = $"{GlobalConstants.DefaultPlayerString} {PlayerPresets.Count + 1}"
+                    Name = GlobalConstants.DefaultPlayerString
                 };
 
                 PlayerPresets.Add(player);
                 this.UpdateIsPlayerCanBeAdded();
+                this.UpdatePlayerColors();
             }
         }
 
@@ -177,6 +180,7 @@ namespace OrionManager.ViewModels
             {
                 PlayerPresets.Remove(item);
                 this.UpdateIsPlayerCanBeAdded();
+                this.UpdatePlayerColors();
             }
         }
 

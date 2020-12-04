@@ -62,12 +62,12 @@
             <controls:CustomButton Grid.Column = "1"
                                    Content = "Continue"
                                    IsEnabled = "{Binding IsGameStarted, Mode=OneWay}"
-                                   Style = "{StaticResource StartMenuButtonStyle}" />
+                                   Width = "{StaticResource StartMenuButtonWidth}" />
             <controls:CustomButton Grid.Column = "3"
                                    Content = "New Game"
                                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
                                    CommandParameter = "{x:Type regions:PreStartRegion}"
-                                   Style = "{StaticResource StartMenuButtonStyle}" />
+                                   Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 
         <Grid Grid.Row = "5">
@@ -79,7 +79,7 @@
             <controls:CustomButton Grid.Column = "1"
                                    Content = "Exit"
                                    Command = "{Binding AppCommands.ExitAppCommand, Mode=OneTime}"
-                                   Style = "{StaticResource StartMenuButtonStyle}" />
+                                   Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 
     </Grid>

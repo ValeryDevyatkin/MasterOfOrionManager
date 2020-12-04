@@ -53,6 +53,8 @@
     </Style>
 
     <Style TargetType = "controls:CustomButton">
+        <Setter Property = "Height"
+                Value = "{StaticResource DefaultControlHeight}" />
         <Setter Property = "BorderRadius"
                 Value = "{x:Static constants:UiSizes.BorderRadius}" />
         <Setter Property = "SnapsToDevicePixels"
@@ -76,15 +78,6 @@
     </Style>
 
     <!--EXPLICIT-->
-    <Style TargetType = "controls:CustomButton"
-           BasedOn = "{StaticResource {x:Type controls:CustomButton}}"
-           x:Key = "StartMenuButtonStyle">
-        <Setter Property = "Height"
-                Value = "{StaticResource DefaultControlHeight}" />
-        <Setter Property = "Width"
-                Value = "{StaticResource StartMenuButtonWidth}" />
-    </Style>
-
     <Style TargetType = "Border"
            BasedOn = "{StaticResource {x:Type Border}}"
            x:Key = "DividerBorderStyle">

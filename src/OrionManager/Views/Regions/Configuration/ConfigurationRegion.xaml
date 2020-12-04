@@ -6,6 +6,7 @@
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -16,74 +17,119 @@
 
     <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height = "*" />
-            <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-            <RowDefinition Height = "Auto" />
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "*" />
+            <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+            <ColumnDefinition Width = "2*" />
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row = "0"
+        <Grid Grid.Column = "0"
               DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width = "Auto" />
-                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                <ColumnDefinition Width = "*" />
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column = "0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                    <RowDefinition Height = "*" />
-                </Grid.RowDefinitions>
-                <controls:CustomButton Grid.Row = "0"
-                                       Content = "Add Player"
-                                       IsEnabled = "{Binding IsPlayerCanBeAdded, Mode=OneWay}"
-                                       Command = "{Binding AddPlayerCommand, Mode=OneTime}" />
-                <ItemsControl Grid.Row = "2"
-                              ItemsSource = "{Binding PlayerPresets, Mode=OneWay}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height = "Auto" />
-                                    <RowDefinition Height = "Auto" />
-                                    <RowDefinition Height = "Auto" />
-                                </Grid.RowDefinitions>
-                                <controls:CustomTextBox Grid.Row = "0"
-                                                        Label = "Name"
-                                                        Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                <ComboBox Grid.Row = "1"
-                                          SelectedIndex = "0"
-                                          ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource, Mode=OneTime}"
-                                          SelectedItem = "{Binding Race, Mode=TwoWay}">
-                                    <ComboBox.ItemContainerStyle>
-                                        <Style TargetType = "ComboBoxItem">
-                                            <Setter Property = "IsEnabled"
-                                                    Value = "{Binding IsEnabled}" />
-                                        </Style>
-                                    </ComboBox.ItemContainerStyle>
-                                    <ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <ContentControl Content = "{Binding Item}" />
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>
-                                </ComboBox>
-                                <controls:CustomButton Grid.Row = "2"
-                                                       Content = "Delete"
-                                                       Command = "{Binding ElementName=Root,
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "*" />
+            </Grid.RowDefinitions>
+            <controls:CustomButton Grid.Row = "0"
+                                   Content = "Add Player"
+                                   IsEnabled = "{Binding IsPlayerCanBeAdded, Mode=OneWay}"
+                                   Command = "{Binding AddPlayerCommand, Mode=OneTime}">
+                <controls:CustomButton.BorderRadius>
+                    <CornerRadius BottomLeft = "0"
+                                  BottomRight = "0"
+                                  TopRight = "{x:Static constants:UiSizes.BorderRadiusSize}"
+                                  TopLeft = "{x:Static constants:UiSizes.BorderRadiusSize}" />
+                </controls:CustomButton.BorderRadius>
+            </controls:CustomButton>
+            <Border Grid.Row = "1"
+                    Background = "Transparent"
+                    Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
+                <Border.BorderThickness>
+                    <Thickness Top = "0"
+                               Left = "{x:Static constants:UiSizes.BorderThicknessSize}"
+                               Right = "{x:Static constants:UiSizes.BorderThicknessSize}"
+                               Bottom = "{x:Static constants:UiSizes.BorderThicknessSize}" />
+                </Border.BorderThickness>
+                <Border.CornerRadius>
+                    <CornerRadius TopRight = "0"
+                                  TopLeft = "0"
+                                  BottomLeft = "{x:Static constants:UiSizes.BorderRadiusSize}"
+                                  BottomRight = "{x:Static constants:UiSizes.BorderRadiusSize}" />
+                </Border.CornerRadius>
+                <ScrollViewer VerticalScrollBarVisibility = "Hidden">
+                    <ItemsControl ItemsSource = "{Binding PlayerPresets, Mode=OneWay}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.Margin>
+                                        <Thickness Top = "0"
+                                                   Right = "0"
+                                                   Left = "0"
+                                                   Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
+                                    </Grid.Margin>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                        <ColumnDefinition Width = "*" />
+                                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                        <ColumnDefinition Width = "Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Grid.Column = "0"
+                                            Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
+                                    <Grid Grid.Column = "2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height = "Auto" />
+                                            <RowDefinition
+                                                Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                            <RowDefinition Height = "Auto" />
+                                        </Grid.RowDefinitions>
+                                        <controls:CustomTextBox Grid.Row = "0"
+                                                                Label = "Name"
+                                                                Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        <ComboBox Grid.Row = "2"
+                                                  SelectedIndex = "0"
+                                                  ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource.Values, Mode=OneTime}"
+                                                  SelectedItem = "{Binding Race, Mode=TwoWay}">
+                                            <ComboBox.ItemContainerStyle>
+                                                <Style TargetType = "ComboBoxItem">
+                                                    <Setter Property = "IsEnabled"
+                                                            Value = "{Binding IsEnabled}" />
+                                                </Style>
+                                            </ComboBox.ItemContainerStyle>
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <ContentControl Content = "{Binding Item}" />
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                    </Grid>
+                                    <controls:CustomButton Grid.Column = "4"
+                                                           Content = "X"
+                                                           Width = "50"
+                                                           Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
+                                                           Command = "{Binding ElementName=Root,
                                     Path=DataContext.ConfigurationEditCopy.DeletePlayerCommand, Mode=OneTime}"
-                                                       CommandParameter = "{Binding}" />
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
-            <Grid Grid.Column = "2">
+                                                           CommandParameter = "{Binding}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Column = "2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "*" />
+                <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row = "0"
+                  DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height = "Auto" />
                     <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
@@ -105,7 +151,7 @@
                                         IsReadOnly = "True"
                                         Text = "{Binding SaveTime, Mode=OneWay}" />
                 <controls:CustomTextBox Grid.Row = "2"
-                                        Label = "Name:"
+                                        Label = "Configuration name:"
                                         Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <controls:CustomTextBox Grid.Row = "4"
                                         Label = "Number of rounds:"
@@ -120,29 +166,29 @@
                                         Label = "Loyalty tracker size:"
                                         Text = "{Binding LoyaltyTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
-        </Grid>
 
-        <Grid Grid.Row = "2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width = "*" />
-                <ColumnDefinition Width = "Auto" />
-                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                <ColumnDefinition Width = "Auto" />
-                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                <ColumnDefinition Width = "Auto" />
-            </Grid.ColumnDefinitions>
-            <controls:CustomButton Grid.Column = "1"
-                                   Content = "Apply"
-                                   Style = "{StaticResource StartMenuButtonStyle}"
-                                   Command = "{Binding ApplyEditConfigurationCommand, Mode=OneTime}" />
-            <controls:CustomButton Grid.Column = "3"
-                                   Content = "Ok"
-                                   Style = "{StaticResource StartMenuButtonStyle}"
-                                   Command = "{Binding OkEditConfigurationCommand, Mode=OneTime}" />
-            <controls:CustomButton Grid.Column = "5"
-                                   Content = "Cancel"
-                                   Style = "{StaticResource StartMenuButtonStyle}"
-                                   Command = "{Binding CancelEditConfigurationCommand, Mode=OneTime}" />
+            <Grid Grid.Row = "2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width = "*" />
+                    <ColumnDefinition Width = "Auto" />
+                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                    <ColumnDefinition Width = "Auto" />
+                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                    <ColumnDefinition Width = "Auto" />
+                </Grid.ColumnDefinitions>
+                <controls:CustomButton Grid.Column = "1"
+                                       Content = "Apply"
+                                       Width = "{StaticResource StartMenuButtonWidth}"
+                                       Command = "{Binding ApplyEditConfigurationCommand, Mode=OneTime}" />
+                <controls:CustomButton Grid.Column = "3"
+                                       Content = "Ok"
+                                       Width = "{StaticResource StartMenuButtonWidth}"
+                                       Command = "{Binding OkEditConfigurationCommand, Mode=OneTime}" />
+                <controls:CustomButton Grid.Column = "5"
+                                       Content = "Cancel"
+                                       Width = "{StaticResource StartMenuButtonWidth}"
+                                       Command = "{Binding CancelEditConfigurationCommand, Mode=OneTime}" />
+            </Grid>
         </Grid>
 
     </Grid>
