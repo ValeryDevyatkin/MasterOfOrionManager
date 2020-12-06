@@ -61,7 +61,23 @@
                                    Width = "{StaticResource StartMenuButtonWidth}" />
             <controls:CustomButton Grid.Column = "3"
                                    Content = "Start"
-                                   Width = "{StaticResource StartMenuButtonWidth}" />
+                                   Width = "{StaticResource StartMenuButtonWidth}"
+                                   Command = "{Binding AppCommands.StartGameCommand, Mode=OneTime}">
+                <controls:CustomButton.Style>
+                    <Style BasedOn = "{StaticResource {x:Type controls:CustomButton}}"
+                           TargetType = "controls:CustomButton">
+                        <Style.Triggers>
+                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsReadyToPlay}"
+                                         Value = "False">
+                                <Setter Property = "IsEnabled"
+                                        Value = "False" />
+                                <Setter Property = "ToolTip"
+                                        Value = "Should configure game at first." />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </controls:CustomButton.Style>
+            </controls:CustomButton>
         </Grid>
 
         <Grid Grid.Row = "5">

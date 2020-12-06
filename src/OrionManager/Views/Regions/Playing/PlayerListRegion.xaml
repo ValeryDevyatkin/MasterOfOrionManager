@@ -3,9 +3,89 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
+             xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+             xmlns:constants = "clr-namespace:OrionManager.Constants"
+             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              mc:Ignorable = "d"
-             x:ClassModifier = "internal">
+             x:ClassModifier = "internal"
+             x:Name = "Root">
 
-    <Grid />
+    <d:UserControl.DataContext>
+        <main:MainViewModel />
+    </d:UserControl.DataContext>
+
+    <ItemsControl ItemsSource = "{Binding GameData.Players}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <UniformGrid Columns = "2" />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.Margin>
+                        <Thickness Top = "0"
+                                   Left = "0"
+                                   Right = "{x:Static constants:UiSizes.InnerSpacing}"
+                                   Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
+                    </Grid.Margin>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                        <ColumnDefinition Width = "*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column = "0"
+                            Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
+                    <Grid Grid.Column = "2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "Auto" />
+                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                            <RowDefinition Height = "Auto" />
+                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                            <RowDefinition Height = "Auto" />
+                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                            <RowDefinition Height = "Auto" />
+                        </Grid.RowDefinitions>
+                        <controls:CustomTextBox Grid.Row = "0"
+                                                Label = "Name"
+                                                IsReadOnly = "True"
+                                                Text = "{Binding Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <controls:CustomComboBox Grid.Row = "2"
+                                                 Label = "Counselor"
+                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
+                                                 SelectedItem = "{Binding Counselor, Mode=TwoWay}">
+                            <controls:CustomComboBox.ItemContainerStyle>
+                                <Style TargetType = "ComboBoxItem">
+                                    <Setter Property = "IsEnabled"
+                                            Value = "{Binding IsEnabled}" />
+                                    <Style.Triggers>
+                                        <Trigger Property = "IsEnabled"
+                                                 Value = "False">
+                                            <Setter Property = "BorderThickness"
+                                                    Value = "{x:Static constants:UiSizes.AlertBorderThickness}" />
+                                            <Setter Property = "BorderBrush"
+                                                    Value = "{StaticResource AlertBrush}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </controls:CustomComboBox.ItemContainerStyle>
+                            <controls:CustomComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <ContentControl Content = "{Binding Value}" />
+                                </DataTemplate>
+                            </controls:CustomComboBox.ItemTemplate>
+                        </controls:CustomComboBox>
+                        <controls:CustomTextBox Grid.Row = "4"
+                                                Label = "Points"
+                                                Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <controls:CustomTextBox Grid.Row = "6"
+                                                Label = "Loyalty"
+                                                Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 
 </UserControl>

@@ -6,5 +6,6 @@ namespace OrionManager.DataModels
     {
         public string Name { get; set; }
         public Race Race { get; set; }
+        public PlayerColor Color { get; set; }
     }
 }

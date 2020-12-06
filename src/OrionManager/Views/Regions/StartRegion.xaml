@@ -62,7 +62,8 @@
             <controls:CustomButton Grid.Column = "1"
                                    Content = "Continue"
                                    IsEnabled = "{Binding IsGameStarted, Mode=OneWay}"
-                                   Width = "{StaticResource StartMenuButtonWidth}" />
+                                   Width = "{StaticResource StartMenuButtonWidth}"
+                                   Command = "{Binding AppCommands.ContinueGameCommand, Mode=OneTime}" />
             <controls:CustomButton Grid.Column = "3"
                                    Content = "New Game"
                                    Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"

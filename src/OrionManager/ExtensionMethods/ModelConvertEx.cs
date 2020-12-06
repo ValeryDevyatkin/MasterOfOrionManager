@@ -33,7 +33,22 @@ namespace OrionManager.ExtensionMethods
             }
 
             // TODO: Copy fields here.
-            return new GameDataModel();
+            return new GameDataModel
+            {
+                Round = item.Round,
+
+                Players = item.Players.Select(x => new PlayerDataModel
+                {
+                    // TODO: Copy fields here.
+                    Name = x.Name,
+                    Race = x.Race,
+                    LoyaltyPoints = x.LoyaltyPoints,
+                    WinPoints = x.WinPoints,
+                    Color = x.Color,
+                    HasInitiative = x.HasInitiative,
+                    Counselor = x.Counselor.Value
+                }).ToArray()
+            };
         }
 
         public static GameConfigurationDataModel ToDataModel(this GameConfigurationViewModel item)
@@ -58,7 +73,8 @@ namespace OrionManager.ExtensionMethods
                 {
                     // TODO: Copy fields here.
                     Race = x.Race.Value,
-                    Name = x.Name
+                    Name = x.Name,
+                    Color = x.Color
                 }).ToArray()
             };
         }
@@ -85,11 +101,13 @@ namespace OrionManager.ExtensionMethods
             {
                 // TODO: Copy fields here.
                 Name = x.Name,
-                Race = viewModel.RaceSource[x.Race]
+                Race = viewModel.RaceMap[x.Race],
+                Color = x.Color
             }));
 
             viewModel.UpdateIsPlayerCanBeAdded();
             viewModel.UpdatePlayerColors();
+            viewModel.UpdateIsReadyToPlay();
 
             return viewModel;
         }

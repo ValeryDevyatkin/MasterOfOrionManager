@@ -30,6 +30,25 @@ namespace OrionManager.Services.StateHub
             }
 
             // TODO: Compare fields here.
+            if (item1.Round != item2.Round)
+            {
+                return true;
+            }
+
+            for (var i = 0; i < item1.Players.Length; i++)
+            {
+                var player1 = item1.Players[i];
+                var player2 = item2.Players[i];
+
+                // TODO: Compare fields here.
+                if (player1.HasInitiative != player2.HasInitiative ||
+                    player1.Counselor != player2.Counselor ||
+                    player1.LoyaltyPoints != player2.LoyaltyPoints ||
+                    player1.WinPoints != player2.WinPoints)
+                {
+                    return true;
+                }
+            }
 
             return false;
         }

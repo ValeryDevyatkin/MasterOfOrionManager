@@ -88,13 +88,17 @@
     </ApplicationDefinition>
     <Compile Include="Abstract\DataStateHubBase.cs" />
     <Compile Include="AppLifecycleManager.cs" />
+    <Compile Include="Commands\ContinueGameCommand.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
+    <Compile Include="Commands\StartGameCommand.cs" />
     <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="Constants\UiConstants.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
+    <Compile Include="DataModels\PlayerDataModel.cs" />
     <Compile Include="DataModels\PlayerPresetDataModel.cs" />
+    <Compile Include="Enums\Counselor.cs" />
     <Compile Include="Enums\PlayerColor.cs" />
     <Compile Include="Enums\Race.cs" />
     <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
@@ -125,6 +129,7 @@
     <Compile Include="ViewModels\Main\MainViewModel.Configuration.Edit.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Navigation.cs" />
     <Compile Include="ViewModels\PlayerPresetViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="Views\Backgrounds\PlayingBackground.xaml.cs">
       <DependentUpon>PlayingBackground.xaml</DependentUpon>
     </Compile>
@@ -148,12 +153,6 @@
     </Compile>
     <Compile Include="Views\Regions\Configuration\ConfigurationListRegion.xaml.cs">
       <DependentUpon>ConfigurationListRegion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Regions\Playing\CounselorSelectionRegion.xaml.cs">
-      <DependentUpon>CounselorSelectionRegion.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Regions\Playing\PlayerDiagramListRregion.xaml.cs">
-      <DependentUpon>PlayerDiagramListRregion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Regions\Playing\PlayerListRegion.xaml.cs">
       <DependentUpon>PlayerListRegion.xaml</DependentUpon>
@@ -226,14 +225,6 @@
     <Page Include="Views\Regions\Configuration\ConfigurationListRegion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Regions\Playing\CounselorSelectionRegion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Regions\Playing\PlayerDiagramListRregion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Regions\Playing\PlayerListRegion.xaml">
       <SubType>Designer</SubType>

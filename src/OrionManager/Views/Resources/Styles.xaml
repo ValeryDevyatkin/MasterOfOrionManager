@@ -53,6 +53,8 @@
     </Style>
 
     <Style TargetType = "controls:CustomButton">
+        <Setter Property = "ToolTipService.ShowOnDisabled"
+                Value = "True" />
         <Setter Property = "Height"
                 Value = "{StaticResource DefaultControlHeight}" />
         <Setter Property = "BorderRadius"

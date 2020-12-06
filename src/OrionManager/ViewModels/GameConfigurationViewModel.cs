@@ -17,7 +17,7 @@ namespace OrionManager.ViewModels
             this.UpdateIsPlayerCanBeAdded();
         }
 
-        public IReadOnlyDictionary<Race, DisablingItemViewModel<Race>> RaceSource { get; } =
+        public IReadOnlyDictionary<Race, DisablingItemViewModel<Race>> RaceMap { get; } =
             new Dictionary<Race, DisablingItemViewModel<Race>>
             {
                 {Race.Random, new DisablingItemViewModel<Race>(Race.Random)},
@@ -143,6 +143,18 @@ namespace OrionManager.ViewModels
 
         #endregion
 
+        #region IsReadyToPlay: bool
+
+        public bool IsReadyToPlay
+        {
+            get => _isReadyToPlay;
+            set => SetProperty(ref _isReadyToPlay, value);
+        }
+
+        private bool _isReadyToPlay;
+
+        #endregion
+
         #region AddPlayer command
 
         public ICommand AddPlayerCommand => _addPlayerCommand ??=
@@ -157,12 +169,13 @@ namespace OrionManager.ViewModels
                 var player = new PlayerPresetViewModel
                 {
                     Name = GlobalConstants.DefaultPlayerString,
-                    Race = RaceSource[Race.Random]
+                    Race = RaceMap[Race.Random]
                 };
 
                 PlayerPresets.Add(player);
                 this.UpdateIsPlayerCanBeAdded();
                 this.UpdatePlayerColors();
+                this.UpdateIsReadyToPlay();
             }
         }
 
@@ -182,6 +195,7 @@ namespace OrionManager.ViewModels
                 PlayerPresets.Remove(item);
                 this.UpdateIsPlayerCanBeAdded();
                 this.UpdatePlayerColors();
+                this.UpdateIsReadyToPlay();
             }
         }
 

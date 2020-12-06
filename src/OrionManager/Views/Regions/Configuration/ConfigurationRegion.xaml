@@ -92,7 +92,7 @@
                                                                 Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                         <controls:CustomComboBox Grid.Row = "2"
                                                                  Label = "Race"
-                                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource.Values, Mode=OneTime}"
+                                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceMap.Values, Mode=OneTime}"
                                                                  SelectedItem = "{Binding Race, Mode=TwoWay}">
                                             <controls:CustomComboBox.ItemContainerStyle>
                                                 <Style TargetType = "ComboBoxItem">

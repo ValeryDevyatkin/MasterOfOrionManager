@@ -87,6 +87,7 @@ namespace OrionManager
 
                     // Commands.
                    .RegisterType<ExitAppCommand>()
+                   .RegisterType<StartGameCommand>()
 
                     // Services.
                    .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadJsonService>()

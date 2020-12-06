@@ -37,12 +37,14 @@ namespace OrionManager.ExtensionMethods
             target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
             {
                 // TODO: Copy fields here.
-                Race = target.RaceSource[x.Race.Value],
-                Name = x.Name
+                Race = target.RaceMap[x.Race.Value],
+                Name = x.Name,
+                Color = x.Color
             }));
 
             target.UpdateIsPlayerCanBeAdded();
             target.UpdatePlayerColors();
+            target.UpdateIsReadyToPlay();
         }
 
         public static GameConfigurationViewModel Clone(this GameConfigurationViewModel item)
@@ -94,7 +96,8 @@ namespace OrionManager.ExtensionMethods
 
                 // TODO: Compare fields here.
                 if (playerPreset1.Race.Value != playerPreset2.Race.Value ||
-                    playerPreset1.Name != playerPreset2.Name)
+                    playerPreset1.Name != playerPreset2.Name ||
+                    playerPreset1.Color != playerPreset2.Color)
                 {
                     return true;
                 }
@@ -115,5 +118,8 @@ namespace OrionManager.ExtensionMethods
                 item.PlayerPresets[i].Color = (PlayerColor) i;
             }
         }
+
+        public static void UpdateIsReadyToPlay(this GameConfigurationViewModel item) =>
+            item.IsReadyToPlay = item.PlayerPresets.Count > 0;
     }
 }
