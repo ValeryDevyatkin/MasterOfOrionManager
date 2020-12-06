@@ -13,5 +13,6 @@
     <Brush x:Key = "BlackBrush">#FF000000</Brush>
     <Brush x:Key = "DefaultForeground">CornflowerBlue</Brush>
     <Brush x:Key = "DefaultBackground">#D0493E8E</Brush>
+    <Brush x:Key = "AlertBrush">OrangeRed</Brush>
 
 </ResourceDictionary>

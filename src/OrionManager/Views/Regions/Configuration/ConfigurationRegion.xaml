@@ -90,21 +90,31 @@
                                         <controls:CustomTextBox Grid.Row = "0"
                                                                 Label = "Name"
                                                                 Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                                        <ComboBox Grid.Row = "2"
-                                                  ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource.Values, Mode=OneTime}"
-                                                  SelectedItem = "{Binding Race, Mode=TwoWay}">
-                                            <ComboBox.ItemContainerStyle>
+                                        <controls:CustomComboBox Grid.Row = "2"
+                                                                 Label = "Race"
+                                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceSource.Values, Mode=OneTime}"
+                                                                 SelectedItem = "{Binding Race, Mode=TwoWay}">
+                                            <controls:CustomComboBox.ItemContainerStyle>
                                                 <Style TargetType = "ComboBoxItem">
                                                     <Setter Property = "IsEnabled"
                                                             Value = "{Binding IsEnabled}" />
+                                                    <Style.Triggers>
+                                                        <Trigger Property = "IsEnabled"
+                                                                 Value = "False">
+                                                            <Setter Property = "BorderThickness"
+                                                                    Value = "{x:Static constants:UiSizes.AlertBorderThickness}" />
+                                                            <Setter Property = "BorderBrush"
+                                                                    Value = "{StaticResource AlertBrush}" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
                                                 </Style>
-                                            </ComboBox.ItemContainerStyle>
-                                            <ComboBox.ItemTemplate>
+                                            </controls:CustomComboBox.ItemContainerStyle>
+                                            <controls:CustomComboBox.ItemTemplate>
                                                 <DataTemplate>
                                                     <ContentControl Content = "{Binding Value}" />
                                                 </DataTemplate>
-                                            </ComboBox.ItemTemplate>
-                                        </ComboBox>
+                                            </controls:CustomComboBox.ItemTemplate>
+                                        </controls:CustomComboBox>
                                     </Grid>
                                     <controls:CustomButton Grid.Column = "4"
                                                            Content = "X"
