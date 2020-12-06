@@ -27,8 +27,7 @@ namespace OrionManager.Commands
             var game = mainViewModel.GameData;
             var players = new PlayerViewModel[config.PlayerPresets.Count];
 
-            if (mainViewModel.IsGameStarted ||
-                !config.IsReadyToPlay)
+            if (!config.IsReadyToPlay)
             {
                 throw new NotSupportedException();
             }
@@ -38,19 +37,21 @@ namespace OrionManager.Commands
             for (var i = 0; i < config.PlayerPresets.Count; i++)
             {
                 var playerPreset = config.PlayerPresets[i];
+                var player = _container.Resolve<PlayerViewModel>();
 
-                var player = new PlayerViewModel
-                {
-                    Race = playerPreset.Race.Value,
-                    Color = playerPreset.Color,
-                    Name = playerPreset.Name,
-                    Counselor = game.CounselorMap[Counselor.None]
-                };
+                player.Race = playerPreset.Race.Value;
+                player.Color = playerPreset.Color;
+                player.Name = playerPreset.Name;
+                player.Counselor = game.CounselorMap[Counselor.None];
 
                 players[i] = player;
             }
 
+            game.Reset();
             game.Players = players;
+            game.WinPointTrackerSize = config.WinPointTrackerSize;
+            game.LoyaltyTrackerSize = config.LoyaltyTrackerSize;
+            game.UpdateRounds();
 
             var gameDataModel = game.ToDataModel();
             _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameDataModel);

@@ -149,10 +149,6 @@
                     <RowDefinition Height = "Auto" />
                     <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
                     <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                    <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                    <RowDefinition Height = "Auto" />
                     <RowDefinition Height = "*" />
                 </Grid.RowDefinitions>
                 <controls:CustomTextBox Grid.Row = "0"
@@ -163,15 +159,9 @@
                                         Label = "Configuration name:"
                                         Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <controls:CustomTextBox Grid.Row = "4"
-                                        Label = "Number of rounds:"
-                                        Text = "{Binding NumberOfRounds, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <controls:CustomTextBox Grid.Row = "6"
-                                        Label = "Number of counselors:"
-                                        Text = "{Binding NumberOfCounselors, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <controls:CustomTextBox Grid.Row = "8"
                                         Label = "Win point tracker size:"
                                         Text = "{Binding WinPointTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <controls:CustomTextBox Grid.Row = "10"
+                <controls:CustomTextBox Grid.Row = "6"
                                         Label = "Loyalty tracker size:"
                                         Text = "{Binding LoyaltyTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>

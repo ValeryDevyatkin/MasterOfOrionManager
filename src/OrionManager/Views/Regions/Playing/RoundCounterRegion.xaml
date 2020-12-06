@@ -3,9 +3,87 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:constants = "clr-namespace:OrionManager.Constants"
+             xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+             xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
+             xmlns:enums = "clr-namespace:OrionManager.Enums"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
-    <Grid />
+    <d:UserControl.DataContext>
+        <main:MainViewModel />
+    </d:UserControl.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "*" />
+            <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+            <ColumnDefinition Width = "Auto" />
+        </Grid.ColumnDefinitions>
+        <ItemsControl ItemsSource = "{Binding GameData.Rounds, Mode=OneWay}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows = "1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border>
+                        <Border.Margin>
+                            <Thickness Top = "0"
+                                       Left = "0"
+                                       Bottom = "0"
+                                       Right = "{x:Static constants:UiSizes.InnerSpacing}" />
+                        </Border.Margin>
+                        <TextBlock Text = "{Binding Number, Mode=OneWay}"
+                                   HorizontalAlignment = "Center"
+                                   TextAlignment = "Center" />
+                        <Border.Style>
+                            <Style TargetType = "Border"
+                                   BasedOn = "{StaticResource {x:Type Border}}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding = "{Binding State}"
+                                                 Value = "{x:Static enums:RoundState.Passed}">
+                                        <Setter Property = "Background"
+                                                Value = "{StaticResource BlackBrush}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding = "{Binding State}"
+                                                 Value = "{x:Static enums:RoundState.Current}">
+                                        <Setter Property = "BorderBrush"
+                                                Value = "{StaticResource AlertBrush}" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <ContentControl Grid.Column = "2">
+            <ContentControl.Style>
+                <Style TargetType = "ContentControl">
+                    <Setter Property = "Content">
+                        <Setter.Value>
+                            <controls:CustomButton Content = "Next Round"
+                                                   Width = "{StaticResource StartMenuButtonWidth}"
+                                                   Command = "{Binding AppCommands.StartNewRoundCommand, Mode=OneTime}" />
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding = "{Binding GameData.IsGameCanBeFinished}"
+                                     Value = "True">
+                            <Setter Property = "Content">
+                                <Setter.Value>
+                                    <controls:CustomButton Content = "Finish Game"
+                                                           Width = "{StaticResource StartMenuButtonWidth}"
+                                                           Command = "{Binding AppCommands.FinishGameCommand, Mode=OneTime}" />
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
 
 </UserControl>

@@ -30,8 +30,6 @@ namespace OrionManager.ExtensionMethods
             // TODO: Copy fields here.
             target.SaveTime = source.SaveTime;
             target.Name = source.Name;
-            target.NumberOfRounds = source.NumberOfRounds;
-            target.NumberOfCounselors = source.NumberOfCounselors;
             target.WinPointTrackerSize = source.WinPointTrackerSize;
             target.LoyaltyTrackerSize = source.LoyaltyTrackerSize;
             target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
@@ -80,8 +78,6 @@ namespace OrionManager.ExtensionMethods
 
             // TODO: Compare fields here.
             if (item1.Name != item2.Name ||
-                item1.NumberOfRounds != item2.NumberOfRounds ||
-                item1.NumberOfCounselors != item2.NumberOfCounselors ||
                 item1.WinPointTrackerSize != item2.WinPointTrackerSize ||
                 item1.LoyaltyTrackerSize != item2.LoyaltyTrackerSize ||
                 item1.PlayerPresets.Count != item2.PlayerPresets.Count)

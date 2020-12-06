@@ -36,6 +36,8 @@ namespace OrionManager.ExtensionMethods
             return new GameDataModel
             {
                 Round = item.Round,
+                WinPointTrackerSize = item.WinPointTrackerSize,
+                LoyaltyTrackerSize = item.LoyaltyTrackerSize,
 
                 Players = item.Players.Select(x => new PlayerDataModel
                 {
@@ -64,8 +66,6 @@ namespace OrionManager.ExtensionMethods
                 Id = item.Id,
                 SaveTime = item.SaveTime,
                 Name = item.Name,
-                NumberOfRounds = item.NumberOfRounds,
-                NumberOfCounselors = item.NumberOfCounselors,
                 WinPointTrackerSize = item.WinPointTrackerSize,
                 LoyaltyTrackerSize = item.LoyaltyTrackerSize,
 
@@ -92,8 +92,6 @@ namespace OrionManager.ExtensionMethods
             viewModel.Id = item.Id;
             viewModel.SaveTime = item.SaveTime;
             viewModel.Name = item.Name;
-            viewModel.NumberOfRounds = item.NumberOfRounds;
-            viewModel.NumberOfCounselors = item.NumberOfCounselors;
             viewModel.WinPointTrackerSize = item.WinPointTrackerSize;
             viewModel.LoyaltyTrackerSize = item.LoyaltyTrackerSize;
 

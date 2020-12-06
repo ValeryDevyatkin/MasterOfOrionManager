@@ -1,10 +1,16 @@
 ﻿using OrionManager.Enums;
+using OrionManager.ExtensionMethods;
 using Senticode.Wpf.Base;
+using Unity;
 
 namespace OrionManager.ViewModels
 {
-    internal class PlayerViewModel : ObservableObject
+    internal class PlayerViewModel : ViewModelBase
     {
+        public PlayerViewModel(IUnityContainer container) : base(container)
+        {
+        }
+
         public string Name { get; set; }
         public PlayerColor Color { get; set; }
         public Race Race { get; set; }
@@ -14,7 +20,12 @@ namespace OrionManager.ViewModels
         public int LoyaltyPoints
         {
             get => _loyaltyPoints;
-            set => SetProperty(ref _loyaltyPoints, value);
+            set => SetProperty(ref _loyaltyPoints, value, OnLoyaltyPointsChanged);
+        }
+
+        private void OnLoyaltyPointsChanged()
+        {
+            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
         }
 
         private int _loyaltyPoints;
@@ -26,7 +37,12 @@ namespace OrionManager.ViewModels
         public int WinPoints
         {
             get => _winPoints;
-            set => SetProperty(ref _winPoints, value);
+            set => SetProperty(ref _winPoints, value, OnWinPointsChanged);
+        }
+
+        private void OnWinPointsChanged()
+        {
+            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
         }
 
         private int _winPoints;

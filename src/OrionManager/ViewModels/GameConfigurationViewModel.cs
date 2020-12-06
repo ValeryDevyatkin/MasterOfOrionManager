@@ -83,30 +83,6 @@ namespace OrionManager.ViewModels
 
         #endregion
 
-        #region NumberOfRounds: int
-
-        public int NumberOfRounds
-        {
-            get => _numberOfRounds;
-            set => SetProperty(ref _numberOfRounds, value);
-        }
-
-        private int _numberOfRounds;
-
-        #endregion
-
-        #region NumberOfCounselors: int
-
-        public int NumberOfCounselors
-        {
-            get => _numberOfCounselors;
-            set => SetProperty(ref _numberOfCounselors, value);
-        }
-
-        private int _numberOfCounselors;
-
-        #endregion
-
         #region WinPointTrackerSize: int
 
         public int WinPointTrackerSize

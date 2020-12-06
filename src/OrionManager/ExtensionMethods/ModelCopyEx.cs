@@ -3,6 +3,8 @@ using System.Linq;
 using OrionManager.DataModels;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
+using Senticode.Wpf;
+using Unity;
 
 namespace OrionManager.ExtensionMethods
 {
@@ -38,18 +40,27 @@ namespace OrionManager.ExtensionMethods
 
             // TODO: Copy fields here.
             target.Round = source.Round;
+            target.LoyaltyTrackerSize = source.LoyaltyTrackerSize;
+            target.WinPointTrackerSize = source.WinPointTrackerSize;
 
-            target.Players = source.Players.Select(x => new PlayerViewModel
+            target.Players = source.Players.Select(x =>
             {
+                var viewModel = ServiceLocator.Container.Resolve<PlayerViewModel>();
+
                 // TODO: Copy fields here.
-                Name = x.Name,
-                Race = x.Race,
-                LoyaltyPoints = x.LoyaltyPoints,
-                WinPoints = x.WinPoints,
-                Color = x.Color,
-                HasInitiative = x.HasInitiative,
-                Counselor = target.CounselorMap[x.Counselor]
+                viewModel.Name = x.Name;
+                viewModel.Race = x.Race;
+                viewModel.LoyaltyPoints = x.LoyaltyPoints;
+                viewModel.WinPoints = x.WinPoints;
+                viewModel.Color = x.Color;
+                viewModel.HasInitiative = x.HasInitiative;
+                viewModel.Counselor = target.CounselorMap[x.Counselor];
+
+                return viewModel;
             }).ToArray();
+
+            target.UpdateRounds();
+            target.UpdateIsGameCanBeFinished();
         }
     }
 }

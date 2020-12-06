@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using OrionManager.Constants;
 using OrionManager.Enums;
 using Senticode.Wpf.Base;
 using Unity;
@@ -10,6 +11,11 @@ namespace OrionManager.ViewModels
         public GameDataViewModel(IUnityContainer container) : base(container)
         {
             container.RegisterInstance(this);
+
+            for (var i = 0; i < GlobalConstants.RoundCount; i++)
+            {
+                Rounds[i] = new RoundViewModel {Number = i + 1};
+            }
         }
 
         public IReadOnlyDictionary<Counselor, DisablingItemViewModel<Counselor>> CounselorMap { get; } =
@@ -27,6 +33,8 @@ namespace OrionManager.ViewModels
             };
 
         public PlayerViewModel[] Players { get; set; }
+
+        public RoundViewModel[] Rounds { get; } = new RoundViewModel[GlobalConstants.RoundCount];
 
         #region Round: int
 
@@ -49,6 +57,30 @@ namespace OrionManager.ViewModels
         }
 
         private bool _isGameCanBeFinished;
+
+        #endregion
+
+        #region WinPointTrackerSize: int
+
+        public int WinPointTrackerSize
+        {
+            get => _winPointTrackerSize;
+            set => SetProperty(ref _winPointTrackerSize, value);
+        }
+
+        private int _winPointTrackerSize;
+
+        #endregion
+
+        #region LoyaltyTrackerSize: int
+
+        public int LoyaltyTrackerSize
+        {
+            get => _loyaltyTrackerSize;
+            set => SetProperty(ref _loyaltyTrackerSize, value);
+        }
+
+        private int _loyaltyTrackerSize;
 
         #endregion
     }

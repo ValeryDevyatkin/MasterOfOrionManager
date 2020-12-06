@@ -13,5 +13,7 @@ namespace OrionManager
         public ExitAppCommand ExitAppCommand => Container.Resolve<ExitAppCommand>();
         public StartGameCommand StartGameCommand => Container.Resolve<StartGameCommand>();
         public ContinueGameCommand ContinueGameCommand => Container.Resolve<ContinueGameCommand>();
+        public StartNewRoundCommand StartNewRoundCommand => Container.Resolve<StartNewRoundCommand>();
+        public FinishGameCommand FinishGameCommand => Container.Resolve<FinishGameCommand>();
     }
 }

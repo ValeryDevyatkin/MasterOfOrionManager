@@ -30,7 +30,9 @@ namespace OrionManager.Services.StateHub
             }
 
             // TODO: Compare fields here.
-            if (item1.Round != item2.Round)
+            if (item1.Round != item2.Round ||
+                item1.LoyaltyTrackerSize != item2.LoyaltyTrackerSize ||
+                item1.WinPointTrackerSize != item2.WinPointTrackerSize)
             {
                 return true;
             }
