@@ -168,6 +168,7 @@ namespace OrionManager.ViewModels
         {
             if (parameter is PlayerPresetViewModel item)
             {
+                RaceMap[item.Race.Value].IsEnabled = true;
                 PlayerPresets.Remove(item);
                 this.UpdateIsPlayerCanBeAdded();
                 this.UpdatePlayerColors();
