@@ -1,21 +1,21 @@
-﻿using OrionManager.Common.Enums;
+﻿using OrionManager.Common.Interfaces;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.Commands
+namespace OrionManager.ViewModel.Commands
 {
-    public class ContinueGameCommand : CommandBase
+    internal class ExitAppCommand : CommandBase
     {
         private readonly IUnityContainer _container;
 
-        public ContinueGameCommand(IUnityContainer container)
+        public ExitAppCommand(IUnityContainer container)
         {
             _container = container.RegisterInstance(this);
         }
 
         protected override void ExecuteExternal(object parameter)
         {
-            _container.Resolve<NavigateToRegionCommand>().Execute(UiRegions.Playing);
+            _container.Resolve<IAppLifecycleService>().ExitApp();
         }
     }
 }

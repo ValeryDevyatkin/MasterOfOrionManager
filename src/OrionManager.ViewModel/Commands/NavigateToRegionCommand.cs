@@ -1,12 +1,11 @@
 ﻿using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
-using OrionManager.ViewModels.Main;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.Commands
+namespace OrionManager.ViewModel.Commands
 {
-    public class NavigateToRegionCommand : CommandBase
+    internal class NavigateToRegionCommand : CommandBase
     {
         private readonly IUnityContainer _container;
 
@@ -22,11 +21,7 @@ namespace OrionManager.Commands
                 return;
             }
 
-            var navigationItem = _container.Resolve<IRegionNavigationService>().NavigateToRegion(region);
-            var mainViewModel = _container.Resolve<MainViewModel>();
-
-            mainViewModel.CurrentRegion = navigationItem.Region;
-            mainViewModel.CurrentRegionBackground = navigationItem.RegionBackground;
+            _container.Resolve<IAppLifecycleService>().NavigateToRegion(region);
         }
     }
 }

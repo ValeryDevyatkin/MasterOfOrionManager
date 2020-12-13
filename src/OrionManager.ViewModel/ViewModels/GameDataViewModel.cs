@@ -4,9 +4,9 @@ using OrionManager.Common.Enums;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.ViewModels
+namespace OrionManager.ViewModel.ViewModels
 {
-    internal class GameDataViewModel : ViewModelBase
+    public class GameDataViewModel : ViewModelBase
     {
         public GameDataViewModel(IUnityContainer container) : base(container)
         {

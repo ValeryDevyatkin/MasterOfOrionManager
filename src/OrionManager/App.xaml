@@ -1,9 +1,9 @@
 ﻿<base:ApplicationBase x:Class = "OrionManager.App"
-                      x:TypeArguments = "orionManager:AppSettings, orionManager:AppCommands"
+                      x:TypeArguments = "viewModel:AppSettings, viewModel:AppCommands"
                       xmlns:base = "clr-namespace:Senticode.Wpf.Base;assembly=Senticode.Wpf"
                       xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                       xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
-                      xmlns:orionManager = "clr-namespace:OrionManager"
+                      xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
                       x:ClassModifier = "internal">
 
     <Application.Resources>

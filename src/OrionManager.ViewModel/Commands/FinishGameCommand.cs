@@ -1,13 +1,14 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.ExtensionMethods;
-using OrionManager.ViewModels;
-using OrionManager.ViewModels.Main;
+using OrionManager.Common.Interfaces;
+using OrionManager.ViewModel.ExtensionMethods;
+using OrionManager.ViewModel.ViewModels;
+using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.Commands
+namespace OrionManager.ViewModel.Commands
 {
-    public class FinishGameCommand : CommandBase
+    internal class FinishGameCommand : CommandBase
     {
         private readonly IUnityContainer _container;
 
@@ -20,7 +21,7 @@ namespace OrionManager.Commands
         {
             _container.Resolve<MainViewModel>().IsGameStarted = false;
             _container.Resolve<GameDataViewModel>().Reset();
-            _container.Resolve<NavigateToRegionCommand>().Execute(UiRegions.Start);
+            _container.Resolve<IAppLifecycleService>().NavigateToRegion(UiRegions.Start);
         }
     }
 }

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{218EF47B-2AF4-4F73-AA95-1C3BE6EC7132}</ProjectGuid>
+    <ProjectGuid>{E2452FA6-B6B8-4EDD-9026-E5D2F5F6C80A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>OrionManager.Services</RootNamespace>
-    <AssemblyName>OrionManager.Services</AssemblyName>
+    <RootNamespace>OrionManager.ViewModel</RootNamespace>
+    <AssemblyName>OrionManager.ViewModel</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,13 +31,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BAJIEPA.Tools.Helpers">
-      <HintPath>..\..\artifacts\BAJIEPA.Tools.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\sln\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Senticode.Wpf, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\artifacts\Senticode.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,16 +57,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstract\DataStateHubBase.cs" />
-    <Compile Include="Abstract\JsonSaveLoadServiceBase.cs" />
-    <Compile Include="ServicesInitializer.cs" />
-    <Compile Include="Services\RegionNavigationService.cs" />
-    <Compile Include="Services\SaveLoad\AppDataSaveLoadJsonService.cs" />
-    <Compile Include="Services\SaveLoad\GameConfigurationJsonService.cs" />
-    <Compile Include="Services\SaveLoad\GameDataSaveLoadJsonService.cs" />
-    <Compile Include="Services\SaveLoad\PathProvider.cs" />
-    <Compile Include="Services\StateHub\AppDataStateHub.cs" />
-    <Compile Include="Services\StateHub\GameDataStateHub.cs" />
+    <Compile Include="AppCommands.cs" />
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="Commands\ContinueGameCommand.cs" />
+    <Compile Include="Commands\ExitAppCommand.cs" />
+    <Compile Include="Commands\FinishGameCommand.cs" />
+    <Compile Include="Commands\NavigateToRegionCommand.cs" />
+    <Compile Include="Commands\StartGameCommand.cs" />
+    <Compile Include="Commands\StartNewRoundCommand.cs" />
+    <Compile Include="ExtensionMethods\ConfigurationViewModelEx.cs" />
+    <Compile Include="ExtensionMethods\GameDataViewModelEx.cs" />
+    <Compile Include="ExtensionMethods\ModelConvertEx.cs" />
+    <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
+    <Compile Include="Services\AppLifecycleService.cs" />
+    <Compile Include="ViewModelInitializer.cs" />
+    <Compile Include="ViewModels\DisablingItemViewModel.cs" />
+    <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
+    <Compile Include="ViewModels\GameDataViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.Configuration.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.Configuration.Edit.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.View.cs" />
+    <Compile Include="ViewModels\PlayerPresetViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\RoundViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrionManager.Common\OrionManager.Common.csproj">
@@ -74,9 +92,6 @@
       <Name>OrionManager.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

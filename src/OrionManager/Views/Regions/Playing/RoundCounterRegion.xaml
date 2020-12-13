@@ -4,9 +4,9 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
-             xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
+             xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 

@@ -1,11 +1,11 @@
 ﻿using System.Linq;
 using OrionManager.Common.Enums;
-using OrionManager.ViewModels;
-using OrionManager.ViewModels.Main;
+using OrionManager.ViewModel.ViewModels;
+using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf;
 using Unity;
 
-namespace OrionManager.ExtensionMethods
+namespace OrionManager.ViewModel.ExtensionMethods
 {
     internal static class GameDataViewModelEx
     {

@@ -1,6 +1,6 @@
-﻿namespace OrionManager.ViewModels.Main
+﻿namespace OrionManager.ViewModel.ViewModels.Main
 {
-    internal partial class MainViewModel
+    public partial class MainViewModel
     {
         #region CurrentRegionBackground: object
 

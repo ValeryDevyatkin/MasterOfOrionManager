@@ -1,9 +1,9 @@
 ﻿using OrionManager.Common.Enums;
 using Senticode.Wpf.Base;
 
-namespace OrionManager.ViewModels
+namespace OrionManager.ViewModel.ViewModels
 {
-    internal class PlayerPresetViewModel : ObservableObject
+    public class PlayerPresetViewModel : ObservableObject
     {
         #region Name: string
 

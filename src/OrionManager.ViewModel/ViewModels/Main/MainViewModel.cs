@@ -3,9 +3,9 @@ using OrionManager.Common.Interfaces;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.ViewModels.Main
+namespace OrionManager.ViewModel.ViewModels.Main
 {
-    internal partial class MainViewModel : ViewModelBase<AppSettings, AppCommands>, IInit
+    public partial class MainViewModel : ViewModelBase<AppSettings, AppCommands>, IInit
     {
         public MainViewModel() : base(null)
         {

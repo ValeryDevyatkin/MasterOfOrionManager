@@ -2,15 +2,15 @@
 using OrionManager.Common.DataModels;
 using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
-using OrionManager.ExtensionMethods;
-using OrionManager.ViewModels;
-using OrionManager.ViewModels.Main;
+using OrionManager.ViewModel.ExtensionMethods;
+using OrionManager.ViewModel.ViewModels;
+using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.Commands
+namespace OrionManager.ViewModel.Commands
 {
-    public class StartGameCommand : CommandBase
+    internal class StartGameCommand : CommandBase
     {
         private readonly IUnityContainer _container;
 
@@ -56,7 +56,7 @@ namespace OrionManager.Commands
 
             _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameDataModel);
             _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameDataModel);
-            _container.Resolve<NavigateToRegionCommand>().Execute(UiRegions.Playing);
+            _container.Resolve<IAppLifecycleService>().NavigateToRegion(UiRegions.Playing);
         }
     }
 }

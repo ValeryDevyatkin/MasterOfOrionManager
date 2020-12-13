@@ -1,13 +1,13 @@
 ﻿using System;
 using OrionManager.Common.Enums;
-using OrionManager.ExtensionMethods;
-using OrionManager.ViewModels;
+using OrionManager.ViewModel.ExtensionMethods;
+using OrionManager.ViewModel.ViewModels;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.Commands
+namespace OrionManager.ViewModel.Commands
 {
-    public class StartNewRoundCommand : CommandBase
+    internal class StartNewRoundCommand : CommandBase
     {
         private readonly IUnityContainer _container;
 

@@ -1,8 +1,8 @@
 ﻿using Senticode.Wpf.Base;
 
-namespace OrionManager.ViewModels
+namespace OrionManager.ViewModel.ViewModels
 {
-    internal class DisablingItemViewModel<T> : ObservableObject
+    public class DisablingItemViewModel<T> : ObservableObject
 
     {
         public DisablingItemViewModel(T item)

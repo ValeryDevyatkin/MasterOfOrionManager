@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using OrionManager.Common.Constants;
 using OrionManager.Common.Enums;
-using OrionManager.ExtensionMethods;
+using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
 using Unity;
 
-namespace OrionManager.ViewModels
+namespace OrionManager.ViewModel.ViewModels
 {
-    internal class GameConfigurationViewModel : ViewModelBase
+    public class GameConfigurationViewModel : ViewModelBase
     {
         public GameConfigurationViewModel(IUnityContainer container) : base(container)
         {

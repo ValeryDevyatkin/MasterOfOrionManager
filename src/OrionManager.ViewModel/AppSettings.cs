@@ -1,9 +1,9 @@
 ﻿using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager
+namespace OrionManager.ViewModel
 {
-    internal class AppSettings : AppSettingsBase
+    public class AppSettings : AppSettingsBase
     {
         public AppSettings(IUnityContainer container) : base(container)
         {

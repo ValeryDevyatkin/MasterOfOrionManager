@@ -3,14 +3,14 @@ using System.Windows.Input;
 using OrionManager.Common.Enums;
 using OrionManager.Common.ExtensionMethods;
 using OrionManager.Common.Interfaces;
-using OrionManager.ExtensionMethods;
+using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
 using Unity;
 
-namespace OrionManager.ViewModels.Main
+namespace OrionManager.ViewModel.ViewModels.Main
 {
-    internal partial class MainViewModel
+    public partial class MainViewModel
     {
         public ObservableRangeCollection<GameConfigurationViewModel> GameConfigurations { get; } =
             new ObservableRangeCollection<GameConfigurationViewModel>();

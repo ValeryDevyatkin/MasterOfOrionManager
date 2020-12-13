@@ -65,6 +65,7 @@
     <Compile Include="Enums\RoundStates.cs" />
     <Compile Include="Enums\UiRegions.cs" />
     <Compile Include="ExtensionMethods\GuidEx.cs" />
+    <Compile Include="Interfaces\IAppLifecycleService.cs" />
     <Compile Include="Interfaces\IDataStateHub.cs" />
     <Compile Include="Interfaces\IGameConfigurationService.cs" />
     <Compile Include="Interfaces\IInit.cs" />

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 using OrionManager.Common.Constants;
-using OrionManager.ViewModels;
+using OrionManager.ViewModel.ViewModels;
 
 namespace OrionManager.Wpf.Converters
 {

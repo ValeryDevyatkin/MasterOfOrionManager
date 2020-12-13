@@ -1,9 +1,9 @@
 ﻿using OrionManager.Common.Enums;
 using Senticode.Wpf.Base;
 
-namespace OrionManager.ViewModels
+namespace OrionManager.ViewModel.ViewModels
 {
-    internal class RoundViewModel : ObservableObject
+    public class RoundViewModel : ObservableObject
     {
         public int Number { get; set; }
 

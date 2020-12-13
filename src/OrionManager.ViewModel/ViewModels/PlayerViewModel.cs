@@ -1,11 +1,11 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.ExtensionMethods;
+using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Unity;
 
-namespace OrionManager.ViewModels
+namespace OrionManager.ViewModel.ViewModels
 {
-    internal class PlayerViewModel : ViewModelBase
+    public class PlayerViewModel : ViewModelBase
     {
         public PlayerViewModel(IUnityContainer container) : base(container)
         {

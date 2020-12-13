@@ -7,7 +7,7 @@ using Unity;
 
 namespace OrionManager.Services
 {
-    public class OrionManagerServicesInitializer : IModuleInitializer
+    public class ServicesInitializer : IModuleInitializer
     {
         public void Init(IUnityContainer container)
         {
@@ -24,11 +24,11 @@ namespace OrionManager.Services
 
         #region singleton
 
-        private OrionManagerServicesInitializer()
+        private ServicesInitializer()
         {
         }
 
-        public static OrionManagerServicesInitializer Instance { get; } = new OrionManagerServicesInitializer();
+        public static ServicesInitializer Instance { get; } = new ServicesInitializer();
 
         #endregion
     }

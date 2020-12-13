@@ -2,11 +2,11 @@
 using System.Linq;
 using OrionManager.Common.Constants;
 using OrionManager.Common.Enums;
-using OrionManager.ViewModels;
+using OrionManager.ViewModel.ViewModels;
 using Senticode.Wpf;
 using Unity;
 
-namespace OrionManager.ExtensionMethods
+namespace OrionManager.ViewModel.ExtensionMethods
 {
     internal static class ConfigurationViewModelEx
     {
