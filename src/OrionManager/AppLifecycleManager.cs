@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Windows.Threading;
 using BAJIEPA.Tools.Helpers;
 using OrionManager.Commands;
-using OrionManager.DataItems;
-using OrionManager.DataModels;
+using OrionManager.Common.DataItems;
+using OrionManager.Common.DataModels;
+using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
-using OrionManager.Interfaces;
 using OrionManager.Services;
-using OrionManager.Services.SaveLoad;
-using OrionManager.Services.StateHub;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
 using OrionManager.Views;
@@ -63,7 +61,10 @@ namespace OrionManager
         {
             try
             {
+                OrionManagerServicesInitializer.Instance.Init(_container);
+
                 _container
+
                     // MainWindow.
                    .RegisterType<MainViewModel>()
                    .RegisterSingleton<MainWindow>()
@@ -90,14 +91,7 @@ namespace OrionManager
                    .RegisterType<StartGameCommand>()
                    .RegisterType<FinishGameCommand>()
 
-                    // Services.
-                   .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadJsonService>()
-                   .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadJsonService>()
-                   .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
-                   .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
-                   .RegisterType<IRegionNavigationService, RegionNavigationService>()
-                   .RegisterType<IGameConfigurationService, GameConfigurationJsonService>()
-                   .RegisterType<IPathProvider, PathProvider>()
+                    //
                     ;
             }
             catch (Exception e)

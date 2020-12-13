@@ -1,5 +1,5 @@
 ﻿using System;
-using OrionManager.Enums;
+using OrionManager.Common.Enums;
 using OrionManager.ExtensionMethods;
 using OrionManager.ViewModels;
 using Senticode.Wpf.Base;
@@ -25,9 +25,9 @@ namespace OrionManager.Commands
                 throw new NotSupportedException();
             }
 
-            game.Rounds[game.Round].State = RoundState.Passed;
+            game.Rounds[game.Round].State = RoundStates.Passed;
             game.Round++;
-            game.Rounds[game.Round].State = RoundState.Current;
+            game.Rounds[game.Round].State = RoundStates.Current;
             game.UpdateIsGameCanBeFinished();
         }
     }

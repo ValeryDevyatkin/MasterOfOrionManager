@@ -3,10 +3,10 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
-             xmlns:enums = "clr-namespace:OrionManager.Enums"
+             xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
+             xmlns:constants = "clr-namespace:OrionManager.Theme"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -43,12 +43,12 @@
                                    BasedOn = "{StaticResource {x:Type Border}}">
                                 <Style.Triggers>
                                     <DataTrigger Binding = "{Binding State}"
-                                                 Value = "{x:Static enums:RoundState.Passed}">
+                                                 Value = "{x:Static enums:RoundStates.Passed}">
                                         <Setter Property = "Background"
                                                 Value = "{StaticResource BlackBrush}" />
                                     </DataTrigger>
                                     <DataTrigger Binding = "{Binding State}"
-                                                 Value = "{x:Static enums:RoundState.Current}">
+                                                 Value = "{x:Static enums:RoundStates.Current}">
                                         <Setter Property = "BorderBrush"
                                                 Value = "{StaticResource AlertBrush}" />
                                     </DataTrigger>

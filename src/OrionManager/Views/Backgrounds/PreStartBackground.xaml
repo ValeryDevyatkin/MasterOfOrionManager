@@ -8,7 +8,7 @@
 
     <UserControl.Background>
         <ImageBrush
-            ImageSource = "pack://application:,,,/OrionManager;component/Views/Resources/Images/OrionStarsBack.jpg" />
+            ImageSource = "pack://application:,,,/Theme/Images/OrionStarsBack.jpg" />
     </UserControl.Background>
 
 </UserControl>

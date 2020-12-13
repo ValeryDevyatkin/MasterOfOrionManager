@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using OrionManager.Constants;
-using OrionManager.Enums;
+using OrionManager.Common.Constants;
+using OrionManager.Common.Enums;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -12,29 +12,29 @@ namespace OrionManager.ViewModels
         {
             container.RegisterInstance(this);
 
-            for (var i = 0; i < GlobalConstants.RoundCount; i++)
+            for (var i = 0; i < GlobalConstants.DefaultRoundCount; i++)
             {
                 Rounds[i] = new RoundViewModel {Number = i + 1};
             }
         }
 
-        public IReadOnlyDictionary<Counselor, DisablingItemViewModel<Counselor>> CounselorMap { get; } =
-            new Dictionary<Counselor, DisablingItemViewModel<Counselor>>
+        public IReadOnlyDictionary<Counselors, DisablingItemViewModel<Counselors>> CounselorMap { get; } =
+            new Dictionary<Counselors, DisablingItemViewModel<Counselors>>
             {
-                {Counselor.None, new DisablingItemViewModel<Counselor>(Counselor.None)},
-                {Counselor.Advia, new DisablingItemViewModel<Counselor>(Counselor.Advia)},
-                {Counselor.Veil, new DisablingItemViewModel<Counselor>(Counselor.Veil)},
-                {Counselor.Harrava, new DisablingItemViewModel<Counselor>(Counselor.Harrava)},
-                {Counselor.Kual, new DisablingItemViewModel<Counselor>(Counselor.Kual)},
-                {Counselor.Moldred, new DisablingItemViewModel<Counselor>(Counselor.Moldred)},
-                {Counselor.Alluvia, new DisablingItemViewModel<Counselor>(Counselor.Alluvia)},
-                {Counselor.Kuruk, new DisablingItemViewModel<Counselor>(Counselor.Kuruk)},
-                {Counselor.Viktoria, new DisablingItemViewModel<Counselor>(Counselor.Viktoria)}
+                {Counselors.None, new DisablingItemViewModel<Counselors>(Counselors.None)},
+                {Counselors.Advia, new DisablingItemViewModel<Counselors>(Counselors.Advia)},
+                {Counselors.Veil, new DisablingItemViewModel<Counselors>(Counselors.Veil)},
+                {Counselors.Harrava, new DisablingItemViewModel<Counselors>(Counselors.Harrava)},
+                {Counselors.Kual, new DisablingItemViewModel<Counselors>(Counselors.Kual)},
+                {Counselors.Moldred, new DisablingItemViewModel<Counselors>(Counselors.Moldred)},
+                {Counselors.Alluvia, new DisablingItemViewModel<Counselors>(Counselors.Alluvia)},
+                {Counselors.Kuruk, new DisablingItemViewModel<Counselors>(Counselors.Kuruk)},
+                {Counselors.Viktoria, new DisablingItemViewModel<Counselors>(Counselors.Viktoria)}
             };
 
         public PlayerViewModel[] Players { get; set; }
 
-        public RoundViewModel[] Rounds { get; } = new RoundViewModel[GlobalConstants.RoundCount];
+        public RoundViewModel[] Rounds { get; } = new RoundViewModel[GlobalConstants.DefaultRoundCount];
 
         #region Round: int
 

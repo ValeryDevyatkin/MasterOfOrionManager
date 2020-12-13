@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
-using OrionManager.Constants;
-using OrionManager.Enums;
+using OrionManager.Common.Constants;
+using OrionManager.Common.Enums;
 using OrionManager.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
@@ -17,17 +17,17 @@ namespace OrionManager.ViewModels
             this.UpdateIsPlayerCanBeAdded();
         }
 
-        public IReadOnlyDictionary<Race, DisablingItemViewModel<Race>> RaceMap { get; } =
-            new Dictionary<Race, DisablingItemViewModel<Race>>
+        public IReadOnlyDictionary<Races, DisablingItemViewModel<Races>> RaceMap { get; } =
+            new Dictionary<Races, DisablingItemViewModel<Races>>
             {
-                {Race.Random, new DisablingItemViewModel<Race>(Race.Random)},
-                {Race.Human, new DisablingItemViewModel<Race>(Race.Human)},
-                {Race.Alkari, new DisablingItemViewModel<Race>(Race.Alkari)},
-                {Race.Bulrathi, new DisablingItemViewModel<Race>(Race.Bulrathi)},
-                {Race.Darlok, new DisablingItemViewModel<Race>(Race.Darlok)},
-                {Race.Meklar, new DisablingItemViewModel<Race>(Race.Meklar)},
-                {Race.Mrrshan, new DisablingItemViewModel<Race>(Race.Mrrshan)},
-                {Race.Psilon, new DisablingItemViewModel<Race>(Race.Psilon)}
+                {Races.Random, new DisablingItemViewModel<Races>(Races.Random)},
+                {Races.Human, new DisablingItemViewModel<Races>(Races.Human)},
+                {Races.Alkari, new DisablingItemViewModel<Races>(Races.Alkari)},
+                {Races.Bulrathi, new DisablingItemViewModel<Races>(Races.Bulrathi)},
+                {Races.Darlok, new DisablingItemViewModel<Races>(Races.Darlok)},
+                {Races.Meklar, new DisablingItemViewModel<Races>(Races.Meklar)},
+                {Races.Mrrshan, new DisablingItemViewModel<Races>(Races.Mrrshan)},
+                {Races.Psilon, new DisablingItemViewModel<Races>(Races.Psilon)}
             };
 
         public ObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
@@ -145,7 +145,7 @@ namespace OrionManager.ViewModels
                 var player = new PlayerPresetViewModel
                 {
                     Name = GlobalConstants.DefaultPlayerString,
-                    Race = RaceMap[Race.Random]
+                    Race = RaceMap[Races.Random]
                 };
 
                 PlayerPresets.Add(player);

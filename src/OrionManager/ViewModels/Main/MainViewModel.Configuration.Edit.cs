@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
+using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
-using OrionManager.Interfaces;
 using OrionManager.Views.Regions.Configuration;
 using Senticode.Wpf.Base;
 using Unity;

@@ -9,8 +9,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary
-                    Source = "pack://application:,,,/OrionManager;component/Views/Resources/RootDictionary.xaml" />
+                <ResourceDictionary Source = "pack://application:,,,/Theme/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

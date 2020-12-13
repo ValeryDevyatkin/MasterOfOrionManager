@@ -1,8 +1,8 @@
 ﻿using System;
-using OrionManager.DataModels;
-using OrionManager.Enums;
+using OrionManager.Common.DataModels;
+using OrionManager.Common.Enums;
+using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
-using OrionManager.Interfaces;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
 using OrionManager.Views.Regions.Playing;
@@ -42,7 +42,7 @@ namespace OrionManager.Commands
                 player.Race = playerPreset.Race.Value;
                 player.Color = playerPreset.Color;
                 player.Name = playerPreset.Name;
-                player.Counselor = game.CounselorMap[Counselor.None];
+                player.Counselor = game.CounselorMap[Counselors.None];
 
                 players[i] = player;
             }

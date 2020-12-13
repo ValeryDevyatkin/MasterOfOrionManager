@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
-using OrionManager.Interfaces;
+using OrionManager.Common.Interfaces;
 using Senticode.Wpf.Base;
 using Unity;
 

@@ -46,9 +46,6 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\sln\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\sln\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Senticode.Wpf">
       <HintPath>..\..\artifacts\Senticode.Wpf.dll</HintPath>
     </Reference>
@@ -86,46 +83,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Abstract\DataStateHubBase.cs" />
     <Compile Include="AppLifecycleManager.cs" />
     <Compile Include="Commands\ContinueGameCommand.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Commands\FinishGameCommand.cs" />
     <Compile Include="Commands\StartGameCommand.cs" />
     <Compile Include="Commands\StartNewRoundCommand.cs" />
-    <Compile Include="Constants\GlobalConstants.cs" />
-    <Compile Include="Constants\UiConstants.cs" />
-    <Compile Include="DataModels\AppDataModel.cs" />
-    <Compile Include="DataModels\GameConfigurationDataModel.cs" />
-    <Compile Include="DataModels\GameDataModel.cs" />
-    <Compile Include="DataModels\PlayerDataModel.cs" />
-    <Compile Include="DataModels\PlayerPresetDataModel.cs" />
-    <Compile Include="Enums\Counselor.cs" />
-    <Compile Include="Enums\PlayerColor.cs" />
-    <Compile Include="Enums\Race.cs" />
-    <Compile Include="Enums\RoundState.cs" />
-    <Compile Include="ExtensionMethods\GameDataViewModelEx.cs" />
-    <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
-    <Compile Include="ExtensionMethods\ModelConvertEx.cs" />
-    <Compile Include="ExtensionMethods\GuidEx.cs" />
     <Compile Include="ExtensionMethods\ConfigurationViewModelEx.cs" />
-    <Compile Include="ExtensionMethods\PlayerColorEx.cs" />
-    <Compile Include="Interfaces\IDataStateHub.cs" />
-    <Compile Include="Interfaces\IGameConfigurationService.cs" />
-    <Compile Include="Interfaces\IInit.cs" />
-    <Compile Include="Interfaces\IPathProvider.cs" />
-    <Compile Include="Interfaces\IRegionNavigationService.cs" />
-    <Compile Include="Interfaces\ISaveLoadService.cs" />
-    <Compile Include="DataItems\RegionNavigationInfoItem.cs" />
-    <Compile Include="DataItems\RegionNavigationItem.cs" />
-    <Compile Include="Services\SaveLoad\AppDataSaveLoadJsonService.cs" />
-    <Compile Include="Abstract\JsonSaveLoadServiceBase.cs" />
-    <Compile Include="Services\SaveLoad\PathProvider.cs" />
-    <Compile Include="Services\StateHub\AppDataStateHub.cs" />
-    <Compile Include="Services\SaveLoad\GameConfigurationJsonService.cs" />
-    <Compile Include="Services\SaveLoad\GameDataSaveLoadJsonService.cs" />
-    <Compile Include="Services\StateHub\GameDataStateHub.cs" />
-    <Compile Include="Services\RegionNavigationService.cs" />
+    <Compile Include="ExtensionMethods\GameDataViewModelEx.cs" />
+    <Compile Include="ExtensionMethods\ModelConvertEx.cs" />
+    <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
     <Compile Include="ViewModels\DisablingItemViewModel.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />
@@ -180,6 +147,7 @@
     <Compile Include="Views\Regions\StartRegion.xaml.cs">
       <DependentUpon>StartRegion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Theme\UiConstants.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
     <Compile Include="Wpf\Converters\GameConfigurationDisplayTextConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
@@ -259,19 +227,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Resources\Artifacts.xaml">
+    <Page Include="Theme\Artifacts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Resources\RootDictionary.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Resources\Styles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Resources\Templates.xaml">
+    <Page Include="Theme\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -280,12 +240,22 @@
     <Folder Include="Wpf\TemplateSelectors\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\Resources\Images\OrionShipsBack.jpg" />
-    <Resource Include="Views\Resources\Images\OrionStarsBack.jpg" />
+    <Resource Include="Theme\Images\OrionShipsBack.jpg" />
+    <Resource Include="Theme\Images\OrionStarsBack.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrionManager.Common\OrionManager.Common.csproj">
+      <Project>{9DACA2C1-E700-4CD4-B614-EF1DD9A76C07}</Project>
+      <Name>OrionManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OrionManager.Services\OrionManager.Services.csproj">
+      <Project>{218EF47B-2AF4-4F73-AA95-1C3BE6EC7132}</Project>
+      <Name>OrionManager.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

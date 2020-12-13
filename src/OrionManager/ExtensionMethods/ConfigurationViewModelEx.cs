@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using OrionManager.Constants;
-using OrionManager.Enums;
+using OrionManager.Common.Constants;
+using OrionManager.Common.Enums;
 using OrionManager.ViewModels;
 using Senticode.Wpf;
 using Unity;
@@ -111,7 +111,7 @@ namespace OrionManager.ExtensionMethods
         {
             for (var i = 0; i < item.PlayerPresets.Count; i++)
             {
-                item.PlayerPresets[i].Color = (PlayerColor) i;
+                item.PlayerPresets[i].Color = (PlayerColors) i;
             }
         }
 

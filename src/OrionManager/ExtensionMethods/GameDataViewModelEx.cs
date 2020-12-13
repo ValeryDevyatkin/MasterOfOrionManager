@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using OrionManager.Enums;
+using OrionManager.Common.Enums;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
 using Senticode.Wpf;
@@ -40,15 +40,15 @@ namespace OrionManager.ExtensionMethods
 
                 if (i < item.Round)
                 {
-                    round.State = RoundState.Passed;
+                    round.State = RoundStates.Passed;
                 }
                 else if (i == item.Round)
                 {
-                    round.State = RoundState.Current;
+                    round.State = RoundStates.Current;
                 }
                 else
                 {
-                    round.State = RoundState.Arriving;
+                    round.State = RoundStates.Arriving;
                 }
             }
         }

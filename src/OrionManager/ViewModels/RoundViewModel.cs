@@ -1,4 +1,4 @@
-﻿using OrionManager.Enums;
+﻿using OrionManager.Common.Enums;
 using Senticode.Wpf.Base;
 
 namespace OrionManager.ViewModels
@@ -9,13 +9,13 @@ namespace OrionManager.ViewModels
 
         #region State: RoundState
 
-        public RoundState State
+        public RoundStates State
         {
             get => _state;
             set => SetProperty(ref _state, value);
         }
 
-        private RoundState _state;
+        private RoundStates _state;
 
         #endregion
     }

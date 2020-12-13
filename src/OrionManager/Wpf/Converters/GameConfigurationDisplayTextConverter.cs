@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
-using OrionManager.Constants;
+using OrionManager.Common.Constants;
 using OrionManager.ViewModels;
 
 namespace OrionManager.Wpf.Converters

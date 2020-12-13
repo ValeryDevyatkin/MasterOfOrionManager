@@ -1,4 +1,4 @@
-﻿using OrionManager.Interfaces;
+﻿using OrionManager.Common.Interfaces;
 using OrionManager.Views.Regions;
 using Senticode.Wpf.Base;
 using Unity;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using OrionManager.DataModels;
+using OrionManager.Common.DataModels;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
 using Senticode.Wpf;

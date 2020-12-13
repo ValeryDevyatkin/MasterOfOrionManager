@@ -1,4 +1,4 @@
-﻿using OrionManager.Enums;
+﻿using OrionManager.Common.Enums;
 using Senticode.Wpf.Base;
 
 namespace OrionManager.ViewModels
@@ -19,7 +19,7 @@ namespace OrionManager.ViewModels
 
         #region Race: DisablingItemViewModel<Race>
 
-        public DisablingItemViewModel<Race> Race
+        public DisablingItemViewModel<Races> Race
         {
             get => _race;
             set => SetProperty(ref _race, value, OnRaceChanged, OnRaceChanging);
@@ -36,25 +36,25 @@ namespace OrionManager.ViewModels
         private void OnRaceChanged()
         {
             if (Race != null &&
-                Race.Value != Enums.Race.Random)
+                Race.Value != Races.Random)
             {
                 Race.IsEnabled = false;
             }
         }
 
-        private DisablingItemViewModel<Race> _race;
+        private DisablingItemViewModel<Races> _race;
 
         #endregion
 
         #region Color: PlayerColor
 
-        public PlayerColor Color
+        public PlayerColors Color
         {
             get => _color;
             set => SetProperty(ref _color, value);
         }
 
-        private PlayerColor _color;
+        private PlayerColors _color;
 
         #endregion
     }

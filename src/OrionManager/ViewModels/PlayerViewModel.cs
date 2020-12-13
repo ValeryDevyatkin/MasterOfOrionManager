@@ -1,4 +1,4 @@
-﻿using OrionManager.Enums;
+﻿using OrionManager.Common.Enums;
 using OrionManager.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Unity;
@@ -12,8 +12,8 @@ namespace OrionManager.ViewModels
         }
 
         public string Name { get; set; }
-        public PlayerColor Color { get; set; }
-        public Race Race { get; set; }
+        public PlayerColors Color { get; set; }
+        public Races Race { get; set; }
 
         #region LoyaltyPoints: int
 
@@ -63,7 +63,7 @@ namespace OrionManager.ViewModels
 
         #region Counselor: DisablingItemViewModel<Counselor>
 
-        public DisablingItemViewModel<Counselor> Counselor
+        public DisablingItemViewModel<Counselors> Counselor
         {
             get => _counselor;
             set => SetProperty(ref _counselor, value, OnCounselorChanged, OnCounselorChanging);
@@ -80,13 +80,13 @@ namespace OrionManager.ViewModels
         private void OnCounselorChanged()
         {
             if (Counselor != null &&
-                Counselor.Value != Enums.Counselor.None)
+                Counselor.Value != Counselors.None)
             {
                 Counselor.IsEnabled = false;
             }
         }
 
-        private DisablingItemViewModel<Counselor> _counselor;
+        private DisablingItemViewModel<Counselors> _counselor;
 
         #endregion
     }

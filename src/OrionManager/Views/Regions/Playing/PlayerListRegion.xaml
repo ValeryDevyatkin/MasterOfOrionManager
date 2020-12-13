@@ -5,8 +5,8 @@
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
-             xmlns:constants = "clr-namespace:OrionManager.Constants"
              xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
+             xmlns:constants = "clr-namespace:OrionManager.Theme"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
