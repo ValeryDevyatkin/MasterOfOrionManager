@@ -1,11 +1,11 @@
-﻿using System;
-using OrionManager.Common.DataItems;
+﻿using OrionManager.Common.DataItems;
+using OrionManager.Common.Enums;
 
 namespace OrionManager.Common.Interfaces
 {
     public interface IRegionNavigationService
     {
-        RegionNavigationItem NavigateToRegion(Type regionType);
-        void Init(params RegionNavigationInfoItem[] regions);
+        RegionNavigationItem NavigateToRegion(UiRegions region);
+        void Init(params RegionNavigationInfoItem[] regionInfos);
     }
 }

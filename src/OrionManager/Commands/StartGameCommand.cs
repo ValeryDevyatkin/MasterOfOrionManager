@@ -5,7 +5,6 @@ using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
 using OrionManager.ViewModels;
 using OrionManager.ViewModels.Main;
-using OrionManager.Views.Regions.Playing;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -54,10 +53,10 @@ namespace OrionManager.Commands
             game.UpdateRounds();
 
             var gameDataModel = game.ToDataModel();
+
             _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameDataModel);
             _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameDataModel);
-
-            mainViewModel.NavigateToRegionCommand.Execute(typeof(PlayingRegion));
+            _container.Resolve<NavigateToRegionCommand>().Execute(UiRegions.Playing);
         }
     }
 }

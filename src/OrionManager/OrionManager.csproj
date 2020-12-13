@@ -87,6 +87,7 @@
     <Compile Include="Commands\ContinueGameCommand.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Commands\FinishGameCommand.cs" />
+    <Compile Include="Commands\NavigateToRegionCommand.cs" />
     <Compile Include="Commands\StartGameCommand.cs" />
     <Compile Include="Commands\StartNewRoundCommand.cs" />
     <Compile Include="ExtensionMethods\ConfigurationViewModelEx.cs" />
@@ -98,7 +99,7 @@
     <Compile Include="ViewModels\GameDataViewModel.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Configuration.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Configuration.Edit.cs" />
-    <Compile Include="ViewModels\Main\MainViewModel.Navigation.cs" />
+    <Compile Include="ViewModels\Main\MainViewModel.View.cs" />
     <Compile Include="ViewModels\PlayerPresetViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\RoundViewModel.cs" />

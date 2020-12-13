@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using OrionManager.Common.DataItems;
+using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
 using Unity;
 
@@ -10,32 +11,32 @@ namespace OrionManager.Services.Services
     {
         private readonly IUnityContainer _container;
 
-        private readonly Dictionary<Type, RegionNavigationInfoItem> _regions =
-            new Dictionary<Type, RegionNavigationInfoItem>();
+        private readonly Dictionary<UiRegions, RegionNavigationInfoItem> _regions =
+            new Dictionary<UiRegions, RegionNavigationInfoItem>();
 
         public RegionNavigationService(IUnityContainer container)
         {
             _container = container.RegisterInstance(this);
         }
 
-        public RegionNavigationItem NavigateToRegion(Type regionType)
+        public RegionNavigationItem NavigateToRegion(UiRegions region)
         {
-            if (!_regions.TryGetValue(regionType, out var regionNavigationInfo))
+            if (!_regions.TryGetValue(region, out var regionNavigationInfo))
             {
                 throw new NotSupportedException();
             }
 
-            var region = _container.Resolve(regionNavigationInfo.RegionType);
-            var regionBackground = _container.Resolve(regionNavigationInfo.RegionBackgroundType);
+            var front = _container.Resolve(regionNavigationInfo.Front);
+            var back = _container.Resolve(regionNavigationInfo.Back);
 
-            return new RegionNavigationItem(region, regionBackground);
+            return new RegionNavigationItem(front, back);
         }
 
-        public void Init(params RegionNavigationInfoItem[] regions)
+        public void Init(params RegionNavigationInfoItem[] regionInfos)
         {
-            foreach (var region in regions)
+            foreach (var regionInfo in regionInfos)
             {
-                _regions.Add(region.RegionType, region);
+                _regions.Add(regionInfo.Region, regionInfo);
             }
         }
     }

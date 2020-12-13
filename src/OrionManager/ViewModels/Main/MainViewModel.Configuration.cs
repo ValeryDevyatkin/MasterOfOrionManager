@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
+using OrionManager.Common.Enums;
 using OrionManager.Common.ExtensionMethods;
 using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
-using OrionManager.Views.Regions.Configuration;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
 using Unity;
@@ -155,7 +155,7 @@ namespace OrionManager.ViewModels.Main
         private void ExecuteEditConfiguration(object parameter)
         {
             ConfigurationEditCopy = SelectedConfiguration.Clone();
-            NavigateToRegionCommand.Execute(typeof(ConfigurationRegion));
+            AppCommands.NavigateToRegionCommand.Execute(UiRegions.Configuration);
         }
 
         #endregion

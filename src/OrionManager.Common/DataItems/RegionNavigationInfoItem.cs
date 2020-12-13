@@ -1,16 +1,19 @@
 ﻿using System;
+using OrionManager.Common.Enums;
 
 namespace OrionManager.Common.DataItems
 {
     public class RegionNavigationInfoItem
     {
-        public RegionNavigationInfoItem(Type regionType, Type regionBackgroundType)
+        public RegionNavigationInfoItem(UiRegions region, Type front, Type back)
         {
-            RegionType = regionType;
-            RegionBackgroundType = regionBackgroundType;
+            Front = front;
+            Back = back;
+            Region = region;
         }
 
-        public Type RegionType { get; }
-        public Type RegionBackgroundType { get; }
+        public UiRegions Region { get; }
+        public Type Front { get; }
+        public Type Back { get; }
     }
 }

@@ -5,6 +5,7 @@ using BAJIEPA.Tools.Helpers;
 using OrionManager.Commands;
 using OrionManager.Common.DataItems;
 using OrionManager.Common.DataModels;
+using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
 using OrionManager.Services;
@@ -90,6 +91,7 @@ namespace OrionManager
                    .RegisterType<ExitAppCommand>()
                    .RegisterType<StartGameCommand>()
                    .RegisterType<FinishGameCommand>()
+                   .RegisterType<NavigateToRegionCommand>()
 
                     //
                     ;
@@ -127,12 +129,17 @@ namespace OrionManager
         private void InitRegionNavigation()
         {
             _container.Resolve<IRegionNavigationService>().Init(
-                new RegionNavigationInfoItem(typeof(StartRegion), typeof(StartBackground)),
-                new RegionNavigationInfoItem(typeof(PreStartRegion), typeof(PreStartBackground)),
-                new RegionNavigationInfoItem(typeof(ConfigurationListRegion),
-                                             typeof(ConfigurationBackground)),
-                new RegionNavigationInfoItem(typeof(ConfigurationRegion), typeof(ConfigurationBackground)),
-                new RegionNavigationInfoItem(typeof(PlayingRegion), typeof(PlayingBackground)));
+                new RegionNavigationInfoItem(
+                    UiRegions.Start, typeof(StartRegion), typeof(StartBackground)),
+                new RegionNavigationInfoItem(
+                    UiRegions.PreStart, typeof(PreStartRegion), typeof(PreStartBackground)),
+                new RegionNavigationInfoItem(
+                    UiRegions.ConfigurationList, typeof(ConfigurationListRegion),
+                    typeof(ConfigurationBackground)),
+                new RegionNavigationInfoItem(
+                    UiRegions.Configuration, typeof(ConfigurationRegion), typeof(ConfigurationBackground)),
+                new RegionNavigationInfoItem(
+                    UiRegions.Playing, typeof(PlayingRegion), typeof(PlayingBackground)));
         }
 
         private void LoadData()

@@ -4,9 +4,9 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
-             xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
+             xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -66,8 +66,8 @@
                                    Command = "{Binding AppCommands.ContinueGameCommand, Mode=OneTime}" />
             <controls:CustomButton Grid.Column = "3"
                                    Content = "New Game"
-                                   Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                                   CommandParameter = "{x:Type regions:PreStartRegion}"
+                                   Command = "{Binding AppCommands.NavigateToRegionCommand, Mode=OneTime}"
+                                   CommandParameter = "{x:Static enums:UiRegions.PreStart}"
                                    Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 

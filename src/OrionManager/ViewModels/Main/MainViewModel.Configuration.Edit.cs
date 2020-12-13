@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
+using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
 using OrionManager.ExtensionMethods;
-using OrionManager.Views.Regions.Configuration;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -61,7 +61,7 @@ namespace OrionManager.ViewModels.Main
             }
 
             ConfigurationEditCopy = null;
-            NavigateToRegionCommand.Execute(typeof(ConfigurationListRegion));
+            AppCommands.NavigateToRegionCommand.Execute(UiRegions.ConfigurationList);
         }
 
         #endregion
@@ -76,7 +76,7 @@ namespace OrionManager.ViewModels.Main
         private void ExecuteCancelEditConfiguration(object parameter)
         {
             ConfigurationEditCopy = null;
-            NavigateToRegionCommand.Execute(typeof(ConfigurationListRegion));
+            AppCommands.NavigateToRegionCommand.Execute(UiRegions.ConfigurationList);
         }
 
         #endregion

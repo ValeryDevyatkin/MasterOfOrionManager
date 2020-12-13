@@ -4,13 +4,13 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:main = "clr-namespace:OrionManager.ViewModels.Main"
-             xmlns:regions = "clr-namespace:OrionManager.Views.Regions"
              xmlns:viewModels = "clr-namespace:OrionManager.ViewModels"
              xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:triggerActions = "clr-namespace:OrionManager.Wpf.TriggerActions"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              xmlns:behaviors = "clr-namespace:OrionManager.Wpf.Behaviors"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
+             xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -155,8 +155,8 @@
 
             <controls:CustomButton Grid.Row = "16"
                                    Content = "Back"
-                                   Command = "{Binding NavigateToRegionCommand, Mode=OneTime}"
-                                   CommandParameter = "{x:Type regions:PreStartRegion}"
+                                   Command = "{Binding AppCommands.NavigateToRegionCommand, Mode=OneTime}"
+                                   CommandParameter = "{x:Static enums:UiRegions.PreStart}"
                                    Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 

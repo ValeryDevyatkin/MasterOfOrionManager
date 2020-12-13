@@ -15,5 +15,6 @@ namespace OrionManager
         public ContinueGameCommand ContinueGameCommand => Container.Resolve<ContinueGameCommand>();
         public StartNewRoundCommand StartNewRoundCommand => Container.Resolve<StartNewRoundCommand>();
         public FinishGameCommand FinishGameCommand => Container.Resolve<FinishGameCommand>();
+        public NavigateToRegionCommand NavigateToRegionCommand => Container.Resolve<NavigateToRegionCommand>();
     }
 }

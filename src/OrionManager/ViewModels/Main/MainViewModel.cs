@@ -1,5 +1,5 @@
-﻿using OrionManager.Common.Interfaces;
-using OrionManager.Views.Regions;
+﻿using OrionManager.Common.Enums;
+using OrionManager.Common.Interfaces;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -20,7 +20,7 @@ namespace OrionManager.ViewModels.Main
 
         public void Init()
         {
-            NavigateToRegionCommand.Execute(typeof(StartRegion));
+            AppCommands.NavigateToRegionCommand.Execute(UiRegions.Start);
         }
 
         #region IsGameStarted: bool
