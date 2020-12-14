@@ -4,6 +4,6 @@ namespace OrionManager.Common.Interfaces
 {
     public interface IModuleInitializer
     {
-        void Init(IUnityContainer container);
+        void RegisterTypes(IUnityContainer container);
     }
 }

@@ -5,7 +5,7 @@ using Unity;
 
 namespace OrionManager.ViewModel.Commands
 {
-    internal class NavigateToRegionCommand : CommandBase
+    internal class NavigateToRegionCommand : SyncCommandBase
     {
         private readonly IUnityContainer _container;
 

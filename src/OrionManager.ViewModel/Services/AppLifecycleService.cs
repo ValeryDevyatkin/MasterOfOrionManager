@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using OrionManager.Common.DataModels;
 using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
@@ -18,8 +17,6 @@ namespace OrionManager.ViewModel.Services
         {
             _container = container.RegisterInstance(this);
         }
-
-        public Action ExitApp { get; set; }
 
         public void OnStart()
         {

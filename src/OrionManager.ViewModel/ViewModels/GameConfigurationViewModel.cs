@@ -6,6 +6,7 @@ using OrionManager.Common.Enums;
 using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
+using Senticode.Wpf.Interfaces;
 using Unity;
 
 namespace OrionManager.ViewModel.ViewModels
@@ -30,7 +31,7 @@ namespace OrionManager.ViewModel.ViewModels
                 {Races.Psilon, new DisablingItemViewModel<Races>(Races.Psilon)}
             };
 
-        public ObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
+        public IObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
             new ObservableRangeCollection<PlayerPresetViewModel>();
 
         public Guid Id { get; set; }
@@ -134,25 +135,27 @@ namespace OrionManager.ViewModel.ViewModels
         #region AddPlayer command
 
         public ICommand AddPlayerCommand => _addPlayerCommand ??=
-                                                new Command(ExecuteAddPlayer);
+                                                new SyncCommand(ExecuteAddPlayer);
 
-        private Command _addPlayerCommand;
+        private SyncCommand _addPlayerCommand;
 
         private void ExecuteAddPlayer(object parameter)
         {
-            if (IsPlayerCanBeAdded)
+            if (!IsPlayerCanBeAdded)
             {
-                var player = new PlayerPresetViewModel
-                {
-                    Name = GlobalConstants.DefaultPlayerString,
-                    Race = RaceMap[Races.Random]
-                };
-
-                PlayerPresets.Add(player);
-                this.UpdateIsPlayerCanBeAdded();
-                this.UpdatePlayerColors();
-                this.UpdateIsReadyToPlay();
+                return;
             }
+
+            var player = new PlayerPresetViewModel
+            {
+                Name = GlobalConstants.DefaultPlayerString,
+                Race = RaceMap[Races.Random]
+            };
+
+            PlayerPresets.Add(player);
+            this.UpdateIsPlayerCanBeAdded();
+            this.UpdatePlayerColors();
+            this.UpdateIsReadyToPlay();
         }
 
         #endregion
@@ -160,20 +163,22 @@ namespace OrionManager.ViewModel.ViewModels
         #region DeletePlayer command
 
         public ICommand DeletePlayerCommand => _deletePlayerCommand ??=
-                                                   new Command(ExecuteDeletePlayer);
+                                                   new SyncCommand(ExecuteDeletePlayer);
 
-        private Command _deletePlayerCommand;
+        private SyncCommand _deletePlayerCommand;
 
         private void ExecuteDeletePlayer(object parameter)
         {
-            if (parameter is PlayerPresetViewModel item)
+            if (!(parameter is PlayerPresetViewModel item))
             {
-                RaceMap[item.Race.Value].IsEnabled = true;
-                PlayerPresets.Remove(item);
-                this.UpdateIsPlayerCanBeAdded();
-                this.UpdatePlayerColors();
-                this.UpdateIsReadyToPlay();
+                return;
             }
+
+            RaceMap[item.Race.Value].IsEnabled = true;
+            PlayerPresets.Remove(item);
+            this.UpdateIsPlayerCanBeAdded();
+            this.UpdatePlayerColors();
+            this.UpdateIsReadyToPlay();
         }
 
         #endregion

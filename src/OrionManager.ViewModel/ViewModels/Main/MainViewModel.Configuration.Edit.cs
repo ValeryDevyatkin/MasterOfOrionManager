@@ -32,9 +32,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region ApplyEditConfiguration command
 
         public ICommand ApplyEditConfigurationCommand => _applyEditConfigurationCommand ??=
-                                                             new Command(ExecuteApplyEditConfiguration);
+                                                             new SyncCommand(ExecuteApplyEditConfiguration);
 
-        private Command _applyEditConfigurationCommand;
+        private SyncCommand _applyEditConfigurationCommand;
 
         private void ExecuteApplyEditConfiguration(object parameter)
         {
@@ -49,9 +49,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region OkEditConfiguration command
 
         public ICommand OkEditConfigurationCommand => _okEditConfigurationCommand ??=
-                                                          new Command(ExecuteOkEditConfiguration);
+                                                          new SyncCommand(ExecuteOkEditConfiguration);
 
-        private Command _okEditConfigurationCommand;
+        private SyncCommand _okEditConfigurationCommand;
 
         private void ExecuteOkEditConfiguration(object parameter)
         {
@@ -69,9 +69,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region CancelEditConfiguration command
 
         public ICommand CancelEditConfigurationCommand => _cancelEditConfigurationCommand ??=
-                                                              new Command(ExecuteCancelEditConfiguration);
+                                                              new SyncCommand(ExecuteCancelEditConfiguration);
 
-        private Command _cancelEditConfigurationCommand;
+        private SyncCommand _cancelEditConfigurationCommand;
 
         private void ExecuteCancelEditConfiguration(object parameter)
         {

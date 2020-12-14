@@ -7,7 +7,7 @@ using Unity;
 
 namespace OrionManager.ViewModel.Commands
 {
-    internal class StartNewRoundCommand : CommandBase
+    internal class StartNewRoundCommand : SyncCommandBase
     {
         private readonly IUnityContainer _container;
 

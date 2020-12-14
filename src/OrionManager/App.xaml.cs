@@ -10,31 +10,38 @@ using OrionManager.Views.Backgrounds;
 using OrionManager.Views.Regions;
 using OrionManager.Views.Regions.Configuration;
 using OrionManager.Views.Regions.Playing;
-using Senticode.Wpf.Extensions;
+using Senticode.Wpf;
 using Unity;
 
 namespace OrionManager
 {
     internal partial class App
     {
+        public App(IUnityContainer container) : base(container)
+        {
+        }
+
+        public App() : this(ServiceLocator.Container)
+        {
+        }
+
         protected override void OnStartup(StartupEventArgs args)
         {
-            base.OnStartup(args);
+            ExceptionLogHelper.LogCriticalExceptionInRelease = exceptionItem => MessageBox.Show(
+                exceptionItem.Message, exceptionItem.Source, MessageBoxButton.OK, MessageBoxImage.Error);
 
-            DispatcherUnhandledException += (s, e) => this.LogCriticalException(e.Exception);
+            base.OnStartup(args);
 
             try
             {
-                Container.Resolve<IAppLifecycleService>().ExitApp = Shutdown;
                 Container.Resolve<IAppLifecycleService>().OnStart();
-
-                this.SetMainWindow<MainWindow, MainViewModel>();
-
-                Container.Resolve<MainWindow>().Show();
+                SetMainWindow<MainWindow, MainViewModel>().Show();
             }
             catch (Exception e)
             {
                 this.LogCriticalException(e);
+
+                throw;
             }
         }
 
@@ -44,8 +51,8 @@ namespace OrionManager
 
             try
             {
-                ServicesInitializer.Instance.Init(Container);
-                ViewModelInitializer.Instance.Init(Container);
+                ServicesInitializer.Instance.RegisterTypes(Container);
+                ViewModelInitializer.Instance.RegisterTypes(Container);
 
                 Container
 
@@ -72,6 +79,8 @@ namespace OrionManager
             catch (Exception e)
             {
                 this.LogCriticalException(e);
+
+                throw;
             }
         }
 

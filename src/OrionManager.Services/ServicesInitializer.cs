@@ -8,7 +8,7 @@ namespace OrionManager.Services
 {
     public class ServicesInitializer : IModuleInitializer
     {
-        public void Init(IUnityContainer container)
+        public void RegisterTypes(IUnityContainer container)
         {
             container
                .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadJsonService>()

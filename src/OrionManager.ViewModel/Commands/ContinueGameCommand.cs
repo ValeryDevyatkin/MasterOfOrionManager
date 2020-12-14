@@ -5,7 +5,7 @@ using Unity;
 
 namespace OrionManager.ViewModel.Commands
 {
-    internal class ContinueGameCommand : CommandBase
+    internal class ContinueGameCommand : SyncCommandBase
     {
         private readonly IUnityContainer _container;
 

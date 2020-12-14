@@ -6,13 +6,14 @@ using OrionManager.Common.Interfaces;
 using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
+using Senticode.Wpf.Interfaces;
 using Unity;
 
 namespace OrionManager.ViewModel.ViewModels.Main
 {
     public partial class MainViewModel
     {
-        public ObservableRangeCollection<GameConfigurationViewModel> GameConfigurations { get; } =
+        public IObservableRangeCollection<GameConfigurationViewModel> GameConfigurations { get; } =
             new ObservableRangeCollection<GameConfigurationViewModel>();
 
         #region SelectedConfiguration: GameConfigurationViewModel
@@ -60,9 +61,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region ChoseConfiguration command
 
         public ICommand ChoseConfigurationCommand => _choseConfigurationCommand ??=
-                                                         new Command(ExecuteChoseConfiguration);
+                                                         new SyncCommand(ExecuteChoseConfiguration);
 
-        private Command _choseConfigurationCommand;
+        private SyncCommand _choseConfigurationCommand;
 
         private void ExecuteChoseConfiguration(object parameter)
         {
@@ -79,9 +80,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region CloneConfiguration command
 
         public ICommand CloneConfigurationCommand => _cloneConfigurationCommand ??=
-                                                         new Command(ExecuteCloneConfiguration);
+                                                         new SyncCommand(ExecuteCloneConfiguration);
 
-        private Command _cloneConfigurationCommand;
+        private SyncCommand _cloneConfigurationCommand;
 
         private void ExecuteCloneConfiguration(object parameter)
         {
@@ -106,9 +107,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region AddNewConfiguration command
 
         public ICommand AddNewConfigurationCommand => _addNewConfigurationCommand ??=
-                                                          new Command(ExecuteAddNewConfiguration);
+                                                          new SyncCommand(ExecuteAddNewConfiguration);
 
-        private Command _addNewConfigurationCommand;
+        private SyncCommand _addNewConfigurationCommand;
 
         private void ExecuteAddNewConfiguration(object parameter)
         {
@@ -128,9 +129,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region DeleteConfiguration command
 
         public ICommand DeleteConfigurationCommand => _deleteConfigurationCommand ??=
-                                                          new Command(ExecuteDeleteConfiguration);
+                                                          new SyncCommand(ExecuteDeleteConfiguration);
 
-        private Command _deleteConfigurationCommand;
+        private SyncCommand _deleteConfigurationCommand;
 
         private void ExecuteDeleteConfiguration(object parameter)
         {
@@ -148,9 +149,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
         #region EditConfiguration command
 
         public ICommand EditConfigurationCommand => _editConfigurationCommand ??=
-                                                        new Command(ExecuteEditConfiguration);
+                                                        new SyncCommand(ExecuteEditConfiguration);
 
-        private Command _editConfigurationCommand;
+        private SyncCommand _editConfigurationCommand;
 
         private void ExecuteEditConfiguration(object parameter)
         {

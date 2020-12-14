@@ -1,10 +1,10 @@
-﻿using OrionManager.Common.Interfaces;
+﻿using System.Windows;
 using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModel.Commands
 {
-    internal class ExitAppCommand : CommandBase
+    internal class ExitAppCommand : SyncCommandBase
     {
         private readonly IUnityContainer _container;
 
@@ -15,7 +15,7 @@ namespace OrionManager.ViewModel.Commands
 
         protected override void ExecuteExternal(object parameter)
         {
-            _container.Resolve<IAppLifecycleService>().ExitApp();
+            _container.Resolve<Application>().Shutdown();
         }
     }
 }

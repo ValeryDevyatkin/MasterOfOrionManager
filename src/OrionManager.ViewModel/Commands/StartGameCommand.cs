@@ -10,7 +10,7 @@ using Unity;
 
 namespace OrionManager.ViewModel.Commands
 {
-    internal class StartGameCommand : CommandBase
+    internal class StartGameCommand : SyncCommandBase
     {
         private readonly IUnityContainer _container;
 

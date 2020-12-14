@@ -9,7 +9,7 @@ namespace OrionManager.ViewModel
 {
     public class ViewModelInitializer : IModuleInitializer
     {
-        public void Init(IUnityContainer container)
+        public void RegisterTypes(IUnityContainer container)
         {
             container
 
