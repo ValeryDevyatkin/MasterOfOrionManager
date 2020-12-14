@@ -21,12 +21,15 @@ namespace OrionManager.ViewModel.Services
 
         public Action ExitApp { get; set; }
 
-        public void LoadData()
+        public void OnStart()
         {
+            var mainViewModel = _container.Resolve<MainViewModel>();
             var appData = _container.Resolve<ISaveLoadService<AppDataModel>>().Load() ?? new AppDataModel();
 
             _container.Resolve<IDataStateHub<AppDataModel>>().CommitState(appData);
-            _container.Resolve<MainViewModel>().CopyFrom(appData);
+
+            mainViewModel.Region = UiRegions.Start;
+            mainViewModel.CopyFrom(appData);
 
             if (appData.IsGameStarted)
             {
@@ -62,12 +65,12 @@ namespace OrionManager.ViewModel.Services
                 }
             }
 
-            _container.Resolve<MainViewModel>().GameConfigurations.ReplaceAll(configurationViewModels);
-            _container.Resolve<MainViewModel>().CurrentConfiguration = currentConfiguration;
-            _container.Resolve<MainViewModel>().SelectedConfiguration = currentConfiguration;
+            mainViewModel.GameConfigurations.ReplaceAll(configurationViewModels);
+            mainViewModel.CurrentConfiguration = currentConfiguration;
+            mainViewModel.SelectedConfiguration = currentConfiguration;
         }
 
-        public void SaveData()
+        public void OnExit()
         {
             var appData = _container.Resolve<MainViewModel>().ToDataModel();
 
@@ -85,15 +88,6 @@ namespace OrionManager.ViewModel.Services
                     _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
                 }
             }
-        }
-
-        public void NavigateToRegion(UiRegions region)
-        {
-            var navigationItem = _container.Resolve<IRegionNavigationService>().NavigateToRegion(region);
-            var mainViewModel = _container.Resolve<MainViewModel>();
-
-            mainViewModel.CurrentRegion = navigationItem.Region;
-            mainViewModel.CurrentRegionBackground = navigationItem.RegionBackground;
         }
     }
 }

@@ -83,6 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Views\Backgrounds\ConfigurationListBackground.xaml.cs">
+      <DependentUpon>ConfigurationListBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Backgrounds\PlayingBackground.xaml.cs">
       <DependentUpon>PlayingBackground.xaml</DependentUpon>
     </Compile>
@@ -132,7 +135,13 @@
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
     <Compile Include="Wpf\Converters\GameConfigurationDisplayTextConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
+    <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
+    <Compile Include="Wpf\Converters\UiRegionToControlConverter.cs" />
     <Compile Include="Wpf\TriggerActions\ListBoxNavigationTriggerAction.cs" />
+    <Page Include="Views\Backgrounds\ConfigurationListBackground.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Backgrounds\PlayingBackground.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

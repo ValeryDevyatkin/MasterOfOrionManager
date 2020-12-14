@@ -61,7 +61,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
             }
 
             ConfigurationEditCopy = null;
-            AppCommands.NavigateToRegionCommand.Execute(UiRegions.ConfigurationList);
+            Region = UiRegions.ConfigurationList;
         }
 
         #endregion
@@ -76,7 +76,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
         private void ExecuteCancelEditConfiguration(object parameter)
         {
             ConfigurationEditCopy = null;
-            AppCommands.NavigateToRegionCommand.Execute(UiRegions.ConfigurationList);
+            Region = UiRegions.ConfigurationList;
         }
 
         #endregion

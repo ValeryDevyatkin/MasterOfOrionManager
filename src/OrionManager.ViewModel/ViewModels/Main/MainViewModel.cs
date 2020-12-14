@@ -1,11 +1,10 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.Common.Interfaces;
 using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModel.ViewModels.Main
 {
-    public partial class MainViewModel : ViewModelBase<AppSettings, AppCommands>, IInit
+    public partial class MainViewModel : ViewModelBase<AppSettings, AppCommands>
     {
         public MainViewModel() : base(null)
         {
@@ -18,11 +17,6 @@ namespace OrionManager.ViewModel.ViewModels.Main
 
         public GameDataViewModel GameData => Container.Resolve<GameDataViewModel>();
 
-        public void Init()
-        {
-            AppCommands.NavigateToRegionCommand.Execute(UiRegions.Start);
-        }
-
         #region IsGameStarted: bool
 
         public bool IsGameStarted
@@ -32,6 +26,18 @@ namespace OrionManager.ViewModel.ViewModels.Main
         }
 
         private bool _isGameStarted;
+
+        #endregion
+
+        #region Region: UiRegions
+
+        public UiRegions Region
+        {
+            get => _region;
+            set => SetProperty(ref _region, value);
+        }
+
+        private UiRegions _region;
 
         #endregion
     }

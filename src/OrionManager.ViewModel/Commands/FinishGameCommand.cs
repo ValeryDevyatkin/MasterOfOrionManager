@@ -1,5 +1,4 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.Common.Interfaces;
 using OrionManager.ViewModel.ExtensionMethods;
 using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Main;
@@ -19,9 +18,9 @@ namespace OrionManager.ViewModel.Commands
 
         protected override void ExecuteExternal(object parameter)
         {
-            _container.Resolve<MainViewModel>().IsGameStarted = false;
             _container.Resolve<GameDataViewModel>().Reset();
-            _container.Resolve<IAppLifecycleService>().NavigateToRegion(UiRegions.Start);
+            _container.Resolve<MainViewModel>().IsGameStarted = false;
+            _container.Resolve<MainViewModel>().Region = UiRegions.Start;
         }
     }
 }

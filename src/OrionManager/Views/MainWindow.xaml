@@ -5,6 +5,7 @@
         xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:constants = "clr-namespace:OrionManager.Theme"
         xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+        xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
         mc:Ignorable = "d"
         Title = "MoOr - The Board Game App"
         x:ClassModifier = "internal"
@@ -18,9 +19,13 @@
     </d:Window.DataContext>
 
     <Grid>
-        <ContentControl Content = "{Binding CurrentRegionBackground, Mode=OneWay}" />
+
+        <ContentControl
+            Content = "{Binding Region, Mode=OneWay, Converter={converters:UiRegionToBackgroundControlConverter}}" />
+
         <ContentControl Margin = "{x:Static constants:UiSizes.OuterSpacingThickness}"
-                        Content = "{Binding CurrentRegion, Mode=OneWay}" />
+                        Content = "{Binding Region, Mode=OneWay, Converter={converters:UiRegionToControlConverter}}" />
+
     </Grid>
 
 </Window>

@@ -1,5 +1,5 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.Common.Interfaces;
+using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -21,7 +21,7 @@ namespace OrionManager.ViewModel.Commands
                 return;
             }
 
-            _container.Resolve<IAppLifecycleService>().NavigateToRegion(region);
+            _container.Resolve<MainViewModel>().Region = region;
         }
     }
 }

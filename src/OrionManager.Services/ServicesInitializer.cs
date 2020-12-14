@@ -1,6 +1,5 @@
 ﻿using OrionManager.Common.DataModels;
 using OrionManager.Common.Interfaces;
-using OrionManager.Services.Services;
 using OrionManager.Services.Services.SaveLoad;
 using OrionManager.Services.Services.StateHub;
 using Unity;
@@ -16,7 +15,6 @@ namespace OrionManager.Services
                .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadJsonService>()
                .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
                .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
-               .RegisterType<IRegionNavigationService, RegionNavigationService>()
                .RegisterType<IGameConfigurationService, GameConfigurationJsonService>()
                .RegisterType<IPathProvider, PathProvider>()
                 ;

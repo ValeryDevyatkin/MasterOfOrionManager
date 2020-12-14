@@ -2,8 +2,6 @@
 using System.Windows;
 using System.Windows.Threading;
 using BAJIEPA.Tools.Helpers;
-using OrionManager.Common.DataItems;
-using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
 using OrionManager.Services;
 using OrionManager.ViewModel;
@@ -34,17 +32,17 @@ namespace OrionManager
 
         protected override void OnStartup(StartupEventArgs args)
         {
-            DispatcherUnhandledException += OnDispatcherUnhandledException;
-
             base.OnStartup(args);
+
+            DispatcherUnhandledException += OnDispatcherUnhandledException;
 
             try
             {
+                Container.Resolve<IAppLifecycleService>().ExitApp = ExitApp;
+                Container.Resolve<IAppLifecycleService>().OnStart();
+
                 this.SetMainWindow<MainWindow, MainViewModel>();
 
-                Container.Resolve<IAppLifecycleService>().ExitApp = ExitApp;
-                Container.Resolve<IAppLifecycleService>().LoadData();
-                Container.Resolve<MainViewModel>().Init();
                 Container.Resolve<MainWindow>().Show();
             }
             catch (Exception e)
@@ -64,8 +62,10 @@ namespace OrionManager
 
                 Container
 
-                    // Regions.
+                    // MainWindow.
                    .RegisterSingleton<MainWindow>()
+
+                    // Regions.
                    .RegisterSingleton<StartRegion>()
                    .RegisterSingleton<ConfigurationRegion>()
                    .RegisterSingleton<PlayingRegion>()
@@ -77,11 +77,10 @@ namespace OrionManager
                    .RegisterSingleton<PreStartBackground>()
                    .RegisterSingleton<ConfigurationBackground>()
                    .RegisterSingleton<PlayingBackground>()
+                   .RegisterSingleton<ConfigurationListBackground>()
 
                     //
                     ;
-
-                InitRegionNavigation();
             }
             catch (Exception e)
             {
@@ -95,28 +94,12 @@ namespace OrionManager
 
             try
             {
-                Container.Resolve<IAppLifecycleService>().SaveData();
+                Container.Resolve<IAppLifecycleService>().OnExit();
             }
             catch (Exception e)
             {
                 this.LogCriticalException(e);
             }
-        }
-
-        private void InitRegionNavigation()
-        {
-            Container.Resolve<IRegionNavigationService>().Init(
-                new RegionNavigationInfoItem(
-                    UiRegions.Start, typeof(StartRegion), typeof(StartBackground)),
-                new RegionNavigationInfoItem(
-                    UiRegions.PreStart, typeof(PreStartRegion), typeof(PreStartBackground)),
-                new RegionNavigationInfoItem(
-                    UiRegions.ConfigurationList, typeof(ConfigurationListRegion),
-                    typeof(ConfigurationBackground)),
-                new RegionNavigationInfoItem(
-                    UiRegions.Configuration, typeof(ConfigurationRegion), typeof(ConfigurationBackground)),
-                new RegionNavigationInfoItem(
-                    UiRegions.Playing, typeof(PlayingRegion), typeof(PlayingBackground)));
         }
 
         private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)

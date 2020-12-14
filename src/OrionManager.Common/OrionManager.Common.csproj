@@ -52,8 +52,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\GlobalConstants.cs" />
-    <Compile Include="DataItems\RegionNavigationInfoItem.cs" />
-    <Compile Include="DataItems\RegionNavigationItem.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
@@ -71,7 +69,6 @@
     <Compile Include="Interfaces\IInit.cs" />
     <Compile Include="Interfaces\IModuleInitializer.cs" />
     <Compile Include="Interfaces\IPathProvider.cs" />
-    <Compile Include="Interfaces\IRegionNavigationService.cs" />
     <Compile Include="Interfaces\ISaveLoadService.cs" />
   </ItemGroup>
   <ItemGroup>

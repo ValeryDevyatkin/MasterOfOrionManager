@@ -77,7 +77,6 @@
     <Compile Include="ViewModels\Main\MainViewModel.Configuration.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.Configuration.Edit.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.cs" />
-    <Compile Include="ViewModels\Main\MainViewModel.View.cs" />
     <Compile Include="ViewModels\PlayerPresetViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\RoundViewModel.cs" />

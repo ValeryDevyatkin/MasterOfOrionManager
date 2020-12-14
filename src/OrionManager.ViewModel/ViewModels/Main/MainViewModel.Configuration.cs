@@ -155,7 +155,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
         private void ExecuteEditConfiguration(object parameter)
         {
             ConfigurationEditCopy = SelectedConfiguration.Clone();
-            AppCommands.NavigateToRegionCommand.Execute(UiRegions.Configuration);
+            Region = UiRegions.Configuration;
         }
 
         #endregion

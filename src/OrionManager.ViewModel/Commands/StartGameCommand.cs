@@ -31,8 +31,6 @@ namespace OrionManager.ViewModel.Commands
                 throw new NotSupportedException();
             }
 
-            mainViewModel.IsGameStarted = true;
-
             for (var i = 0; i < config.PlayerPresets.Count; i++)
             {
                 var playerPreset = config.PlayerPresets[i];
@@ -56,7 +54,9 @@ namespace OrionManager.ViewModel.Commands
 
             _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameDataModel);
             _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameDataModel);
-            _container.Resolve<IAppLifecycleService>().NavigateToRegion(UiRegions.Playing);
+
+            mainViewModel.IsGameStarted = true;
+            mainViewModel.Region = UiRegions.Playing;
         }
     }
 }
