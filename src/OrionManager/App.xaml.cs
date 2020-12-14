@@ -30,10 +30,9 @@ namespace OrionManager
             ExceptionLogHelper.LogCriticalExceptionInRelease = exceptionItem => MessageBox.Show(
                 exceptionItem.Message, exceptionItem.Source, MessageBoxButton.OK, MessageBoxImage.Error);
 
-            base.OnStartup(args);
-
             try
             {
+                base.OnStartup(args);
                 Container.Resolve<IAppLifecycleService>().OnStart();
                 SetMainWindow<MainWindow, MainViewModel>().Show();
             }
@@ -47,49 +46,37 @@ namespace OrionManager
 
         protected override void RegisterTypes()
         {
-            base.RegisterTypes();
+            ServicesInitializer.Instance.RegisterTypes(Container);
+            ViewModelInitializer.Instance.RegisterTypes(Container);
 
-            try
-            {
-                ServicesInitializer.Instance.RegisterTypes(Container);
-                ViewModelInitializer.Instance.RegisterTypes(Container);
+            Container
 
-                Container
+                // MainWindow.
+               .RegisterSingleton<MainWindow>()
 
-                    // MainWindow.
-                   .RegisterSingleton<MainWindow>()
+                // Regions.
+               .RegisterSingleton<StartRegion>()
+               .RegisterSingleton<ConfigurationRegion>()
+               .RegisterSingleton<PlayingRegion>()
+               .RegisterSingleton<PreStartRegion>()
+               .RegisterSingleton<ConfigurationListRegion>()
 
-                    // Regions.
-                   .RegisterSingleton<StartRegion>()
-                   .RegisterSingleton<ConfigurationRegion>()
-                   .RegisterSingleton<PlayingRegion>()
-                   .RegisterSingleton<PreStartRegion>()
-                   .RegisterSingleton<ConfigurationListRegion>()
+                // Backgrounds.
+               .RegisterSingleton<StartBackground>()
+               .RegisterSingleton<PreStartBackground>()
+               .RegisterSingleton<ConfigurationBackground>()
+               .RegisterSingleton<PlayingBackground>()
+               .RegisterSingleton<ConfigurationListBackground>()
 
-                    // Backgrounds.
-                   .RegisterSingleton<StartBackground>()
-                   .RegisterSingleton<PreStartBackground>()
-                   .RegisterSingleton<ConfigurationBackground>()
-                   .RegisterSingleton<PlayingBackground>()
-                   .RegisterSingleton<ConfigurationListBackground>()
-
-                    //
-                    ;
-            }
-            catch (Exception e)
-            {
-                this.LogCriticalException(e);
-
-                throw;
-            }
+                //
+                ;
         }
 
         protected override void OnExit(ExitEventArgs args)
         {
-            base.OnExit(args);
-
             try
             {
+                base.OnExit(args);
                 Container.Resolve<IAppLifecycleService>().OnExit();
             }
             catch (Exception e)
