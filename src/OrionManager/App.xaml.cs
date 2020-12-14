@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Threading;
 using BAJIEPA.Tools.Helpers;
 using OrionManager.Common.Interfaces;
 using OrionManager.Services;
@@ -18,27 +17,15 @@ namespace OrionManager
 {
     internal partial class App
     {
-        public void ExitApp()
-        {
-            try
-            {
-                Shutdown();
-            }
-            catch (Exception e)
-            {
-                this.LogCriticalException(e);
-            }
-        }
-
         protected override void OnStartup(StartupEventArgs args)
         {
             base.OnStartup(args);
 
-            DispatcherUnhandledException += OnDispatcherUnhandledException;
+            DispatcherUnhandledException += (s, e) => this.LogCriticalException(e.Exception);
 
             try
             {
-                Container.Resolve<IAppLifecycleService>().ExitApp = ExitApp;
+                Container.Resolve<IAppLifecycleService>().ExitApp = Shutdown;
                 Container.Resolve<IAppLifecycleService>().OnStart();
 
                 this.SetMainWindow<MainWindow, MainViewModel>();
@@ -100,11 +87,6 @@ namespace OrionManager
             {
                 this.LogCriticalException(e);
             }
-        }
-
-        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            this.LogCriticalException(e.Exception);
         }
     }
 }
