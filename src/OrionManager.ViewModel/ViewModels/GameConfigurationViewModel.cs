@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Input;
 using BAJIEPA.Tools.Helpers;
-using OrionManager.Common.Constants;
 using OrionManager.Common.Enums;
+using OrionManager.ViewModel.Constants;
 using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Senticode.Wpf.Collections;
@@ -49,15 +49,15 @@ namespace OrionManager.ViewModel.ViewModels
 
         #endregion
 
-        #region IsDefault: bool
+        #region IsNotEditable: bool
 
-        public bool IsDefault
+        public bool IsNotEditable
         {
-            get => _isDefault;
-            set => SetProperty(ref _isDefault, value);
+            get => _isNotEditable;
+            set => SetProperty(ref _isNotEditable, value);
         }
 
-        private bool _isDefault;
+        private bool _isNotEditable;
 
         #endregion
 
@@ -78,7 +78,7 @@ namespace OrionManager.ViewModel.ViewModels
         public string Name
         {
             get => _name;
-            set => SetString(ref _name, value);
+            set => SetString(ref _name, value, GlobalRegex.StringWithOneSpaceBetweenWords);
         }
 
         private string _name;
@@ -90,7 +90,7 @@ namespace OrionManager.ViewModel.ViewModels
         public int WinPointTrackerSize
         {
             get => _winPointTrackerSize;
-            set => SetProperty(ref _winPointTrackerSize, value.GetInRange(0, GlobalConstants.MaxMinPointTrackerSize));
+            set => SetProperty(ref _winPointTrackerSize, value.GetInRange(0, ModuleConstants.MaxMinPointTrackerSize));
         }
 
         private int _winPointTrackerSize;
@@ -102,7 +102,7 @@ namespace OrionManager.ViewModel.ViewModels
         public int LoyaltyTrackerSize
         {
             get => _loyaltyTrackerSize;
-            set => SetProperty(ref _loyaltyTrackerSize, value.GetInRange(0, GlobalConstants.MaxLoyaltyTrackerSize));
+            set => SetProperty(ref _loyaltyTrackerSize, value.GetInRange(0, ModuleConstants.MaxLoyaltyTrackerSize));
         }
 
         private int _loyaltyTrackerSize;
@@ -149,7 +149,7 @@ namespace OrionManager.ViewModel.ViewModels
 
             var player = new PlayerPresetViewModel
             {
-                Name = GlobalConstants.DefaultPlayerName,
+                Name = ModuleConstants.DefaultPlayerName,
                 Race = RaceMap[Races.Random]
             };
 

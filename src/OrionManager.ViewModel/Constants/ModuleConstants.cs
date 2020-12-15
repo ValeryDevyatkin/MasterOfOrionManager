@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace OrionManager.Common.Constants
+﻿namespace OrionManager.ViewModel.Constants
 {
-    public static class GlobalConstants
+    internal static class ModuleConstants
     {
         #region Max
 
@@ -17,7 +15,6 @@ namespace OrionManager.Common.Constants
         public const int DefaultRoundCount = 8;
         public const string DefaultPlayerName = "New Player";
         public const string DefaultConfigurationName = "Default Configuration";
-        public static readonly Guid DefaultGameConfigurationId = new Guid();
 
         #endregion
     }

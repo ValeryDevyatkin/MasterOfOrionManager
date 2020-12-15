@@ -51,7 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants\GlobalConstants.cs" />
     <Compile Include="DataModels\AppDataModel.cs" />
     <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />

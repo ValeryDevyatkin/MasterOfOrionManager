@@ -130,7 +130,6 @@
     </Compile>
     <Compile Include="Theme\UiConstants.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
-    <Compile Include="Wpf\Converters\GameConfigurationDisplayTextConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToControlConverter.cs" />

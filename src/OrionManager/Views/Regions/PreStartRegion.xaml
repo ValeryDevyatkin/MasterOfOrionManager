@@ -3,7 +3,6 @@
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
@@ -40,8 +39,28 @@
                            Text = "Current configuration:" />
                 <TextBlock Grid.Row = "1"
                            FontSize = "45"
-                           TextAlignment = "Center"
-                           Text = "{Binding CurrentConfiguration, Mode=OneWay, Converter={converters:GameConfigurationDisplayTextConverter}}" />
+                           TextAlignment = "Center">
+                    <TextBlock.Style>
+                        <Style TargetType = "TextBlock"
+                               BasedOn = "{StaticResource {x:Type TextBlock}}">
+                            <Setter Property = "Text">
+                                <Setter.Value>
+                                    <MultiBinding StringFormat = "{}{0} ({1})">
+                                        <Binding Path = "CurrentConfiguration.Name" />
+                                        <Binding Path = "CurrentConfiguration.SaveTime" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding = "{Binding CurrentConfiguration.IsNotEditable}"
+                                             Value = "True">
+                                    <Setter Property = "Text"
+                                            Value = "{Binding CurrentConfiguration.Name}" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
             </Grid>
         </Border>
 

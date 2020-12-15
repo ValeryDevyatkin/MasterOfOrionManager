@@ -109,7 +109,7 @@
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                             </DataTrigger>
-                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsDefault}"
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsNotEditable}"
                                          Value = "True">
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
@@ -140,7 +140,7 @@
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                             </DataTrigger>
-                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsDefault}"
+                            <DataTrigger Binding = "{Binding SelectedConfiguration.IsNotEditable}"
                                          Value = "True">
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
@@ -209,7 +209,7 @@
                                            Text = "{Binding SaveTime, Mode=OneWay}" />
                             </Grid>
                             <DataTemplate.Triggers>
-                                <DataTrigger Binding = "{Binding IsDefault}"
+                                <DataTrigger Binding = "{Binding IsNotEditable}"
                                              Value = "True">
                                     <Setter TargetName = "SaveTimeBlock"
                                             Property = "Visibility"
@@ -277,7 +277,7 @@
                                     <Style TargetType = "TextBlock"
                                            BasedOn = "{StaticResource {x:Type TextBlock}}">
                                         <Style.Triggers>
-                                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsDefault}"
+                                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsNotEditable}"
                                                          Value = "True">
                                                 <Setter Property = "Visibility"
                                                         Value = "Collapsed" />

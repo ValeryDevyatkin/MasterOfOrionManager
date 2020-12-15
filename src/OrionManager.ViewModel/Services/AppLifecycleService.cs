@@ -3,6 +3,7 @@ using OrionManager.Common.DataModels;
 using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
 using OrionManager.ViewModel.ExtensionMethods;
+using OrionManager.ViewModel.Helpers;
 using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Main;
 using Unity;
@@ -40,15 +41,9 @@ namespace OrionManager.ViewModel.Services
 
             var configurationDataModels = _container.Resolve<IGameConfigurationService>().Load();
             var configurationViewModels = new List<GameConfigurationViewModel>();
+            var currentConfiguration = DefaultConfigurationHelper.GetDefaultConfigurationViewModel();
 
-            var defaultConfigurationViewModel =
-                _container.Resolve<IGameConfigurationService>().GetDefault().ToViewModel();
-
-            defaultConfigurationViewModel.IsDefault = true;
-
-            var currentConfiguration = defaultConfigurationViewModel;
-
-            configurationViewModels.Add(defaultConfigurationViewModel);
+            configurationViewModels.Add(currentConfiguration);
 
             foreach (var dataModel in configurationDataModels)
             {

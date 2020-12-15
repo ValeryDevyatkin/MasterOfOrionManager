@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using BAJIEPA.Tools.Helpers;
 using Newtonsoft.Json;
-using OrionManager.Common.Constants;
 using OrionManager.Common.DataModels;
 using OrionManager.Common.Interfaces;
 using Unity;
@@ -19,13 +18,6 @@ namespace OrionManager.Services.Services.SaveLoad
         {
             _container = container.RegisterInstance(this);
         }
-
-        public GameConfigurationDataModel GetDefault() => new GameConfigurationDataModel
-        {
-            Id = GlobalConstants.DefaultGameConfigurationId,
-            Name = GlobalConstants.DefaultConfigurationName,
-            PlayerPresets = new PlayerPresetDataModel[] { }
-        };
 
         public IEnumerable<GameConfigurationDataModel> Load()
         {

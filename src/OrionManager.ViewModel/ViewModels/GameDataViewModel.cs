@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using OrionManager.Common.Constants;
 using OrionManager.Common.Enums;
+using OrionManager.ViewModel.Constants;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -12,7 +12,7 @@ namespace OrionManager.ViewModel.ViewModels
         {
             container.RegisterInstance(this);
 
-            for (var i = 0; i < GlobalConstants.DefaultRoundCount; i++)
+            for (var i = 0; i < ModuleConstants.DefaultRoundCount; i++)
             {
                 Rounds[i] = new RoundViewModel {Number = i + 1};
             }
@@ -34,7 +34,7 @@ namespace OrionManager.ViewModel.ViewModels
 
         public PlayerViewModel[] Players { get; set; }
 
-        public RoundViewModel[] Rounds { get; } = new RoundViewModel[GlobalConstants.DefaultRoundCount];
+        public RoundViewModel[] Rounds { get; } = new RoundViewModel[ModuleConstants.DefaultRoundCount];
 
         public int WinPointTrackerSize { get; set; }
 

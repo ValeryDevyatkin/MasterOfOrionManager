@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
-using OrionManager.Common.Constants;
 using OrionManager.Common.Enums;
+using OrionManager.ViewModel.Constants;
 using OrionManager.ViewModel.ViewModels;
 using Senticode.Wpf;
 using Unity;
@@ -29,14 +29,14 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             // TODO: Copy fields here.
             target.SaveTime = source.SaveTime;
-            target.Name = source.Name;
+            target.Name = source.Name.Trim();
             target.WinPointTrackerSize = source.WinPointTrackerSize;
             target.LoyaltyTrackerSize = source.LoyaltyTrackerSize;
             target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
             {
                 // TODO: Copy fields here.
                 Race = target.RaceMap[x.Race.Value],
-                Name = x.Name,
+                Name = x.Name.Trim(),
                 Color = x.Color
             }));
 
@@ -104,7 +104,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
         public static void UpdateIsPlayerCanBeAdded(this GameConfigurationViewModel item)
         {
-            item.IsPlayerCanBeAdded = item.PlayerPresets.Count < GlobalConstants.MaxPlayerCount;
+            item.IsPlayerCanBeAdded = item.PlayerPresets.Count < ModuleConstants.MaxPlayerCount;
         }
 
         public static void UpdatePlayerColors(this GameConfigurationViewModel item)

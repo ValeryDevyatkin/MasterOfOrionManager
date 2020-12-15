@@ -6,7 +6,6 @@ namespace OrionManager.Common.Interfaces
 {
     public interface IGameConfigurationService
     {
-        GameConfigurationDataModel GetDefault();
         IEnumerable<GameConfigurationDataModel> Load();
         void Delete(Guid id);
         void Save(GameConfigurationDataModel dataModel);
