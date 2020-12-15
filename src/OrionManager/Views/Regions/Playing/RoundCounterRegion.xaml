@@ -17,7 +17,6 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width = "*" />
-            <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <ColumnDefinition Width = "Auto" />
         </Grid.ColumnDefinitions>
         <ItemsControl ItemsSource = "{Binding GameData.Rounds, Mode=OneWay}">
@@ -59,7 +58,7 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <ContentControl Grid.Column = "2">
+        <ContentControl Grid.Column = "1">
             <ContentControl.Style>
                 <Style TargetType = "ContentControl">
                     <Setter Property = "Content">
