@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using BAJIEPA.Tools.Helpers;
 using OrionManager.Common.Constants;
 using OrionManager.Common.Enums;
 using OrionManager.ViewModel.ExtensionMethods;
@@ -77,7 +78,7 @@ namespace OrionManager.ViewModel.ViewModels
         public string Name
         {
             get => _name;
-            set => SetProperty(ref _name, value);
+            set => SetString(ref _name, value);
         }
 
         private string _name;
@@ -89,7 +90,7 @@ namespace OrionManager.ViewModel.ViewModels
         public int WinPointTrackerSize
         {
             get => _winPointTrackerSize;
-            set => SetProperty(ref _winPointTrackerSize, value);
+            set => SetProperty(ref _winPointTrackerSize, value.GetInRange(0, GlobalConstants.MaxMinPointTrackerSize));
         }
 
         private int _winPointTrackerSize;
@@ -101,7 +102,7 @@ namespace OrionManager.ViewModel.ViewModels
         public int LoyaltyTrackerSize
         {
             get => _loyaltyTrackerSize;
-            set => SetProperty(ref _loyaltyTrackerSize, value);
+            set => SetProperty(ref _loyaltyTrackerSize, value.GetInRange(0, GlobalConstants.MaxLoyaltyTrackerSize));
         }
 
         private int _loyaltyTrackerSize;
@@ -148,7 +149,7 @@ namespace OrionManager.ViewModel.ViewModels
 
             var player = new PlayerPresetViewModel
             {
-                Name = GlobalConstants.DefaultPlayerString,
+                Name = GlobalConstants.DefaultPlayerName,
                 Race = RaceMap[Races.Random]
             };
 

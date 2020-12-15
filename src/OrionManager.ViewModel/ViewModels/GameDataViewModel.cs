@@ -36,6 +36,10 @@ namespace OrionManager.ViewModel.ViewModels
 
         public RoundViewModel[] Rounds { get; } = new RoundViewModel[GlobalConstants.DefaultRoundCount];
 
+        public int WinPointTrackerSize { get; set; }
+
+        public int LoyaltyTrackerSize { get; set; }
+
         #region Round: int
 
         public int Round
@@ -57,30 +61,6 @@ namespace OrionManager.ViewModel.ViewModels
         }
 
         private bool _isGameCanBeFinished;
-
-        #endregion
-
-        #region WinPointTrackerSize: int
-
-        public int WinPointTrackerSize
-        {
-            get => _winPointTrackerSize;
-            set => SetProperty(ref _winPointTrackerSize, value);
-        }
-
-        private int _winPointTrackerSize;
-
-        #endregion
-
-        #region LoyaltyTrackerSize: int
-
-        public int LoyaltyTrackerSize
-        {
-            get => _loyaltyTrackerSize;
-            set => SetProperty(ref _loyaltyTrackerSize, value);
-        }
-
-        private int _loyaltyTrackerSize;
 
         #endregion
     }

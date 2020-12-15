@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BAJIEPA.Tools.Helpers">
-      <HintPath>..\..\artifacts\BAJIEPA.Tools.Helpers.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\sln\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -68,6 +65,10 @@
     <Compile Include="Services\StateHub\GameDataStateHub.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\tools\src\BAJIEPA.Tools.Helpers\BAJIEPA.Tools.Helpers.csproj">
+      <Project>{90C524E0-711C-41AE-9E9E-829BA10B834E}</Project>
+      <Name>BAJIEPA.Tools.Helpers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrionManager.Common\OrionManager.Common.csproj">
       <Project>{9DACA2C1-E700-4CD4-B614-EF1DD9A76C07}</Project>
       <Name>OrionManager.Common</Name>

@@ -10,7 +10,7 @@ namespace OrionManager.ViewModel.ViewModels
         public string Name
         {
             get => _name;
-            set => SetProperty(ref _name, value);
+            set => SetString(ref _name, value);
         }
 
         private string _name;
