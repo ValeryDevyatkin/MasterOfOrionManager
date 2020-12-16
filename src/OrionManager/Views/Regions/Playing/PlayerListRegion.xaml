@@ -52,7 +52,7 @@
                                            Top = "0"
                                            Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
                             </Border.Margin>
-                            <TextBlock Text = "!"
+                            <TextBlock Text = "*"
                                        TextAlignment = "Center"
                                        VerticalAlignment = "Center"
                                        Foreground = "{StaticResource AlertBrush}" />

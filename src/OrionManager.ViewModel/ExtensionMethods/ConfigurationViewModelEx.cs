@@ -98,6 +98,17 @@ namespace OrionManager.ViewModel.ExtensionMethods
             return false;
         }
 
+        public static void UpdateIsComplete(this GameConfigurationViewModel item)
+        {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
+            item.IsComplete = item.PlayerPresets.Count > 0 &&
+                              item.MaxWinPoints > 0;
+        }
+
         public static void OnPlayerPresetsChanged(this GameConfigurationViewModel item)
         {
             if (item == null)
@@ -107,6 +118,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             item.IsPlayerCanBeAdded = item.PlayerPresets.Count < ModuleConstants.MaxPlayerCount;
             item.IsComplete = item.PlayerPresets.Count > 0;
+            item.UpdateIsComplete();
 
             // Update colors.
             for (var i = 0; i < item.PlayerPresets.Count; i++)

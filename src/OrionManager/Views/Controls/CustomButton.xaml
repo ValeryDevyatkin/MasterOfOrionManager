@@ -16,31 +16,15 @@
                         Background = "{TemplateBinding Background}"
                         BorderBrush = "{TemplateBinding BorderBrush}"
                         Padding = "{TemplateBinding Padding}">
-                    <ContentPresenter TextBlock.Foreground = "{TemplateBinding Foreground}"
-                                      VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
+                    <ContentPresenter VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
                                       HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}">
-                        <!--todo: Foreground-->
-                        <!--<ContentPresenter.ContentTemplate>
-                            <DataTemplate>
-                                <Label x:Name = "Label"
-                                       Margin = "0"
-                                       Padding = "0"
-                                       VerticalAlignment = "Stretch"
-                                       HorizontalAlignment = "Stretch"
-                                       VerticalContentAlignment = "{TemplateBinding VerticalAlignment}"
-                                       HorizontalContentAlignment = "{TemplateBinding HorizontalAlignment}"
-                                       Foreground = "{TemplateBinding TextBlock.Foreground}"
-                                       Content = "{TemplateBinding Content}">
-                                    <Label.Resources>
-                                        <Style TargetType = "TextBlock"
-                                               BasedOn = "{StaticResource {x:Type TextBlock}}">
-                                            <Setter Property = "Foreground"
-                                                    Value = "{Binding ElementName=Label, Path=Foreground, Mode=OneWay}" />
-                                        </Style>
-                                    </Label.Resources>
-                                </Label>
-                            </DataTemplate>
-                        </ContentPresenter.ContentTemplate>-->
+                        <ContentPresenter.Resources>
+                            <Style TargetType = "TextBlock"
+                                   BasedOn = "{StaticResource {x:Type TextBlock}}">
+                                <Setter Property = "Foreground"
+                                        Value = "{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" />
+                            </Style>
+                        </ContentPresenter.Resources>
                     </ContentPresenter>
                 </Border>
                 <Grid x:Name = "Blackout"

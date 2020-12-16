@@ -102,7 +102,13 @@ namespace OrionManager.ViewModel.ViewModels
         public int MaxLoyaltyPoints
         {
             get => _maxLoyaltyPoints;
-            set => SetProperty(ref _maxLoyaltyPoints, value.GetInRange(0, ModuleConstants.MaxLoyaltyPoints));
+            set => SetProperty(ref _maxLoyaltyPoints, value.GetInRange(0, ModuleConstants.MaxLoyaltyPoints),
+                               OnMaxLoyaltyPointsChanged);
+        }
+
+        private void OnMaxLoyaltyPointsChanged()
+        {
+            this.UpdateIsComplete();
         }
 
         private int _maxLoyaltyPoints;
