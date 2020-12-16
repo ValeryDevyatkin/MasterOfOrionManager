@@ -90,7 +90,7 @@
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
                                 <Setter Property = "ToolTip"
-                                        Value = "Should configure game at first." />
+                                        Value = "Add players and set max win points greater than zero." />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

@@ -19,7 +19,7 @@
         #region Default
 
         public const int DefaultRoundCount = 8;
-        public const string DefaultPlayerName = "New Player";
+        public const string DefaultPlayerName = "Player";
         public const string DefaultConfigurationName = "Default Configuration";
 
         #endregion

@@ -25,12 +25,12 @@ namespace OrionManager.Wpf.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is UiRegions region))
+            if (value is UiRegions region)
             {
-                throw new NotSupportedException();
+                return ServiceLocator.Container.Resolve(RegionMap[region]);
             }
 
-            return ServiceLocator.Container.Resolve(RegionMap[region]);
+            throw new NotSupportedException();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>

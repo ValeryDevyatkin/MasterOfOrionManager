@@ -21,12 +21,12 @@ namespace OrionManager.Wpf.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is PlayerColors playerColor))
+            if (value is PlayerColors playerColor)
             {
-                throw new ArgumentException(nameof(value));
+                return PlayerColorMap[playerColor];
             }
 
-            return PlayerColorMap[playerColor];
+            throw new ArgumentException(nameof(value));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>

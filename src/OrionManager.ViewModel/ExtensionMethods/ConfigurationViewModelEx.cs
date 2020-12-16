@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using OrionManager.Common.Enums;
+using OrionManager.Common.ExtensionMethods;
 using OrionManager.ViewModel.Constants;
 using OrionManager.ViewModel.ViewModels;
 using Senticode.Wpf;
@@ -27,17 +28,35 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 throw new ArgumentException(nameof(source));
             }
 
+            var configurationName = source.Name.Trim();
+
+            if (string.IsNullOrEmpty(configurationName))
+            {
+                configurationName = target.Id.GetHead();
+            }
+
             // TODO: Copy fields here.
             target.SaveTime = source.SaveTime;
-            target.Name = source.Name.Trim();
+            target.Name = configurationName;
             target.MaxWinPoints = source.MaxWinPoints;
             target.MaxLoyaltyPoints = source.MaxLoyaltyPoints;
-            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
+
+            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x =>
             {
-                // TODO: Copy fields here.
-                Race = target.RaceMap[x.Race.Value],
-                Name = x.Name.Trim(),
-                Color = x.Color
+                var playerName = x.Name.Trim();
+
+                if (string.IsNullOrEmpty(playerName))
+                {
+                    playerName = ModuleConstants.DefaultPlayerName;
+                }
+
+                return new PlayerPresetViewModel
+                {
+                    // TODO: Copy fields here.
+                    Race = target.RaceMap[x.Race.Value],
+                    Name = playerName,
+                    Color = x.Color
+                };
             }));
         }
 

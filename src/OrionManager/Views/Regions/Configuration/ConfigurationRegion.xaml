@@ -72,7 +72,7 @@
                                                    Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
                                     </Grid.Margin>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                                        <ColumnDefinition Width = "Auto" />
                                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                                         <ColumnDefinition Width = "*" />
                                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -80,7 +80,13 @@
                                     </Grid.ColumnDefinitions>
                                     <Border Grid.Column = "0"
                                             BorderBrush = "{StaticResource BlackBrush}"
-                                            Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
+                                            Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
+                                        <TextBlock TextAlignment = "Center"
+                                                   FontWeight = "Bold"
+                                                   Foreground = "{StaticResource BlackBrush}"
+                                                   Margin = "{x:Static constants:UiSizes.TextSpacingThickness}"
+                                                   Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
+                                    </Border>
                                     <Grid Grid.Column = "2">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height = "Auto" />

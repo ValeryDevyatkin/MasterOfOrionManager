@@ -31,7 +31,7 @@
                                    Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
                     </Grid.Margin>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <ColumnDefinition Width = "Auto" />
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                         <ColumnDefinition Width = "*" />
                     </Grid.ColumnDefinitions>
@@ -42,8 +42,8 @@
                         </Grid.RowDefinitions>
                         <Border x:Name = "InitiativeIndicator"
                                 Grid.Row = "0"
-                                ToolTip = "Initiative"
-                                BorderThickness="1"
+                                ToolTip = "Initiative."
+                                BorderThickness = "1"
                                 Background = "{StaticResource BlackBrush}"
                                 BorderBrush = "{StaticResource AlertBrush}">
                             <Border.Margin>
@@ -52,14 +52,20 @@
                                            Top = "0"
                                            Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
                             </Border.Margin>
-                            <TextBlock Text = "*"
+                            <TextBlock Text = "!"
+                                       FontWeight="ExtraBold"
                                        TextAlignment = "Center"
-                                       VerticalAlignment = "Center"
                                        Foreground = "{StaticResource AlertBrush}" />
                         </Border>
                         <Border Grid.Row = "1"
                                 BorderBrush = "{StaticResource BlackBrush}"
-                                Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
+                                Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
+                            <TextBlock TextAlignment = "Center"
+                                       FontWeight = "Bold"
+                                       Foreground = "{StaticResource BlackBrush}"
+                                       Margin = "{x:Static constants:UiSizes.TextSpacingThickness}"
+                                       Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
+                        </Border>
                     </Grid>
                     <Grid Grid.Column = "2">
                         <Grid.RowDefinitions>
@@ -101,12 +107,12 @@
                         <controls:CustomTextBox x:Name = "WinPointsBox"
                                                 Grid.Row = "4"
                                                 Label = "Points"
-                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneTime, StringFormat='{}Max: {0}'}"
+                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneTime, StringFormat='{}Max: {0}.'}"
                                                 Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
                                                 Grid.Row = "6"
                                                 Label = "Loyalty"
-                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneTime, StringFormat='{}Max: {0}'}"
+                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneTime, StringFormat='{}Max: {0}.'}"
                                                 Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                 </Grid>
