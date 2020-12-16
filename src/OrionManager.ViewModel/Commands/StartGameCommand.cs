@@ -46,8 +46,8 @@ namespace OrionManager.ViewModel.Commands
 
             game.Reset();
             game.Players = players;
-            game.WinPointTrackerSize = config.WinPointTrackerSize;
-            game.LoyaltyTrackerSize = config.LoyaltyTrackerSize;
+            game.MaxWinPoint = config.MaxWinPoints;
+            game.MaxLoyaltyPoints = config.MaxLoyaltyPoints;
             game.UpdateRounds();
 
             var gameDataModel = game.ToDataModel();

@@ -1,4 +1,6 @@
-﻿using OrionManager.Common.Enums;
+﻿using BAJIEPA.Tools.Helpers;
+using OrionManager.Common.Enums;
+using OrionManager.ViewModel.Constants;
 using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Unity;
@@ -11,6 +13,8 @@ namespace OrionManager.ViewModel.ViewModels
         {
         }
 
+        private GameDataViewModel GameData => Container.Resolve<GameDataViewModel>();
+
         public string Name { get; set; }
         public PlayerColors Color { get; set; }
         public Races Race { get; set; }
@@ -20,12 +24,14 @@ namespace OrionManager.ViewModel.ViewModels
         public int LoyaltyPoints
         {
             get => _loyaltyPoints;
-            set => SetProperty(ref _loyaltyPoints, value, OnLoyaltyPointsChanged);
+            set => SetProperty(ref _loyaltyPoints,
+                               value.GetInRange(ModuleConstants.MinLoyaltyPoints, GameData.MaxLoyaltyPoints),
+                               OnLoyaltyPointsChanged);
         }
 
         private void OnLoyaltyPointsChanged()
         {
-            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
+            GameData.UpdateIsGameCanBeFinished();
         }
 
         private int _loyaltyPoints;
@@ -37,12 +43,12 @@ namespace OrionManager.ViewModel.ViewModels
         public int WinPoints
         {
             get => _winPoints;
-            set => SetProperty(ref _winPoints, value, OnWinPointsChanged);
+            set => SetProperty(ref _winPoints, value.GetInRange(0, GameData.MaxWinPoint), OnWinPointsChanged);
         }
 
         private void OnWinPointsChanged()
         {
-            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
+            GameData.UpdateIsGameCanBeFinished();
         }
 
         private int _winPoints;

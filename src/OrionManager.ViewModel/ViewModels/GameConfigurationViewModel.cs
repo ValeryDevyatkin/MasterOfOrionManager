@@ -85,27 +85,27 @@ namespace OrionManager.ViewModel.ViewModels
 
         #endregion
 
-        #region WinPointTrackerSize: int
+        #region MaxWinPoints: int
 
-        public int WinPointTrackerSize
+        public int MaxWinPoints
         {
-            get => _winPointTrackerSize;
-            set => SetProperty(ref _winPointTrackerSize, value.GetInRange(0, ModuleConstants.MaxMinPointTrackerSize));
+            get => _maxWinPoints;
+            set => SetProperty(ref _maxWinPoints, value.GetInRange(0, ModuleConstants.MaxWinPoints));
         }
 
-        private int _winPointTrackerSize;
+        private int _maxWinPoints;
 
         #endregion
 
-        #region LoyaltyTrackerSize: int
+        #region MaxLoyaltyPoints: int
 
-        public int LoyaltyTrackerSize
+        public int MaxLoyaltyPoints
         {
-            get => _loyaltyTrackerSize;
-            set => SetProperty(ref _loyaltyTrackerSize, value.GetInRange(0, ModuleConstants.MaxLoyaltyTrackerSize));
+            get => _maxLoyaltyPoints;
+            set => SetProperty(ref _maxLoyaltyPoints, value.GetInRange(0, ModuleConstants.MaxLoyaltyPoints));
         }
 
-        private int _loyaltyTrackerSize;
+        private int _maxLoyaltyPoints;
 
         #endregion
 

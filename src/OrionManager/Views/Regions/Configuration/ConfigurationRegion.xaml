@@ -159,11 +159,11 @@
                                         Label = "Configuration name:"
                                         Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <controls:CustomTextBox Grid.Row = "4"
-                                        Label = "Win point tracker size:"
-                                        Text = "{Binding WinPointTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        Label = "Max win points:"
+                                        Text = "{Binding MaxWinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <controls:CustomTextBox Grid.Row = "6"
-                                        Label = "Loyalty tracker size:"
-                                        Text = "{Binding LoyaltyTrackerSize, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                        Label = "Max loyalty:"
+                                        Text = "{Binding MaxLoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
 
             <Grid Grid.Row = "2">

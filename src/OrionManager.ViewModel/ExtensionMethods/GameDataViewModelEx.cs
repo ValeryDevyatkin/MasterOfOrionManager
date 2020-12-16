@@ -29,7 +29,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             item.IsGameCanBeFinished = item.Round == item.Rounds.Length - 1 ||
                                        item.Players.Any(
-                                           x => x.LoyaltyPoints < 0 || x.WinPoints >= item.WinPointTrackerSize);
+                                           x => x.LoyaltyPoints < 0 || x.WinPoints >= item.MaxWinPoint);
         }
 
         public static void UpdateRounds(this GameDataViewModel item)

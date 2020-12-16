@@ -13,10 +13,10 @@ namespace OrionManager.Wpf.Converters
         private static readonly IReadOnlyDictionary<PlayerColors, Brush> PlayerColorMap =
             new Dictionary<PlayerColors, Brush>
             {
-                {PlayerColors.Red, Brushes.Red},
+                {PlayerColors.Red, Brushes.DarkRed},
                 {PlayerColors.Green, Brushes.Green},
                 {PlayerColors.Blue, Brushes.Blue},
-                {PlayerColors.Yellow, Brushes.Yellow}
+                {PlayerColors.Yellow, Brushes.Gold}
             };
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

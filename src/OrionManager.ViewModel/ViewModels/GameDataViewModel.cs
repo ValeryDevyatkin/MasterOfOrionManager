@@ -36,9 +36,9 @@ namespace OrionManager.ViewModel.ViewModels
 
         public RoundViewModel[] Rounds { get; } = new RoundViewModel[ModuleConstants.DefaultRoundCount];
 
-        public int WinPointTrackerSize { get; set; }
+        public int MaxWinPoint { get; set; }
 
-        public int LoyaltyTrackerSize { get; set; }
+        public int MaxLoyaltyPoints { get; set; }
 
         #region Round: int
 

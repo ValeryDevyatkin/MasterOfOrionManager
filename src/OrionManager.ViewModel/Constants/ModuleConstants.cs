@@ -2,11 +2,17 @@
 {
     internal static class ModuleConstants
     {
+        #region Min
+
+        public const int MinLoyaltyPoints = -10;
+
+        #endregion
+
         #region Max
 
         public const int MaxPlayerCount = 4;
-        public const int MaxLoyaltyTrackerSize = 20;
-        public const int MaxMinPointTrackerSize = 100;
+        public const int MaxLoyaltyPoints = 20;
+        public const int MaxWinPoints = 100;
 
         #endregion
 

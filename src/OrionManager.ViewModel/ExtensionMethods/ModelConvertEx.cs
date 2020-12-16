@@ -36,8 +36,8 @@ namespace OrionManager.ViewModel.ExtensionMethods
             return new GameDataModel
             {
                 Round = item.Round,
-                WinPointTrackerSize = item.WinPointTrackerSize,
-                LoyaltyTrackerSize = item.LoyaltyTrackerSize,
+                WinPointTrackerSize = item.MaxWinPoint,
+                LoyaltyTrackerSize = item.MaxLoyaltyPoints,
 
                 Players = item.Players.Select(x => new PlayerDataModel
                 {
@@ -66,8 +66,8 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 Id = item.Id,
                 SaveTime = item.SaveTime,
                 Name = item.Name,
-                WinPointTrackerSize = item.WinPointTrackerSize,
-                LoyaltyTrackerSize = item.LoyaltyTrackerSize,
+                WinPointTrackerSize = item.MaxWinPoints,
+                LoyaltyTrackerSize = item.MaxLoyaltyPoints,
 
                 PlayerPresets = item.PlayerPresets.Select(x => new PlayerPresetDataModel
                 {
@@ -92,8 +92,8 @@ namespace OrionManager.ViewModel.ExtensionMethods
             viewModel.Id = item.Id;
             viewModel.SaveTime = item.SaveTime;
             viewModel.Name = item.Name;
-            viewModel.WinPointTrackerSize = item.WinPointTrackerSize;
-            viewModel.LoyaltyTrackerSize = item.LoyaltyTrackerSize;
+            viewModel.MaxWinPoints = item.WinPointTrackerSize;
+            viewModel.MaxLoyaltyPoints = item.LoyaltyTrackerSize;
 
             viewModel.PlayerPresets.AddRange(item.PlayerPresets.Select(x => new PlayerPresetViewModel
             {
