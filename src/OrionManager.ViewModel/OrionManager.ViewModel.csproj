@@ -69,6 +69,7 @@
     <Compile Include="Commands\StartNewRoundCommand.cs" />
     <Compile Include="Constants\ModuleConstants.cs" />
     <Compile Include="Constants\ModuleRegex.cs" />
+    <Compile Include="Constants\ViewModelConstants.cs" />
     <Compile Include="ExtensionMethods\ConfigurationViewModelEx.cs" />
     <Compile Include="ExtensionMethods\GameDataViewModelEx.cs" />
     <Compile Include="ExtensionMethods\ModelConvertEx.cs" />

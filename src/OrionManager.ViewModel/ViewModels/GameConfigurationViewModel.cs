@@ -90,7 +90,9 @@ namespace OrionManager.ViewModel.ViewModels
         public int MaxWinPoints
         {
             get => _maxWinPoints;
-            set => SetProperty(ref _maxWinPoints, value.GetInRange(0, ModuleConstants.MaxWinPoints));
+            set => SetProperty(ref _maxWinPoints,
+                               value.GetInRange(ViewModelConstants.MinPresetWinPoints,
+                                                ViewModelConstants.MaxPresetWinPoints));
         }
 
         private int _maxWinPoints;
@@ -102,7 +104,9 @@ namespace OrionManager.ViewModel.ViewModels
         public int MaxLoyaltyPoints
         {
             get => _maxLoyaltyPoints;
-            set => SetProperty(ref _maxLoyaltyPoints, value.GetInRange(0, ModuleConstants.MaxLoyaltyPoints),
+            set => SetProperty(ref _maxLoyaltyPoints,
+                               value.GetInRange(ViewModelConstants.MinPresetLoyaltyPoints,
+                                                ViewModelConstants.MaxPresetLoyaltyPoints),
                                OnMaxLoyaltyPointsChanged);
         }
 
