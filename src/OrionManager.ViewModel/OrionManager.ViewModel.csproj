@@ -73,6 +73,7 @@
     <Compile Include="ExtensionMethods\GameDataViewModelEx.cs" />
     <Compile Include="ExtensionMethods\ModelConvertEx.cs" />
     <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
+    <Compile Include="ExtensionMethods\PlayerViewModelEx.cs" />
     <Compile Include="Helpers\DefaultConfigurationHelper.cs" />
     <Compile Include="Services\AppLifecycleService.cs" />
     <Compile Include="ViewModelInitializer.cs" />

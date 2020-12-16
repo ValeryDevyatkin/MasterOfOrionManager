@@ -27,34 +27,38 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border>
+                    <Border x:Name = "Border">
                         <Border.Margin>
                             <Thickness Top = "0"
                                        Left = "0"
                                        Bottom = "0"
                                        Right = "{x:Static constants:UiSizes.InnerSpacing}" />
                         </Border.Margin>
-                        <TextBlock Text = "{Binding Number, Mode=OneWay}"
+                        <TextBlock x:Name = "TextBlock"
+                                   Text = "{Binding Number, Mode=OneWay}"
                                    HorizontalAlignment = "Center"
                                    TextAlignment = "Center" />
-                        <Border.Style>
-                            <Style TargetType = "Border"
-                                   BasedOn = "{StaticResource {x:Type Border}}">
-                                <Style.Triggers>
-                                    <DataTrigger Binding = "{Binding State}"
-                                                 Value = "{x:Static enums:RoundStates.Passed}">
-                                        <Setter Property = "Background"
-                                                Value = "{StaticResource BlackBrush}" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding = "{Binding State}"
-                                                 Value = "{x:Static enums:RoundStates.Current}">
-                                        <Setter Property = "BorderBrush"
-                                                Value = "{StaticResource AlertBrush}" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </Border.Style>
                     </Border>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding = "{Binding State}"
+                                     Value = "{x:Static enums:RoundStates.Passed}">
+                            <Setter TargetName = "Border"
+                                    Property = "Background"
+                                    Value = "{StaticResource BlackBrush}" />
+                        </DataTrigger>
+                        <DataTrigger Binding = "{Binding State}"
+                                     Value = "{x:Static enums:RoundStates.Current}">
+                            <Setter TargetName = "Border"
+                                    Property = "BorderBrush"
+                                    Value = "{StaticResource AlertBrush}" />
+                            <Setter TargetName = "TextBlock"
+                                    Property = "FontWeight"
+                                    Value = "Bold" />
+                            <Setter TargetName = "TextBlock"
+                                    Property = "Foreground"
+                                    Value = "{StaticResource AlertBrush}" />
+                        </DataTrigger>
+                    </DataTemplate.Triggers>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -73,7 +77,11 @@
                                      Value = "True">
                             <Setter Property = "Content">
                                 <Setter.Value>
+                                    <!--todo: Foreground-->
                                     <controls:CustomButton Content = "Finish Game"
+                                                           FontWeight = "Bold"
+                                                           BorderBrush = "{StaticResource AlertBrush}"
+                                                           Foreground = "{StaticResource AlertBrush}"
                                                            Width = "{StaticResource StartMenuButtonWidth}"
                                                            Command = "{Binding AppCommands.FinishGameCommand, Mode=OneTime}" />
                                 </Setter.Value>

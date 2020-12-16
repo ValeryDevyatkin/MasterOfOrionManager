@@ -101,8 +101,6 @@
                                                     <Style.Triggers>
                                                         <Trigger Property = "IsEnabled"
                                                                  Value = "False">
-                                                            <Setter Property = "BorderThickness"
-                                                                    Value = "{x:Static constants:UiSizes.AlertBorderThickness}" />
                                                             <Setter Property = "BorderBrush"
                                                                     Value = "{StaticResource AlertBrush}" />
                                                         </Trigger>

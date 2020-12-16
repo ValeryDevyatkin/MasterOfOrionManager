@@ -36,7 +36,7 @@ namespace OrionManager.ViewModel.ViewModels
 
         public RoundViewModel[] Rounds { get; } = new RoundViewModel[ModuleConstants.DefaultRoundCount];
 
-        public int MaxWinPoint { get; set; }
+        public int MaxWinPoints { get; set; }
 
         public int MaxLoyaltyPoints { get; set; }
 

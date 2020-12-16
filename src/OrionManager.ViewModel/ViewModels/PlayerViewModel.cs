@@ -13,11 +13,33 @@ namespace OrionManager.ViewModel.ViewModels
         {
         }
 
-        private GameDataViewModel GameData => Container.Resolve<GameDataViewModel>();
-
         public string Name { get; set; }
         public PlayerColors Color { get; set; }
         public Races Race { get; set; }
+
+        #region IsWinPointsValueLeadsToGameFinish: bool
+
+        public bool IsWinPointsValueLeadsToGameFinish
+        {
+            get => _isWinPointsValueLeadsToGameFinish;
+            set => SetProperty(ref _isWinPointsValueLeadsToGameFinish, value);
+        }
+
+        private bool _isWinPointsValueLeadsToGameFinish;
+
+        #endregion
+
+        #region IsLoyaltyPointsValueLeadsToGameFinish: bool
+
+        public bool IsLoyaltyPointsValueLeadsToGameFinish
+        {
+            get => _isLoyaltyPointsValueLeadsToGameFinish;
+            set => SetProperty(ref _isLoyaltyPointsValueLeadsToGameFinish, value);
+        }
+
+        private bool _isLoyaltyPointsValueLeadsToGameFinish;
+
+        #endregion
 
         #region LoyaltyPoints: int
 
@@ -25,13 +47,15 @@ namespace OrionManager.ViewModel.ViewModels
         {
             get => _loyaltyPoints;
             set => SetProperty(ref _loyaltyPoints,
-                               value.GetInRange(ModuleConstants.MinLoyaltyPoints, GameData.MaxLoyaltyPoints),
+                               value.GetInRange(ModuleConstants.MinLoyaltyPoints,
+                                                Container.Resolve<GameDataViewModel>().MaxLoyaltyPoints),
                                OnLoyaltyPointsChanged);
         }
 
         private void OnLoyaltyPointsChanged()
         {
-            GameData.UpdateIsGameCanBeFinished();
+            this.UpdateIsLoyaltyPointsValueLeadsToGameFinish();
+            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
         }
 
         private int _loyaltyPoints;
@@ -43,12 +67,14 @@ namespace OrionManager.ViewModel.ViewModels
         public int WinPoints
         {
             get => _winPoints;
-            set => SetProperty(ref _winPoints, value.GetInRange(0, GameData.MaxWinPoint), OnWinPointsChanged);
+            set => SetProperty(ref _winPoints, value.GetInRange(0, Container.Resolve<GameDataViewModel>().MaxWinPoints),
+                               OnWinPointsChanged);
         }
 
         private void OnWinPointsChanged()
         {
-            GameData.UpdateIsGameCanBeFinished();
+            this.UpdateIsWinPointsValueLeadsToGameFinish();
+            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
         }
 
         private int _winPoints;

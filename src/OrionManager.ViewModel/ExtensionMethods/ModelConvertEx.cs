@@ -36,7 +36,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
             return new GameDataModel
             {
                 Round = item.Round,
-                WinPointTrackerSize = item.MaxWinPoint,
+                WinPointTrackerSize = item.MaxWinPoints,
                 LoyaltyTrackerSize = item.MaxLoyaltyPoints,
 
                 Players = item.Players.Select(x => new PlayerDataModel

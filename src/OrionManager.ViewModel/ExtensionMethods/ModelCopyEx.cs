@@ -41,7 +41,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
             // TODO: Copy fields here.
             target.Round = source.Round;
             target.MaxLoyaltyPoints = source.LoyaltyTrackerSize;
-            target.MaxWinPoint = source.WinPointTrackerSize;
+            target.MaxWinPoints = source.WinPointTrackerSize;
 
             target.Players = source.Players.Select(x =>
             {

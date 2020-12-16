@@ -46,7 +46,7 @@ namespace OrionManager.ViewModel.Commands
 
             game.Reset();
             game.Players = players;
-            game.MaxWinPoint = config.MaxWinPoints;
+            game.MaxWinPoints = config.MaxWinPoints;
             game.MaxLoyaltyPoints = config.MaxLoyaltyPoints;
             game.UpdateRounds();
 

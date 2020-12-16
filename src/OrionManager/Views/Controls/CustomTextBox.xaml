@@ -17,7 +17,8 @@
                     <ColumnDefinition Width = "*" />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column = "0">
+                <Border Grid.Column = "0"
+                        ToolTip = "{TemplateBinding Tip}">
                     <Border.Padding>
                         <Thickness Right = "{x:Static constants:UiSizes.InnerSpacing}"
                                    Left = "{x:Static constants:UiSizes.InnerSpacing}"
@@ -36,7 +37,8 @@
                                       TopLeft = "{x:Static constants:UiSizes.BorderRadiusSize}"
                                       BottomLeft = "{x:Static constants:UiSizes.BorderRadiusSize}" />
                     </Border.CornerRadius>
-                    <TextBlock Text = "{TemplateBinding Label}"
+                    <TextBlock FontWeight = "Normal"
+                               Text = "{TemplateBinding Label}"
                                Foreground = "{StaticResource DefaultForeground}" />
                 </Border>
 
@@ -52,11 +54,11 @@
                          Padding = "{x:Static constants:UiSizes.TextSpacingThickness}"
                          BorderThickness = "{x:Static constants:UiSizes.BorderThickness}"
                          BorderBrush = "{StaticResource DefaultForeground}"
-                         Foreground = "{StaticResource DefaultForeground}"
-                         Background = "{StaticResource DefaultBackground}">
+                         Foreground = "{TemplateBinding Foreground}"
+                         Background = "{TemplateBinding Background}">
                     <TextBox.Template>
                         <ControlTemplate TargetType = "TextBox">
-                            <Border Background = "{StaticResource BlackBrush}">
+                            <Border Background = "{TemplateBinding Background}">
                                 <Border.CornerRadius>
                                     <CornerRadius TopLeft = "0"
                                                   BottomLeft = "0"

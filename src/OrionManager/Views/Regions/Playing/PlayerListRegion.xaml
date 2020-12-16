@@ -62,8 +62,6 @@
                                     <Style.Triggers>
                                         <Trigger Property = "IsEnabled"
                                                  Value = "False">
-                                            <Setter Property = "BorderThickness"
-                                                    Value = "{x:Static constants:UiSizes.AlertBorderThickness}" />
                                             <Setter Property = "BorderBrush"
                                                     Value = "{StaticResource AlertBrush}" />
                                         </Trigger>
@@ -76,14 +74,38 @@
                                 </DataTemplate>
                             </controls:CustomComboBox.ItemTemplate>
                         </controls:CustomComboBox>
-                        <controls:CustomTextBox Grid.Row = "4"
+                        <controls:CustomTextBox x:Name = "WinPointsBox"
+                                                Grid.Row = "4"
                                                 Label = "Points"
+                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneTime, StringFormat='{}Max: {0}'}"
                                                 Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <controls:CustomTextBox Grid.Row = "6"
+                        <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
+                                                Grid.Row = "6"
                                                 Label = "Loyalty"
+                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneTime, StringFormat='{}Max: {0}'}"
                                                 Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     </Grid>
                 </Grid>
+                <DataTemplate.Triggers>
+                    <DataTrigger Binding = "{Binding IsWinPointsValueLeadsToGameFinish}"
+                                 Value = "True">
+                        <Setter TargetName = "WinPointsBox"
+                                Property = "Foreground"
+                                Value = "{StaticResource AlertBrush}" />
+                        <Setter TargetName = "WinPointsBox"
+                                Property = "FontWeight"
+                                Value = "Bold" />
+                    </DataTrigger>
+                    <DataTrigger Binding = "{Binding IsLoyaltyPointsValueLeadsToGameFinish}"
+                                 Value = "True">
+                        <Setter TargetName = "LoyaltyPointsBox"
+                                Property = "Foreground"
+                                Value = "{StaticResource AlertBrush}" />
+                        <Setter TargetName = "LoyaltyPointsBox"
+                                Property = "FontWeight"
+                                Value = "Bold" />
+                    </DataTrigger>
+                </DataTemplate.Triggers>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
     </ItemsControl>

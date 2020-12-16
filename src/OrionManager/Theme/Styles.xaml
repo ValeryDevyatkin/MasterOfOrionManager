@@ -52,6 +52,13 @@
                 Value = "0" />
     </Style>
 
+    <Style TargetType = "controls:CustomTextBox">
+        <Setter Property = "Background"
+                Value = "{StaticResource BlackBrush}" />
+        <Setter Property = "Foreground"
+                Value = "{StaticResource DefaultForeground}" />
+    </Style>
+
     <Style TargetType = "controls:CustomButton">
         <Setter Property = "ToolTipService.ShowOnDisabled"
                 Value = "True" />
@@ -68,6 +75,8 @@
         <Setter Property = "Background"
                 Value = "{StaticResource DefaultBackground}" />
         <Setter Property = "BorderBrush"
+                Value = "{StaticResource DefaultForeground}" />
+        <Setter Property = "Foreground"
                 Value = "{StaticResource DefaultForeground}" />
         <Setter Property = "Padding">
             <Setter.Value>

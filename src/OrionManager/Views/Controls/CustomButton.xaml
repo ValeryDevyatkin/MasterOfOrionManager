@@ -16,8 +16,11 @@
                         Background = "{TemplateBinding Background}"
                         BorderBrush = "{TemplateBinding BorderBrush}"
                         Padding = "{TemplateBinding Padding}">
-                    <ContentPresenter VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
-                                      HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}" />
+                    <TextBlock Text = "{TemplateBinding Content}"
+                               FontWeight = "{TemplateBinding FontWeight}"
+                               Foreground = "{TemplateBinding Foreground}"
+                               VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
+                               HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}" />
                 </Border>
                 <Grid x:Name = "Blackout"
                       Visibility = "Hidden"

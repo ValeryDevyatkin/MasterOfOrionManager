@@ -17,6 +17,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
             item.UpdateRounds();
         }
 
+
         public static void UpdateIsGameCanBeFinished(this GameDataViewModel item)
         {
             var mainViewModel = ServiceLocator.Container.Resolve<MainViewModel>();
@@ -29,7 +30,8 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             item.IsGameCanBeFinished = item.Round == item.Rounds.Length - 1 ||
                                        item.Players.Any(
-                                           x => x.LoyaltyPoints < 0 || x.WinPoints >= item.MaxWinPoint);
+                                           x => x.IsWinPointsValueLeadsToGameFinish ||
+                                                x.IsLoyaltyPointsValueLeadsToGameFinish);
         }
 
         public static void UpdateRounds(this GameDataViewModel item)
