@@ -103,10 +103,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 Color = x.Color
             }));
 
-            viewModel.UpdateIsPlayerCanBeAdded();
-            viewModel.UpdatePlayerColors();
-            viewModel.UpdateIsReadyToPlay();
-
             return viewModel;
         }
     }

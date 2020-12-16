@@ -1,4 +1,5 @@
 ﻿using OrionManager.Common.Enums;
+using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf.Base;
 using Unity;
@@ -17,6 +18,7 @@ namespace OrionManager.ViewModel.Commands
         protected override void ExecuteExternal(object parameter)
         {
             _container.Resolve<MainViewModel>().Region = UiRegions.Playing;
+            _container.Resolve<GameDataViewModel>().IsOpenedAndReady = true;
         }
     }
 }

@@ -77,7 +77,6 @@
                                      Value = "True">
                             <Setter Property = "Content">
                                 <Setter.Value>
-                                    <!--todo: Foreground-->
                                     <controls:CustomButton Content = "Finish Game"
                                                            FontWeight = "Bold"
                                                            BorderBrush = "{StaticResource AlertBrush}"

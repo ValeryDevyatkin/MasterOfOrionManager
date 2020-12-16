@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using OrionManager.Common.Enums;
 using OrionManager.ViewModel.Constants;
+using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
+using Senticode.Wpf.Collections;
+using Senticode.Wpf.Interfaces;
 using Unity;
 
 namespace OrionManager.ViewModel.ViewModels
@@ -14,7 +17,7 @@ namespace OrionManager.ViewModel.ViewModels
 
             for (var i = 0; i < ModuleConstants.DefaultRoundCount; i++)
             {
-                Rounds[i] = new RoundViewModel {Number = i + 1};
+                Rounds.Add(new RoundViewModel {Number = i + 1});
             }
         }
 
@@ -32,20 +35,61 @@ namespace OrionManager.ViewModel.ViewModels
                 {Counselors.Viktoria, new DisablingItemViewModel<Counselors>(Counselors.Viktoria)}
             };
 
-        public PlayerViewModel[] Players { get; set; }
+        public IObservableRangeCollection<PlayerViewModel> Players { get; } =
+            new ObservableRangeCollection<PlayerViewModel>();
 
-        public RoundViewModel[] Rounds { get; } = new RoundViewModel[ModuleConstants.DefaultRoundCount];
+        public IObservableRangeCollection<RoundViewModel> Rounds { get; } =
+            new ObservableRangeCollection<RoundViewModel>();
 
-        public int MaxWinPoints { get; set; }
+        public bool IsOpenedAndReady { get; set; }
 
-        public int MaxLoyaltyPoints { get; set; }
+        #region MaxWinPoints: int
+
+        public int MaxWinPoints
+        {
+            get => _maxWinPoints;
+            set => SetProperty(ref _maxWinPoints, value);
+        }
+
+        private int _maxWinPoints;
+
+        #endregion
+
+        #region MaxLoyaltyPoints: int
+
+        public int MaxLoyaltyPoints
+        {
+            get => _maxLoyaltyPoints;
+            set => SetProperty(ref _maxLoyaltyPoints, value);
+        }
+
+        private int _maxLoyaltyPoints;
+
+        #endregion
+
+        #region IsLastRound: bool
+
+        public bool IsLastRound
+        {
+            get => _isLastRound;
+            set => SetProperty(ref _isLastRound, value);
+        }
+
+        private bool _isLastRound;
+
+        #endregion
 
         #region Round: int
 
         public int Round
         {
             get => _round;
-            set => SetProperty(ref _round, value);
+            set => SetProperty(ref _round, value, OnRoundChanged);
+        }
+
+        private void OnRoundChanged()
+        {
+            this.UpdateIsLastRound();
         }
 
         private int _round;

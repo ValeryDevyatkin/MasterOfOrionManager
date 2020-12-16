@@ -18,9 +18,9 @@ namespace OrionManager.ViewModel.Commands
 
         protected override void ExecuteExternal(object parameter)
         {
-            _container.Resolve<GameDataViewModel>().Reset();
             _container.Resolve<MainViewModel>().IsGameStarted = false;
             _container.Resolve<MainViewModel>().Region = UiRegions.Start;
+            _container.Resolve<GameDataViewModel>().Reset();
         }
     }
 }

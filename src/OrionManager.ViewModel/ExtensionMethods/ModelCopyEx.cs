@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using OrionManager.Common.DataModels;
+using OrionManager.Common.Enums;
 using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf;
@@ -43,7 +44,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
             target.MaxLoyaltyPoints = source.LoyaltyTrackerSize;
             target.MaxWinPoints = source.WinPointTrackerSize;
 
-            target.Players = source.Players.Select(x =>
+            target.Players.ReplaceAll(source.Players.Select(x =>
             {
                 var viewModel = ServiceLocator.Container.Resolve<PlayerViewModel>();
 
@@ -57,10 +58,31 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 viewModel.Counselor = target.CounselorMap[x.Counselor];
 
                 return viewModel;
-            }).ToArray();
+            }));
 
             target.UpdateRounds();
             target.UpdateIsGameCanBeFinished();
+        }
+
+        private static void UpdateRounds(this GameDataViewModel item)
+        {
+            for (var i = 0; i < item.Rounds.Count; i++)
+            {
+                var round = item.Rounds[i];
+
+                if (i < item.Round)
+                {
+                    round.State = RoundStates.Passed;
+                }
+                else if (i == item.Round)
+                {
+                    round.State = RoundStates.Current;
+                }
+                else
+                {
+                    round.State = RoundStates.Arriving;
+                }
+            }
         }
     }
 }

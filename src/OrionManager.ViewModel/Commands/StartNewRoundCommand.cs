@@ -20,7 +20,7 @@ namespace OrionManager.ViewModel.Commands
         {
             var game = _container.Resolve<GameDataViewModel>();
 
-            if (game.Round == game.Rounds.Length)
+            if (game.IsLastRound)
             {
                 throw new NotSupportedException();
             }

@@ -1,8 +1,6 @@
 ﻿using System;
-using OrionManager.Common.DataModels;
+using System.Collections.Generic;
 using OrionManager.Common.Enums;
-using OrionManager.Common.Interfaces;
-using OrionManager.ViewModel.ExtensionMethods;
 using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf.Base;
@@ -24,16 +22,15 @@ namespace OrionManager.ViewModel.Commands
             var mainViewModel = _container.Resolve<MainViewModel>();
             var config = mainViewModel.CurrentConfiguration;
             var game = mainViewModel.GameData;
-            var players = new PlayerViewModel[config.PlayerPresets.Count];
+            var players = new List<PlayerViewModel>();
 
-            if (!config.IsReadyToPlay)
+            if (!config.IsComplete)
             {
                 throw new NotSupportedException();
             }
 
-            for (var i = 0; i < config.PlayerPresets.Count; i++)
+            foreach (var playerPreset in config.PlayerPresets)
             {
-                var playerPreset = config.PlayerPresets[i];
                 var player = _container.Resolve<PlayerViewModel>();
 
                 player.Race = playerPreset.Race.Value;
@@ -41,22 +38,17 @@ namespace OrionManager.ViewModel.Commands
                 player.Name = playerPreset.Name;
                 player.Counselor = game.CounselorMap[Counselors.None];
 
-                players[i] = player;
+                players.Add(player);
             }
 
-            game.Reset();
-            game.Players = players;
+            mainViewModel.Region = UiRegions.Playing;
+            mainViewModel.IsGameStarted = true;
+
+            game.Players.ReplaceAll(players);
             game.MaxWinPoints = config.MaxWinPoints;
             game.MaxLoyaltyPoints = config.MaxLoyaltyPoints;
-            game.UpdateRounds();
-
-            var gameDataModel = game.ToDataModel();
-
-            _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameDataModel);
-            _container.Resolve<IDataStateHub<GameDataModel>>().CommitState(gameDataModel);
-
-            mainViewModel.IsGameStarted = true;
-            mainViewModel.Region = UiRegions.Playing;
+            game.Rounds[0].State = RoundStates.Current;
+            game.IsOpenedAndReady = true;
         }
     }
 }

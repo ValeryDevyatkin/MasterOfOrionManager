@@ -22,7 +22,16 @@ namespace OrionManager.ViewModel.ViewModels
         public bool IsWinPointsValueLeadsToGameFinish
         {
             get => _isWinPointsValueLeadsToGameFinish;
-            set => SetProperty(ref _isWinPointsValueLeadsToGameFinish, value);
+            set => SetProperty(ref _isWinPointsValueLeadsToGameFinish, value,
+                               OnIsWinPointsValueLeadsToGameFinishChanged);
+        }
+
+        private void OnIsWinPointsValueLeadsToGameFinishChanged()
+        {
+            if (Container.Resolve<GameDataViewModel>().IsOpenedAndReady)
+            {
+                Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
+            }
         }
 
         private bool _isWinPointsValueLeadsToGameFinish;
@@ -34,7 +43,16 @@ namespace OrionManager.ViewModel.ViewModels
         public bool IsLoyaltyPointsValueLeadsToGameFinish
         {
             get => _isLoyaltyPointsValueLeadsToGameFinish;
-            set => SetProperty(ref _isLoyaltyPointsValueLeadsToGameFinish, value);
+            set => SetProperty(ref _isLoyaltyPointsValueLeadsToGameFinish, value,
+                               OnIsLoyaltyPointsValueLeadsToGameFinishChanged);
+        }
+
+        private void OnIsLoyaltyPointsValueLeadsToGameFinishChanged()
+        {
+            if (Container.Resolve<GameDataViewModel>().IsOpenedAndReady)
+            {
+                Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
+            }
         }
 
         private bool _isLoyaltyPointsValueLeadsToGameFinish;
@@ -55,7 +73,6 @@ namespace OrionManager.ViewModel.ViewModels
         private void OnLoyaltyPointsChanged()
         {
             this.UpdateIsLoyaltyPointsValueLeadsToGameFinish();
-            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
         }
 
         private int _loyaltyPoints;
@@ -74,7 +91,6 @@ namespace OrionManager.ViewModel.ViewModels
         private void OnWinPointsChanged()
         {
             this.UpdateIsWinPointsValueLeadsToGameFinish();
-            Container.Resolve<GameDataViewModel>().UpdateIsGameCanBeFinished();
         }
 
         private int _winPoints;

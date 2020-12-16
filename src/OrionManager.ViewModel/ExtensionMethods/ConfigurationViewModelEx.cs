@@ -39,10 +39,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 Name = x.Name.Trim(),
                 Color = x.Color
             }));
-
-            target.UpdateIsPlayerCanBeAdded();
-            target.UpdatePlayerColors();
-            target.UpdateIsReadyToPlay();
         }
 
         public static GameConfigurationViewModel Clone(this GameConfigurationViewModel item)
@@ -102,20 +98,16 @@ namespace OrionManager.ViewModel.ExtensionMethods
             return false;
         }
 
-        public static void UpdateIsPlayerCanBeAdded(this GameConfigurationViewModel item)
+        public static void OnPlayerPresetsChanged(this GameConfigurationViewModel item)
         {
             item.IsPlayerCanBeAdded = item.PlayerPresets.Count < ModuleConstants.MaxPlayerCount;
-        }
+            item.IsComplete = item.PlayerPresets.Count > 0;
 
-        public static void UpdatePlayerColors(this GameConfigurationViewModel item)
-        {
+            // Update colors.
             for (var i = 0; i < item.PlayerPresets.Count; i++)
             {
                 item.PlayerPresets[i].Color = (PlayerColors) i;
             }
         }
-
-        public static void UpdateIsReadyToPlay(this GameConfigurationViewModel item) =>
-            item.IsReadyToPlay = item.PlayerPresets.Count > 0;
     }
 }

@@ -85,7 +85,7 @@
                     <Style BasedOn = "{StaticResource {x:Type controls:CustomButton}}"
                            TargetType = "controls:CustomButton">
                         <Style.Triggers>
-                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsReadyToPlay}"
+                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsComplete}"
                                          Value = "False">
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />

@@ -16,7 +16,7 @@ namespace OrionManager.ViewModel.ViewModels
     {
         public GameConfigurationViewModel(IUnityContainer container) : base(container)
         {
-            this.UpdateIsPlayerCanBeAdded();
+            PlayerPresets.CollectionChanged += (s, e) => this.OnPlayerPresetsChanged();
         }
 
         public IReadOnlyDictionary<Races, DisablingItemViewModel<Races>> RaceMap { get; } =
@@ -121,15 +121,15 @@ namespace OrionManager.ViewModel.ViewModels
 
         #endregion
 
-        #region IsReadyToPlay: bool
+        #region IsComplete: bool
 
-        public bool IsReadyToPlay
+        public bool IsComplete
         {
-            get => _isReadyToPlay;
-            set => SetProperty(ref _isReadyToPlay, value);
+            get => _isComplete;
+            set => SetProperty(ref _isComplete, value);
         }
 
-        private bool _isReadyToPlay;
+        private bool _isComplete;
 
         #endregion
 
@@ -154,9 +154,6 @@ namespace OrionManager.ViewModel.ViewModels
             };
 
             PlayerPresets.Add(player);
-            this.UpdateIsPlayerCanBeAdded();
-            this.UpdatePlayerColors();
-            this.UpdateIsReadyToPlay();
         }
 
         #endregion
@@ -177,9 +174,6 @@ namespace OrionManager.ViewModel.ViewModels
 
             RaceMap[item.Race.Value].IsEnabled = true;
             PlayerPresets.Remove(item);
-            this.UpdateIsPlayerCanBeAdded();
-            this.UpdatePlayerColors();
-            this.UpdateIsReadyToPlay();
         }
 
         #endregion
