@@ -16,11 +16,32 @@
                         Background = "{TemplateBinding Background}"
                         BorderBrush = "{TemplateBinding BorderBrush}"
                         Padding = "{TemplateBinding Padding}">
-                    <TextBlock Text = "{TemplateBinding Content}"
-                               FontWeight = "{TemplateBinding FontWeight}"
-                               Foreground = "{TemplateBinding Foreground}"
-                               VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
-                               HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}" />
+                    <ContentPresenter TextBlock.Foreground = "{TemplateBinding Foreground}"
+                                      VerticalAlignment = "{TemplateBinding VerticalContentAlignment}"
+                                      HorizontalAlignment = "{TemplateBinding HorizontalContentAlignment}">
+                        <!--todo: Foreground-->
+                        <!--<ContentPresenter.ContentTemplate>
+                            <DataTemplate>
+                                <Label x:Name = "Label"
+                                       Margin = "0"
+                                       Padding = "0"
+                                       VerticalAlignment = "Stretch"
+                                       HorizontalAlignment = "Stretch"
+                                       VerticalContentAlignment = "{TemplateBinding VerticalAlignment}"
+                                       HorizontalContentAlignment = "{TemplateBinding HorizontalAlignment}"
+                                       Foreground = "{TemplateBinding TextBlock.Foreground}"
+                                       Content = "{TemplateBinding Content}">
+                                    <Label.Resources>
+                                        <Style TargetType = "TextBlock"
+                                               BasedOn = "{StaticResource {x:Type TextBlock}}">
+                                            <Setter Property = "Foreground"
+                                                    Value = "{Binding ElementName=Label, Path=Foreground, Mode=OneWay}" />
+                                        </Style>
+                                    </Label.Resources>
+                                </Label>
+                            </DataTemplate>
+                        </ContentPresenter.ContentTemplate>-->
+                    </ContentPresenter>
                 </Border>
                 <Grid x:Name = "Blackout"
                       Visibility = "Hidden"

@@ -1,6 +1,4 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.ViewModel.ExtensionMethods;
-using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Main;
 using Senticode.Wpf.Base;
 using Unity;
@@ -20,7 +18,6 @@ namespace OrionManager.ViewModel.Commands
         {
             _container.Resolve<MainViewModel>().IsGameStarted = false;
             _container.Resolve<MainViewModel>().Region = UiRegions.Start;
-            _container.Resolve<GameDataViewModel>().Reset();
         }
     }
 }

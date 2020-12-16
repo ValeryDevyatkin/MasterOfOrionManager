@@ -10,6 +10,5 @@ namespace OrionManager.Common.DataModels
         public int LoyaltyPoints { get; set; }
         public int WinPoints { get; set; }
         public Counselors Counselor { get; set; }
-        public bool HasInitiative { get; set; }
     }
 }

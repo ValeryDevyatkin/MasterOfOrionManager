@@ -15,11 +15,15 @@ namespace OrionManager.ViewModel.ViewModels
         {
             container.RegisterInstance(this);
 
+            Players.CollectionChanged += (s, e) => this.UpdatePlayerMap();
+
             for (var i = 0; i < ModuleConstants.DefaultRoundCount; i++)
             {
                 Rounds.Add(new RoundViewModel {Number = i + 1});
             }
         }
+
+        public IReadOnlyDictionary<int, PlayerViewModel> PlayerMap { get; set; }
 
         public IReadOnlyDictionary<Counselors, DisablingItemViewModel<Counselors>> CounselorMap { get; } =
             new Dictionary<Counselors, DisablingItemViewModel<Counselors>>

@@ -47,7 +47,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                     LoyaltyPoints = x.LoyaltyPoints,
                     WinPoints = x.WinPoints,
                     Color = x.Color,
-                    HasInitiative = x.HasInitiative,
                     Counselor = x.Counselor.Value
                 }).ToArray()
             };

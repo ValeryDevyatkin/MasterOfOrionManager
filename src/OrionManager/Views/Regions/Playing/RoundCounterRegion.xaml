@@ -77,10 +77,11 @@
                                      Value = "True">
                             <Setter Property = "Content">
                                 <Setter.Value>
+                                    <!--todo: Foreground-->
                                     <controls:CustomButton Content = "Finish Game"
                                                            FontWeight = "Bold"
-                                                           BorderBrush = "{StaticResource AlertBrush}"
                                                            Foreground = "{StaticResource AlertBrush}"
+                                                           BorderBrush = "{StaticResource AlertBrush}"
                                                            Width = "{StaticResource StartMenuButtonWidth}"
                                                            Command = "{Binding AppCommands.FinishGameCommand, Mode=OneTime}" />
                                 </Setter.Value>

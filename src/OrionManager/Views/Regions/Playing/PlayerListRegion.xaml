@@ -35,8 +35,32 @@
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                         <ColumnDefinition Width = "*" />
                     </Grid.ColumnDefinitions>
-                    <Border Grid.Column = "0"
-                            Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
+                    <Grid Grid.Column = "0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "Auto" />
+                            <RowDefinition Height = "*" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name = "InitiativeIndicator"
+                                Grid.Row = "0"
+                                ToolTip = "Initiative"
+                                BorderThickness="1"
+                                Background = "{StaticResource BlackBrush}"
+                                BorderBrush = "{StaticResource AlertBrush}">
+                            <Border.Margin>
+                                <Thickness Left = "0"
+                                           Right = "0"
+                                           Top = "0"
+                                           Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
+                            </Border.Margin>
+                            <TextBlock Text = "!"
+                                       TextAlignment = "Center"
+                                       VerticalAlignment = "Center"
+                                       Foreground = "{StaticResource AlertBrush}" />
+                        </Border>
+                        <Border Grid.Row = "1"
+                                BorderBrush = "{StaticResource BlackBrush}"
+                                Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
+                    </Grid>
                     <Grid Grid.Column = "2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height = "Auto" />
@@ -87,6 +111,12 @@
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>
+                    <DataTrigger Binding = "{Binding HasInitiative}"
+                                 Value = "False">
+                        <Setter TargetName = "InitiativeIndicator"
+                                Property = "Visibility"
+                                Value = "Collapsed" />
+                    </DataTrigger>
                     <DataTrigger Binding = "{Binding IsWinPointsValueLeadsToGameFinish}"
                                  Value = "True">
                         <Setter TargetName = "WinPointsBox"

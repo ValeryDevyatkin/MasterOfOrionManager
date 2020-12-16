@@ -43,8 +43,7 @@ namespace OrionManager.Services.Services.StateHub
                 var player2 = item2.Players[i];
 
                 // TODO: Compare fields here.
-                if (player1.HasInitiative != player2.HasInitiative ||
-                    player1.Counselor != player2.Counselor ||
+                if (player1.Counselor != player2.Counselor ||
                     player1.LoyaltyPoints != player2.LoyaltyPoints ||
                     player1.WinPoints != player2.WinPoints)
                 {

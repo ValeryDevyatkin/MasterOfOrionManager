@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OrionManager.Common.DataModels;
 using OrionManager.Common.Enums;
@@ -54,7 +55,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 viewModel.LoyaltyPoints = x.LoyaltyPoints;
                 viewModel.WinPoints = x.WinPoints;
                 viewModel.Color = x.Color;
-                viewModel.HasInitiative = x.HasInitiative;
                 viewModel.Counselor = target.CounselorMap[x.Counselor];
 
                 return viewModel;
@@ -62,6 +62,22 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             target.UpdateRounds();
             target.UpdateIsGameCanBeFinished();
+            target.GetInitiativePlayer().HasInitiative = true;
+        }
+
+        public static void UpdatePlayerMap(this GameDataViewModel item)
+        {
+            var index = 0;
+            var playerMap = new Dictionary<int, PlayerViewModel>();
+
+            foreach (var player in item.Players)
+            {
+                playerMap.Add(index, player);
+
+                index++;
+            }
+
+            item.PlayerMap = playerMap;
         }
 
         private static void UpdateRounds(this GameDataViewModel item)

@@ -79,6 +79,7 @@
                                         <ColumnDefinition Width = "Auto" />
                                     </Grid.ColumnDefinitions>
                                     <Border Grid.Column = "0"
+                                            BorderBrush = "{StaticResource BlackBrush}"
                                             Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}" />
                                     <Grid Grid.Column = "2">
                                         <Grid.RowDefinitions>

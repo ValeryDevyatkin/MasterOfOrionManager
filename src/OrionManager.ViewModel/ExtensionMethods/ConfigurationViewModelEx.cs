@@ -100,6 +100,11 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
         public static void OnPlayerPresetsChanged(this GameConfigurationViewModel item)
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
             item.IsPlayerCanBeAdded = item.PlayerPresets.Count < ModuleConstants.MaxPlayerCount;
             item.IsComplete = item.PlayerPresets.Count > 0;
 

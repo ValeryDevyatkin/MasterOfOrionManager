@@ -25,8 +25,10 @@ namespace OrionManager.ViewModel.Commands
                 throw new NotSupportedException();
             }
 
+            game.GetInitiativePlayer().HasInitiative = false;
             game.Rounds[game.Round].State = RoundStates.Passed;
             game.Round++;
+            game.GetInitiativePlayer().HasInitiative = true;
             game.Rounds[game.Round].State = RoundStates.Current;
             game.UpdateIsGameCanBeFinished();
         }

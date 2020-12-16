@@ -33,7 +33,9 @@ namespace OrionManager
             try
             {
                 base.OnStartup(args);
+
                 Container.Resolve<IAppLifecycleService>().OnStart();
+
                 SetMainWindow<MainWindow, MainViewModel>().Show();
             }
             catch (Exception e)
@@ -76,8 +78,9 @@ namespace OrionManager
         {
             try
             {
-                base.OnExit(args);
                 Container.Resolve<IAppLifecycleService>().OnExit();
+
+                base.OnExit(args);
             }
             catch (Exception e)
             {
