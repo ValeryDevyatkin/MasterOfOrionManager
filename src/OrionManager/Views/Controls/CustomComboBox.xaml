@@ -5,7 +5,8 @@
           xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
           xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
           xmlns:constants = "clr-namespace:OrionManager.Theme"
-          mc:Ignorable = "d">
+          mc:Ignorable = "d"
+          x:ClassModifier = "internal">
 
     <ComboBox.Template>
         <ControlTemplate TargetType = "controls:CustomComboBox">

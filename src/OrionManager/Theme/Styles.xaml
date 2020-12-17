@@ -54,12 +54,15 @@
                 Value = "0" />
     </Style>
 
-    <Style TargetType = "controls:CustomTextBox">
+    <Style TargetType = "controls:CustomTextBoxBase">
         <Setter Property = "Background"
                 Value = "{StaticResource BlackBrush}" />
         <Setter Property = "Foreground"
                 Value = "{StaticResource DefaultForeground}" />
     </Style>
+
+    <Style TargetType = "controls:CustomTextBox"
+           BasedOn = "{StaticResource {x:Type controls:CustomTextBoxBase}}" />
 
     <Style TargetType = "controls:CustomButton">
         <Setter Property = "ToolTipService.ShowOnDisabled"

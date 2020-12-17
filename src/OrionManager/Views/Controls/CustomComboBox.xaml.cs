@@ -2,7 +2,7 @@
 
 namespace OrionManager.Views.Controls
 {
-    public partial class CustomComboBox
+    internal partial class CustomComboBox
     {
         public CustomComboBox()
         {

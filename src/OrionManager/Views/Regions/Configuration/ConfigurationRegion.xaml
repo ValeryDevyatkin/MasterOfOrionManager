@@ -7,6 +7,7 @@
              xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:constants1 = "clr-namespace:OrionManager.ViewModel.Constants;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -163,12 +164,36 @@
                 <controls:CustomTextBox Grid.Row = "2"
                                         Label = "Configuration name:"
                                         Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <controls:CustomTextBox Grid.Row = "4"
-                                        Label = "Max win points:"
-                                        Text = "{Binding MaxWinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <controls:CustomTextBox Grid.Row = "6"
-                                        Label = "Max loyalty:"
-                                        Text = "{Binding MaxLoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Grid Grid.Row = "4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <ColumnDefinition Width = "Auto" />
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomTextBox Grid.Column = "0"
+                                            Label = "Max win points:"
+                                            IsReadOnly = "True"
+                                            Text = "{Binding MaxWinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <controls:SpinButton Grid.Column = "2"
+                                         Value = "{Binding MaxWinPoints, Mode=TwoWay}"
+                                         Min = "{x:Static constants1:ViewModelConstants.MinPresetWinPoints}"
+                                         Max = "{x:Static constants1:ViewModelConstants.MaxPresetWinPoints}" />
+                </Grid>
+                <Grid Grid.Row = "6">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <ColumnDefinition Width = "Auto" />
+                    </Grid.ColumnDefinitions>
+                    <controls:CustomTextBox Grid.Column = "0"
+                                            Label = "Max loyalty:"
+                                            IsReadOnly = "True"
+                                            Text = "{Binding MaxLoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <controls:SpinButton Grid.Column = "2"
+                                         Value = "{Binding MaxLoyaltyPoints, Mode=TwoWay}"
+                                         Min = "{x:Static constants1:ViewModelConstants.MinPresetLoyaltyPoints}"
+                                         Max = "{x:Static constants1:ViewModelConstants.MaxPresetLoyaltyPoints}" />
+                </Grid>
             </Grid>
 
             <Grid Grid.Row = "2">
