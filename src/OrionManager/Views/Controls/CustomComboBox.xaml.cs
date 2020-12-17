@@ -25,5 +25,22 @@ namespace OrionManager.Views.Controls
         }
 
         #endregion
+
+        #region Tip dependency: string
+
+        public static readonly DependencyProperty TipProperty =
+            DependencyProperty.Register(
+                nameof(Tip),
+                typeof(string),
+                typeof(CustomComboBox),
+                new PropertyMetadata(default(string)));
+
+        public string Tip
+        {
+            get => (string) GetValue(TipProperty);
+            set => SetValue(TipProperty, value);
+        }
+
+        #endregion
     }
 }

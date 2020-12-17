@@ -28,7 +28,7 @@ namespace OrionManager.Wpf.Converters
                 return ServiceLocator.Container.Resolve(RegionMap[region]);
             }
 
-            throw new NotSupportedException();
+            throw new ArgumentException(nameof(value));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>

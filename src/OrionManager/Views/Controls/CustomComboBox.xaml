@@ -17,7 +17,8 @@
                     <ColumnDefinition Width = "*" />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column = "0">
+                <Border Grid.Column = "0"
+                        ToolTip = "{TemplateBinding Tip}">
                     <Border.Padding>
                         <Thickness Right = "{x:Static constants:UiSizes.InnerSpacing}"
                                    Left = "{x:Static constants:UiSizes.InnerSpacing}"
@@ -63,9 +64,8 @@
                         <ContentPresenter x:Name = "ContentSite"
                                           IsHitTestVisible = "False"
                                           VerticalAlignment = "Stretch"
-                                          HorizontalAlignment = "Left"
+                                          HorizontalAlignment = "Stretch"
                                           SnapsToDevicePixels = "True"
-                                          Margin = "{x:Static constants:UiSizes.TextSpacingThickness}"
                                           Content = "{TemplateBinding SelectionBoxItem}"
                                           ContentTemplate = "{TemplateBinding SelectionBoxItemTemplate}" />
                         <Popup x:Name = "Popup"

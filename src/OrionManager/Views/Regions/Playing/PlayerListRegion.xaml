@@ -82,30 +82,7 @@
                                                 Label = "Name"
                                                 IsReadOnly = "True"
                                                 Text = "{Binding Name, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <controls:CustomComboBox Grid.Row = "2"
-                                                 Label = "Counselor"
-                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
-                                                 SelectedItem = "{Binding Counselor, Mode=TwoWay}">
-                            <controls:CustomComboBox.ItemContainerStyle>
-                                <Style TargetType = "ComboBoxItem">
-                                    <Setter Property = "IsEnabled"
-                                            Value = "{Binding IsEnabled}" />
-                                    <Style.Triggers>
-                                        <Trigger Property = "IsEnabled"
-                                                 Value = "False">
-                                            <Setter Property = "BorderBrush"
-                                                    Value = "{StaticResource AlertBrush}" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </controls:CustomComboBox.ItemContainerStyle>
-                            <controls:CustomComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <ContentControl Content = "{Binding Value}" />
-                                </DataTemplate>
-                            </controls:CustomComboBox.ItemTemplate>
-                        </controls:CustomComboBox>
-                        <Grid Grid.Row = "4">
+                        <Grid Grid.Row = "2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width = "*" />
                                 <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -121,7 +98,7 @@
                                                  Min = "{x:Static constants1:ViewModelConstants.MinWinPoints}"
                                                  Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay }" />
                         </Grid>
-                        <Grid Grid.Row = "6">
+                        <Grid Grid.Row = "4">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width = "*" />
                                 <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -137,6 +114,38 @@
                                                  Min = "{x:Static constants1:ViewModelConstants.MinLoyaltyPoints}"
                                                  Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay }" />
                         </Grid>
+                        <controls:CustomComboBox Grid.Row = "6"
+                                                 Label = "Counselor"
+                                                 ToolTip = "{Binding Counselor.Value, Mode=OneWay}"
+                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
+                                                 SelectedItem = "{Binding Counselor, Mode=TwoWay}">
+                            <controls:CustomComboBox.ItemContainerStyle>
+                                <Style TargetType = "ComboBoxItem">
+                                    <Setter Property = "Margin"
+                                            Value = "0" />
+                                    <Setter Property = "Padding"
+                                            Value = "0" />
+                                    <Setter Property = "HorizontalContentAlignment"
+                                            Value = "Stretch" />
+                                    <Setter Property = "IsEnabled"
+                                            Value = "{Binding IsEnabled}" />
+                                    <Style.Triggers>
+                                        <Trigger Property = "IsEnabled"
+                                                 Value = "False">
+                                            <Setter Property = "BorderBrush"
+                                                    Value = "{StaticResource AlertBrush}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </controls:CustomComboBox.ItemContainerStyle>
+                            <controls:CustomComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Stretch = "None"
+                                           Source = "{Binding Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}"
+                                           ToolTip = "{Binding Value, Mode=OneWay}" />
+                                </DataTemplate>
+                            </controls:CustomComboBox.ItemTemplate>
+                        </controls:CustomComboBox>
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>

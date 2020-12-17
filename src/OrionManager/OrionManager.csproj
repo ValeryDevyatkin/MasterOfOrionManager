@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants\CounselorIconKeys.cs" />
     <Compile Include="Views\Backgrounds\ConfigurationListBackground.xaml.cs">
       <DependentUpon>ConfigurationListBackground.xaml</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
     </Compile>
     <Compile Include="Theme\UiConstants.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
+    <Compile Include="Wpf\Converters\CounselorToIconKeyConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToIndexConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
@@ -229,6 +231,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Theme\Images\Races\" />
     <Folder Include="Wpf\TemplateSelectors\" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +259,19 @@
       <Project>{E2452FA6-B6B8-4EDD-9026-E5D2F5F6C80A}</Project>
       <Name>OrionManager.ViewModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Theme\Images\Counselors\Advia105.png" />
+    <Resource Include="Theme\Images\Counselors\Alluvia105.png" />
+    <Resource Include="Theme\Images\Counselors\Harrava105.png" />
+    <Resource Include="Theme\Images\Counselors\Kual105.png" />
+    <Resource Include="Theme\Images\Counselors\Kuruk105.png" />
+    <Resource Include="Theme\Images\Counselors\Moldred105.png" />
+    <Resource Include="Theme\Images\Counselors\Veil105.png" />
+    <Resource Include="Theme\Images\Counselors\Viktoria105.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Theme\Images\Counselors\None105.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,8 +7,7 @@
              x:ClassModifier = "internal">
 
     <UserControl.Background>
-        <ImageBrush
-            ImageSource = "pack://application:,,,/Theme/Images/OrionShipsBack.jpg" />
+        <ImageBrush ImageSource = "{StaticResource OrionShipsBack}" />
     </UserControl.Background>
 
 </UserControl>

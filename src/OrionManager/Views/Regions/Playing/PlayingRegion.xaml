@@ -4,7 +4,6 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:playing = "clr-namespace:OrionManager.Views.Regions.Playing"
-             xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
@@ -16,25 +15,21 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height = "Auto" />
-            <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-            <RowDefinition Height = "Auto" />
             <RowDefinition Height = "*" />
             <RowDefinition Height = "Auto" />
         </Grid.RowDefinitions>
 
-        <playing:PlayingCommandRegion Grid.Row = "0" />
-
-        <Grid Grid.Row = "2">
+        <Grid Grid.Row = "0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width = "2*" />
+                <ColumnDefinition Width = "Auto" />
                 <ColumnDefinition Width = "*" />
+                <ColumnDefinition Width = "Auto" />
             </Grid.ColumnDefinitions>
-            <Grid>
-                <playing:PlayerListRegion Grid.Column = "0" />
-            </Grid>
+            <playing:PlayerListRegion Grid.Column = "0" />
+            <playing:PlayingCommandRegion Grid.Column = "2" />
         </Grid>
 
-        <playing:RoundCounterRegion Grid.Row = "4" />
+        <playing:RoundCounterRegion Grid.Row = "2" />
     </Grid>
 
 </UserControl>

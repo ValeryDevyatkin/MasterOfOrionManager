@@ -13,11 +13,11 @@
     </d:UserControl.DataContext>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "*" />
-            <ColumnDefinition Width = "Auto" />
-        </Grid.ColumnDefinitions>
-        <controls:CustomButton Grid.Column = "1"
+        <Grid.RowDefinitions>
+            <RowDefinition Height = "Auto" />
+            <RowDefinition Height = "*" />
+        </Grid.RowDefinitions>
+        <controls:CustomButton Grid.Row = "0"
                                Content = "Exit"
                                Width = "{StaticResource StartMenuButtonWidth}"
                                Command = "{Binding AppCommands.ExitAppCommand, Mode=OneTime}" />

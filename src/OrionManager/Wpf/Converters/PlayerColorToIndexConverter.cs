@@ -15,7 +15,7 @@ namespace OrionManager.Wpf.Converters
                 return (int) color + 1;
             }
 
-            throw new NotSupportedException();
+            throw new ArgumentException(nameof(value));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
