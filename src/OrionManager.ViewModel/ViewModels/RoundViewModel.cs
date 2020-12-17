@@ -5,7 +5,17 @@ namespace OrionManager.ViewModel.ViewModels
 {
     public class RoundViewModel : ObservableObject
     {
-        public int Number { get; set; }
+        #region Number: int
+
+        public int Number
+        {
+            get => _number;
+            set => SetProperty(ref _number, value);
+        }
+
+        private int _number;
+
+        #endregion
 
         #region State: RoundState
 

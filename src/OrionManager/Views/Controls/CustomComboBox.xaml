@@ -42,7 +42,7 @@
                 </Border>
 
                 <Border Grid.Column = "1"
-                        Background = "{StaticResource BlackBrush}">
+                        Background = "{TemplateBinding Background}">
                     <Border.CornerRadius>
                         <CornerRadius TopLeft = "0"
                                       BottomLeft = "0"

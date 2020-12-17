@@ -35,7 +35,17 @@ namespace OrionManager.ViewModel.ViewModels
         public IObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
             new ObservableRangeCollection<PlayerPresetViewModel>();
 
-        public Guid Id { get; set; }
+        #region Id: Guid
+
+        public Guid Id
+        {
+            get => _id;
+            set => SetProperty(ref _id, value);
+        }
+
+        private Guid _id;
+
+        #endregion
 
         #region IsChosen: bool
 

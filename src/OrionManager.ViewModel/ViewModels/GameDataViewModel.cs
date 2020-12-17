@@ -45,7 +45,17 @@ namespace OrionManager.ViewModel.ViewModels
         public IObservableRangeCollection<RoundViewModel> Rounds { get; } =
             new ObservableRangeCollection<RoundViewModel>();
 
-        public bool IsOpenedAndReady { get; set; }
+        #region IsOpenedAndReady: bool
+
+        public bool IsOpenedAndReady
+        {
+            get => _isOpenedAndReady;
+            set => SetProperty(ref _isOpenedAndReady, value);
+        }
+
+        private bool _isOpenedAndReady;
+
+        #endregion
 
         #region MaxWinPoints: int
 

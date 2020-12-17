@@ -29,12 +29,31 @@
     <BitmapImage x:Key = "{x:Static constants:CounselorIconKeys.Viktoria}"
                  UriSource = "pack://application:,,,/Theme/Images/Counselors/Viktoria105.png" />
 
+    <!--RACE ICONS-->
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Alkari}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Alkari64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Bulrathi}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Bulrathi64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Darlok}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Darlok64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Human}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Human64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Meklar}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Meklar64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Mrrshan}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Mrrshan64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Psilon}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Psilon64.png" />
+    <BitmapImage x:Key = "{x:Static constants:RaceIconKeys.Random}"
+                 UriSource = "pack://application:,,,/Theme/Images/Races/Random64.png" />
+
     <!--SIZES-->
     <system:Double x:Key = "SmallFontSize">15</system:Double>
     <system:Double x:Key = "DefaultFontSize">25</system:Double>
     <system:Double x:Key = "DefaultControlHeight">60</system:Double>
     <system:Double x:Key = "StartMenuButtonWidth">190</system:Double>
-    <system:Double x:Key = "IconSize">100</system:Double>
+    <system:Double x:Key = "CounselorIconSize">105</system:Double>
+    <system:Double x:Key = "RaceIconSize">64</system:Double>
 
     <!--COLORS-->
     <Brush x:Key = "BlackBrush">#FF000000</Brush>

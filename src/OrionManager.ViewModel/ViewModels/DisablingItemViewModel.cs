@@ -30,6 +30,16 @@ namespace OrionManager.ViewModel.ViewModels
             Value = item;
         }
 
-        public T Value { get; }
+        #region Value: T
+
+        public T Value
+        {
+            get => _value;
+            set => SetProperty(ref _value, value);
+        }
+
+        private T _value;
+
+        #endregion
     }
 }

@@ -13,8 +13,29 @@ namespace OrionManager.ViewModel.ViewModels
         {
         }
 
-        public PlayerColors Color { get; set; }
-        public Races Race { get; set; }
+        #region Color: PlayerColors
+
+        public PlayerColors Color
+        {
+            get => _color;
+            set => SetProperty(ref _color, value);
+        }
+
+        private PlayerColors _color;
+
+        #endregion
+
+        #region Race: Races
+
+        public Races Race
+        {
+            get => _race;
+            set => SetProperty(ref _race, value);
+        }
+
+        private Races _race;
+
+        #endregion
 
         #region IsWinPointsValueLeadsToGameFinish: bool
 

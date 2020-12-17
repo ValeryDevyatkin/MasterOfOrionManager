@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constants\CounselorIconKeys.cs" />
+    <Compile Include="Constants\RaceIconKeys.cs" />
     <Compile Include="Views\Backgrounds\ConfigurationListBackground.xaml.cs">
       <DependentUpon>ConfigurationListBackground.xaml</DependentUpon>
     </Compile>
@@ -135,9 +136,10 @@
     </Compile>
     <Compile Include="Theme\UiConstants.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
-    <Compile Include="Wpf\Converters\CounselorToIconKeyConverter.cs" />
+    <Compile Include="Wpf\Converters\CounselorToImageSourceConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToIndexConverter.cs" />
+    <Compile Include="Wpf\Converters\RaceToImageSourceConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToControlConverter.cs" />
     <Compile Include="Wpf\TriggerActions\ListBoxNavigationTriggerAction.cs" />
@@ -231,7 +233,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Theme\Images\Races\" />
     <Folder Include="Wpf\TemplateSelectors\" />
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +273,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Theme\Images\Counselors\None105.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Theme\Images\Races\Alkari64.png" />
+    <Resource Include="Theme\Images\Races\Bulrathi64.png" />
+    <Resource Include="Theme\Images\Races\Darlok64.png" />
+    <Resource Include="Theme\Images\Races\Human64.png" />
+    <Resource Include="Theme\Images\Races\Meklar64.png" />
+    <Resource Include="Theme\Images\Races\Mrrshan64.png" />
+    <Resource Include="Theme\Images\Races\Psilon64.png" />
+    <Resource Include="Theme\Images\Races\Random64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

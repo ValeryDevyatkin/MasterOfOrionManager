@@ -19,9 +19,9 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "*" />
+            <ColumnDefinition Width = "256" />
             <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-            <ColumnDefinition Width = "2*" />
+            <ColumnDefinition Width = "*" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column = "0"
@@ -89,12 +89,20 @@
                                     </Border>
                                     <controls:CustomComboBox Grid.Column = "2"
                                                              Label = "Race"
+                                                             ToolTip = "{Binding Race.Value, Mode=OneWay}"
                                                              ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceMap.Values, Mode=OneTime}"
                                                              SelectedItem = "{Binding Race, Mode=TwoWay}"
                                                              ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
                                         <controls:CustomComboBox.ItemTemplate>
                                             <DataTemplate>
-                                                <ContentControl Content = "{Binding Value}" />
+                                                <Border BorderThickness = "0"
+                                                        Width = "{StaticResource RaceIconSize}"
+                                                        Height = "{StaticResource RaceIconSize}">
+                                                    <Border.Background>
+                                                        <ImageBrush Stretch = "Fill"
+                                                                    ImageSource = "{Binding Value, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                                                    </Border.Background>
+                                                </Border>
                                             </DataTemplate>
                                         </controls:CustomComboBox.ItemTemplate>
                                     </controls:CustomComboBox>

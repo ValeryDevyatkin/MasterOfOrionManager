@@ -1,4 +1,4 @@
-﻿c<UserControl x:Class = "OrionManager.Views.Regions.Playing.PlayerListRegion"
+﻿<UserControl x:Class = "OrionManager.Views.Regions.Playing.PlayerListRegion"
              xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -28,37 +28,35 @@
                     <Grid.Margin>
                         <Thickness Top = "0"
                                    Left = "0"
-                                   Right = "{x:Static constants:UiSizes.InnerSpacing}"
-                                   Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
+                                   Right = "{x:Static constants:UiSizes.OuterSpacing}"
+                                   Bottom = "{x:Static constants:UiSizes.OuterSpacing}" />
                     </Grid.Margin>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                        <ColumnDefinition Width = "Auto" />
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                         <ColumnDefinition Width = "*" />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column = "0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height = "Auto" />
+                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                             <RowDefinition Height = "*" />
                         </Grid.RowDefinitions>
-                        <Border x:Name = "InitiativeIndicator"
-                                Grid.Row = "0"
-                                ToolTip = "Initiative."
-                                BorderThickness = "1"
+                        <Border Grid.Row = "0"
+                                ToolTip = "{Binding Race, Mode=OneWay}"
                                 Background = "{StaticResource BlackBrush}"
-                                BorderBrush = "{StaticResource AlertBrush}">
-                            <Border.Margin>
-                                <Thickness Left = "0"
-                                           Right = "0"
-                                           Top = "0"
-                                           Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
-                            </Border.Margin>
-                            <TextBlock Text = "!"
-                                       FontWeight = "ExtraBold"
-                                       TextAlignment = "Center"
-                                       Foreground = "{StaticResource AlertBrush}" />
+                                BorderBrush = "{StaticResource BlackBrush}">
+                            <Border BorderThickness = "0"
+                                    Width = "{StaticResource RaceIconSize}"
+                                    Height = "{StaticResource RaceIconSize}">
+                                <Border.Background>
+                                    <ImageBrush Stretch = "Fill"
+                                                ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                                </Border.Background>
+                            </Border>
                         </Border>
-                        <Border Grid.Row = "1"
+                        <Border Grid.Row = "2"
+                                HorizontalAlignment = "Right"
                                 BorderBrush = "{StaticResource BlackBrush}"
                                 Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
                             <TextBlock TextAlignment = "Center"
@@ -117,9 +115,8 @@
                             <controls:CustomComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness = "0"
-                                            ToolTip = "{Binding Value, Mode=OneWay}"
-                                            Width = "{StaticResource IconSize}"
-                                            Height = "{StaticResource IconSize}">
+                                            Width = "{StaticResource CounselorIconSize}"
+                                            Height = "{StaticResource CounselorIconSize}">
                                         <Border.Background>
                                             <ImageBrush Stretch = "Fill"
                                                         ImageSource = "{Binding Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
@@ -131,12 +128,6 @@
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>
-                    <DataTrigger Binding = "{Binding HasInitiative}"
-                                 Value = "False">
-                        <Setter TargetName = "InitiativeIndicator"
-                                Property = "Visibility"
-                                Value = "Collapsed" />
-                    </DataTrigger>
                     <DataTrigger Binding = "{Binding IsWinPointsValueLeadsToGameFinish}"
                                  Value = "True">
                         <Setter TargetName = "WinPointsBox"

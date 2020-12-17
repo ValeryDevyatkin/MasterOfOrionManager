@@ -11,18 +11,19 @@ namespace OrionManager.Wpf.Converters
 {
     internal class CounselorToImageSourceConverter : MarkupExtension, IValueConverter
     {
-        private static readonly IDictionary<Counselors, string> CounselorIconMap = new Dictionary<Counselors, string>
-        {
-            {Counselors.None, CounselorIconKeys.None},
-            {Counselors.Advia, CounselorIconKeys.Advia},
-            {Counselors.Alluvia, CounselorIconKeys.Alluvia},
-            {Counselors.Harrava, CounselorIconKeys.Harrava},
-            {Counselors.Kual, CounselorIconKeys.Kual},
-            {Counselors.Moldred, CounselorIconKeys.Moldred},
-            {Counselors.Kuruk, CounselorIconKeys.Kuruk},
-            {Counselors.Veil, CounselorIconKeys.Veil},
-            {Counselors.Viktoria, CounselorIconKeys.Viktoria}
-        };
+        private static readonly IReadOnlyDictionary<Counselors, string> CounselorIconMap =
+            new Dictionary<Counselors, string>
+            {
+                {Counselors.None, CounselorIconKeys.None},
+                {Counselors.Advia, CounselorIconKeys.Advia},
+                {Counselors.Alluvia, CounselorIconKeys.Alluvia},
+                {Counselors.Harrava, CounselorIconKeys.Harrava},
+                {Counselors.Kual, CounselorIconKeys.Kual},
+                {Counselors.Moldred, CounselorIconKeys.Moldred},
+                {Counselors.Kuruk, CounselorIconKeys.Kuruk},
+                {Counselors.Veil, CounselorIconKeys.Veil},
+                {Counselors.Viktoria, CounselorIconKeys.Viktoria}
+            };
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
