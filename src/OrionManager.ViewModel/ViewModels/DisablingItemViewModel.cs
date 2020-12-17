@@ -2,16 +2,12 @@
 
 namespace OrionManager.ViewModel.ViewModels
 {
-    public class DisablingItemViewModel<T> : ObservableObject
-
+    public abstract class DisablingItemViewModelBase : ObservableObject
     {
-        public DisablingItemViewModel(T item)
+        protected DisablingItemViewModelBase()
         {
-            Value = item;
             IsEnabled = true;
         }
-
-        public T Value { get; }
 
         #region IsEnabled: bool
 
@@ -24,5 +20,16 @@ namespace OrionManager.ViewModel.ViewModels
         private bool _isEnabled;
 
         #endregion
+    }
+
+    public class DisablingItemViewModel<T> : DisablingItemViewModelBase
+
+    {
+        public DisablingItemViewModel(T item)
+        {
+            Value = item;
+        }
+
+        public T Value { get; }
     }
 }

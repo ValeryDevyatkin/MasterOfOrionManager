@@ -90,20 +90,8 @@
                                     <controls:CustomComboBox Grid.Column = "2"
                                                              Label = "Race"
                                                              ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceMap.Values, Mode=OneTime}"
-                                                             SelectedItem = "{Binding Race, Mode=TwoWay}">
-                                        <controls:CustomComboBox.ItemContainerStyle>
-                                            <Style TargetType = "ComboBoxItem">
-                                                <Setter Property = "IsEnabled"
-                                                        Value = "{Binding IsEnabled}" />
-                                                <Style.Triggers>
-                                                    <Trigger Property = "IsEnabled"
-                                                             Value = "False">
-                                                        <Setter Property = "BorderBrush"
-                                                                Value = "{StaticResource AlertBrush}" />
-                                                    </Trigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </controls:CustomComboBox.ItemContainerStyle>
+                                                             SelectedItem = "{Binding Race, Mode=TwoWay}"
+                                                             ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
                                         <controls:CustomComboBox.ItemTemplate>
                                             <DataTemplate>
                                                 <ContentControl Content = "{Binding Value}" />
@@ -112,7 +100,6 @@
                                     </controls:CustomComboBox>
                                     <controls:CustomButton Grid.Column = "4"
                                                            Content = "X"
-                                                           Margin = "0"
                                                            Padding = "{x:Static constants:UiSizes.TextSpacingThickness}"
                                                            Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
                                                            Command = "{Binding ElementName=Root,

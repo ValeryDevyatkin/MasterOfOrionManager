@@ -1,4 +1,4 @@
-﻿<UserControl x:Class = "OrionManager.Views.Regions.Playing.PlayerListRegion"
+﻿c<UserControl x:Class = "OrionManager.Views.Regions.Playing.PlayerListRegion"
              xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -112,34 +112,8 @@
                                                  Label = "Counselor"
                                                  ToolTip = "{Binding Counselor.Value, Mode=OneWay}"
                                                  ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
-                                                 SelectedItem = "{Binding Counselor, Mode=TwoWay}">
-                            <controls:CustomComboBox.ItemContainerStyle>
-                                <Style TargetType = "ComboBoxItem">
-                                    <Setter Property = "Margin"
-                                            Value = "0" />
-                                    <Setter Property = "Padding"
-                                            Value = "0" />
-                                    <Setter Property = "HorizontalContentAlignment"
-                                            Value = "Stretch" />
-                                    <Setter Property = "IsEnabled"
-                                            Value = "{Binding IsEnabled}" />
-                                    <Setter Property = "Margin">
-                                        <Setter.Value>
-                                            <Thickness Top = "0"
-                                                       Left = "0"
-                                                       Right = "0"
-                                                       Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
-                                        </Setter.Value>
-                                    </Setter>
-                                    <Style.Triggers>
-                                        <Trigger Property = "IsEnabled"
-                                                 Value = "False">
-                                            <Setter Property = "BorderBrush"
-                                                    Value = "{StaticResource AlertBrush}" />
-                                        </Trigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </controls:CustomComboBox.ItemContainerStyle>
+                                                 SelectedItem = "{Binding Counselor, Mode=TwoWay}"
+                                                 ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
                             <controls:CustomComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <Border BorderThickness = "0"
