@@ -1,23 +1,10 @@
 ﻿using OrionManager.Common.Enums;
-using OrionManager.ViewModel.Constants;
 using Senticode.Wpf.Base;
 
 namespace OrionManager.ViewModel.ViewModels
 {
     public class PlayerPresetViewModel : ObservableObject
     {
-        #region Name: string
-
-        public string Name
-        {
-            get => _name;
-            set => SetString(ref _name, value, GlobalRegex.StringWithOneSpaceBetweenWords);
-        }
-
-        private string _name;
-
-        #endregion
-
         #region Race: DisablingItemViewModel<Race>
 
         public DisablingItemViewModel<Races> Race

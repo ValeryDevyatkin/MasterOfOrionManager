@@ -50,7 +50,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 var viewModel = ServiceLocator.Container.Resolve<PlayerViewModel>();
 
                 // TODO: Copy fields here.
-                viewModel.Name = x.Name;
                 viewModel.Race = x.Race;
                 viewModel.LoyaltyPoints = x.LoyaltyPoints;
                 viewModel.WinPoints = x.WinPoints;

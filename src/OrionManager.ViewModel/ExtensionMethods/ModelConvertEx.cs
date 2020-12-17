@@ -42,7 +42,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 Players = item.Players.Select(x => new PlayerDataModel
                 {
                     // TODO: Copy fields here.
-                    Name = x.Name,
                     Race = x.Race,
                     LoyaltyPoints = x.LoyaltyPoints,
                     WinPoints = x.WinPoints,
@@ -72,7 +71,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 {
                     // TODO: Copy fields here.
                     Race = x.Race.Value,
-                    Name = x.Name,
                     Color = x.Color
                 }).ToArray()
             };
@@ -97,7 +95,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
             viewModel.PlayerPresets.AddRange(item.PlayerPresets.Select(x => new PlayerPresetViewModel
             {
                 // TODO: Copy fields here.
-                Name = x.Name,
                 Race = viewModel.RaceMap[x.Race],
                 Color = x.Color
             }));

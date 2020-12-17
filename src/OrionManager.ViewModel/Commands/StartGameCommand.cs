@@ -38,7 +38,6 @@ namespace OrionManager.ViewModel.Commands
 
                 player.Race = playerPreset.Race.Value;
                 player.Color = playerPreset.Color;
-                player.Name = playerPreset.Name;
                 player.Counselor = game.CounselorMap[Counselors.None];
 
                 players.Add(player);

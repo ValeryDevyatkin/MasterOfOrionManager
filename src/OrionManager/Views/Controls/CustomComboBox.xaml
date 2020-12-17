@@ -86,19 +86,20 @@
                                         Margin = "0"
                                         BorderThickness = "{x:Static constants:UiSizes.BorderThickness}"
                                         CornerRadius = "0"
-                                        Background = "{StaticResource BlackBrush}" />
-                                <ScrollViewer SnapsToDevicePixels = "True"
-                                              VerticalScrollBarVisibility = "Hidden"
-                                              Background = "Transparent"
-                                              BorderThickness = "0"
-                                              Margin = "0"
-                                              Padding = "0">
-                                    <StackPanel IsItemsHost = "True"
-                                                KeyboardNavigation.DirectionalNavigation = "Contained"
-                                                Background = "Transparent"
-                                                SnapsToDevicePixels = "True"
-                                                Margin = "{x:Static constants:UiSizes.TextSpacingThickness}" />
-                                </ScrollViewer>
+                                        Background = "{StaticResource BlackBrush}">
+                                    <ScrollViewer SnapsToDevicePixels = "True"
+                                                  VerticalScrollBarVisibility = "Hidden"
+                                                  Background = "Transparent"
+                                                  BorderThickness = "0"
+                                                  Margin = "0"
+                                                  Padding = "0">
+                                        <StackPanel IsItemsHost = "True"
+                                                    KeyboardNavigation.DirectionalNavigation = "Contained"
+                                                    Background = "Transparent"
+                                                    SnapsToDevicePixels = "True"
+                                                    Margin = "{x:Static constants:UiSizes.TextSpacingThickness}" />
+                                    </ScrollViewer>
+                                </Border>
                             </Grid>
                         </Popup>
                     </Grid>

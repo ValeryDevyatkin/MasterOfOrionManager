@@ -34,7 +34,7 @@
     <system:Double x:Key = "DefaultFontSize">25</system:Double>
     <system:Double x:Key = "DefaultControlHeight">60</system:Double>
     <system:Double x:Key = "StartMenuButtonWidth">190</system:Double>
-    <system:Double x:Key = "SpecialButtonWidth">50</system:Double>
+    <system:Double x:Key = "IconSize">100</system:Double>
 
     <!--COLORS-->
     <Brush x:Key = "BlackBrush">#FF000000</Brush>

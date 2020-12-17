@@ -41,22 +41,11 @@ namespace OrionManager.ViewModel.ExtensionMethods
             target.MaxWinPoints = source.MaxWinPoints;
             target.MaxLoyaltyPoints = source.MaxLoyaltyPoints;
 
-            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x =>
+            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
             {
-                var playerName = x.Name.Trim();
-
-                if (string.IsNullOrEmpty(playerName))
-                {
-                    playerName = ModuleConstants.DefaultPlayerName;
-                }
-
-                return new PlayerPresetViewModel
-                {
-                    // TODO: Copy fields here.
-                    Race = target.RaceMap[x.Race.Value],
-                    Name = playerName,
-                    Color = x.Color
-                };
+                // TODO: Copy fields here.
+                Race = target.RaceMap[x.Race.Value],
+                Color = x.Color
             }));
         }
 
@@ -107,7 +96,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
                 // TODO: Compare fields here.
                 if (playerPreset1.Race.Value != playerPreset2.Race.Value ||
-                    playerPreset1.Name != playerPreset2.Name ||
                     playerPreset1.Color != playerPreset2.Color)
                 {
                     return true;

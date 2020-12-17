@@ -157,13 +157,10 @@ namespace OrionManager.ViewModel.ViewModels
                 return;
             }
 
-            var player = new PlayerPresetViewModel
+            PlayerPresets.Add(new PlayerPresetViewModel
             {
-                Name = ModuleConstants.DefaultPlayerName,
                 Race = RaceMap[Races.Random]
-            };
-
-            PlayerPresets.Add(player);
+            });
         }
 
         #endregion

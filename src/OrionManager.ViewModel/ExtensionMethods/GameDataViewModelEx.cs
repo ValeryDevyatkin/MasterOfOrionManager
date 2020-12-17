@@ -25,6 +25,11 @@ namespace OrionManager.ViewModel.ExtensionMethods
             {
                 round.State = RoundStates.Arriving;
             }
+
+            foreach (var counselorViewModel in item.CounselorMap.Values)
+            {
+                counselorViewModel.IsEnabled = true;
+            }
         }
 
         public static void UpdateIsLastRound(this GameDataViewModel item)

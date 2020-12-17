@@ -13,7 +13,6 @@ namespace OrionManager.ViewModel.ViewModels
         {
         }
 
-        public string Name { get; set; }
         public PlayerColors Color { get; set; }
         public Races Race { get; set; }
 
