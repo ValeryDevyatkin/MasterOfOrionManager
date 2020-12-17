@@ -7,6 +7,7 @@
              xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:constants1 = "clr-namespace:OrionManager.ViewModel.Constants;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -53,7 +54,7 @@
                                            Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
                             </Border.Margin>
                             <TextBlock Text = "!"
-                                       FontWeight="ExtraBold"
+                                       FontWeight = "ExtraBold"
                                        TextAlignment = "Center"
                                        Foreground = "{StaticResource AlertBrush}" />
                         </Border>
@@ -104,16 +105,38 @@
                                 </DataTemplate>
                             </controls:CustomComboBox.ItemTemplate>
                         </controls:CustomComboBox>
-                        <controls:CustomTextBox x:Name = "WinPointsBox"
-                                                Grid.Row = "4"
-                                                Label = "Points"
-                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneTime, StringFormat='{}Max: {0}.'}"
-                                                Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
-                                                Grid.Row = "6"
-                                                Label = "Loyalty"
-                                                Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneTime, StringFormat='{}Max: {0}.'}"
-                                                Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <Grid Grid.Row = "4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width = "*" />
+                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                <ColumnDefinition Width = "Auto" />
+                            </Grid.ColumnDefinitions>
+                            <controls:CustomTextBox x:Name = "WinPointsBox"
+                                                    Grid.Column = "0"
+                                                    Label = "Points"
+                                                    Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay, StringFormat='{}Max: {0}.'}"
+                                                    Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <controls:SpinButton Grid.Column = "2"
+                                                 Value = "{Binding WinPoints, Mode=TwoWay}"
+                                                 Min = "{x:Static constants1:ViewModelConstants.MinWinPoints}"
+                                                 Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay }" />
+                        </Grid>
+                        <Grid Grid.Row = "6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width = "*" />
+                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                <ColumnDefinition Width = "Auto" />
+                            </Grid.ColumnDefinitions>
+                            <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
+                                                    Grid.Column = "0"
+                                                    Label = "Loyalty"
+                                                    Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay, StringFormat='{}Max: {0}.'}"
+                                                    Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <controls:SpinButton Grid.Column = "2"
+                                                 Value = "{Binding LoyaltyPoints, Mode=TwoWay}"
+                                                 Min = "{x:Static constants1:ViewModelConstants.MinLoyaltyPoints}"
+                                                 Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay }" />
+                        </Grid>
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>

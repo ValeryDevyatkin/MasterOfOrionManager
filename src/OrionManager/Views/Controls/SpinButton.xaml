@@ -5,10 +5,27 @@
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:theme = "clr-namespace:OrionManager.Theme"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+             xmlns:system = "clr-namespace:System;assembly=mscorlib"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
-             x:Name = "Root">
-    <Grid>
+             x:Name = "Root"
+             Width = "{x:Static theme:UiSizes.OuterSpacing}">
+
+    <UserControl.Resources>
+        <Style TargetType = "controls:CustomButton"
+               BasedOn = "{StaticResource {x:Type controls:CustomButton}}">
+            <Setter Property = "FontSize"
+                    Value = "{StaticResource SmallFontSize}" />
+            <Setter Property = "FontWeight"
+                    Value = "ExtraBold" />
+            <Setter Property = "Padding"
+                    Value = "0" />
+            <Setter Property = "Height"
+                    Value = "{x:Static system:Double.NaN}" />
+        </Style>
+    </UserControl.Resources>
+
+    <Grid MaxHeight = "{Binding ElementName=Root, Path=ActualHeight, Mode=OneWay}">
         <Grid.RowDefinitions>
             <RowDefinition Height = "*" />
             <RowDefinition Height = "Auto" />

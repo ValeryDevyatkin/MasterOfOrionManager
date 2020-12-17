@@ -124,7 +124,7 @@
                                     </Grid>
                                     <controls:CustomButton Grid.Column = "4"
                                                            Content = "X"
-                                                           Width = "50"
+                                                           Width = "{StaticResource SpecialButtonWidth}"
                                                            Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
                                                            Command = "{Binding ElementName=Root,
                                     Path=DataContext.ConfigurationEditCopy.DeletePlayerCommand, Mode=OneTime}"
@@ -167,7 +167,7 @@
                 <Grid Grid.Row = "4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
-                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                         <ColumnDefinition Width = "Auto" />
                     </Grid.ColumnDefinitions>
                     <controls:CustomTextBox Grid.Column = "0"
@@ -182,7 +182,7 @@
                 <Grid Grid.Row = "6">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
-                        <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                         <ColumnDefinition Width = "Auto" />
                     </Grid.ColumnDefinitions>
                     <controls:CustomTextBox Grid.Column = "0"

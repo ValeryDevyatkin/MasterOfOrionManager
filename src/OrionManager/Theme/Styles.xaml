@@ -65,6 +65,8 @@
            BasedOn = "{StaticResource {x:Type controls:CustomTextBoxBase}}" />
 
     <Style TargetType = "controls:CustomButton">
+        <Setter Property = "FontSize"
+                Value = "{StaticResource DefaultFontSize}" />
         <Setter Property = "ToolTipService.ShowOnDisabled"
                 Value = "True" />
         <Setter Property = "Height"
