@@ -1,4 +1,5 @@
 ﻿using System;
+using OrionManager.Common.Enums;
 using OrionManager.ViewModel.ViewModels;
 using Senticode.Wpf;
 using Unity;
@@ -7,6 +8,10 @@ namespace OrionManager.ViewModel.ExtensionMethods
 {
     internal static class PlayerViewModelEx
     {
+        public static bool IsValidCounselorSelected(this PlayerViewModel item) =>
+            item.Counselor != null &&
+            item.Counselor.Value != Counselors.None;
+
         public static void UpdateIsWinPointsValueLeadsToGameFinish(this PlayerViewModel item)
         {
             if (item == null)

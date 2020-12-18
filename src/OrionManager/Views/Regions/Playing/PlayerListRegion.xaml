@@ -143,7 +143,9 @@
                                                    FontWeight = "ExtraBold"
                                                    Padding = "0"
                                                    ToolTip = "Random"
-                                                   Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}" />
+                                                   Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
+                                                   Command = "{Binding ElementName=Root, Path=DataContext.AppCommands.ChoseRandomCounselorCommand, Mode=OneTime}"
+                                                   CommandParameter = "{Binding}" />
                         </Grid>
                     </Grid>
                 </Grid>

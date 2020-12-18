@@ -18,6 +18,7 @@ namespace OrionManager.ViewModel
                .RegisterType<StartGameCommand>()
                .RegisterType<FinishGameCommand>()
                .RegisterType<NavigateToRegionCommand>()
+               .RegisterType<ChoseRandomCounselorCommand>()
 
                 // Services.
                .RegisterType<IAppLifecycleService, AppLifecycleService>()

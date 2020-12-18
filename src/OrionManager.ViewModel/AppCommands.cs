@@ -17,5 +17,6 @@ namespace OrionManager.ViewModel
         public ICommand StartNewRoundCommand => Container.Resolve<StartNewRoundCommand>();
         public ICommand FinishGameCommand => Container.Resolve<FinishGameCommand>();
         public ICommand NavigateToRegionCommand => Container.Resolve<NavigateToRegionCommand>();
+        public ICommand ChoseRandomCounselorCommand => Container.Resolve<ChoseRandomCounselorCommand>();
     }
 }

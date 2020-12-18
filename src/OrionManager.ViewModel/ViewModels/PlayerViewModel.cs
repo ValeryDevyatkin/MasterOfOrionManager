@@ -141,7 +141,7 @@ namespace OrionManager.ViewModel.ViewModels
 
         private void OnCounselorChanging()
         {
-            if (Counselor != null)
+            if (this.IsValidCounselorSelected())
             {
                 Counselor.IsEnabled = true;
             }
@@ -149,8 +149,7 @@ namespace OrionManager.ViewModel.ViewModels
 
         private void OnCounselorChanged()
         {
-            if (Counselor != null &&
-                Counselor.Value != Counselors.None)
+            if (this.IsValidCounselorSelected())
             {
                 Counselor.IsEnabled = false;
             }

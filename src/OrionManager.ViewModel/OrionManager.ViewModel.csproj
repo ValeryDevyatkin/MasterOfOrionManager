@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="AppCommands.cs" />
     <Compile Include="AppSettings.cs" />
+    <Compile Include="Commands\ChoseRandomCounselorCommand.cs" />
     <Compile Include="Commands\ContinueGameCommand.cs" />
     <Compile Include="Commands\ExitAppCommand.cs" />
     <Compile Include="Commands\FinishGameCommand.cs" />
