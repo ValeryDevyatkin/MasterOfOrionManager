@@ -107,7 +107,8 @@
                                         </controls:CustomComboBox.ItemTemplate>
                                     </controls:CustomComboBox>
                                     <controls:CustomButton Grid.Column = "4"
-                                                           Content = "X"
+                                                           Content = "x"
+                                                           ToolTip = "Remove"
                                                            Padding = "{x:Static constants:UiSizes.TextSpacingThickness}"
                                                            Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
                                                            Command = "{Binding ElementName=Root,

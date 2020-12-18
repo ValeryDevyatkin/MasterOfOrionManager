@@ -92,7 +92,6 @@
                             <controls:CustomTextBox x:Name = "WinPointsBox"
                                                     Grid.Column = "0"
                                                     Label = "Points"
-                                                    Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay, StringFormat='{}Max: {0}.'}"
                                                     Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <controls:SpinButton Grid.Column = "2"
                                                  Value = "{Binding WinPoints, Mode=TwoWay}"
@@ -108,32 +107,44 @@
                             <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
                                                     Grid.Column = "0"
                                                     Label = "Loyalty"
-                                                    Tip = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay, StringFormat='{}Max: {0}.'}"
                                                     Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <controls:SpinButton Grid.Column = "2"
                                                  Value = "{Binding LoyaltyPoints, Mode=TwoWay}"
                                                  Min = "{x:Static constants1:ViewModelConstants.MinLoyaltyPoints}"
                                                  Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay }" />
                         </Grid>
-                        <controls:CustomComboBox Grid.Row = "4"
-                                                 Label = "Counselor"
-                                                 ToolTip = "{Binding Counselor.Value, Mode=OneWay}"
-                                                 ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
-                                                 SelectedItem = "{Binding Counselor, Mode=TwoWay}"
-                                                 ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
-                            <controls:CustomComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderThickness = "0"
-                                            Width = "{StaticResource CounselorIconSize}"
-                                            Height = "{StaticResource CounselorIconSize}">
-                                        <Border.Background>
-                                            <ImageBrush Stretch = "Fill"
-                                                        ImageSource = "{Binding Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
-                                        </Border.Background>
-                                    </Border>
-                                </DataTemplate>
-                            </controls:CustomComboBox.ItemTemplate>
-                        </controls:CustomComboBox>
+                        <Grid Grid.Row = "4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width = "*" />
+                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                            </Grid.ColumnDefinitions>
+                            <controls:CustomComboBox Grid.Column = "0"
+                                                     Label = "Counselor"
+                                                     ToolTip = "{Binding Counselor.Value, Mode=OneWay}"
+                                                     ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
+                                                     SelectedItem = "{Binding Counselor, Mode=TwoWay}"
+                                                     ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
+                                <controls:CustomComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BorderThickness = "0"
+                                                Width = "{StaticResource CounselorIconSize}"
+                                                Height = "{StaticResource CounselorIconSize}">
+                                            <Border.Background>
+                                                <ImageBrush Stretch = "Fill"
+                                                            ImageSource = "{Binding Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
+                                            </Border.Background>
+                                        </Border>
+                                    </DataTemplate>
+                                </controls:CustomComboBox.ItemTemplate>
+                            </controls:CustomComboBox>
+                            <controls:CustomButton Grid.Column = "2"
+                                                   Content = "?"
+                                                   FontWeight = "ExtraBold"
+                                                   Padding = "0"
+                                                   ToolTip = "Random"
+                                                   Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}" />
+                        </Grid>
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>
