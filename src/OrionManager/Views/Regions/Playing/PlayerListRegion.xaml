@@ -16,6 +16,17 @@
         <main:MainViewModel />
     </d:UserControl.DataContext>
 
+    <UserControl.Resources>
+        <Storyboard x:Key = "InitiativeIndicatorStoryboard"
+                    TargetName = "RaceIconBorder">
+            <ColorAnimation Storyboard.TargetProperty = "(Border.BorderBrush).(SolidColorBrush.Color)"
+                            To = "Transparent"
+                            Duration = "0:0:0.8"
+                            RepeatBehavior = "Forever"
+                            AutoReverse = "False" />
+        </Storyboard>
+    </UserControl.Resources>
+
     <ItemsControl ItemsSource = "{Binding GameData.Players}">
         <ItemsControl.ItemsPanel>
             <ItemsPanelTemplate>
@@ -42,18 +53,16 @@
                             <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                             <RowDefinition Height = "*" />
                         </Grid.RowDefinitions>
-                        <Border Grid.Row = "0"
+                        <Border x:Name = "RaceIconBorder"
+                                Grid.Row = "0"
                                 ToolTip = "{Binding Race, Mode=OneWay}"
-                                Background = "{StaticResource BlackBrush}"
-                                BorderBrush = "{StaticResource BlackBrush}">
-                            <Border BorderThickness = "0"
-                                    Width = "{StaticResource RaceIconSize}"
-                                    Height = "{StaticResource RaceIconSize}">
-                                <Border.Background>
-                                    <ImageBrush Stretch = "Fill"
-                                                ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
-                                </Border.Background>
-                            </Border>
+                                BorderBrush = "{StaticResource BlackBrush}"
+                                Width = "{StaticResource RaceIconSize}"
+                                Height = "{StaticResource RaceIconSize}">
+                            <Border.Background>
+                                <ImageBrush Stretch = "Fill"
+                                            ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                            </Border.Background>
                         </Border>
                         <Border Grid.Row = "2"
                                 HorizontalAlignment = "Right"
@@ -128,6 +137,16 @@
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>
+                    <DataTrigger Binding = "{Binding HasInitiative}"
+                                 Value = "True">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard Name = "InitiativeIndicatorStoryboard"
+                                             Storyboard = "{StaticResource InitiativeIndicatorStoryboard}" />
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <StopStoryboard BeginStoryboardName = "InitiativeIndicatorStoryboard" />
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
                     <DataTrigger Binding = "{Binding IsWinPointsValueLeadsToGameFinish}"
                                  Value = "True">
                         <Setter TargetName = "WinPointsBox"
