@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using BAJIEPA.Tools.Helpers;
 using OrionManager.Common.DataModels;
 using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
@@ -24,19 +26,31 @@ namespace OrionManager.ViewModel.Commands
         {
             var mainViewModel = _container.Resolve<MainViewModel>();
             var config = mainViewModel.CurrentConfiguration;
-            var game = mainViewModel.GameData;
-            var players = new List<PlayerViewModel>();
 
             if (!config.IsComplete)
             {
                 throw new NotSupportedException();
             }
 
+            var game = mainViewModel.GameData;
+            var players = new List<PlayerViewModel>();
+            var availableRaces = config.RaceMap.Values
+                                       .Where(x => x.Value != Races.Random)
+                                       .Where(x => x.IsEnabled)
+                                       .ToList();
+
             foreach (var playerPreset in config.PlayerPresets)
             {
                 var player = _container.Resolve<PlayerViewModel>();
+                var race = playerPreset.Race;
 
-                player.Race = playerPreset.Race.Value;
+                if (playerPreset.Race.Value == Races.Random)
+                {
+                    race = availableRaces.GetRandomItem(null);
+                    availableRaces.Remove(race);
+                }
+
+                player.Race = race.Value;
                 player.Color = playerPreset.Color;
                 player.Counselor = game.CounselorMap[Counselors.None];
 
