@@ -66,12 +66,12 @@
                         </Border>
                         <Border Grid.Row = "2"
                                 HorizontalAlignment = "Right"
+                                Width = "{x:Static constants:UiSizes.OuterSpacing}"
                                 BorderBrush = "{StaticResource BlackBrush}"
                                 Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
                             <TextBlock TextAlignment = "Center"
                                        FontWeight = "Bold"
                                        Foreground = "{StaticResource BlackBrush}"
-                                       Margin = "{x:Static constants:UiSizes.TextSpacingThickness}"
                                        Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
                         </Border>
                     </Grid>

@@ -14,6 +14,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 throw new ArgumentNullException(nameof(item));
             }
 
+            item.ScoreList.Clear();
             item.Players.Clear();
             item.MaxLoyaltyPoints = default;
             item.MaxWinPoints = default;

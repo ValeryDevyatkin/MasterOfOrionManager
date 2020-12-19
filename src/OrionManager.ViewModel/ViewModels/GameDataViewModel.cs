@@ -23,6 +23,9 @@ namespace OrionManager.ViewModel.ViewModels
             }
         }
 
+        public IObservableRangeCollection<PlayerScoreViewModel> ScoreList { get; } =
+            new ObservableRangeCollection<PlayerScoreViewModel>();
+
         public IReadOnlyDictionary<int, PlayerViewModel> PlayerMap { get; set; }
 
         public IReadOnlyDictionary<Counselors, DisablingItemViewModel<Counselors>> CounselorMap { get; } =

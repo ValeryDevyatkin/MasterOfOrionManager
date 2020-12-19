@@ -92,7 +92,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
             viewModel.MaxWinPoints = item.WinPointTrackerSize;
             viewModel.MaxLoyaltyPoints = item.LoyaltyTrackerSize;
 
-            viewModel.PlayerPresets.AddRange(item.PlayerPresets.Select(x => new PlayerPresetViewModel
+            viewModel.PlayerPresets.ReplaceAll(item.PlayerPresets.Select(x => new PlayerPresetViewModel
             {
                 // TODO: Copy fields here.
                 Race = viewModel.RaceMap[x.Race],

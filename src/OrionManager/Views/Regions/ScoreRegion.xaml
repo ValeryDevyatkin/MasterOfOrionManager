@@ -7,6 +7,7 @@
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
              xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
+             xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -14,14 +15,13 @@
         <main:MainViewModel />
     </d:UserControl.DataContext>
 
-    <Grid VerticalAlignment = "Center"
-          HorizontalAlignment = "Center">
+    <Grid HorizontalAlignment = "Center">
 
         <Grid.RowDefinitions>
             <RowDefinition Height = "Auto" />
             <RowDefinition Height = "{x:Static theme:UiSizes.OuterSpacingGridLength}" />
             <RowDefinition Height = "Auto" />
-            <RowDefinition Height = "{x:Static theme:UiSizes.OuterSpacingGridLength}" />
+            <RowDefinition Height = "*" />
             <RowDefinition Height = "Auto" />
         </Grid.RowDefinitions>
 
@@ -31,7 +31,60 @@
                    TextAlignment = "Center"
                    FontSize = "{StaticResource ExtraLargeFontSize}" />
 
-        <ItemsControl Grid.Row = "2" />
+        <ItemsControl Grid.Row = "2"
+                      ItemsSource = "{Binding GameData.ScoreList, Mode=OneTime}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid HorizontalAlignment = "Stretch">
+                        <Grid.Margin>
+                            <Thickness Left = "0"
+                                       Right = "0"
+                                       Top = "0"
+                                       Bottom = "{x:Static theme:UiSizes.InnerSpacing}" />
+                        </Grid.Margin>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "{x:Static theme:UiSizes.OuterSpacingGridLength}" />
+                            <ColumnDefinition Width = "{x:Static theme:UiSizes.TextSpacingGridLength}" />
+                            <ColumnDefinition Width = "Auto" />
+                            <ColumnDefinition Width = "{x:Static theme:UiSizes.TextSpacingGridLength}" />
+                            <ColumnDefinition Width = "Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column = "0"
+                                HorizontalAlignment = "Right"
+                                BorderBrush = "{StaticResource BlackBrush}"
+                                Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
+                            <TextBlock TextAlignment = "Center"
+                                       FontWeight = "Bold"
+                                       Margin = "{x:Static theme:UiSizes.TextSpacingThickness}"
+                                       Foreground = "{StaticResource BlackBrush}"
+                                       Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
+                        </Border>
+                        <Border Grid.Column = "2"
+                                ToolTip = "{Binding Race, Mode=OneWay}"
+                                BorderBrush = "{StaticResource BlackBrush}"
+                                Width = "{StaticResource RaceIconSize}"
+                                Height = "{StaticResource RaceIconSize}">
+                            <Border.Background>
+                                <ImageBrush Stretch = "Fill"
+                                            ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                            </Border.Background>
+                        </Border>
+                        <Border Grid.Column = "4"
+                                Width = "{StaticResource StartMenuButtonWidth}">
+                            <TextBlock TextAlignment = "Center"
+                                       Text = "{Binding Score, Mode=OneWay}"
+                                       FontSize = "{StaticResource LargeFontSize}"
+                                       FontWeight = "Bold" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <controls:CustomButton Grid.Row = "4"
                                Content = "Ok"
