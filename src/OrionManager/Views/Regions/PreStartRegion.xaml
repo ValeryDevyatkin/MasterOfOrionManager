@@ -38,7 +38,7 @@
                 <TextBlock Grid.Row = "0"
                            Text = "Current configuration:" />
                 <TextBlock Grid.Row = "1"
-                           FontSize = "45"
+                           FontSize = "{StaticResource LargeFontSize}"
                            TextAlignment = "Center">
                     <TextBlock.Style>
                         <Style TargetType = "TextBlock"
@@ -107,7 +107,7 @@
             <controls:CustomButton Grid.Column = "1"
                                    Content = "Back"
                                    Command = "{Binding AppCommands.NavigateToRegionCommand, Mode=OneTime}"
-                                   CommandParameter = "{x:Static enums:UiRegions.Start}"
+                                   CommandParameter = "{x:Static enums:UiRegions.Home}"
                                    Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 

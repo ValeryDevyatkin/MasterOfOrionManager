@@ -82,6 +82,9 @@
     </ApplicationDefinition>
     <Compile Include="Constants\CounselorIconKeys.cs" />
     <Compile Include="Constants\RaceIconKeys.cs" />
+    <Compile Include="Views\Backgrounds\ScoreBackground.xaml.cs">
+      <DependentUpon>ScoreBackground.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Backgrounds\ConfigurationListBackground.xaml.cs">
       <DependentUpon>ConfigurationListBackground.xaml</DependentUpon>
     </Compile>
@@ -94,8 +97,8 @@
     <Compile Include="Views\Backgrounds\ConfigurationBackground.xaml.cs">
       <DependentUpon>ConfigurationBackground.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Backgrounds\StartBackground.xaml.cs">
-      <DependentUpon>StartBackground.xaml</DependentUpon>
+    <Compile Include="Views\Backgrounds\HomeBackground.xaml.cs">
+      <DependentUpon>HomeBackground.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Controls\CustomButton.xaml.cs">
       <DependentUpon>CustomButton.xaml</DependentUpon>
@@ -112,6 +115,9 @@
     </Compile>
     <Compile Include="Views\Regions\Configuration\ConfigurationListRegion.xaml.cs">
       <DependentUpon>ConfigurationListRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Regions\ScoreRegion.xaml.cs">
+      <DependentUpon>ScoreRegion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Regions\Playing\PlayerListRegion.xaml.cs">
       <DependentUpon>PlayerListRegion.xaml</DependentUpon>
@@ -131,8 +137,8 @@
     <Compile Include="Views\Regions\PreStartRegion.xaml.cs">
       <DependentUpon>PreStartRegion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Regions\StartRegion.xaml.cs">
-      <DependentUpon>StartRegion.xaml</DependentUpon>
+    <Compile Include="Views\Regions\HomeRegion.xaml.cs">
+      <DependentUpon>HomeRegion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Theme\UiConstants.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
@@ -143,6 +149,10 @@
     <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToControlConverter.cs" />
     <Compile Include="Wpf\TriggerActions\ListBoxNavigationTriggerAction.cs" />
+    <Page Include="Views\Backgrounds\ScoreBackground.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Backgrounds\ConfigurationListBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,7 +169,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Backgrounds\StartBackground.xaml">
+    <Page Include="Views\Backgrounds\HomeBackground.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -195,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Regions\ScoreRegion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Regions\Playing\PlayerListRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,7 +233,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Regions\StartRegion.xaml">
+    <Page Include="Views\Regions\HomeRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

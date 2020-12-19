@@ -14,11 +14,12 @@ namespace OrionManager.Wpf.Converters
     {
         private static readonly Dictionary<UiRegions, Type> RegionMap = new Dictionary<UiRegions, Type>
         {
-            {UiRegions.Start, typeof(StartBackground)},
+            {UiRegions.Home, typeof(HomeBackground)},
             {UiRegions.PreStart, typeof(PreStartBackground)},
             {UiRegions.Configuration, typeof(ConfigurationBackground)},
             {UiRegions.ConfigurationList, typeof(ConfigurationListBackground)},
-            {UiRegions.Playing, typeof(PlayingBackground)}
+            {UiRegions.Playing, typeof(PlayingBackground)},
+            {UiRegions.Score, typeof(ScoreBackground)}
         };
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

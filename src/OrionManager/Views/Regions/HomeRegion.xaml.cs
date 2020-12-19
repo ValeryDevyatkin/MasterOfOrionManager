@@ -1,8 +1,8 @@
 ﻿namespace OrionManager.Views.Regions
 {
-    internal partial class StartRegion
+    internal partial class HomeRegion
     {
-        public StartRegion()
+        public HomeRegion()
         {
             InitializeComponent();
         }

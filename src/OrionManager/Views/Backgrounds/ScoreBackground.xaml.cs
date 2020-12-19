@@ -1,8 +1,8 @@
 ﻿namespace OrionManager.Views.Backgrounds
 {
-    internal partial class StartBackground
+    internal partial class ScoreBackground
     {
-        public StartBackground()
+        public ScoreBackground()
         {
             InitializeComponent();
         }

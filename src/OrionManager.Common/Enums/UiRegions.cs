@@ -2,10 +2,11 @@
 {
     public enum UiRegions
     {
-        Start,
+        Home,
         PreStart,
         ConfigurationList,
         Configuration,
-        Playing
+        Playing,
+        Score
     }
 }

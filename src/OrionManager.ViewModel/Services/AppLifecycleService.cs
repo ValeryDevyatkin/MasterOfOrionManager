@@ -26,7 +26,7 @@ namespace OrionManager.ViewModel.Services
 
             _container.Resolve<IDataStateHub<AppDataModel>>().CommitState(appData);
 
-            mainViewModel.Region = UiRegions.Start;
+            mainViewModel.Region = UiRegions.Home;
             mainViewModel.CopyFrom(appData);
 
             if (appData.IsGameStarted)

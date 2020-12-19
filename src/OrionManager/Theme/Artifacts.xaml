@@ -50,8 +50,10 @@
     <!--SIZES-->
     <system:Double x:Key = "SmallFontSize">15</system:Double>
     <system:Double x:Key = "DefaultFontSize">25</system:Double>
+    <system:Double x:Key = "LargeFontSize">40</system:Double>
+    <system:Double x:Key = "ExtraLargeFontSize">70</system:Double>
     <system:Double x:Key = "DefaultControlHeight">60</system:Double>
-    <system:Double x:Key = "StartMenuButtonWidth">190</system:Double>
+    <system:Double x:Key = "StartMenuButtonWidth">180</system:Double>
     <system:Double x:Key = "CounselorIconSize">105</system:Double>
     <system:Double x:Key = "RaceIconSize">64</system:Double>
 

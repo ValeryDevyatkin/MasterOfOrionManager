@@ -57,14 +57,14 @@ namespace OrionManager
                .RegisterSingleton<MainWindow>()
 
                 // Regions.
-               .RegisterSingleton<StartRegion>()
+               .RegisterSingleton<HomeRegion>()
                .RegisterSingleton<ConfigurationRegion>()
                .RegisterSingleton<PlayingRegion>()
                .RegisterSingleton<PreStartRegion>()
                .RegisterSingleton<ConfigurationListRegion>()
 
                 // Backgrounds.
-               .RegisterSingleton<StartBackground>()
+               .RegisterSingleton<HomeBackground>()
                .RegisterSingleton<PreStartBackground>()
                .RegisterSingleton<ConfigurationBackground>()
                .RegisterSingleton<PlayingBackground>()
