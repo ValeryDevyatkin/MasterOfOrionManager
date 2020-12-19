@@ -4,9 +4,10 @@
                     xmlns:constants = "clr-namespace:OrionManager.Constants">
 
     <!--BACKGROUND IMAGES-->
-    <BitmapImage x:Key = "OrionShipsBack"
+    <ImageSource x:Key = "ScoreBackgroundUri">pack://application:,,,/Theme/Images/OrionGui.gif</ImageSource>
+    <BitmapImage x:Key = "OrionShipsBackgroundImage"
                  UriSource = "pack://application:,,,/Theme/Images/OrionShipsBack.jpg" />
-    <BitmapImage x:Key = "OrionStarsBack"
+    <BitmapImage x:Key = "OrionStarsBackgroundImage"
                  UriSource = "pack://application:,,,/Theme/Images/OrionStarsBack.jpg" />
 
     <!--COUNSELOR ICONS-->

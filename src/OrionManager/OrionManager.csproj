@@ -74,6 +74,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\..\sln\packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -297,6 +300,9 @@
     <Resource Include="Theme\Images\Races\Mrrshan64.png" />
     <Resource Include="Theme\Images\Races\Psilon64.png" />
     <Resource Include="Theme\Images\Races\Random64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Theme\Images\OrionGui.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
