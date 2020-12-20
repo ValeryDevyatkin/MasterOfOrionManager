@@ -19,7 +19,7 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "256" />
+            <ColumnDefinition Width = "257" />
             <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <ColumnDefinition Width = "*" />
         </Grid.ColumnDefinitions>
