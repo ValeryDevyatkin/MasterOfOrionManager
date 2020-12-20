@@ -143,11 +143,11 @@
                     <RowDefinition Height = "*" />
                 </Grid.RowDefinitions>
                 <controls:CustomTextBox Grid.Row = "0"
-                                        Label = "Save time:"
+                                        Label = "Save time"
                                         IsReadOnly = "True"
                                         Text = "{Binding SaveTime, Mode=OneWay}" />
                 <controls:CustomTextBox Grid.Row = "2"
-                                        Label = "Configuration name:"
+                                        Label = "Configuration name"
                                         Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <Grid Grid.Row = "4">
                     <Grid.ColumnDefinitions>
@@ -156,7 +156,7 @@
                         <ColumnDefinition Width = "Auto" />
                     </Grid.ColumnDefinitions>
                     <controls:CustomTextBox Grid.Column = "0"
-                                            Label = "Max win points:"
+                                            Label = "Max win points"
                                             IsReadOnly = "True"
                                             Text = "{Binding MaxWinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <controls:SpinButton Grid.Column = "2"
@@ -171,7 +171,7 @@
                         <ColumnDefinition Width = "Auto" />
                     </Grid.ColumnDefinitions>
                     <controls:CustomTextBox Grid.Column = "0"
-                                            Label = "Max loyalty:"
+                                            Label = "Max loyalty"
                                             IsReadOnly = "True"
                                             Text = "{Binding MaxLoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                     <controls:SpinButton Grid.Column = "2"
