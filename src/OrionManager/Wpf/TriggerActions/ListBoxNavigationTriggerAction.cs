@@ -10,14 +10,9 @@ namespace OrionManager.Wpf.TriggerActions
     {
         protected override void Invoke(object parameter)
         {
-            if (ListBox == null)
+            if (ListBox == null || ItemToNavigate == null)
             {
-                throw new ArgumentNullException(nameof(ListBox));
-            }
-
-            if (ItemToNavigate == null)
-            {
-                throw new ArgumentException(nameof(ItemToNavigate));
+                throw new NotSupportedException();
             }
 
             try
