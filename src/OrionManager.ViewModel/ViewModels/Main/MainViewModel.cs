@@ -1,4 +1,5 @@
 ﻿using OrionManager.Common.Enums;
+using OrionManager.ViewModel.Constants;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -13,6 +14,8 @@ namespace OrionManager.ViewModel.ViewModels.Main
         public MainViewModel(IUnityContainer container) : base(container)
         {
             Container.RegisterInstance(this);
+
+            Title = ModuleConstants.AppName;
         }
 
         public GameDataViewModel GameData => Container.Resolve<GameDataViewModel>();
@@ -38,6 +41,18 @@ namespace OrionManager.ViewModel.ViewModels.Main
         }
 
         private UiRegions _region;
+
+        #endregion
+
+        #region Title: string
+
+        public string Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
+
+        private string _title;
 
         #endregion
     }

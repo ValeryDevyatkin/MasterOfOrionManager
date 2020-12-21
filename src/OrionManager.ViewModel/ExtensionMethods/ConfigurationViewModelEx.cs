@@ -28,16 +28,22 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 throw new ArgumentException(nameof(source));
             }
 
-            var configurationName = source.Name.Trim();
+            var name = source.Name;
 
-            if (string.IsNullOrEmpty(configurationName))
+            if (string.IsNullOrWhiteSpace(name))
             {
-                configurationName = target.Id.GetHead();
+                name = target.Id.GetHead();
+            }
+            else
+            {
+                var words = name.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+
+                name = string.Join(" ", words);
             }
 
             // TODO: Copy fields here.
             target.SaveTime = source.SaveTime;
-            target.Name = configurationName;
+            target.Name = name;
             target.MaxWinPoints = source.MaxWinPoints;
             target.MaxLoyaltyPoints = source.MaxLoyaltyPoints;
 

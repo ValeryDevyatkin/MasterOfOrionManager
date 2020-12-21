@@ -4,5 +4,6 @@
     {
         void OnStart();
         void OnExit();
+        void SaveConfigurationChanges();
     }
 }

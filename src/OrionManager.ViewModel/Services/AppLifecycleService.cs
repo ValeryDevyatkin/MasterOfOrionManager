@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OrionManager.Common.DataModels;
 using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
@@ -80,6 +81,27 @@ namespace OrionManager.ViewModel.Services
                     _container.Resolve<ISaveLoadService<GameDataModel>>().Save(gameData);
                 }
             }
+        }
+
+        public void SaveConfigurationChanges()
+        {
+            var mainViewModel = _container.Resolve<MainViewModel>();
+
+            if (mainViewModel.ConfigurationEditCopy == null)
+            {
+                throw new NotSupportedException();
+            }
+
+            if (!mainViewModel.SelectedConfiguration.HasDifference(mainViewModel.ConfigurationEditCopy))
+            {
+                return;
+            }
+
+            mainViewModel.SelectedConfiguration.CopyFrom(mainViewModel.ConfigurationEditCopy);
+            mainViewModel.ConfigurationEditCopy.SaveTime = DateTime.Now;
+            mainViewModel.ConfigurationEditCopy.Name = mainViewModel.SelectedConfiguration.Name;
+
+            _container.Resolve<IGameConfigurationService>().Save(mainViewModel.SelectedConfiguration.ToDataModel());
         }
     }
 }

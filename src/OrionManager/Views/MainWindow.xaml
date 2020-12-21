@@ -7,12 +7,12 @@
         xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
         xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
         mc:Ignorable = "d"
-        Title = "MoOr - The Board Game App"
         x:ClassModifier = "internal"
         ResizeMode = "NoResize"
         WindowState = "Maximized"
         WindowStartupLocation = "CenterScreen"
-        WindowStyle = "None">
+        WindowStyle = "None"
+        Title = "{Binding Title, Mode=OneTime}">
 
     <d:Window.DataContext>
         <main:MainViewModel />

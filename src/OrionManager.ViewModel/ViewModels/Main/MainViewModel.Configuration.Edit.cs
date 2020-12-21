@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using OrionManager.Common.Enums;
 using OrionManager.Common.Interfaces;
-using OrionManager.ViewModel.ExtensionMethods;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -10,11 +8,10 @@ namespace OrionManager.ViewModel.ViewModels.Main
 {
     public partial class MainViewModel
     {
-        private void SaveConfigurationChanges()
+        private void ExitEditMode()
         {
-            ConfigurationEditCopy.SaveTime = DateTime.Now;
-            SelectedConfiguration.CopyFrom(ConfigurationEditCopy);
-            Container.Resolve<IGameConfigurationService>().Save(SelectedConfiguration.ToDataModel());
+            ConfigurationEditCopy = null;
+            Region = UiRegions.ConfigurationList;
         }
 
         #region ConfigurationEditCopy: GameConfigurationViewModel
@@ -38,10 +35,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
 
         private void ExecuteApplyEditConfiguration(object parameter)
         {
-            if (SelectedConfiguration.HasDifference(ConfigurationEditCopy))
-            {
-                SaveConfigurationChanges();
-            }
+            Container.Resolve<IAppLifecycleService>().SaveConfigurationChanges();
         }
 
         #endregion
@@ -55,13 +49,9 @@ namespace OrionManager.ViewModel.ViewModels.Main
 
         private void ExecuteOkEditConfiguration(object parameter)
         {
-            if (SelectedConfiguration.HasDifference(ConfigurationEditCopy))
-            {
-                SaveConfigurationChanges();
-            }
+            Container.Resolve<IAppLifecycleService>().SaveConfigurationChanges();
 
-            ConfigurationEditCopy = null;
-            Region = UiRegions.ConfigurationList;
+            ExitEditMode();
         }
 
         #endregion
@@ -75,8 +65,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
 
         private void ExecuteCancelEditConfiguration(object parameter)
         {
-            ConfigurationEditCopy = null;
-            Region = UiRegions.ConfigurationList;
+            ExitEditMode();
         }
 
         #endregion

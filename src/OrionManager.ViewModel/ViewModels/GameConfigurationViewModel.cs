@@ -88,7 +88,7 @@ namespace OrionManager.ViewModel.ViewModels
         public string Name
         {
             get => _name;
-            set => SetString(ref _name, value, GlobalRegex.StringWithOneSpaceBetweenWords);
+            set => SetProperty(ref _name, value);
         }
 
         private string _name;
@@ -101,8 +101,8 @@ namespace OrionManager.ViewModel.ViewModels
         {
             get => _maxWinPoints;
             set => SetProperty(ref _maxWinPoints,
-                               value.GetInRange(ViewModelConstants.MinPresetWinPoints,
-                                                ViewModelConstants.MaxPresetWinPoints));
+                               value.GetInRange(ViewModelConstants.MinConfiguringWinPoints,
+                                                ViewModelConstants.MaxConfiguringWinPoints));
         }
 
         private int _maxWinPoints;
@@ -115,8 +115,8 @@ namespace OrionManager.ViewModel.ViewModels
         {
             get => _maxLoyaltyPoints;
             set => SetProperty(ref _maxLoyaltyPoints,
-                               value.GetInRange(ViewModelConstants.MinPresetLoyaltyPoints,
-                                                ViewModelConstants.MaxPresetLoyaltyPoints),
+                               value.GetInRange(ViewModelConstants.MinConfiguringLoyaltyPoints,
+                                                ViewModelConstants.MaxConfiguringLoyaltyPoints),
                                OnMaxLoyaltyPointsChanged);
         }
 

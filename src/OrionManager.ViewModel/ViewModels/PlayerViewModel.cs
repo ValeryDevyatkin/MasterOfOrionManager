@@ -85,7 +85,7 @@ namespace OrionManager.ViewModel.ViewModels
         {
             get => _loyaltyPoints;
             set => SetProperty(ref _loyaltyPoints,
-                               value.GetInRange(ViewModelConstants.MinLoyaltyPoints,
+                               value.GetInRange(ViewModelConstants.MinPlayerLoyaltyPoints,
                                                 Container.Resolve<GameDataViewModel>().MaxLoyaltyPoints),
                                OnLoyaltyPointsChanged);
         }
@@ -105,7 +105,7 @@ namespace OrionManager.ViewModel.ViewModels
         {
             get => _winPoints;
             set => SetProperty(ref _winPoints,
-                               value.GetInRange(ViewModelConstants.MinWinPoints,
+                               value.GetInRange(ViewModelConstants.MinPlayerWinPoints,
                                                 Container.Resolve<GameDataViewModel>().MaxWinPoints),
                                OnWinPointsChanged);
         }

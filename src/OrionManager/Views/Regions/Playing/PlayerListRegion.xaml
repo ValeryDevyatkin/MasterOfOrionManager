@@ -95,7 +95,7 @@
                                                     Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <controls:SpinButton Grid.Column = "2"
                                                  Value = "{Binding WinPoints, Mode=TwoWay}"
-                                                 Min = "{x:Static constants1:ViewModelConstants.MinWinPoints}"
+                                                 Min = "{x:Static constants1:ViewModelConstants.MinPlayerWinPoints}"
                                                  Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay }" />
                         </Grid>
                         <Grid Grid.Row = "2">
@@ -110,7 +110,7 @@
                                                     Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             <controls:SpinButton Grid.Column = "2"
                                                  Value = "{Binding LoyaltyPoints, Mode=TwoWay}"
-                                                 Min = "{x:Static constants1:ViewModelConstants.MinLoyaltyPoints}"
+                                                 Min = "{x:Static constants1:ViewModelConstants.MinPlayerLoyaltyPoints}"
                                                  Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay }" />
                         </Grid>
                         <Grid Grid.Row = "4">
