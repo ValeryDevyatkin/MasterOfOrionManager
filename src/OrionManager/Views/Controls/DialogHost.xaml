@@ -1,0 +1,21 @@
+﻿<UserControl x:Class = "OrionManager.Views.Controls.DialogHost"
+             xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable = "d"
+             HorizontalAlignment = "Stretch"
+             VerticalAlignment = "Stretch">
+
+    <Grid>
+        <Grid x:Name = "Shadow"
+              Background = "{StaticResource BlackBrush}"
+              Opacity = "{StaticResource OpacityHard}"
+              VerticalAlignment = "Stretch"
+              HorizontalAlignment = "Stretch" />
+
+        <ContentControl x:Name = "ContentControl"
+                        VerticalAlignment = "Center"
+                        HorizontalAlignment = "Center" />
+    </Grid>
+</UserControl>

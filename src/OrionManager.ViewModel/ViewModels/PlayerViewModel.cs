@@ -1,7 +1,10 @@
-﻿using BAJIEPA.Tools.Helpers;
+﻿using System.Windows.Input;
+using BAJIEPA.Tools.Helpers;
 using OrionManager.Common.Enums;
 using OrionManager.ViewModel.Constants;
 using OrionManager.ViewModel.ExtensionMethods;
+using OrionManager.ViewModel.Interfaces;
+using OrionManager.ViewModel.ViewModels.Dialogs;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -156,6 +159,22 @@ namespace OrionManager.ViewModel.ViewModels
         }
 
         private DisablingItemViewModel<Counselors> _counselor;
+
+        #endregion
+
+        #region SelectCounselor command
+
+        public ICommand SelectCounselorCommand => _selectCounselorCommand ??=
+                                                      new SyncCommand(ExecuteSelectCounselor);
+
+        private SyncCommand _selectCounselorCommand;
+
+        private void ExecuteSelectCounselor(object parameter)
+        {
+            var vm = Container.Resolve<SelectCounselorDialogViewModel>();
+            vm.Player = this;
+            Container.Resolve<IDialogHost>().ShowDialog(vm);
+        }
 
         #endregion
     }

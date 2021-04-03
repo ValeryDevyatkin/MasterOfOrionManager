@@ -119,25 +119,32 @@
                                 <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                                 <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
                             </Grid.ColumnDefinitions>
-                            <controls:CustomComboBox Grid.Column = "0"
-                                                     Label = "Counselor"
-                                                     ToolTip = "{Binding Counselor.Value, Mode=OneWay}"
-                                                     ItemsSource = "{Binding ElementName=Root, Path=DataContext.GameData.CounselorMap.Values, Mode=OneTime}"
-                                                     SelectedItem = "{Binding Counselor, Mode=TwoWay}"
-                                                     ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
-                                <controls:CustomComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border BorderThickness = "0"
-                                                Width = "{StaticResource CounselorIconSize}"
-                                                Height = "{StaticResource CounselorIconSize}">
-                                            <Border.Background>
-                                                <ImageBrush Stretch = "Fill"
-                                                            ImageSource = "{Binding Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
-                                            </Border.Background>
-                                        </Border>
-                                    </DataTemplate>
-                                </controls:CustomComboBox.ItemTemplate>
-                            </controls:CustomComboBox>
+
+                            <controls:CustomContentControl Grid.Column = "0"
+                                                           Label = "Counselor"
+                                                           ToolTip = "{Binding Counselor.Value, Mode=OneWay}">
+                                <Button Command = "{Binding SelectCounselorCommand, Mode=OneTime}">
+                                    <Button.Style>
+                                        <Style TargetType = "Button">
+                                            <Setter Property = "Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType = "Button">
+                                                        <Border Width = "{StaticResource CounselorIconSize}"
+                                                                Height = "{StaticResource CounselorIconSize}"
+                                                                BorderBrush = "{StaticResource BlackBrush}">
+                                                            <Border.Background>
+                                                                <ImageBrush Stretch = "Fill"
+                                                                            ImageSource = "{Binding Counselor.Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
+                                                            </Border.Background>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </controls:CustomContentControl>
+
                             <controls:CustomButton Grid.Column = "2"
                                                    Content = "?"
                                                    FontWeight = "ExtraBold"

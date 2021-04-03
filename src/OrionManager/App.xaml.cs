@@ -4,9 +4,12 @@ using BAJIEPA.Tools.Helpers;
 using OrionManager.Common.Interfaces;
 using OrionManager.Services;
 using OrionManager.ViewModel;
+using OrionManager.ViewModel.Interfaces;
+using OrionManager.ViewModel.ViewModels.Dialogs;
 using OrionManager.ViewModel.ViewModels.Main;
 using OrionManager.Views;
 using OrionManager.Views.Backgrounds;
+using OrionManager.Views.Dialogs;
 using OrionManager.Views.Regions;
 using OrionManager.Views.Regions.Configuration;
 using OrionManager.Views.Regions.Playing;
@@ -69,6 +72,10 @@ namespace OrionManager
                .RegisterSingleton<ConfigurationBackground>()
                .RegisterSingleton<PlayingBackground>()
                .RegisterSingleton<ConfigurationListBackground>()
+
+                // Dialogs.
+               .RegisterType<IDialogFor<SelectRaceDialogViewModel>, SelectRaceDialog>()
+               .RegisterType<IDialogFor<SelectCounselorDialogViewModel>, SelectCounselorDialog>()
 
                 //
                 ;

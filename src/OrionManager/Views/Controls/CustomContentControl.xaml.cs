@@ -2,9 +2,9 @@
 
 namespace OrionManager.Views.Controls
 {
-    internal partial class CustomTextBox
+    internal partial class CustomContentControl
     {
-        public CustomTextBox()
+        public CustomContentControl()
         {
             InitializeComponent();
         }
@@ -15,7 +15,7 @@ namespace OrionManager.Views.Controls
             DependencyProperty.Register(
                 nameof(Label),
                 typeof(string),
-                typeof(CustomTextBox),
+                typeof(CustomContentControl),
                 new PropertyMetadata(default(string)));
 
         public string Label

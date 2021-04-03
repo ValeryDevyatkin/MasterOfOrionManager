@@ -87,25 +87,32 @@
                                                    Foreground = "{StaticResource BlackBrush}"
                                                    Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
                                     </Border>
-                                    <controls:CustomComboBox Grid.Column = "2"
-                                                             Label = "Race"
-                                                             ToolTip = "{Binding Race.Value, Mode=OneWay}"
-                                                             ItemsSource = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy.RaceMap.Values, Mode=OneTime}"
-                                                             SelectedItem = "{Binding Race, Mode=TwoWay}"
-                                                             ItemContainerStyle = "{StaticResource IconComboBoxItemStyle}">
-                                        <controls:CustomComboBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <Border BorderThickness = "0"
-                                                        Width = "{StaticResource RaceIconSize}"
-                                                        Height = "{StaticResource RaceIconSize}">
-                                                    <Border.Background>
-                                                        <ImageBrush Stretch = "Fill"
-                                                                    ImageSource = "{Binding Value, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
-                                                    </Border.Background>
-                                                </Border>
-                                            </DataTemplate>
-                                        </controls:CustomComboBox.ItemTemplate>
-                                    </controls:CustomComboBox>
+
+                                    <controls:CustomContentControl Grid.Column = "2"
+                                                                   Label = "Race"
+                                                                   ToolTip = "{Binding Race.Value, Mode=OneWay}">
+                                        <Button Command = "{Binding SelectRaceCommand, Mode=OneTime}">
+                                            <Button.Style>
+                                                <Style TargetType = "Button">
+                                                    <Setter Property = "Template">
+                                                        <Setter.Value>
+                                                            <ControlTemplate TargetType = "Button">
+                                                                <Border Width = "{StaticResource RaceIconSize}"
+                                                                        Height = "{StaticResource RaceIconSize}"
+                                                                        BorderBrush = "{StaticResource BlackBrush}">
+                                                                    <Border.Background>
+                                                                        <ImageBrush Stretch = "Fill"
+                                                                                    ImageSource = "{Binding Race.Value, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                                                                    </Border.Background>
+                                                                </Border>
+                                                            </ControlTemplate>
+                                                        </Setter.Value>
+                                                    </Setter>
+                                                </Style>
+                                            </Button.Style>
+                                        </Button>
+                                    </controls:CustomContentControl>
+
                                     <controls:CustomButton Grid.Column = "4"
                                                            Content = "x"
                                                            ToolTip = "Remove"

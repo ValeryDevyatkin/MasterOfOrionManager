@@ -6,6 +6,7 @@
         xmlns:constants = "clr-namespace:OrionManager.Theme"
         xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
         xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
+        xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
         mc:Ignorable = "d"
         x:ClassModifier = "internal"
         ResizeMode = "NoResize"
@@ -26,6 +27,7 @@
         <ContentControl Margin = "{x:Static constants:UiSizes.OuterSpacingThickness}"
                         Content = "{Binding Region, Mode=OneWay, Converter={converters:UiRegionToControlConverter}}" />
 
+        <controls:DialogHost />
     </Grid>
 
 </Window>

@@ -1,14 +1,15 @@
-﻿<controls:CustomTextBoxBase x:Class = "OrionManager.Views.Controls.CustomTextBox"
-                            xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                            xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
-                            xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
-                            xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
-                            xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
-                            xmlns:constants = "clr-namespace:OrionManager.Theme"
-                            mc:Ignorable = "d"
-                            x:ClassModifier = "internal">
+﻿<TextBox x:Class = "OrionManager.Views.Controls.CustomTextBox"
+         xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+         xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+         xmlns:constants = "clr-namespace:OrionManager.Theme"
+         mc:Ignorable = "d"
+         x:ClassModifier = "internal"
+         ToolTipService.IsEnabled = "False">
 
-    <controls:CustomTextBoxBase.Template>
+    <Control.Template>
         <ControlTemplate TargetType = "controls:CustomTextBox">
             <Grid>
 
@@ -18,7 +19,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Column = "0"
-                        ToolTip = "{TemplateBinding Tip}">
+                        ToolTip = "{TemplateBinding ToolTip}">
                     <Border.Padding>
                         <Thickness Right = "{x:Static constants:UiSizes.InnerSpacing}"
                                    Left = "{x:Static constants:UiSizes.InnerSpacing}"
@@ -74,6 +75,6 @@
 
             </Grid>
         </ControlTemplate>
-    </controls:CustomTextBoxBase.Template>
+    </Control.Template>
 
-</controls:CustomTextBoxBase>
+</TextBox>

@@ -1,0 +1,86 @@
+﻿<local:DialogBase x:TypeArguments = "dialogs:SelectRaceDialogViewModel"
+                  x:Class = "OrionManager.Views.Dialogs.SelectRaceDialog"
+                  xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:local = "clr-namespace:OrionManager.Views.Dialogs"
+                  xmlns:dialogs = "clr-namespace:OrionManager.ViewModel.ViewModels.Dialogs;assembly=OrionManager.ViewModel"
+                  xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
+                  xmlns:constants = "clr-namespace:OrionManager.Theme"
+                  mc:Ignorable = "d"
+                  x:ClassModifier = "internal">
+
+    <d:UserControl.DataContext>
+        <dialogs:SelectRaceDialogViewModel />
+    </d:UserControl.DataContext>
+
+    <ListBox ItemsSource = "{Binding Items, Mode=OneTime}"
+             SelectedItem = "{Binding Player.Race, Mode=TwoWay}"
+             Style = "{StaticResource PopupListBoxStyle}"
+             MaxWidth = "300">
+
+        <ListBox.ItemContainerStyle>
+            <Style TargetType = "ListBoxItem">
+                <Setter Property = "ToolTipService.ShowOnDisabled"
+                        Value = "True" />
+                <Setter Property = "Background"
+                        Value = "{StaticResource DefaultForeground}" />
+                <Setter Property = "ToolTip"
+                        Value = "{Binding Value}" />
+                <Setter Property = "IsEnabled"
+                        Value = "{Binding IsEnabled}" />
+                <Setter Property = "Padding"
+                        Value = "0" />
+                <Setter Property = "HorizontalContentAlignment"
+                        Value = "Stretch" />
+                <Setter Property = "Margin">
+                    <Setter.Value>
+                        <Thickness Top = "0"
+                                   Left = "0"
+                                   Bottom = "{x:Static constants:UiSizes.TextSpacing}"
+                                   Right = "{x:Static constants:UiSizes.TextSpacing}" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property = "Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType = "ListBoxItem">
+                            <Border x:Name = "Border"
+                                    BorderBrush = "{StaticResource BlackBrush}"
+                                    Width = "{StaticResource RaceIconSize}"
+                                    Height = "{StaticResource RaceIconSize}">
+                                <Border.Background>
+                                    <ImageBrush Stretch = "Fill"
+                                                ImageSource = "{Binding Value, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                                </Border.Background>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property = "IsEnabled"
+                                         Value = "False">
+                                    <Setter TargetName = "Border"
+                                            Property = "Opacity"
+                                            Value = "{StaticResource Opacity}" />
+                                </Trigger>
+                                <Trigger Property = "IsMouseOver"
+                                         Value = "True">
+                                    <Setter TargetName = "Border"
+                                            Property = "BorderBrush"
+                                            Value = "{StaticResource DefaultForeground}" />
+                                </Trigger>
+                                <Trigger Property = "IsSelected"
+                                         Value = "True">
+                                    <Setter TargetName = "Border"
+                                            Property = "BorderBrush"
+                                            Value = "{StaticResource AlertBrush}" />
+                                    <Setter TargetName = "Border"
+                                            Property = "Opacity"
+                                            Value = "1" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ListBox.ItemContainerStyle>
+    </ListBox>
+</local:DialogBase>

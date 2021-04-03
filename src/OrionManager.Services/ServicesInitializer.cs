@@ -26,7 +26,9 @@ namespace OrionManager.Services
         {
         }
 
-        public static ServicesInitializer Instance { get; } = new ServicesInitializer();
+        private static ServicesInitializer _instance;
+
+        public static ServicesInitializer Instance => _instance ??= new ServicesInitializer();
 
         #endregion
     }

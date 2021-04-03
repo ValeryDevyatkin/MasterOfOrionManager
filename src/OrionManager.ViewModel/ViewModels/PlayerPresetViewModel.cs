@@ -1,10 +1,18 @@
-﻿using OrionManager.Common.Enums;
+﻿using System.Windows.Input;
+using OrionManager.Common.Enums;
+using OrionManager.ViewModel.Interfaces;
+using OrionManager.ViewModel.ViewModels.Dialogs;
 using Senticode.Wpf.Base;
+using Unity;
 
 namespace OrionManager.ViewModel.ViewModels
 {
-    public class PlayerPresetViewModel : ObservableObject
+    public class PlayerPresetViewModel : ViewModelBase
     {
+        public PlayerPresetViewModel(IUnityContainer container) : base(container)
+        {
+        }
+
         #region Race: DisablingItemViewModel<Race>
 
         public DisablingItemViewModel<Races> Race
@@ -43,6 +51,22 @@ namespace OrionManager.ViewModel.ViewModels
         }
 
         private PlayerColors _color;
+
+        #endregion
+
+        #region SelectRace command
+
+        public ICommand SelectRaceCommand => _selectRaceCommand ??=
+                                                 new SyncCommand(ExecuteSelectRace);
+
+        private SyncCommand _selectRaceCommand;
+
+        private void ExecuteSelectRace(object parameter)
+        {
+            var vm = Container.Resolve<SelectRaceDialogViewModel>();
+            vm.Player = this;
+            Container.Resolve<IDialogHost>().ShowDialog(vm);
+        }
 
         #endregion
     }

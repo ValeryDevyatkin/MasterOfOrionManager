@@ -31,7 +31,7 @@
                 </Border>
                 <Grid x:Name = "Blackout"
                       Visibility = "Hidden"
-                      Opacity = "0.3"
+                      Opacity = "{StaticResource Opacity}"
                       Background = "{StaticResource BlackBrush}" />
             </Grid>
             <ControlTemplate.Triggers>

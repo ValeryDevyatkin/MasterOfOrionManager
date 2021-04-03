@@ -7,36 +7,33 @@
         <ResourceDictionary Source = "pack://application:,,,/Theme/Artifacts.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <!--IMPLICIT-->
-    <Style TargetType = "ComboBoxItem"
-           x:Key = "IconComboBoxItemStyle">
-        <Setter Property = "ToolTipService.ShowOnDisabled"
-                Value = "True" />
-        <Setter Property = "Background"
-                Value = "{StaticResource DefaultForeground}" />
-        <Setter Property = "ToolTip"
-                Value = "{Binding Value}" />
-        <Setter Property = "IsEnabled"
-                Value = "{Binding IsEnabled}" />
-        <Setter Property = "Padding"
-                Value = "0" />
-        <Setter Property = "HorizontalContentAlignment"
-                Value = "Stretch" />
-        <Setter Property = "Margin">
+    <Style TargetType = "ListBox"
+           x:Key = "PopupListBoxStyle">
+        <Setter Property = "ItemsPanel">
             <Setter.Value>
-                <Thickness Top = "0"
-                           Left = "0"
-                           Right = "0"
-                           Bottom = "{x:Static constants:UiSizes.TextSpacing}" />
+                <ItemsPanelTemplate>
+                    <WrapPanel FlowDirection = "LeftToRight">
+                        <WrapPanel.Margin>
+                            <Thickness Top = "{x:Static constants:UiSizes.TextSpacing}"
+                                       Left = "{x:Static constants:UiSizes.TextSpacing}"
+                                       Bottom = "0"
+                                       Right = "0" />
+                        </WrapPanel.Margin>
+                    </WrapPanel>
+                </ItemsPanelTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property = "IsEnabled"
-                     Value = "False">
-                <Setter Property = "BorderBrush"
-                        Value = "{StaticResource AlertBrush}" />
-            </Trigger>
-        </Style.Triggers>
+        <Setter Property = "Template">
+            <Setter.Value>
+                <ControlTemplate TargetType = "ListBox">
+                    <Border BorderBrush = "{StaticResource BlackBrush}"
+                            Background = "{StaticResource DefaultDenseBackground}"
+                            Effect = "{StaticResource Shadow}">
+                        <ItemsPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType = "UserControl">
@@ -87,20 +84,12 @@
                 Value = "0" />
     </Style>
 
-    <Style TargetType = "controls:CustomComboBox">
-        <Setter Property = "Background"
-                Value = "{StaticResource DefaultForeground}" />
-    </Style>
-
-    <Style TargetType = "controls:CustomTextBoxBase">
+    <Style TargetType = "controls:CustomTextBox">
         <Setter Property = "Background"
                 Value = "{StaticResource BlackBrush}" />
         <Setter Property = "Foreground"
                 Value = "{StaticResource DefaultForeground}" />
     </Style>
-
-    <Style TargetType = "controls:CustomTextBox"
-           BasedOn = "{StaticResource {x:Type controls:CustomTextBoxBase}}" />
 
     <Style TargetType = "controls:CustomButton">
         <Setter Property = "FontSize"

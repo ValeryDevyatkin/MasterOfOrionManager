@@ -49,6 +49,8 @@
                  UriSource = "pack://application:,,,/Theme/Images/Races/Random64.png" />
 
     <!--SIZES-->
+    <system:Double x:Key = "Opacity">0.3</system:Double>
+    <system:Double x:Key = "OpacityHard">0.7</system:Double>
     <system:Double x:Key = "SmallFontSize">15</system:Double>
     <system:Double x:Key = "DefaultFontSize">25</system:Double>
     <system:Double x:Key = "LargeFontSize">40</system:Double>
@@ -62,6 +64,14 @@
     <Brush x:Key = "BlackBrush">#FF000000</Brush>
     <Brush x:Key = "DefaultForeground">CornflowerBlue</Brush>
     <Brush x:Key = "DefaultBackground">#D0493E8E</Brush>
+    <Brush x:Key = "DefaultDenseBackground">#493E8E</Brush>
     <Brush x:Key = "AlertBrush">OrangeRed</Brush>
+
+    <DropShadowEffect x:Key = "Shadow"
+                      Direction = "-90"
+                      Opacity = "{StaticResource OpacityHard}"
+                      ShadowDepth = "2"
+                      BlurRadius = "5"
+                      RenderingBias = "Quality" />
 
 </ResourceDictionary>

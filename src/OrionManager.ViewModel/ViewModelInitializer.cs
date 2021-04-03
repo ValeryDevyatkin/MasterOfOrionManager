@@ -2,6 +2,7 @@
 using OrionManager.ViewModel.Commands;
 using OrionManager.ViewModel.Services;
 using OrionManager.ViewModel.ViewModels;
+using OrionManager.ViewModel.ViewModels.Dialogs;
 using OrionManager.ViewModel.ViewModels.Main;
 using Unity;
 
@@ -27,6 +28,8 @@ namespace OrionManager.ViewModel
                .RegisterType<MainViewModel>()
                .RegisterType<GameConfigurationViewModel>()
                .RegisterType<GameDataViewModel>()
+               .RegisterType<SelectCounselorDialogViewModel>()
+               .RegisterType<SelectRaceDialogViewModel>()
 
                 //
                 ;
@@ -38,7 +41,9 @@ namespace OrionManager.ViewModel
         {
         }
 
-        public static ViewModelInitializer Instance { get; } = new ViewModelInitializer();
+        private static ViewModelInitializer _instance;
+
+        public static ViewModelInitializer Instance => _instance ??= new ViewModelInitializer();
 
         #endregion
     }

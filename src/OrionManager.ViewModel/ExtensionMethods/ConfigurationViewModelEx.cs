@@ -47,11 +47,15 @@ namespace OrionManager.ViewModel.ExtensionMethods
             target.MaxWinPoints = source.MaxWinPoints;
             target.MaxLoyaltyPoints = source.MaxLoyaltyPoints;
 
-            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x => new PlayerPresetViewModel
+            target.PlayerPresets.ReplaceAll(source.PlayerPresets.Select(x =>
             {
+                var vm = ServiceLocator.Container.Resolve<PlayerPresetViewModel>();
+
                 // TODO: Copy fields here.
-                Race = target.RaceMap[x.Race.Value],
-                Color = x.Color
+                vm.Race = target.RaceMap[x.Race.Value];
+                vm.Color = x.Color;
+
+                return vm;
             }));
         }
 

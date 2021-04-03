@@ -167,10 +167,10 @@ namespace OrionManager.ViewModel.ViewModels
                 return;
             }
 
-            PlayerPresets.Add(new PlayerPresetViewModel
-            {
-                Race = RaceMap[Races.Random]
-            });
+            var vm = Container.Resolve<PlayerPresetViewModel>();
+            vm.Race = RaceMap[Races.Random];
+
+            PlayerPresets.Add(vm);
         }
 
         #endregion
