@@ -154,6 +154,7 @@
     </Compile>
     <Compile Include="Theme\UiConstants.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
+    <Compile Include="Wpf\Behaviors\IntegerBoxBehavior.cs" />
     <Compile Include="Wpf\Converters\CounselorToImageSourceConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
     <Compile Include="Wpf\Converters\PlayerColorToIndexConverter.cs" />

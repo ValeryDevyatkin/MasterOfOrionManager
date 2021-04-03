@@ -8,6 +8,8 @@
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
              xmlns:constants1 = "clr-namespace:OrionManager.ViewModel.Constants;assembly=OrionManager.ViewModel"
+             xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors = "clr-namespace:OrionManager.Wpf.Behaviors"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -92,7 +94,11 @@
                             <controls:CustomTextBox x:Name = "WinPointsBox"
                                                     Grid.Column = "0"
                                                     Label = "Points"
-                                                    Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                    Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:IntegerBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </controls:CustomTextBox>
                             <controls:SpinButton Grid.Column = "2"
                                                  Value = "{Binding WinPoints, Mode=TwoWay}"
                                                  Min = "{x:Static constants1:ViewModelConstants.MinPlayerWinPoints}"
@@ -107,7 +113,11 @@
                             <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
                                                     Grid.Column = "0"
                                                     Label = "Loyalty"
-                                                    Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                    Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:IntegerBoxBehavior />
+                                </i:Interaction.Behaviors>
+                            </controls:CustomTextBox>
                             <controls:SpinButton Grid.Column = "2"
                                                  Value = "{Binding LoyaltyPoints, Mode=TwoWay}"
                                                  Min = "{x:Static constants1:ViewModelConstants.MinPlayerLoyaltyPoints}"

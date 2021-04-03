@@ -8,6 +8,8 @@
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
              xmlns:constants1 = "clr-namespace:OrionManager.ViewModel.Constants;assembly=OrionManager.ViewModel"
+             xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors = "clr-namespace:OrionManager.Wpf.Behaviors"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -152,6 +154,7 @@
                 <controls:CustomTextBox Grid.Row = "0"
                                         Label = "Save time"
                                         IsReadOnly = "True"
+                                        IsEnabled = "False"
                                         Text = "{Binding SaveTime, Mode=OneWay}" />
                 <controls:CustomTextBox Grid.Row = "2"
                                         Label = "Configuration name"
@@ -164,8 +167,11 @@
                     </Grid.ColumnDefinitions>
                     <controls:CustomTextBox Grid.Column = "0"
                                             Label = "Max win points"
-                                            IsReadOnly = "True"
-                                            Text = "{Binding MaxWinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            Text = "{Binding MaxWinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Behaviors>
+                            <behaviors:IntegerBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </controls:CustomTextBox>
                     <controls:SpinButton Grid.Column = "2"
                                          Value = "{Binding MaxWinPoints, Mode=TwoWay}"
                                          Min = "{x:Static constants1:ViewModelConstants.MinConfiguringWinPoints}"
@@ -179,8 +185,11 @@
                     </Grid.ColumnDefinitions>
                     <controls:CustomTextBox Grid.Column = "0"
                                             Label = "Max loyalty"
-                                            IsReadOnly = "True"
-                                            Text = "{Binding MaxLoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                            Text = "{Binding MaxLoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                        <i:Interaction.Behaviors>
+                            <behaviors:IntegerBoxBehavior />
+                        </i:Interaction.Behaviors>
+                    </controls:CustomTextBox>
                     <controls:SpinButton Grid.Column = "2"
                                          Value = "{Binding MaxLoyaltyPoints, Mode=TwoWay}"
                                          Min = "{x:Static constants1:ViewModelConstants.MinConfiguringLoyaltyPoints}"
