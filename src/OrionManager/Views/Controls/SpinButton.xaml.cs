@@ -1,20 +1,63 @@
-﻿using System.Windows;
+﻿using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace OrionManager.Views.Controls
 {
     internal partial class SpinButton
     {
+        private const int IncrementDelay = 200;
+        private bool _isClickCancelled;
+
         public SpinButton()
         {
             InitializeComponent();
 
             Loaded += OnLoaded;
             ValueChanged += OnValueChanged;
+            IncrementButton.PreviewMouseLeftButtonDown += IncrementButtonOnMouseLeftButtonDown;
+            DecrementButton.PreviewMouseLeftButtonDown += DecrementButtonOnMouseLeftButtonDown;
             IncrementButton.Click += IncrementButtonOnClick;
             DecrementButton.Click += DecrementButtonOnClick;
         }
 
         public event DependencyPropertyChangedEventHandler ValueChanged;
+
+        private async void DecrementButtonOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _isClickCancelled = false;
+
+            while (true)
+            {
+                await Task.Delay(IncrementDelay);
+
+                if (!DecrementButton.IsPressed)
+                {
+                    break;
+                }
+
+                _isClickCancelled = true;
+                Value--;
+            }
+        }
+
+        private async void IncrementButtonOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            _isClickCancelled = false;
+
+            while (true)
+            {
+                await Task.Delay(IncrementDelay);
+
+                if (!IncrementButton.IsPressed)
+                {
+                    break;
+                }
+
+                _isClickCancelled = true;
+                Value++;
+            }
+        }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
@@ -53,12 +96,18 @@ namespace OrionManager.Views.Controls
 
         private void DecrementButtonOnClick(object sender, RoutedEventArgs e)
         {
-            Value--;
+            if (!_isClickCancelled)
+            {
+                Value--;
+            }
         }
 
         private void IncrementButtonOnClick(object sender, RoutedEventArgs e)
         {
-            Value++;
+            if (!_isClickCancelled)
+            {
+                Value++;
+            }
         }
 
         #region Value dependency: int
