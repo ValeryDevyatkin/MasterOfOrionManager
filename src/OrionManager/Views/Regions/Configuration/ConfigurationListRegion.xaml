@@ -18,6 +18,10 @@
         <main:MainViewModel />
     </d:UserControl.DataContext>
 
+    <i:Interaction.Behaviors>
+        <behaviors:OnLoadedCommandBehavior Command = "{Binding UpdateConfigSelectionCommand, Mode=OneTime}" />
+    </i:Interaction.Behaviors>
+
     <Grid>
 
         <Grid.ColumnDefinitions>

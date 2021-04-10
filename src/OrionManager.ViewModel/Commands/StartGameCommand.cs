@@ -32,12 +32,20 @@ namespace OrionManager.ViewModel.Commands
                 throw new NotSupportedException();
             }
 
+            mainViewModel.Region = UiRegions.Playing;
+            mainViewModel.IsGameStarted = true;
+
             var game = mainViewModel.GameData;
             var players = new List<PlayerViewModel>();
             var availableRaces = config.RaceMap.Values
                                        .Where(x => x.Value != Races.Random)
                                        .Where(x => x.IsEnabled)
                                        .ToList();
+
+            game.Reset();
+            game.Rounds[0].State = RoundStates.Current;
+            game.MaxWinPoints = config.MaxWinPoints;
+            game.MaxLoyaltyPoints = config.MaxLoyaltyPoints;
 
             foreach (var playerPreset in config.PlayerPresets)
             {
@@ -53,19 +61,16 @@ namespace OrionManager.ViewModel.Commands
                 player.Race = race.Value;
                 player.Color = playerPreset.Color;
                 player.Counselor = game.CounselorMap[Counselors.None];
+                player.LoyaltyPoints = game.MaxLoyaltyPoints;
+                player.UpdateIsLoyaltyPointsValueLeadsToGameFinish();
+                player.UpdateIsWinPointsValueLeadsToGameFinish();
 
                 players.Add(player);
             }
 
-            mainViewModel.Region = UiRegions.Playing;
-            mainViewModel.IsGameStarted = true;
-
-            game.Reset();
             game.Players.ReplaceAll(players);
-            game.Rounds[0].State = RoundStates.Current;
+            game.UpdateIsGameCanBeFinished();
             game.GetInitiativePlayer().HasInitiative = true;
-            game.MaxWinPoints = config.MaxWinPoints;
-            game.MaxLoyaltyPoints = config.MaxLoyaltyPoints;
             game.IsOpenedAndReady = true;
 
             var dataModel = game.ToDataModel();

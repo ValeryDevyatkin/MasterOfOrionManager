@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Input;
 using OrionManager.Common.Enums;
 using OrionManager.Common.ExtensionMethods;
@@ -93,9 +94,20 @@ namespace OrionManager.ViewModel.ViewModels.Main
 
             var newConfiguration = Container.Resolve<GameConfigurationViewModel>();
 
+            var playerPresets = SelectedConfiguration.PlayerPresets.Select(x =>
+            {
+                var playerPreset = Container.Resolve<PlayerPresetViewModel>();
+                playerPreset.Race = newConfiguration.RaceMap[x.Race.Value];
+
+                return playerPreset;
+            });
+
             newConfiguration.Id = Guid.NewGuid();
             newConfiguration.SaveTime = DateTime.Now;
             newConfiguration.Name = $"{SelectedConfiguration.Name} - {newConfiguration.Id.GetHead()}";
+            newConfiguration.MaxWinPoints = SelectedConfiguration.MaxWinPoints;
+            newConfiguration.MaxLoyaltyPoints = SelectedConfiguration.MaxLoyaltyPoints;
+            newConfiguration.PlayerPresets.ReplaceAll(playerPresets);
 
             Container.Resolve<IGameConfigurationService>().Save(newConfiguration.ToDataModel());
             GameConfigurations.Add(newConfiguration);
@@ -157,6 +169,20 @@ namespace OrionManager.ViewModel.ViewModels.Main
         {
             ConfigurationEditCopy = SelectedConfiguration.Clone();
             Region = UiRegions.Configuration;
+        }
+
+        #endregion
+
+        #region UpdateConfigSelection command
+
+        public ICommand UpdateConfigSelectionCommand => _updateConfigSelectionCommand ??=
+                                                            new SyncCommand(ExecuteUpdateConfigSelection);
+
+        private SyncCommand _updateConfigSelectionCommand;
+
+        private void ExecuteUpdateConfigSelection(object parameter)
+        {
+            SelectedConfiguration = CurrentConfiguration;
         }
 
         #endregion

@@ -45,7 +45,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 throw new ArgumentNullException(nameof(item));
             }
 
-            item.IsLoyaltyPointsValueLeadsToGameFinish = item.LoyaltyPoints < 0;
+            item.IsLoyaltyPointsValueLeadsToGameFinish = item.LoyaltyPoints <= 0;
         }
     }
 }
