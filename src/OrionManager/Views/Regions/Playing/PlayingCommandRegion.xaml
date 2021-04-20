@@ -5,6 +5,7 @@
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -20,7 +21,7 @@
         <controls:CustomButton Grid.Row = "0"
                                Content = "Exit"
                                Width = "{StaticResource StartMenuButtonWidth}"
-                               Command = "{Binding AppCommands.ExitAppCommand, Mode=OneTime}" />
+                               Command = "{Binding Source={x:Static viewModel:AppCommands.ExitAppCommand}, Mode=OneTime}" />
     </Grid>
 
 </UserControl>

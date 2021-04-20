@@ -1,20 +1,23 @@
-﻿using OrionManager.Common.Enums;
+﻿using System;
+using OrionManager.Common.Enums;
 using OrionManager.ViewModel.Constants;
 using Senticode.Wpf.Base;
 using Unity;
 
 namespace OrionManager.ViewModel.ViewModels.Main
 {
-    public partial class MainViewModel : ViewModelBase<AppSettings, AppCommands>
+    public partial class MainViewModel : ViewModelBase
     {
+        /// <summary>
+        ///     Design data stub. Do not use!
+        /// </summary>
         public MainViewModel() : base(null)
         {
+            throw new NotImplementedException();
         }
 
         public MainViewModel(IUnityContainer container) : base(container)
         {
-            Container.RegisterInstance(this);
-
             Title = ModuleConstants.AppName;
         }
 

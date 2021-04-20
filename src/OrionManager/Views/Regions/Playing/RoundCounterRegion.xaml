@@ -7,6 +7,7 @@
              xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -69,7 +70,7 @@
                         <Setter.Value>
                             <controls:CustomButton Content = "Next Round"
                                                    Width = "{StaticResource StartMenuButtonWidth}"
-                                                   Command = "{Binding AppCommands.StartNewRoundCommand, Mode=OneTime}" />
+                                                   Command = "{Binding Source={x:Static viewModel:AppCommands.StartNewRoundCommand}, Mode=OneTime}" />
                         </Setter.Value>
                     </Setter>
                     <Style.Triggers>
@@ -82,7 +83,7 @@
                                                            Foreground = "{StaticResource AlertBrush}"
                                                            BorderBrush = "{StaticResource AlertBrush}"
                                                            Width = "{StaticResource StartMenuButtonWidth}"
-                                                           Command = "{Binding AppCommands.FinishGameCommand, Mode=OneTime}" />
+                                                           Command = "{Binding Source={x:Static viewModel:AppCommands.FinishGameCommand}, Mode=OneTime}" />
                                 </Setter.Value>
                             </Setter>
                         </DataTrigger>

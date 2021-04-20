@@ -8,6 +8,7 @@
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
              xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
              xmlns:converters = "clr-namespace:OrionManager.Wpf.Converters"
+             xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -89,7 +90,7 @@
         <controls:CustomButton Grid.Row = "4"
                                Content = "Ok"
                                Width = "{StaticResource StartMenuButtonWidth}"
-                               Command = "{Binding AppCommands.NavigateToRegionCommand, Mode=OneTime}"
+                               Command = "{Binding Source={x:Static viewModel:AppCommands.NavigateToRegionCommand}, Mode=OneTime}"
                                CommandParameter = "{x:Static enums:UiRegions.Home}" />
 
     </Grid>

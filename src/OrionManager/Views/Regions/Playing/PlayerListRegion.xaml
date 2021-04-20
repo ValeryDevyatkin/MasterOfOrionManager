@@ -10,6 +10,7 @@
              xmlns:constants1 = "clr-namespace:OrionManager.ViewModel.Constants;assembly=OrionManager.ViewModel"
              xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors = "clr-namespace:OrionManager.Wpf.Behaviors"
+             xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -161,7 +162,7 @@
                                                    Padding = "0"
                                                    ToolTip = "Random"
                                                    Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
-                                                   Command = "{Binding ElementName=Root, Path=DataContext.AppCommands.ChoseRandomCounselorCommand, Mode=OneTime}"
+                                                   Command = "{Binding Source={x:Static viewModel:AppCommands.ChoseRandomCounselorCommand}, Mode=OneTime}"
                                                    CommandParameter = "{Binding}" />
                         </Grid>
                     </Grid>

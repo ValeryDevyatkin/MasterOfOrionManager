@@ -7,6 +7,7 @@
              xmlns:constants = "clr-namespace:OrionManager.Theme"
              xmlns:enums = "clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
              xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -60,10 +61,10 @@
                                    Content = "Continue"
                                    IsEnabled = "{Binding IsGameStarted, Mode=OneWay}"
                                    Width = "{StaticResource StartMenuButtonWidth}"
-                                   Command = "{Binding AppCommands.ContinueGameCommand, Mode=OneTime}" />
+                                   Command = "{Binding Source={x:Static viewModel:AppCommands.ContinueGameCommand}, Mode=OneTime}" />
             <controls:CustomButton Grid.Column = "3"
                                    Content = "New Game"
-                                   Command = "{Binding AppCommands.NavigateToRegionCommand, Mode=OneTime}"
+                                   Command = "{Binding Source={x:Static viewModel:AppCommands.NavigateToRegionCommand}, Mode=OneTime}"
                                    CommandParameter = "{x:Static enums:UiRegions.PreStart}"
                                    Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
@@ -76,7 +77,7 @@
             </Grid.ColumnDefinitions>
             <controls:CustomButton Grid.Column = "1"
                                    Content = "Exit"
-                                   Command = "{Binding AppCommands.ExitAppCommand, Mode=OneTime}"
+                                   Command = "{Binding Source={x:Static viewModel:AppCommands.ExitAppCommand}, Mode=OneTime}"
                                    Width = "{StaticResource StartMenuButtonWidth}" />
         </Grid>
 

@@ -3,14 +3,13 @@ using OrionManager.ViewModel.Commands;
 using OrionManager.ViewModel.Services;
 using OrionManager.ViewModel.ViewModels;
 using OrionManager.ViewModel.ViewModels.Dialogs;
-using OrionManager.ViewModel.ViewModels.Main;
 using Unity;
 
 namespace OrionManager.ViewModel
 {
-    public class ViewModelInitializer : IModuleInitializer
+    public static class ViewModelInitializer
     {
-        public void RegisterTypes(IUnityContainer container)
+        public static void Init(IUnityContainer container)
         {
             container
 
@@ -25,7 +24,6 @@ namespace OrionManager.ViewModel
                .RegisterType<IAppLifecycleService, AppLifecycleService>()
 
                 // View Models.
-               .RegisterType<MainViewModel>()
                .RegisterType<GameConfigurationViewModel>()
                .RegisterType<GameDataViewModel>()
                .RegisterType<SelectCounselorDialogViewModel>()
@@ -34,17 +32,5 @@ namespace OrionManager.ViewModel
                 //
                 ;
         }
-
-        #region singleton
-
-        private ViewModelInitializer()
-        {
-        }
-
-        private static ViewModelInitializer _instance;
-
-        public static ViewModelInitializer Instance => _instance ??= new ViewModelInitializer();
-
-        #endregion
     }
 }

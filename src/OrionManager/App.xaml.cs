@@ -6,8 +6,6 @@ using OrionManager.Services;
 using OrionManager.ViewModel;
 using OrionManager.ViewModel.Interfaces;
 using OrionManager.ViewModel.ViewModels.Dialogs;
-using OrionManager.ViewModel.ViewModels.Main;
-using OrionManager.Views;
 using OrionManager.Views.Backgrounds;
 using OrionManager.Views.Dialogs;
 using OrionManager.Views.Regions;
@@ -20,11 +18,7 @@ namespace OrionManager
 {
     internal partial class App
     {
-        public App(IUnityContainer container) : base(container)
-        {
-        }
-
-        public App() : this(ServiceLocator.Container)
+        public App() : base(ServiceLocator.Container)
         {
         }
 
@@ -36,10 +30,8 @@ namespace OrionManager
             try
             {
                 base.OnStartup(args);
-
                 Container.Resolve<IAppLifecycleService>().OnStart();
-
-                SetMainWindow<MainWindow, MainViewModel>().Show();
+                CreateMainWindow().Show();
             }
             catch (Exception e)
             {
@@ -51,14 +43,12 @@ namespace OrionManager
 
         protected override void RegisterTypes()
         {
-            ServicesInitializer.Instance.RegisterTypes(Container);
-            ViewModelInitializer.Instance.RegisterTypes(Container);
+            base.RegisterTypes();
+
+            ServicesInitializer.Init(Container);
+            ViewModelInitializer.Init(Container);
 
             Container
-
-                // MainWindow.
-               .RegisterSingleton<MainWindow>()
-
                 // Regions.
                .RegisterSingleton<HomeRegion>()
                .RegisterSingleton<ConfigurationRegion>()

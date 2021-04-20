@@ -1,22 +1,20 @@
 ﻿using System.Windows.Input;
 using OrionManager.ViewModel.Commands;
-using Senticode.Wpf.Base;
+using Senticode.Wpf;
 using Unity;
 
 namespace OrionManager.ViewModel
 {
-    public class AppCommands : AppCommandsBase
+    public static class AppCommands
     {
-        public AppCommands(IUnityContainer container) : base(container)
-        {
-        }
+        private static readonly IUnityContainer Container = ServiceLocator.Container;
 
-        public ICommand ExitAppCommand => Container.Resolve<ExitAppCommand>();
-        public ICommand StartGameCommand => Container.Resolve<StartGameCommand>();
-        public ICommand ContinueGameCommand => Container.Resolve<ContinueGameCommand>();
-        public ICommand StartNewRoundCommand => Container.Resolve<StartNewRoundCommand>();
-        public ICommand FinishGameCommand => Container.Resolve<FinishGameCommand>();
-        public ICommand NavigateToRegionCommand => Container.Resolve<NavigateToRegionCommand>();
-        public ICommand ChoseRandomCounselorCommand => Container.Resolve<ChoseRandomCounselorCommand>();
+        public static ICommand ExitAppCommand => Container.Resolve<ExitAppCommand>();
+        public static ICommand StartGameCommand => Container.Resolve<StartGameCommand>();
+        public static ICommand ContinueGameCommand => Container.Resolve<ContinueGameCommand>();
+        public static ICommand StartNewRoundCommand => Container.Resolve<StartNewRoundCommand>();
+        public static ICommand FinishGameCommand => Container.Resolve<FinishGameCommand>();
+        public static ICommand NavigateToRegionCommand => Container.Resolve<NavigateToRegionCommand>();
+        public static ICommand ChoseRandomCounselorCommand => Container.Resolve<ChoseRandomCounselorCommand>();
     }
 }

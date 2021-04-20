@@ -6,9 +6,9 @@ using Unity;
 
 namespace OrionManager.Services
 {
-    public class ServicesInitializer : IModuleInitializer
+    public static class ServicesInitializer
     {
-        public void RegisterTypes(IUnityContainer container)
+        public static void Init(IUnityContainer container)
         {
             container
                .RegisterType<ISaveLoadService<AppDataModel>, AppDataSaveLoadJsonService>()
@@ -19,17 +19,5 @@ namespace OrionManager.Services
                .RegisterType<IPathProvider, PathProvider>()
                 ;
         }
-
-        #region singleton
-
-        private ServicesInitializer()
-        {
-        }
-
-        private static ServicesInitializer _instance;
-
-        public static ServicesInitializer Instance => _instance ??= new ServicesInitializer();
-
-        #endregion
     }
 }
