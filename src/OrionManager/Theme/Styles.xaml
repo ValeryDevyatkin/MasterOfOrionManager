@@ -122,6 +122,38 @@
         </Setter>
     </Style>
 
+    <Style x:Key = "{x:Type ToolTip}"
+           TargetType = "ToolTip">
+        <Setter Property = "OverridesDefaultStyle"
+                Value = "true" />
+        <Setter Property = "HasDropShadow"
+                Value = "True" />
+        <Setter Property = "FontWeight"
+                Value = "Normal" />
+        <Setter Property = "Template">
+            <Setter.Value>
+                <ControlTemplate TargetType = "ToolTip">
+                    <Border Name = "Border"
+                            CornerRadius = "{x:Static constants:UiSizes.BorderRadius}"
+                            BorderThickness = "0"
+                            Width = "{TemplateBinding Width}"
+                            Height = "{TemplateBinding Height}"
+                            BorderBrush = "{StaticResource BlackBrush}"
+                            Background = "{StaticResource BlackBrush}">
+                        <ContentPresenter>
+                            <ContentPresenter.Margin>
+                                <Thickness Left = "{x:Static constants:UiSizes.OuterSpacing}"
+                                           Right = "{x:Static constants:UiSizes.OuterSpacing}"
+                                           Top = "{x:Static constants:UiSizes.InnerSpacing}"
+                                           Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
+                            </ContentPresenter.Margin>
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--EXPLICIT-->
     <Style TargetType = "Border"
            BasedOn = "{StaticResource {x:Type Border}}"

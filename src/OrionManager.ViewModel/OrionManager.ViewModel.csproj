@@ -82,6 +82,7 @@
     <Compile Include="ViewModelInitializer.cs" />
     <Compile Include="ViewModels\Dialogs\SelectCounselorDialogViewModel.cs" />
     <Compile Include="ViewModels\Dialogs\SelectRaceDialogViewModel.cs" />
+    <Compile Include="ViewModels\Dialogs\FinishGameDialogViewModel.cs" />
     <Compile Include="ViewModels\DisablingItemViewModel.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />

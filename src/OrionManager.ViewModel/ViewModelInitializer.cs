@@ -28,6 +28,7 @@ namespace OrionManager.ViewModel
                .RegisterType<GameDataViewModel>()
                .RegisterType<SelectCounselorDialogViewModel>()
                .RegisterType<SelectRaceDialogViewModel>()
+               .RegisterType<FinishGameDialogViewModel>()
 
                 //
                 ;

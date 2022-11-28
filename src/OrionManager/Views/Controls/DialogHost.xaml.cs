@@ -23,8 +23,11 @@ namespace OrionManager.Views.Controls
             }
 
             _container.RegisterInstance<IDialogHost>(this);
+
             Visibility = Visibility.Collapsed;
+
             InitializeComponent();
+
             Shadow.MouseLeftButtonUp += ShadowOnMouseLeftButtonUp;
         }
 
@@ -32,8 +35,10 @@ namespace OrionManager.Views.Controls
             where T : DialogViewModelBase
         {
             _dialogViewModel = viewModel ?? throw new ArgumentNullException(nameof(viewModel));
+
             ContentControl.DataContext = _dialogViewModel;
             ContentControl.Content = _container.Resolve<IDialogFor<T>>();
+
             Visibility = Visibility.Visible;
         }
 
@@ -45,8 +50,10 @@ namespace OrionManager.Views.Controls
         public void CloseDialog()
         {
             Visibility = Visibility.Collapsed;
+
             ContentControl.Content = null;
             ContentControl.DataContext = null;
+
             _dialogViewModel?.Dispose();
             _dialogViewModel = null;
         }

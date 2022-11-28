@@ -66,6 +66,7 @@ namespace OrionManager
                 // Dialogs.
                .RegisterType<IDialogFor<SelectRaceDialogViewModel>, SelectRaceDialog>()
                .RegisterType<IDialogFor<SelectCounselorDialogViewModel>, SelectCounselorDialog>()
+               .RegisterType<IDialogFor<FinishGameDialogViewModel>, FinishGameDialog>()
 
                 //
                 ;

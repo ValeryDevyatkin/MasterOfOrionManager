@@ -116,6 +116,9 @@
       <DependentUpon>SpinButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Dialogs\DialogBase.cs" />
+    <Compile Include="Views\Dialogs\FinishGameDialog.xaml.cs">
+      <DependentUpon>FinishGameDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\SelectCounselorDialog.xaml.cs">
       <DependentUpon>SelectCounselorDialog.xaml</DependentUpon>
     </Compile>
@@ -149,7 +152,7 @@
     <Compile Include="Views\Regions\HomeRegion.xaml.cs">
       <DependentUpon>HomeRegion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Theme\UiConstants.cs" />
+    <Compile Include="Theme\UiSizes.cs" />
     <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
     <Compile Include="Wpf\Behaviors\IntegerBoxBehavior.cs" />
     <Compile Include="Wpf\Behaviors\OnLoadedCommandBehavior.cs" />
@@ -201,6 +204,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Controls\SpinButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\FinishGameDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

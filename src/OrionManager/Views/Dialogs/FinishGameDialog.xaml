@@ -1,0 +1,48 @@
+﻿<local:DialogBase x:TypeArguments = "dialogs:FinishGameDialogViewModel"
+                  x:Class = "OrionManager.Views.Dialogs.FinishGameDialog"
+                  xmlns = "http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x = "http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:local = "clr-namespace:OrionManager.Views.Dialogs"
+                  xmlns:dialogs = "clr-namespace:OrionManager.ViewModel.ViewModels.Dialogs;assembly=OrionManager.ViewModel"
+                  xmlns:theme = "clr-namespace:OrionManager.Theme"
+                  xmlns:controls = "clr-namespace:OrionManager.Views.Controls"
+                  mc:Ignorable = "d"
+                  x:ClassModifier = "internal">
+
+    <d:UserControl.DataContext>
+        <dialogs:FinishGameDialogViewModel />
+    </d:UserControl.DataContext>
+
+    <Border Background = "{StaticResource BlackBrush}"
+            Padding = "{x:Static theme:UiSizes.OuterSpacingThickness}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height = "Auto" />
+                <RowDefinition Height = "{x:Static theme:UiSizes.OuterSpacingGridLength}" />
+                <RowDefinition Height = "Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row = "0"
+                       Text = "Do you want to finish ?"
+                       FontSize = "{StaticResource LargeFontSize}" />
+
+            <Grid Grid.Row = "2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width = "{x:Static theme:UiSizes.OuterSpacingGridLength}" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <controls:CustomButton Grid.Column = "0"
+                                       Content = "No"
+                                       Command = "{Binding CloseDialogCommand, Mode=OneTime}" />
+
+                <controls:CustomButton Grid.Column = "2"
+                                       Content = "Yes"
+                                       Command = "{Binding FinishGameCommand, Mode=OneTime}" />
+            </Grid>
+        </Grid>
+    </Border>
+</local:DialogBase>

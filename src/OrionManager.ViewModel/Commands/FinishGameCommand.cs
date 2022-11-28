@@ -1,9 +1,5 @@
-﻿using System.Linq;
-using System.Windows;
-using OrionManager.Common.Enums;
-using OrionManager.ViewModel.ExtensionMethods;
-using OrionManager.ViewModel.ViewModels;
-using OrionManager.ViewModel.ViewModels.Main;
+﻿using OrionManager.ViewModel.Interfaces;
+using OrionManager.ViewModel.ViewModels.Dialogs;
 using Senticode.Wpf.Base;
 using Unity;
 
@@ -20,21 +16,8 @@ namespace OrionManager.ViewModel.Commands
 
         protected override void ExecuteExternal(object parameter)
         {
-            if (MessageBox.Show("Are you sure?", "Finish Game", MessageBoxButton.YesNo, MessageBoxImage.Question) ==
-                MessageBoxResult.No)
-            {
-                return;
-            }
-
-            var game = _container.Resolve<GameDataViewModel>();
-            var scoreList = game.Players
-                                .Select(PlayerViewModelEx.ToPlayerScore)
-                                .OrderByDescending(x => x.Score);
-
-            game.ScoreList.ReplaceAll(scoreList);
-
-            _container.Resolve<MainViewModel>().IsGameStarted = false;
-            _container.Resolve<MainViewModel>().Region = UiRegions.Score;
+            var vm = _container.Resolve<FinishGameDialogViewModel>();
+            _container.Resolve<IDialogHost>().ShowDialog(vm);
         }
     }
 }
