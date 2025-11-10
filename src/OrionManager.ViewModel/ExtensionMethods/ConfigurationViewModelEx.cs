@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using OrionManager.Common.Enums;
 using OrionManager.Common.ExtensionMethods;
 using OrionManager.ViewModel.Constants;
 using OrionManager.ViewModel.ViewModels;
@@ -53,7 +52,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
                 // TODO: Copy fields here.
                 vm.Race = target.RaceMap[x.Race.Value];
-                vm.Color = x.Color;
 
                 return vm;
             }));
@@ -105,8 +103,7 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 var playerPreset2 = item2.PlayerPresets[i];
 
                 // TODO: Compare fields here.
-                if (playerPreset1.Race.Value != playerPreset2.Race.Value ||
-                    playerPreset1.Color != playerPreset2.Color)
+                if (playerPreset1.Race.Value != playerPreset2.Race.Value)
                 {
                     return true;
                 }
@@ -134,12 +131,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             item.IsPlayerCanBeAdded = item.PlayerPresets.Count < ModuleConstants.MaxPlayerCount;
             item.UpdateIsComplete();
-
-            // Update colors.
-            for (var i = 0; i < item.PlayerPresets.Count; i++)
-            {
-                item.PlayerPresets[i].Color = (PlayerColors) i;
-            }
         }
     }
 }

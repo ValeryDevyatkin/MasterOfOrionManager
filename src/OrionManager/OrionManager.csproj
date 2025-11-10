@@ -40,11 +40,14 @@
     <LangVersion>8</LangVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BAJIEPA.Tools.Helpers">
+      <HintPath>..\..\tools\BAJIEPA.Tools.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\sln\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
     <Reference Include="Senticode.Wpf">
-      <HintPath>..\..\artifacts\Senticode.Wpf.dll</HintPath>
+      <HintPath>..\..\tools\Senticode.Wpf.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -157,8 +160,6 @@
     <Compile Include="Wpf\Behaviors\IntegerBoxBehavior.cs" />
     <Compile Include="Wpf\Behaviors\OnLoadedCommandBehavior.cs" />
     <Compile Include="Wpf\Converters\CounselorToImageSourceConverter.cs" />
-    <Compile Include="Wpf\Converters\PlayerColorToBrushConverter.cs" />
-    <Compile Include="Wpf\Converters\PlayerColorToIndexConverter.cs" />
     <Compile Include="Wpf\Converters\RaceToImageSourceConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToControlConverter.cs" />
@@ -288,10 +289,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\tools\src\BAJIEPA.Tools.Helpers\BAJIEPA.Tools.Helpers.csproj">
-      <Project>{90C524E0-711C-41AE-9E9E-829BA10B834E}</Project>
-      <Name>BAJIEPA.Tools.Helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OrionManager.Common\OrionManager.Common.csproj">
       <Project>{9DACA2C1-E700-4CD4-B614-EF1DD9A76C07}</Project>
       <Name>OrionManager.Common</Name>

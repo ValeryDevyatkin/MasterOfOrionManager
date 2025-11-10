@@ -17,18 +17,6 @@ namespace OrionManager.ViewModel.ViewModels
 
         #endregion
 
-        #region Color: PlayerColors
-
-        public PlayerColors Color
-        {
-            get => _color;
-            set => SetProperty(ref _color, value);
-        }
-
-        private PlayerColors _color;
-
-        #endregion
-
         #region Score: int
 
         public int Score

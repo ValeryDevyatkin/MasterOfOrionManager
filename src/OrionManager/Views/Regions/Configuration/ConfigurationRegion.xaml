@@ -21,7 +21,7 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width = "257" />
+            <ColumnDefinition Width = "222" />
             <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <ColumnDefinition Width = "*" />
         </Grid.ColumnDefinitions>
@@ -75,22 +75,11 @@
                                                    Bottom = "{x:Static constants:UiSizes.InnerSpacing}" />
                                     </Grid.Margin>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                                         <ColumnDefinition Width = "*" />
                                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                                         <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
                                     </Grid.ColumnDefinitions>
-                                    <Border Grid.Column = "0"
-                                            BorderBrush = "{StaticResource BlackBrush}"
-                                            Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
-                                        <TextBlock TextAlignment = "Center"
-                                                   FontWeight = "Bold"
-                                                   Foreground = "{StaticResource BlackBrush}"
-                                                   Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
-                                    </Border>
-
-                                    <controls:CustomContentControl Grid.Column = "2"
+                                    <controls:CustomContentControl Grid.Column = "0"
                                                                    Label = "Race"
                                                                    ToolTip = "{Binding Race.Value, Mode=OneWay}">
                                         <Button Command = "{Binding SelectRaceCommand, Mode=OneTime}">
@@ -115,7 +104,7 @@
                                         </Button>
                                     </controls:CustomContentControl>
 
-                                    <controls:CustomButton Grid.Column = "4"
+                                    <controls:CustomButton Grid.Column = "2"
                                                            Content = "x"
                                                            ToolTip = "Remove"
                                                            Padding = "{x:Static constants:UiSizes.TextSpacingThickness}"
@@ -152,14 +141,9 @@
                     <RowDefinition Height = "*" />
                 </Grid.RowDefinitions>
                 <controls:CustomTextBox Grid.Row = "0"
-                                        Label = "Save time"
-                                        IsReadOnly = "True"
-                                        IsEnabled = "False"
-                                        Text = "{Binding SaveTime, Mode=OneWay}" />
-                <controls:CustomTextBox Grid.Row = "2"
                                         Label = "Configuration name"
                                         Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <Grid Grid.Row = "4">
+                <Grid Grid.Row = "2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -177,7 +161,7 @@
                                          Min = "{x:Static constants1:ViewModelConstants.MinConfiguringWinPoints}"
                                          Max = "{x:Static constants1:ViewModelConstants.MaxConfiguringWinPoints}" />
                 </Grid>
-                <Grid Grid.Row = "6">
+                <Grid Grid.Row = "4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -195,6 +179,11 @@
                                          Min = "{x:Static constants1:ViewModelConstants.MinConfiguringLoyaltyPoints}"
                                          Max = "{x:Static constants1:ViewModelConstants.MaxConfiguringLoyaltyPoints}" />
                 </Grid>
+                <controls:CustomTextBox Grid.Row = "6"
+                                        Label = "Save time"
+                                        IsReadOnly = "True"
+                                        IsEnabled = "False"
+                                        Text = "{Binding SaveTime, Mode=OneWay}" />
             </Grid>
 
             <Grid Grid.Row = "2">

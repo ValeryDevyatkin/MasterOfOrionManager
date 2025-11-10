@@ -45,7 +45,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                     Race = x.Race,
                     LoyaltyPoints = x.LoyaltyPoints,
                     WinPoints = x.WinPoints,
-                    Color = x.Color,
                     Counselor = x.Counselor.Value
                 }).ToArray()
             };
@@ -71,7 +70,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 {
                     // TODO: Copy fields here.
                     Race = x.Race.Value,
-                    Color = x.Color
                 }).ToArray()
             };
         }
@@ -98,7 +96,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
                 // TODO: Copy fields here.
                 vm.Race = viewModel.RaceMap[x.Race];
-                vm.Color = x.Color;
 
                 return vm;
             }));

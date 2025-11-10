@@ -53,7 +53,6 @@ namespace OrionManager.ViewModel.ExtensionMethods
                 viewModel.Race = x.Race;
                 viewModel.LoyaltyPoints = x.LoyaltyPoints;
                 viewModel.WinPoints = x.WinPoints;
-                viewModel.Color = x.Color;
                 viewModel.Counselor = target.CounselorMap[x.Counselor];
 
                 return viewModel;

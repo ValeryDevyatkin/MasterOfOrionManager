@@ -36,12 +36,12 @@
                 </Grid.ColumnDefinitions>
 
                 <controls:CustomButton Grid.Column = "0"
-                                       Content = "No"
-                                       Command = "{Binding CloseDialogCommand, Mode=OneTime}" />
-
-                <controls:CustomButton Grid.Column = "2"
                                        Content = "Yes"
                                        Command = "{Binding FinishGameCommand, Mode=OneTime}" />
+
+                <controls:CustomButton Grid.Column = "2"
+                                       Content = "No"
+                                       Command = "{Binding CloseDialogCommand, Mode=OneTime}" />
             </Grid>
         </Grid>
     </Border>

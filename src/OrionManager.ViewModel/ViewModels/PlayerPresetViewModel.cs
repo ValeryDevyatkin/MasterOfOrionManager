@@ -42,18 +42,6 @@ namespace OrionManager.ViewModel.ViewModels
 
         #endregion
 
-        #region Color: PlayerColor
-
-        public PlayerColors Color
-        {
-            get => _color;
-            set => SetProperty(ref _color, value);
-        }
-
-        private PlayerColors _color;
-
-        #endregion
-
         #region SelectRace command
 
         public ICommand SelectRaceCommand => _selectRaceCommand ??=

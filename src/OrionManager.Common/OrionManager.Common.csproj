@@ -59,7 +59,6 @@
     <Compile Include="DataModels\PlayerDataModel.cs" />
     <Compile Include="DataModels\PlayerPresetDataModel.cs" />
     <Compile Include="Enums\Counselors.cs" />
-    <Compile Include="Enums\PlayerColors.cs" />
     <Compile Include="Enums\Races.cs" />
     <Compile Include="Enums\RoundStates.cs" />
     <Compile Include="Enums\UiRegions.cs" />

@@ -52,12 +52,11 @@
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column = "0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height = "Auto" />
-                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                             <RowDefinition Height = "*" />
+                            <RowDefinition Height = "Auto" />
                         </Grid.RowDefinitions>
                         <Border x:Name = "RaceIconBorder"
-                                Grid.Row = "0"
+                                Grid.Row = "1"
                                 ToolTip = "{Binding Race, Mode=OneWay}"
                                 BorderBrush = "{StaticResource BlackBrush}"
                                 Width = "{StaticResource RaceIconSize}"
@@ -66,16 +65,6 @@
                                 <ImageBrush Stretch = "Fill"
                                             ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
                             </Border.Background>
-                        </Border>
-                        <Border Grid.Row = "2"
-                                HorizontalAlignment = "Right"
-                                Width = "{x:Static constants:UiSizes.OuterSpacing}"
-                                BorderBrush = "{StaticResource BlackBrush}"
-                                Background = "{Binding Color, Converter={converters:PlayerColorToBrushConverter}, Mode=OneWay}">
-                            <TextBlock TextAlignment = "Center"
-                                       FontWeight = "Bold"
-                                       Foreground = "{StaticResource BlackBrush}"
-                                       Text = "{Binding Color, Mode=OneWay, Converter={converters:PlayerColorToIndexConverter}}" />
                         </Border>
                     </Grid>
                     <Grid Grid.Column = "2">

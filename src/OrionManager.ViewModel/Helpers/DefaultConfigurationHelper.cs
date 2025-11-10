@@ -19,7 +19,7 @@ namespace OrionManager.ViewModel.Helpers
                     new PlayerPresetDataModel {Race = Races.Random},
                     new PlayerPresetDataModel {Race = Races.Random}
                 },
-                LoyaltyTrackerSize = 8,
+                LoyaltyTrackerSize = 10,
                 WinPointTrackerSize = 50
             }.ToViewModel();
 

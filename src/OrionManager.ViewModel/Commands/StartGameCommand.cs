@@ -59,7 +59,6 @@ namespace OrionManager.ViewModel.Commands
                 }
 
                 player.Race = race.Value;
-                player.Color = playerPreset.Color;
                 player.Counselor = game.CounselorMap[Counselors.None];
                 player.LoyaltyPoints = game.MaxLoyaltyPoints;
                 player.UpdateIsLoyaltyPointsValueLeadsToGameFinish();

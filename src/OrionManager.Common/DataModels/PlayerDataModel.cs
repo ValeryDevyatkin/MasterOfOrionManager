@@ -4,7 +4,6 @@ namespace OrionManager.Common.DataModels
 {
     public class PlayerDataModel
     {
-        public PlayerColors Color { get; set; }
         public Races Race { get; set; }
         public int LoyaltyPoints { get; set; }
         public int WinPoints { get; set; }

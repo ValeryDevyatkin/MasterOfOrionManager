@@ -17,9 +17,8 @@ namespace OrionManager.ViewModel.ExtensionMethods
 
             return new PlayerScoreViewModel
             {
-                Color = item.Color,
                 Race = item.Race,
-                Score = item.WinPoints + (item.LoyaltyPoints < 0 ? item.LoyaltyPoints : 0)
+                Score = item.WinPoints + item.LoyaltyPoints,
             };
         }
 

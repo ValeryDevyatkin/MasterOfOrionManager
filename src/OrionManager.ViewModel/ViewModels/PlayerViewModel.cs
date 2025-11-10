@@ -16,18 +16,6 @@ namespace OrionManager.ViewModel.ViewModels
         {
         }
 
-        #region Color: PlayerColors
-
-        public PlayerColors Color
-        {
-            get => _color;
-            set => SetProperty(ref _color, value);
-        }
-
-        private PlayerColors _color;
-
-        #endregion
-
         #region Race: Races
 
         public Races Race
