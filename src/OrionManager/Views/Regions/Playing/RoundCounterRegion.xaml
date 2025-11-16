@@ -17,10 +17,20 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "Auto" />
+            <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
             <ColumnDefinition Width = "*" />
             <ColumnDefinition Width = "Auto" />
         </Grid.ColumnDefinitions>
-        <ItemsControl ItemsSource = "{Binding GameData.Rounds, Mode=OneWay}">
+
+        <controls:CustomButton Grid.Column = "0"
+                       Content = "Home"
+                       Width = "{StaticResource StartMenuButtonWidth}"
+                       Command = "{Binding Source={x:Static viewModel:AppCommands.NavigateToRegionCommand}, Mode=OneTime}"
+                       CommandParameter = "{x:Static enums:UiRegions.Home}" />
+
+        <ItemsControl Grid.Column="2"
+                      ItemsSource = "{Binding GameData.Rounds, Mode=OneWay}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Rows = "1" />
@@ -63,7 +73,8 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <ContentControl Grid.Column = "1">
+        
+        <ContentControl Grid.Column = "3">
             <ContentControl.Style>
                 <Style TargetType = "ContentControl">
                     <Setter Property = "Content">

@@ -24,7 +24,7 @@
                     TargetName = "RaceIconBorder">
             <ColorAnimation Storyboard.TargetProperty = "(Border.BorderBrush).(SolidColorBrush.Color)"
                             To = "Transparent"
-                            Duration = "0:0:0.8"
+                            Duration = "0:0:1.0"
                             RepeatBehavior = "Forever"
                             AutoReverse = "False" />
         </Storyboard>

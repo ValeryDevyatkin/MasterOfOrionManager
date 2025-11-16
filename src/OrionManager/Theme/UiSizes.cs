@@ -7,10 +7,12 @@ namespace OrionManager.Theme
         #region Border
 
         public const double BorderRadiusSize = 5d;
+        public const double MinimalBorderThicknessSize = 1d;
         public const double BorderThicknessSize = 2d;
         public const double HighlightedBorderThicknessSize = 3d;
 
         public static readonly CornerRadius BorderRadius = new CornerRadius(BorderRadiusSize);
+        public static readonly Thickness MinimalBorderThickness = new Thickness(MinimalBorderThicknessSize);
         public static readonly Thickness BorderThickness = new Thickness(BorderThicknessSize);
         public static readonly Thickness HighlightedBorderThickness = new Thickness(HighlightedBorderThicknessSize);
 

@@ -131,9 +131,6 @@
     <Compile Include="Views\Regions\Playing\PlayerListRegion.xaml.cs">
       <DependentUpon>PlayerListRegion.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Regions\Playing\PlayingCommandRegion.xaml.cs">
-      <DependentUpon>PlayingCommandRegion.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Regions\Playing\PlayingRegion.xaml.cs">
       <DependentUpon>PlayingRegion.xaml</DependentUpon>
     </Compile>
@@ -224,10 +221,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Regions\Playing\PlayerListRegion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Regions\Playing\PlayingCommandRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
