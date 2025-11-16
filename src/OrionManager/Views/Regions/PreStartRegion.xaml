@@ -19,6 +19,8 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height = "6*" />
+            <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+            <RowDefinition Height = "Auto" />
             <RowDefinition Height = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
             <RowDefinition Height = "*" />
             <RowDefinition Height = "Auto" />
@@ -31,41 +33,38 @@
                 HorizontalAlignment = "Center"
                 VerticalAlignment = "Bottom"
                 Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "Auto" />
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row = "0"
-                           Text = "Current configuration:" />
-                <TextBlock Grid.Row = "1"
-                           FontSize = "{StaticResource LargeFontSize}"
-                           TextAlignment = "Center">
-                    <TextBlock.Style>
-                        <Style TargetType = "TextBlock"
-                               BasedOn = "{StaticResource {x:Type TextBlock}}">
-                            <Setter Property = "Text">
-                                <Setter.Value>
-                                    <MultiBinding StringFormat = "{}{0} ({1})">
-                                        <Binding Path = "CurrentConfiguration.Name" />
-                                        <Binding Path = "CurrentConfiguration.SaveTime" />
-                                    </MultiBinding>
-                                </Setter.Value>
-                            </Setter>
-                            <Style.Triggers>
-                                <DataTrigger Binding = "{Binding CurrentConfiguration.IsNotEditable}"
-                                             Value = "True">
-                                    <Setter Property = "Text"
-                                            Value = "{Binding CurrentConfiguration.Name}" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
-            </Grid>
+            <TextBlock FontSize = "{StaticResource LargeFontSize}"
+                       Text = "New game configuration" />
         </Border>
 
-        <Grid Grid.Row = "3">
+        <Grid Grid.Row = "2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column = "1"
+                    Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
+                <TextBlock
+                    Text = "{Binding GameConfiguration.PlayerPresets.Count, StringFormat='Players: {0}', Mode=OneWay}" />
+            </Border>
+            <Border Grid.Column = "3"
+                    Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
+                <TextBlock
+                    Text = "{Binding GameConfiguration.MaxWinPoints, StringFormat='Win points: {0}', Mode=OneWay}" />
+            </Border>
+            <Border Grid.Column = "5"
+                    Padding = "{x:Static constants:UiSizes.InnerSpacingThickness}">
+                <TextBlock
+                    Text = "{Binding GameConfiguration.MaxLoyaltyPoints, StringFormat='Max loyalty: {0}', Mode=OneWay}" />
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row = "5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -76,7 +75,7 @@
             <controls:CustomButton Grid.Column = "1"
                                    Content = "Configure"
                                    Command = "{Binding Source={x:Static viewModel:AppCommands.NavigateToRegionCommand}, Mode=OneTime}"
-                                   CommandParameter = "{x:Static enums:UiRegions.ConfigurationList}"
+                                   CommandParameter = "{x:Static enums:UiRegions.Configuration}"
                                    Width = "{StaticResource StartMenuButtonWidth}" />
             <controls:CustomButton Grid.Column = "3"
                                    Content = "Start"
@@ -86,7 +85,7 @@
                     <Style BasedOn = "{StaticResource {x:Type controls:CustomButton}}"
                            TargetType = "controls:CustomButton">
                         <Style.Triggers>
-                            <DataTrigger Binding = "{Binding CurrentConfiguration.IsComplete}"
+                            <DataTrigger Binding = "{Binding GameConfiguration.IsComplete}"
                                          Value = "False">
                                 <Setter Property = "IsEnabled"
                                         Value = "False" />
@@ -99,7 +98,7 @@
             </controls:CustomButton>
         </Grid>
 
-        <Grid Grid.Row = "5">
+        <Grid Grid.Row = "7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width = "*" />
                 <ColumnDefinition Width = "Auto" />

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using BAJIEPA.Tools.Helpers;
 using OrionManager.Common.Enums;
@@ -34,66 +33,6 @@ namespace OrionManager.ViewModel.ViewModels
 
         public IObservableRangeCollection<PlayerPresetViewModel> PlayerPresets { get; } =
             new ObservableRangeCollection<PlayerPresetViewModel>();
-
-        #region Id: Guid
-
-        public Guid Id
-        {
-            get => _id;
-            set => SetProperty(ref _id, value);
-        }
-
-        private Guid _id;
-
-        #endregion
-
-        #region IsChosen: bool
-
-        public bool IsChosen
-        {
-            get => _isChosen;
-            set => SetProperty(ref _isChosen, value);
-        }
-
-        private bool _isChosen;
-
-        #endregion
-
-        #region IsNotEditable: bool
-
-        public bool IsNotEditable
-        {
-            get => _isNotEditable;
-            set => SetProperty(ref _isNotEditable, value);
-        }
-
-        private bool _isNotEditable;
-
-        #endregion
-
-        #region SaveTime: DateTime
-
-        public DateTime SaveTime
-        {
-            get => _saveTime;
-            set => SetProperty(ref _saveTime, value);
-        }
-
-        private DateTime _saveTime;
-
-        #endregion
-
-        #region Name: string
-
-        public string Name
-        {
-            get => _name;
-            set => SetProperty(ref _name, value);
-        }
-
-        private string _name;
-
-        #endregion
 
         #region MaxWinPoints: int
 

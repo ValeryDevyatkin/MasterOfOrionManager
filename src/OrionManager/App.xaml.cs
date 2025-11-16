@@ -54,14 +54,12 @@ namespace OrionManager
                .RegisterSingleton<ConfigurationRegion>()
                .RegisterSingleton<PlayingRegion>()
                .RegisterSingleton<PreStartRegion>()
-               .RegisterSingleton<ConfigurationListRegion>()
 
                 // Backgrounds.
                .RegisterSingleton<HomeBackground>()
                .RegisterSingleton<PreStartBackground>()
                .RegisterSingleton<ConfigurationBackground>()
                .RegisterSingleton<PlayingBackground>()
-               .RegisterSingleton<ConfigurationListBackground>()
 
                 // Dialogs.
                .RegisterType<IDialogFor<SelectRaceDialogViewModel>, SelectRaceDialog>()

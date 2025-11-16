@@ -15,7 +15,6 @@ namespace OrionManager.Services
                .RegisterType<ISaveLoadService<GameDataModel>, GameDataSaveLoadJsonService>()
                .RegisterType<IDataStateHub<AppDataModel>, AppDataStateHub>()
                .RegisterType<IDataStateHub<GameDataModel>, GameDataStateHub>()
-               .RegisterType<IGameConfigurationService, GameConfigurationJsonService>()
                .RegisterType<IPathProvider, PathProvider>()
                 ;
         }

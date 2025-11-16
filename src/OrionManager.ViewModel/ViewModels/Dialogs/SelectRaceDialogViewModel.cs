@@ -12,7 +12,7 @@ namespace OrionManager.ViewModel.ViewModels.Dialogs
         }
 
         public IEnumerable<DisablingItemViewModel<Races>> Items =>
-            Container.Resolve<MainViewModel>().ConfigurationEditCopy.RaceMap.Values;
+            Container.Resolve<MainViewModel>().GameConfiguration.RaceMap.Values;
 
         public PlayerPresetViewModel Player { get; set; }
     }

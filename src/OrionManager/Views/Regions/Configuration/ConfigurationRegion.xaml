@@ -10,6 +10,8 @@
              xmlns:constants1 = "clr-namespace:OrionManager.ViewModel.Constants;assembly=OrionManager.ViewModel"
              xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors = "clr-namespace:OrionManager.Wpf.Behaviors"
+             xmlns:enums="clr-namespace:OrionManager.Common.Enums;assembly=OrionManager.Common"
+             xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
              x:Name = "Root">
@@ -27,7 +29,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column = "0"
-              DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}">
+              DataContext = "{Binding ElementName=Root, Path=DataContext.GameConfiguration, Mode=OneWay}">
             <Grid.RowDefinitions>
                 <RowDefinition Height = "Auto" />
                 <RowDefinition Height = "*" />
@@ -109,8 +111,7 @@
                                                            ToolTip = "Remove"
                                                            Padding = "{x:Static constants:UiSizes.TextSpacingThickness}"
                                                            Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
-                                                           Command = "{Binding ElementName=Root,
-                                    Path=DataContext.ConfigurationEditCopy.DeletePlayerCommand, Mode=OneTime}"
+                                                           Command = "{Binding ElementName=Root, Path=DataContext.GameConfiguration.DeletePlayerCommand, Mode=OneTime}"
                                                            CommandParameter = "{Binding}" />
                                 </Grid>
                             </DataTemplate>
@@ -127,23 +128,15 @@
                 <RowDefinition Height = "Auto" />
             </Grid.RowDefinitions>
             <Grid Grid.Row = "0"
-                  DataContext = "{Binding ElementName=Root, Path=DataContext.ConfigurationEditCopy, Mode=OneWay}">
+                  DataContext = "{Binding ElementName=Root, Path=DataContext.GameConfiguration, Mode=OneWay}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                    <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
-                    <RowDefinition Height = "Auto" />
-                    <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
                     <RowDefinition Height = "Auto" />
                     <RowDefinition Height = "{x:Static constants:UiSizes.InnerSpacingGridLength}" />
                     <RowDefinition Height = "Auto" />
                     <RowDefinition Height = "*" />
                 </Grid.RowDefinitions>
-                <controls:CustomTextBox Grid.Row = "0"
-                                        Label = "Configuration name"
-                                        Text = "{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <Grid Grid.Row = "2">
+
+                <Grid Grid.Row = "0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -161,7 +154,8 @@
                                          Min = "{x:Static constants1:ViewModelConstants.MinConfiguringWinPoints}"
                                          Max = "{x:Static constants1:ViewModelConstants.MaxConfiguringWinPoints}" />
                 </Grid>
-                <Grid Grid.Row = "4">
+
+                <Grid Grid.Row = "2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width = "*" />
                         <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -179,34 +173,18 @@
                                          Min = "{x:Static constants1:ViewModelConstants.MinConfiguringLoyaltyPoints}"
                                          Max = "{x:Static constants1:ViewModelConstants.MaxConfiguringLoyaltyPoints}" />
                 </Grid>
-                <controls:CustomTextBox Grid.Row = "6"
-                                        Label = "Save time"
-                                        IsReadOnly = "True"
-                                        IsEnabled = "False"
-                                        Text = "{Binding SaveTime, Mode=OneWay}" />
             </Grid>
 
             <Grid Grid.Row = "2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width = "*" />
                     <ColumnDefinition Width = "Auto" />
-                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                    <ColumnDefinition Width = "Auto" />
-                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                    <ColumnDefinition Width = "Auto" />
                 </Grid.ColumnDefinitions>
                 <controls:CustomButton Grid.Column = "1"
-                                       Content = "Apply"
+                                       Content = "Save and Exit"
                                        Width = "{StaticResource StartMenuButtonWidth}"
-                                       Command = "{Binding ApplyEditConfigurationCommand, Mode=OneTime}" />
-                <controls:CustomButton Grid.Column = "3"
-                                       Content = "Ok"
-                                       Width = "{StaticResource StartMenuButtonWidth}"
-                                       Command = "{Binding OkEditConfigurationCommand, Mode=OneTime}" />
-                <controls:CustomButton Grid.Column = "5"
-                                       Content = "Cancel"
-                                       Width = "{StaticResource StartMenuButtonWidth}"
-                                       Command = "{Binding CancelEditConfigurationCommand, Mode=OneTime}" />
+                                       Command = "{Binding Source={x:Static viewModel:AppCommands.NavigateToRegionCommand}, Mode=OneTime}"
+                                       CommandParameter = "{x:Static enums:UiRegions.PreStart}" />
             </Grid>
         </Grid>
 

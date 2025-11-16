@@ -21,7 +21,7 @@ namespace OrionManager.ViewModel.Commands
                 return;
             }
 
-            _container.Resolve<MainViewModel>().Region = region;
+            _container.Resolve<MainViewModel>().GoToRegion(region);
         }
     }
 }

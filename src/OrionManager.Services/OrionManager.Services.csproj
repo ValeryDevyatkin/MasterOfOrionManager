@@ -63,7 +63,6 @@
     <Compile Include="Abstract\JsonSaveLoadServiceBase.cs" />
     <Compile Include="ServicesInitializer.cs" />
     <Compile Include="Services\SaveLoad\AppDataSaveLoadJsonService.cs" />
-    <Compile Include="Services\SaveLoad\GameConfigurationJsonService.cs" />
     <Compile Include="Services\SaveLoad\GameDataSaveLoadJsonService.cs" />
     <Compile Include="Services\SaveLoad\PathProvider.cs" />
     <Compile Include="Services\StateHub\AppDataStateHub.cs" />

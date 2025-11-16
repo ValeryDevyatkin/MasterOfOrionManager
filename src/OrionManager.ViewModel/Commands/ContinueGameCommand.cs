@@ -17,7 +17,7 @@ namespace OrionManager.ViewModel.Commands
 
         protected override void ExecuteExternal(object parameter)
         {
-            _container.Resolve<MainViewModel>().Region = UiRegions.Playing;
+            _container.Resolve<MainViewModel>().GoToRegion(UiRegions.Playing);
             _container.Resolve<GameDataViewModel>().IsOpenedAndReady = true;
         }
     }

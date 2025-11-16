@@ -17,7 +17,6 @@ namespace OrionManager.Wpf.Converters
             {UiRegions.Home, typeof(HomeBackground)},
             {UiRegions.PreStart, typeof(PreStartBackground)},
             {UiRegions.Configuration, typeof(ConfigurationBackground)},
-            {UiRegions.ConfigurationList, typeof(ConfigurationListBackground)},
             {UiRegions.Playing, typeof(PlayingBackground)},
             {UiRegions.Score, typeof(ScoreBackground)}
         };

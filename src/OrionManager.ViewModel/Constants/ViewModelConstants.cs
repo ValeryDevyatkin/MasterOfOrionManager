@@ -16,7 +16,7 @@
         #region Player
 
         public const int MinPlayerWinPoints = 0;
-        public const int MinPlayerLoyaltyPoints = -10;
+        public const int MinPlayerLoyaltyPoints = -20;
 
         #endregion
     }

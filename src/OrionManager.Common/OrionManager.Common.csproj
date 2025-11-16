@@ -54,10 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModels\AppDataModel.cs" />
-    <Compile Include="DataModels\GameConfigurationDataModel.cs" />
     <Compile Include="DataModels\GameDataModel.cs" />
     <Compile Include="DataModels\PlayerDataModel.cs" />
-    <Compile Include="DataModels\PlayerPresetDataModel.cs" />
     <Compile Include="Enums\Counselors.cs" />
     <Compile Include="Enums\Races.cs" />
     <Compile Include="Enums\RoundStates.cs" />
@@ -65,7 +63,6 @@
     <Compile Include="ExtensionMethods\GuidEx.cs" />
     <Compile Include="Interfaces\IAppLifecycleService.cs" />
     <Compile Include="Interfaces\IDataStateHub.cs" />
-    <Compile Include="Interfaces\IGameConfigurationService.cs" />
     <Compile Include="Interfaces\IInit.cs" />
     <Compile Include="Interfaces\IPathProvider.cs" />
     <Compile Include="Interfaces\ISaveLoadService.cs" />

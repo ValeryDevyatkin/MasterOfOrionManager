@@ -4,7 +4,7 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:playing = "clr-namespace:OrionManager.Views.Regions.Playing"
-             xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel" xmlns:constants="clr-namespace:OrionManager.Theme"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -14,22 +14,30 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height = "Auto" />
             <RowDefinition Height = "*" />
             <RowDefinition Height = "Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width = "Auto" />
+            <ColumnDefinition Width = "*" />
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row = "0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width = "Auto" />
-                <ColumnDefinition Width = "*" />
-                <ColumnDefinition Width = "Auto" />
-            </Grid.ColumnDefinitions>
-            <playing:PlayerListRegion Grid.Column = "0" />
-            <playing:PlayingCommandRegion Grid.Column = "2" />
-        </Grid>
+        <playing:PlayingCommandRegion Grid.Row="0"
+                                      Grid.Column = "0"
+                                      Grid.RowSpan="2" />
 
-        <playing:RoundCounterRegion Grid.Row = "2" />
+        <Viewbox Grid.Row="0"
+                 Grid.Column = "1"
+                 Stretch="Uniform"
+                 StretchDirection="UpOnly"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left">
+            <playing:PlayerListRegion />
+        </Viewbox>
+
+        <playing:RoundCounterRegion Grid.Row = "1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2" />
     </Grid>
 
 </UserControl>

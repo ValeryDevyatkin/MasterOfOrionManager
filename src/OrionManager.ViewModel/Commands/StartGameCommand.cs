@@ -25,14 +25,14 @@ namespace OrionManager.ViewModel.Commands
         protected override void ExecuteExternal(object parameter)
         {
             var mainViewModel = _container.Resolve<MainViewModel>();
-            var config = mainViewModel.CurrentConfiguration;
+            var config = mainViewModel.GameConfiguration;
 
             if (!config.IsComplete)
             {
                 throw new NotSupportedException();
             }
 
-            mainViewModel.Region = UiRegions.Playing;
+            mainViewModel.GoToRegion(UiRegions.Playing);
             mainViewModel.IsGameStarted = true;
 
             var game = mainViewModel.GameData;

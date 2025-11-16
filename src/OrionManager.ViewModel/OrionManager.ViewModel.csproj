@@ -77,7 +77,6 @@
     <Compile Include="ExtensionMethods\ModelConvertEx.cs" />
     <Compile Include="ExtensionMethods\ModelCopyEx.cs" />
     <Compile Include="ExtensionMethods\PlayerViewModelEx.cs" />
-    <Compile Include="Helpers\DefaultConfigurationHelper.cs" />
     <Compile Include="Interfaces\IDialogFor.cs" />
     <Compile Include="Interfaces\IDialogHost.cs" />
     <Compile Include="Services\AppLifecycleService.cs" />
@@ -88,8 +87,6 @@
     <Compile Include="ViewModels\DisablingItemViewModel.cs" />
     <Compile Include="ViewModels\GameConfigurationViewModel.cs" />
     <Compile Include="ViewModels\GameDataViewModel.cs" />
-    <Compile Include="ViewModels\Main\MainViewModel.Configuration.cs" />
-    <Compile Include="ViewModels\Main\MainViewModel.Configuration.Edit.cs" />
     <Compile Include="ViewModels\Main\MainViewModel.cs" />
     <Compile Include="ViewModels\PlayerPresetViewModel.cs" />
     <Compile Include="ViewModels\PlayerScoreViewModel.cs" />

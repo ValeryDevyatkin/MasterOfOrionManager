@@ -30,8 +30,7 @@ namespace OrionManager.Services.Services.StateHub
             }
 
             // TODO: Compare fields here.
-            if (item1.IsGameStarted != item2.IsGameStarted ||
-                item1.CurrentConfigurationId != item2.CurrentConfigurationId)
+            if (item1.IsGameStarted != item2.IsGameStarted)
             {
                 return true;
             }

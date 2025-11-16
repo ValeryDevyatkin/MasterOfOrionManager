@@ -19,7 +19,6 @@ namespace OrionManager.Wpf.Converters
             {UiRegions.Home, typeof(HomeRegion)},
             {UiRegions.PreStart, typeof(PreStartRegion)},
             {UiRegions.Configuration, typeof(ConfigurationRegion)},
-            {UiRegions.ConfigurationList, typeof(ConfigurationListRegion)},
             {UiRegions.Playing, typeof(PlayingRegion)},
             {UiRegions.Score, typeof(ScoreRegion)}
         };

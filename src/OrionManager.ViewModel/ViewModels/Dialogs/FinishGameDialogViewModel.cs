@@ -32,8 +32,9 @@ namespace OrionManager.ViewModel.ViewModels.Dialogs
 
             game.ScoreList.ReplaceAll(scoreList);
 
-            Container.Resolve<MainViewModel>().IsGameStarted = false;
-            Container.Resolve<MainViewModel>().Region = UiRegions.Score;
+            var mainViewModel = Container.Resolve<MainViewModel>();
+            mainViewModel.IsGameStarted = false;
+            mainViewModel.GoToRegion(UiRegions.Score);
         }
 
         #endregion

@@ -41,33 +41,16 @@
                 <Grid>
                     <Grid.Margin>
                         <Thickness Top = "0"
-                                   Left = "0"
-                                   Right = "{x:Static constants:UiSizes.OuterSpacing}"
+                                   Right = "0"
+                                   Left = "{x:Static constants:UiSizes.OuterSpacing}"
                                    Bottom = "{x:Static constants:UiSizes.OuterSpacing}" />
                     </Grid.Margin>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "Auto" />
-                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
                         <ColumnDefinition Width = "*" />
+                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                        <ColumnDefinition Width = "Auto" />
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column = "0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height = "*" />
-                            <RowDefinition Height = "Auto" />
-                        </Grid.RowDefinitions>
-                        <Border x:Name = "RaceIconBorder"
-                                Grid.Row = "1"
-                                ToolTip = "{Binding Race, Mode=OneWay}"
-                                BorderBrush = "{StaticResource BlackBrush}"
-                                Width = "{StaticResource RaceIconSize}"
-                                Height = "{StaticResource RaceIconSize}">
-                            <Border.Background>
-                                <ImageBrush Stretch = "Fill"
-                                            ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
-                            </Border.Background>
-                        </Border>
-                    </Grid>
-                    <Grid Grid.Column = "2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height = "Auto" />
                             <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
@@ -154,6 +137,23 @@
                                                    Command = "{Binding Source={x:Static viewModel:AppCommands.ChoseRandomCounselorCommand}, Mode=OneTime}"
                                                    CommandParameter = "{Binding}" />
                         </Grid>
+                    </Grid>
+                    <Grid Grid.Column = "2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height = "Auto" />
+                            <RowDefinition Height = "*" />
+                        </Grid.RowDefinitions>
+                        <Border x:Name = "RaceIconBorder"
+                                Grid.Row = "0"
+                                ToolTip = "{Binding Race, Mode=OneWay}"
+                                BorderBrush = "{StaticResource BlackBrush}"
+                                Width = "{StaticResource RaceIconSize}"
+                                Height = "{StaticResource RaceIconSize}">
+                            <Border.Background>
+                                <ImageBrush Stretch = "Fill"
+                                            ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                            </Border.Background>
+                        </Border>
                     </Grid>
                 </Grid>
                 <DataTemplate.Triggers>

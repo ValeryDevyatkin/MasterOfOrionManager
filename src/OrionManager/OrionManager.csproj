@@ -88,9 +88,6 @@
     <Compile Include="Views\Backgrounds\ScoreBackground.xaml.cs">
       <DependentUpon>ScoreBackground.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Backgrounds\ConfigurationListBackground.xaml.cs">
-      <DependentUpon>ConfigurationListBackground.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Backgrounds\PlayingBackground.xaml.cs">
       <DependentUpon>PlayingBackground.xaml</DependentUpon>
     </Compile>
@@ -128,9 +125,6 @@
     <Compile Include="Views\Dialogs\SelectRaceDialog.xaml.cs">
       <DependentUpon>SelectRaceDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Regions\Configuration\ConfigurationListRegion.xaml.cs">
-      <DependentUpon>ConfigurationListRegion.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Regions\ScoreRegion.xaml.cs">
       <DependentUpon>ScoreRegion.xaml</DependentUpon>
     </Compile>
@@ -156,21 +150,14 @@
       <DependentUpon>HomeRegion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Theme\UiSizes.cs" />
-    <Compile Include="Wpf\Behaviors\ListBoxAutoScrollBehavior.cs" />
     <Compile Include="Wpf\Behaviors\IntegerBoxBehavior.cs" />
-    <Compile Include="Wpf\Behaviors\OnLoadedCommandBehavior.cs" />
     <Compile Include="Wpf\Converters\CounselorToImageSourceConverter.cs" />
     <Compile Include="Wpf\Converters\RaceToImageSourceConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToBackgroundControlConverter.cs" />
     <Compile Include="Wpf\Converters\UiRegionToControlConverter.cs" />
-    <Compile Include="Wpf\TriggerActions\ListBoxNavigationTriggerAction.cs" />
     <Page Include="Views\Backgrounds\ScoreBackground.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\Backgrounds\ConfigurationListBackground.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Backgrounds\PlayingBackground.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -232,10 +219,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Regions\Configuration\ConfigurationListRegion.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\Regions\ScoreRegion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,9 +260,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Wpf\TemplateSelectors\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Theme\Images\OrionShipsBack.jpg" />
     <Resource Include="Theme\Images\OrionStarsBack.jpg" />

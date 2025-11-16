@@ -4,7 +4,6 @@
     {
         Home,
         PreStart,
-        ConfigurationList,
         Configuration,
         Playing,
         Score

@@ -9,7 +9,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
     public partial class MainViewModel : ViewModelBase
     {
         /// <summary>
-        ///     Design data stub. Do not use!
+        /// Design data stub. Do not use!
         /// </summary>
         public MainViewModel() : base(null)
         {
@@ -22,6 +22,18 @@ namespace OrionManager.ViewModel.ViewModels.Main
         }
 
         public GameDataViewModel GameData => Container.Resolve<GameDataViewModel>();
+
+        #region GameConfiguration: GameConfigurationViewModel
+
+        public GameConfigurationViewModel GameConfiguration
+        {
+            get => _gameConfiguration;
+            set => SetProperty(ref _gameConfiguration, value);
+        }
+
+        private GameConfigurationViewModel _gameConfiguration;
+
+        #endregion
 
         #region IsGameStarted: bool
 
@@ -40,7 +52,7 @@ namespace OrionManager.ViewModel.ViewModels.Main
         public UiRegions Region
         {
             get => _region;
-            set => SetProperty(ref _region, value);
+            private set => SetProperty(ref _region, value);
         }
 
         private UiRegions _region;
@@ -58,5 +70,10 @@ namespace OrionManager.ViewModel.ViewModels.Main
         private string _title;
 
         #endregion
+
+        public void GoToRegion(UiRegions region)
+        {
+            Region = region;
+        }
     }
 }
