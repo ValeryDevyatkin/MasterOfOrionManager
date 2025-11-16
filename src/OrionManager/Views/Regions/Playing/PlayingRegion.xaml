@@ -4,7 +4,8 @@
              xmlns:mc = "http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d = "http://schemas.microsoft.com/expression/blend/2008"
              xmlns:playing = "clr-namespace:OrionManager.Views.Regions.Playing"
-             xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel" xmlns:constants="clr-namespace:OrionManager.Theme"
+             xmlns:main = "clr-namespace:OrionManager.ViewModel.ViewModels.Main;assembly=OrionManager.ViewModel"
+             xmlns:constants="clr-namespace:OrionManager.Theme"
              mc:Ignorable = "d"
              x:ClassModifier = "internal">
 
@@ -18,12 +19,9 @@
             <RowDefinition Height = "Auto" />
         </Grid.RowDefinitions>
 
-        <Viewbox Grid.Row="0"
-                 Stretch="Uniform"
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Center">
-            <playing:PlayerListRegion />
-        </Viewbox>
+        <playing:PlayerListRegion Grid.Row="0"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
 
         <playing:RoundCounterRegion Grid.Row = "1" />
     </Grid>

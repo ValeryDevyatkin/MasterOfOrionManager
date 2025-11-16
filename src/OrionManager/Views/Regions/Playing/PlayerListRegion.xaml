@@ -13,7 +13,8 @@
              xmlns:viewModel = "clr-namespace:OrionManager.ViewModel;assembly=OrionManager.ViewModel"
              mc:Ignorable = "d"
              x:ClassModifier = "internal"
-             x:Name = "Root">
+             x:Name = "Root"
+             Margin = "{x:Static constants:UiSizes.OuterSpacingLeftNegativeThickness}">
 
     <d:UserControl.DataContext>
         <main:MainViewModel />
@@ -24,7 +25,7 @@
                     TargetName = "RaceIconBorder">
             <ColorAnimation Storyboard.TargetProperty = "(Border.BorderBrush).(SolidColorBrush.Color)"
                             To = "Transparent"
-                            Duration = "0:0:1.0"
+                            Duration = "0:0:1.2"
                             RepeatBehavior = "Forever"
                             AutoReverse = "False" />
         </Storyboard>
@@ -38,124 +39,139 @@
         </ItemsControl.ItemsPanel>
         <ItemsControl.ItemTemplate>
             <DataTemplate>
-                <Grid>
-                    <Grid.Margin>
+                <Viewbox Stretch="Uniform">
+                    <Viewbox.Margin>
                         <Thickness Top = "0"
                                    Right = "0"
                                    Left = "{x:Static constants:UiSizes.OuterSpacing}"
                                    Bottom = "{x:Static constants:UiSizes.OuterSpacing}" />
-                    </Grid.Margin>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width = "*" />
-                        <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                        <ColumnDefinition Width = "Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column = "0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height = "Auto" />
-                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                            <RowDefinition Height = "Auto" />
-                            <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                            <RowDefinition Height = "Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row = "0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width = "*" />
-                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                                <ColumnDefinition Width = "Auto" />
-                            </Grid.ColumnDefinitions>
-                            <controls:CustomTextBox x:Name = "WinPointsBox"
-                                                    Grid.Column = "0"
-                                                    Label = "Points"
-                                                    Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                <i:Interaction.Behaviors>
-                                    <behaviors:IntegerBoxBehavior />
-                                </i:Interaction.Behaviors>
-                            </controls:CustomTextBox>
-                            <controls:SpinButton Grid.Column = "2"
-                                                 Value = "{Binding WinPoints, Mode=TwoWay}"
-                                                 Min = "{x:Static constants1:ViewModelConstants.MinPlayerWinPoints}"
-                                                 Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay }" />
-                        </Grid>
-                        <Grid Grid.Row = "2">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width = "*" />
-                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                                <ColumnDefinition Width = "Auto" />
-                            </Grid.ColumnDefinitions>
-                            <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
-                                                    Grid.Column = "0"
-                                                    Label = "Loyalty"
-                                                    Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                                <i:Interaction.Behaviors>
-                                    <behaviors:IntegerBoxBehavior />
-                                </i:Interaction.Behaviors>
-                            </controls:CustomTextBox>
-                            <controls:SpinButton Grid.Column = "2"
-                                                 Value = "{Binding LoyaltyPoints, Mode=TwoWay}"
-                                                 Min = "{x:Static constants1:ViewModelConstants.MinPlayerLoyaltyPoints}"
-                                                 Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay }" />
-                        </Grid>
-                        <Grid Grid.Row = "4">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width = "*" />
-                                <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
-                                <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
-                            </Grid.ColumnDefinitions>
+                    </Viewbox.Margin>
 
-                            <controls:CustomContentControl Grid.Column = "0"
-                                                           Label = "Counselor"
-                                                           ToolTip = "{Binding Counselor.Value, Mode=OneWay}">
-                                <Button Command = "{Binding SelectCounselorCommand, Mode=OneTime}">
-                                    <Button.Style>
-                                        <Style TargetType = "Button">
-                                            <Setter Property = "Template">
-                                                <Setter.Value>
-                                                    <ControlTemplate TargetType = "Button">
-                                                        <Border Width = "{StaticResource CounselorIconSize}"
-                                                                Height = "{StaticResource CounselorIconSize}"
-                                                                BorderBrush = "{StaticResource BlackBrush}">
-                                                            <Border.Background>
-                                                                <ImageBrush Stretch = "Fill"
-                                                                            ImageSource = "{Binding Counselor.Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
-                                                            </Border.Background>
-                                                        </Border>
-                                                    </ControlTemplate>
-                                                </Setter.Value>
-                                            </Setter>
-                                        </Style>
-                                    </Button.Style>
-                                </Button>
-                            </controls:CustomContentControl>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width = "*" />
+                            <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                            <ColumnDefinition Width = "Auto" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid Grid.Column = "0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height = "Auto" />
+                                <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                <RowDefinition Height = "Auto" />
+                                <RowDefinition Height = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                <RowDefinition Height = "Auto" />
+                            </Grid.RowDefinitions>
+                            
+                            <Grid Grid.Row = "0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width = "*" />
+                                    <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                    <ColumnDefinition Width = "Auto" />
+                                </Grid.ColumnDefinitions>
+                                <controls:CustomTextBox x:Name = "WinPointsBox"
+                                                        Grid.Column = "0"
+                                                        Label = "Points"
+                                                        Text = "{Binding WinPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    <i:Interaction.Behaviors>
+                                        <behaviors:IntegerBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </controls:CustomTextBox>
+                                <controls:SpinButton Grid.Column = "2"
+                                                     Value = "{Binding WinPoints, Mode=TwoWay}"
+                                                     Min = "{x:Static constants1:ViewModelConstants.MinPlayerWinPoints}"
+                                                     Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxWinPoints, Mode=OneWay }" />
+                            </Grid>
+                            
+                            <Grid Grid.Row = "2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width = "*" />
+                                    <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                    <ColumnDefinition Width = "Auto" />
+                                </Grid.ColumnDefinitions>
+                                <controls:CustomTextBox x:Name = "LoyaltyPointsBox"
+                                                        Grid.Column = "0"
+                                                        Label = "Loyalty"
+                                                        Text = "{Binding LoyaltyPoints, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                    <i:Interaction.Behaviors>
+                                        <behaviors:IntegerBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </controls:CustomTextBox>
+                                <controls:SpinButton Grid.Column = "2"
+                                                     Value = "{Binding LoyaltyPoints, Mode=TwoWay}"
+                                                     Min = "{x:Static constants1:ViewModelConstants.MinPlayerLoyaltyPoints}"
+                                                     Max = "{Binding ElementName=Root, Path=DataContext.GameData.MaxLoyaltyPoints, Mode=OneWay }" />
+                            </Grid>
+                            
+                            <Grid Grid.Row = "4">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width = "*" />
+                                    <ColumnDefinition Width = "{x:Static constants:UiSizes.TextSpacingGridLength}" />
+                                    <ColumnDefinition Width = "{x:Static constants:UiSizes.OuterSpacingGridLength}" />
+                                </Grid.ColumnDefinitions>
 
-                            <controls:CustomButton Grid.Column = "2"
-                                                   Content = "?"
-                                                   FontWeight = "ExtraBold"
-                                                   Padding = "0"
-                                                   ToolTip = "Random"
-                                                   Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
-                                                   Command = "{Binding Source={x:Static viewModel:AppCommands.ChoseRandomCounselorCommand}, Mode=OneTime}"
-                                                   CommandParameter = "{Binding}" />
+                                <controls:CustomContentControl Grid.Column = "0"
+                                                               Label = "Counselor"
+                                                               ToolTip = "{Binding Counselor.Value, Mode=OneWay}">
+                                    <Button Command = "{Binding SelectCounselorCommand, Mode=OneTime}">
+                                        <Button.Style>
+                                            <Style TargetType = "Button">
+                                                <Setter Property = "Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType = "Button">
+                                                            <Border Width = "{StaticResource CounselorIconSize}"
+                                                                    Height = "{StaticResource CounselorIconSize}"
+                                                                    BorderBrush = "{StaticResource BlackBrush}">
+                                                                <Border.Background>
+                                                                    <ImageBrush Stretch = "Fill"
+                                                                                ImageSource = "{Binding Counselor.Value, Converter={converters:CounselorToImageSourceConverter}, Mode=OneWay}" />
+                                                                </Border.Background>
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+                                </controls:CustomContentControl>
+
+                                <controls:CustomButton Grid.Column = "2"
+                                                       Content = "?"
+                                                       FontWeight = "ExtraBold"
+                                                       Padding = "0"
+                                                       ToolTip = "Random"
+                                                       Height = "{Binding RelativeSource={RelativeSource AncestorType=Grid}, Path=ActualHeight, Mode=OneWay}"
+                                                       Command = "{Binding Source={x:Static viewModel:AppCommands.ChoseRandomCounselorCommand}, Mode=OneTime}"
+                                                       CommandParameter = "{Binding}" />
+                            </Grid>
+                        </Grid>
+                        
+                        <Grid Grid.Column = "2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height = "Auto" />
+                                <RowDefinition Height = "*" />
+                            </Grid.RowDefinitions>
+                            <Border x:Name = "RaceIconBorder"
+                                    Grid.Row = "0"
+                                    ToolTip = "{Binding Race, Mode=OneWay}"
+                                    BorderBrush = "{StaticResource DefaultForeground}"
+                                    Background ="{StaticResource BlackBrush}"
+                                    BorderThickness = "{x:Static constants:UiSizes.MinimalBorderThickness}"
+                                    Width = "{StaticResource RaceIconSize}"
+                                    Height = "{StaticResource RaceIconSize}">
+                                <Border Margin = "{x:Static constants:UiSizes.HighlightedBorderThickness}"
+                                        BorderThickness = "0"
+                                        CornerRadius = "{x:Static constants:UiSizes.SmallerBorderRadius}">
+                                    <Border.Background>
+                                        <ImageBrush Stretch = "Fill"
+                                                    ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
+                                    </Border.Background>
+                                </Border>
+                            </Border>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column = "2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height = "Auto" />
-                            <RowDefinition Height = "*" />
-                        </Grid.RowDefinitions>
-                        <Border x:Name = "RaceIconBorder"
-                                Grid.Row = "0"
-                                ToolTip = "{Binding Race, Mode=OneWay}"
-                                BorderBrush = "{StaticResource BlackBrush}"
-                                Width = "{StaticResource RaceIconSize}"
-                                Height = "{StaticResource RaceIconSize}">
-                            <Border.Background>
-                                <ImageBrush Stretch = "Fill"
-                                            ImageSource = "{Binding Race, Converter={converters:RaceToImageSourceConverter}, Mode=OneWay}" />
-                            </Border.Background>
-                        </Border>
-                    </Grid>
-                </Grid>
+                </Viewbox>
+                
                 <DataTemplate.Triggers>
                     <DataTrigger Binding = "{Binding HasInitiative}"
                                  Value = "True">

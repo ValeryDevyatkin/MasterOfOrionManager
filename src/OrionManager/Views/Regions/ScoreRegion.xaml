@@ -76,7 +76,7 @@
         </ItemsControl>
 
         <controls:CustomButton Grid.Row = "4"
-                               Content = "Ok"
+                               Content = "Finish"
                                Width = "{StaticResource StartMenuButtonWidth}"
                                Command = "{Binding Source={x:Static viewModel:AppCommands.NavigateToRegionCommand}, Mode=OneTime}"
                                CommandParameter = "{x:Static enums:UiRegions.Home}" />
